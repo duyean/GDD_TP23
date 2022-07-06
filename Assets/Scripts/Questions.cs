@@ -5,7 +5,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "New Question", menuName = "Questions")]
 public class Questions : ScriptableObject
 {
-    public new string subject;
+    public string subject;
     public string question;
     public string[] answers;
     public int correct_answer;
