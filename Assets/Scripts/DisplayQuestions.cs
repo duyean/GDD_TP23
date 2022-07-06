@@ -1,11 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
+using UnityEngine.UI;
 using TMPro;
 
 public class DisplayQuestions : MonoBehaviour
 {
-
     public TextMeshProUGUI questionText;
     public GameObject[] answerButton;
     public Questions question;
@@ -19,15 +20,16 @@ public class DisplayQuestions : MonoBehaviour
             answerButton[i].SetActive(true);
             if(i == question.correct_answer)
             {
-                answerButton[i].onclick.addlistener;
+                //answerButton[i].GetComponent<Button>().onClick.AddListener(correctAnswer());
             }
         }
     }
 
-    void correctAnswer()
-    {
-        
-    }
+    //UnityAction correctAnswer()
+    //{
+    //    Debug.Log("Correct");
+    //    return;
+    //}
 
     // Update is called once per frame
     void Update()
