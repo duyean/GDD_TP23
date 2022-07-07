@@ -35,6 +35,5 @@ public class Jumping_State : State
     {
         base.PhysicsUpdate();
         grounded = player.checkGrounded(player.transform.position);
-        Debug.Log(grounded);
     }
 }

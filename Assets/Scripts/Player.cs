@@ -16,16 +16,22 @@ namespace States
         public float jumpForce = 5;
         public LayerMask groundLayer;
 
-        public bool checkGrounded(Vector2 position)
+        public bool CheckGrounded(Vector2 position)
         {
+            StartCoroutine(checkGrounded(position));
+        }
+
+        public IEnumerator checkGrounded(Vector2 position)
+        {
+            yield return new WaitForSeconds(2);
             Collider2D hit = Physics2D.OverlapCircle(position, 1, groundLayer);
             if(hit != null)
             {
-                return true;
+                yield return true;
             }
             else
             {
-                return false;
+                yield return false;
             }
         }
 
