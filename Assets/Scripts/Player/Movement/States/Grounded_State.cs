@@ -24,6 +24,7 @@ public class Grounded_State : State
         base.HandleInput();
         if (Input.GetButtonDown("Jump"))
         {
+            Debug.Log("Jumping");
             stateMachine.ChangeState(player.jumping);
         }
     }

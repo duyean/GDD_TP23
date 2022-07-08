@@ -12,7 +12,7 @@ public class Jumping_State : State
     public override void Enter()
     {
         base.Enter();
-        player.jump();
+        //player.jump();
         grounded = false;
     }
 
@@ -26,6 +26,7 @@ public class Jumping_State : State
         base.LogicUpdate();
         if (grounded)
         {
+            Debug.Log("Finished jumping");
             stateMachine.ChangeState(player.grounded);
         }
     }
@@ -33,6 +34,5 @@ public class Jumping_State : State
     public override void PhysicsUpdate()
     {
         base.PhysicsUpdate();
-        Debug.Log(grounded);
     }
 }

@@ -31,7 +31,6 @@ namespace States
 
         public void move()
         {
-            direction = new Vector2(Input.GetAxis("Horizontal"), -gravity);
             rb.velocity = direction * speed;
         }
         public void jump()
@@ -58,6 +57,7 @@ namespace States
 
         void FixedUpdate()
         {
+            direction = new Vector2(Input.GetAxis("Horizontal"), -gravity);
             movementSM.CurrentState.PhysicsUpdate();
         }
     }
