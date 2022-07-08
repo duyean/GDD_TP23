@@ -5,7 +5,7 @@ using States;
 
 public class Jumping_State : State
 {
-    private bool grounded;
+    public bool grounded;
     public Jumping_State(Player player, StateMachine stateMachine) : base(player, stateMachine)
     {
     }
@@ -26,7 +26,6 @@ public class Jumping_State : State
         base.LogicUpdate();
         if (grounded)
         {
-            Debug.Log("Finished Jumping");
             stateMachine.ChangeState(player.grounded);
         }
     }
@@ -34,6 +33,6 @@ public class Jumping_State : State
     public override void PhysicsUpdate()
     {
         base.PhysicsUpdate();
-        grounded = player.checkGrounded(player.transform.position);
+        Debug.Log(grounded);
     }
 }

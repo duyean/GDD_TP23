@@ -10,35 +10,29 @@ namespace States
         public Grounded_State grounded;
         public Jumping_State jumping;
 
+        public float gravity = 0.5f;
         public Rigidbody2D rb;
         public Vector2 direction;
         public float speed = 10;
         public float jumpForce = 5;
         public LayerMask groundLayer;
 
-        public bool CheckGrounded(Vector2 position)
+        public void OnCollisionEnter2D(Collision2D collision)
         {
-            StartCoroutine(checkGrounded(position));
-        }
-
-        public IEnumerator checkGrounded(Vector2 position)
-        {
-            yield return new WaitForSeconds(2);
-            Collider2D hit = Physics2D.OverlapCircle(position, 1, groundLayer);
-            if(hit != null)
+            if (collision != null && collision.collider.gameObject.layer == 6 || collision.collider.gameObject.layer == 7)
             {
-                yield return true;
+                jumping.grounded = true;
             }
             else
             {
-                yield return false;
+                jumping.grounded = false;
             }
         }
 
         public void move()
         {
-            direction = new Vector2(Input.GetAxis("Horizontal"), 0);
-            rb.MovePosition((Vector2)transform.position + (direction * speed * Time.deltaTime));
+            direction = new Vector2(Input.GetAxis("Horizontal"), -gravity);
+            rb.velocity = direction * speed;
         }
         public void jump()
         {

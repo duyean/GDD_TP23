@@ -643,7 +643,7 @@ GameObject:
   - component: {fileID: 1184601208}
   - component: {fileID: 1184601207}
   - component: {fileID: 1184601206}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Platform
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1122,7 +1122,7 @@ GameObject:
   - component: {fileID: 1435022750}
   - component: {fileID: 1435022749}
   - component: {fileID: 1435022751}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Player Sprite
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -1233,7 +1233,7 @@ GameObject:
   - component: {fileID: 1511403408}
   - component: {fileID: 1511403411}
   - component: {fileID: 1511403410}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1289,6 +1289,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2568c1ce2bfaab14f9cd2beac6e19304, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gravity: 0.5
   rb: {fileID: 0}
   direction: {x: 0, y: 0}
   speed: 10
