@@ -12,7 +12,7 @@ public class Jumping_State : State
     public override void Enter()
     {
         base.Enter();
-        //player.jump();
+        player.jump();
         grounded = false;
     }
 

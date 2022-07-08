@@ -57,7 +57,7 @@ namespace States
 
         void FixedUpdate()
         {
-            direction = new Vector2(Input.GetAxis("Horizontal"), -gravity);
+            direction = new Vector2(Input.GetAxis("Horizontal"), rb.velocity.y);
             movementSM.CurrentState.PhysicsUpdate();
         }
     }
