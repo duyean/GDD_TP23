@@ -9,6 +9,7 @@ namespace States
         public StateMachine movementSM;
         public Grounded_State grounded;
         public Jumping_State jumping;
+        public InAir_State inAir;
 
         public float gravity = 0.5f;
         public Rigidbody2D rb;
@@ -16,6 +17,7 @@ namespace States
         public float speed = 10;
         public float jumpForce = 5;
         public LayerMask groundLayer;
+        public Vector2 currentVelocity;
 
         public void OnCollisionEnter2D(Collision2D collision)
         {
@@ -45,6 +47,7 @@ namespace States
             movementSM = new StateMachine();
             grounded = new Grounded_State(this, movementSM);
             jumping = new Jumping_State(this, movementSM);
+            inAir = new InAir_State(this, movementSM);
             movementSM.Initialize(grounded);
         }
 
@@ -57,7 +60,8 @@ namespace States
 
         void FixedUpdate()
         {
-            direction = new Vector2(Input.GetAxis("Horizontal"), rb.velocity.y);
+            currentVelocity = rb.velocity;
+            direction = new Vector2(Input.GetAxis("Horizontal"), currentVelocity.y);
             movementSM.CurrentState.PhysicsUpdate();
         }
     }
