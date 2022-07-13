@@ -89,3 +89,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3fcb826805983b94db9a1c997fb2667e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  firstItem: 
+  secondItem: 
+  correctValue: 3
+  questionText: {fileID: 0}

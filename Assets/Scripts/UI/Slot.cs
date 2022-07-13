@@ -10,12 +10,12 @@ public class Slot : MonoBehaviour, IDropHandler
     public string secondItem;
     private bool firstItemCheck = false;
     private bool secondItemCheck = false;
+    
     int firstValue;
     int secondValue;
     //private bool anchoredItem;
     public int correctValue = 3;
     public GameObject questionText;
-
     public void Awake()
     {
         questionText.SetActive(false);
@@ -23,8 +23,9 @@ public class Slot : MonoBehaviour, IDropHandler
     public void OnDrop(PointerEventData eventData)
     {
         Debug.Log("OnDrop");
-        if (eventData.pointerDrag != null)
+        if (eventData.pointerDrag != null) 
         {
+            
             eventData.pointerDrag.GetComponent<RectTransform>().anchoredPosition = GetComponent<RectTransform>().anchoredPosition;
             //anchoredItem = true;
             //if(anchoredItem == false)
@@ -41,21 +42,35 @@ public class Slot : MonoBehaviour, IDropHandler
                 secondValue = int.Parse(eventData.pointerDrag.GetComponent<DragDrop>().itemValue);
                 secondItemCheck = true;
             }
-            else if (firstItemCheck == true && secondItemCheck == true)
-            {
-                Debug.Log("AAAAAAAAAAAAAAAAAA");
-                //CheckCorrect();
+            //else if (firstItemCheck == true && secondItemCheck == true)
+            //{
+            //    Debug.Log("AAAAAAAAAAAAAAAAAA");
+            //    //CheckCorrect();
                 
-            }
-            if (firstValue + secondValue == correctValue)
+            //}
+            //if (firstValue + secondValue == correctValue)
+            //{
+            //    questionText.SetActive(true);
+            //    Debug.Log("correct");
+            //}
+        }
+    }
+    public void Update()
+    {
+        if (firstValue == 1 || firstValue == 2)
+        {
+            if(secondValue == 1 || firstValue == 2)
             {
                 questionText.SetActive(true);
                 Debug.Log("correct");
             }
         }
-    }
-    public void Update()
-    {
+        if (firstItemCheck == true && secondItemCheck == true)
+        {
+            Debug.Log("AAAAAAAAAAAAAAAAAA");
+            //CheckCorrect();
+            
+        }
         Debug.Log(firstValue);
         Debug.Log(secondValue);
     }
