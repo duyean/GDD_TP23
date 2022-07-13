@@ -14,7 +14,7 @@ public class Slot : MonoBehaviour, IDropHandler
     public int firstValue;
     //public int secondValue;
     //private bool anchoredItem;
-    public int correctValue = 3;
+    //public int correctValue = 3;
     //public GameObject questionText;
     public void Awake()
     {
