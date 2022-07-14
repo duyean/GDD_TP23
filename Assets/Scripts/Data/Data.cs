@@ -7,7 +7,9 @@ using UnityEngine;
 public class Data : ScriptableObject
 {
     public int levelNumber;
+    public int questionID;
     public string subject;
-    public string question;
+    public string question1;
+    public string question2;
     public string answer;
 }

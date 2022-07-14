@@ -7,6 +7,7 @@ public class AnswerCheck : MonoBehaviour
     public GameObject firstSlot;
     public GameObject secondSlot;
     public GameObject questionText;
+    public Data question;
     // Start is called before the first frame update
     void Awake()
     {
@@ -16,10 +17,21 @@ public class AnswerCheck : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (firstSlot.GetComponent<Slot>().firstValue + secondSlot.GetComponent<Slot2>().secondValue == 3)
+        if (question.subject == "Math")
         {
-            questionText.SetActive(true);
-            Debug.Log("correct");
+            if (int.Parse(firstSlot.GetComponent<Slot>().value) + int.Parse(secondSlot.GetComponent<Slot>().value) == int.Parse(question.answer))
+            {
+                questionText.SetActive(true);
+                Debug.Log("correct");
+            }
+        }
+        if(question.subject == "English")
+        {
+            if (firstSlot.GetComponent<Slot>().value + secondSlot.GetComponent<Slot>().value == question.answer)
+            {
+                questionText.SetActive(true);
+                Debug.Log("correct");
+            }
         }
     }
 }

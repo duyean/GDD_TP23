@@ -18,11 +18,13 @@ public class CSV_Import
 
             Data data = ScriptableObject.CreateInstance<Data>();
             data.levelNumber = int.Parse(splitData[0]);
-            data.subject = splitData[1];
-            data.question = splitData[2];
-            data.answer = splitData[3];
+            data.questionID = int.Parse(splitData[1]);
+            data.subject = splitData[2];
+            data.question1 = splitData[3];
+            data.question2 = splitData[4];
+            data.answer = splitData[5];
 
-            AssetDatabase.CreateAsset(data,$"Assets/Questions/{data.question}.asset");
+            AssetDatabase.CreateAsset(data,$"Assets/Resources/Questions/{data.levelNumber + "_" + data.questionID}.asset");
         }
 
         AssetDatabase.SaveAssets();
