@@ -12,8 +12,9 @@ public class Jumping_State : State
     public override void Enter()
     {
         base.Enter();
-        //player.jump();
+        player.jump();
         grounded = false;
+        stateMachine.ChangeState(player.inAir);
     }
 
     public override void Exit()
@@ -24,15 +25,11 @@ public class Jumping_State : State
     public override void LogicUpdate()
     {
         base.LogicUpdate();
-        if (grounded)
-        {
-            Debug.Log("Finished jumping");
-            stateMachine.ChangeState(player.grounded);
-        }
     }
 
     public override void PhysicsUpdate()
     {
         base.PhysicsUpdate();
+        player.currentVelocity = player.rb.velocity;
     }
 }
