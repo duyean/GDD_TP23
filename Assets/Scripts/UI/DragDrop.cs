@@ -16,6 +16,7 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, I
     {
         rectTransform = GetComponent<RectTransform>();
         canvasGroup = GetComponent<CanvasGroup>();
+        canvas = GetComponent<Canvas>();
         //currentLocation = GetComponent<Transform>().position;
     }
 

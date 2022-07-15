@@ -15,6 +15,8 @@ MonoBehaviour:
   levelNumber: 1
   questionID: 2
   subject: Math
-  question1: 1
-  question2: 2
-  answer: 3
+  answers:
+  - 1
+  - 2
+  finalAnswer: 3
+  finalLevel: 1

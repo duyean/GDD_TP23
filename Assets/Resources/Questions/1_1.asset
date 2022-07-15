@@ -15,6 +15,8 @@ MonoBehaviour:
   levelNumber: 1
   questionID: 1
   subject: English
-  question1: Test Question1
-  question2: Test Question2
-  answer: Test Question1Test Question2
+  answers:
+  - Test Question1
+  - Test Question2
+  finalAnswer: Test Question1Test Question2
+  finalLevel: 0

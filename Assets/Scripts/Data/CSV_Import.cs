@@ -15,14 +15,17 @@ public class CSV_Import
         foreach(string s in allLines)
         {
             string[] splitData = s.Split(',');
-
+            string[] splitAnswerData = splitData[3].Split('|');
             Data data = ScriptableObject.CreateInstance<Data>();
             data.levelNumber = int.Parse(splitData[0]);
             data.questionID = int.Parse(splitData[1]);
             data.subject = splitData[2];
-            data.question1 = splitData[3];
-            data.question2 = splitData[4];
-            data.answer = splitData[5];
+            data.finalAnswer = splitData[4];
+            data.finalLevel = bool.Parse(splitData[5]);
+            foreach(string i in splitAnswerData)
+            {
+                data.answers.Add(i);
+            }
 
             AssetDatabase.CreateAsset(data,$"Assets/Resources/Questions/{data.levelNumber + "_" + data.questionID}.asset");
         }
