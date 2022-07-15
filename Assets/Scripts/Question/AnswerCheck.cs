@@ -7,26 +7,26 @@ public class AnswerCheck : MonoBehaviour
     public GameObject firstSlot;
     public GameObject secondSlot;
     public GameObject questionText;
+    public QuestionLoader questionLoader;
     public Data question;
-    public int correctlyAnswered = 0;
-    public int currentQuestion;
+    private int numberOfQuesetions;
 
     // Start is called before the first frame update
     void Awake()
     {
         questionText.SetActive(false);
+        numberOfQuesetions = question.questionID;
     }
 
     // Update is called once per frame
     void Update()
     {
-        currentQuestion = 1;
         if (question.subject == "Math")
         {
             if (int.Parse(firstSlot.GetComponent<Slot>().value) + int.Parse(secondSlot.GetComponent<Slot>().value) == int.Parse(question.finalAnswer))
             {
                 questionText.SetActive(true);
-                correctlyAnswered++;
+                questionLoader.question++;
                 Debug.Log("correct");
             }
         }
@@ -35,13 +35,13 @@ public class AnswerCheck : MonoBehaviour
             if (firstSlot.GetComponent<Slot>().value + secondSlot.GetComponent<Slot>().value == question.finalAnswer)
             {
                 questionText.SetActive(true);
-                correctlyAnswered++;
+                questionLoader.question++;
                 Debug.Log("correct");
             }
         }
-        if (correctlyAnswered > currentQuestion)
+        if (question.finalLevel)
         {
-            currentQuestion++;
+
         }
     }
 }

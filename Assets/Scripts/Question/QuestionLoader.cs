@@ -13,16 +13,12 @@ public class QuestionLoader : MonoBehaviour
     void Start()
     {
         answerCheck.question = (Data)Resources.Load("Questions/" + level + "_" + question);
-        if (question > answerCheck.correctlyAnswered)
-        {
-            SpawnAnswers(question);
-        }
+        SpawnAnswers(question);
     }
 
     // Update is called once per frame
     void Update()
     {
-        question = answerCheck.currentQuestion;
         if (answerCheck.question.finalLevel)
         {
             level++;
@@ -36,7 +32,7 @@ public class QuestionLoader : MonoBehaviour
             foreach (string s in answerCheck.question.answers)
             {
                 item.GetComponent<DragDrop>().itemValue = s;
-                (Instantiate(item) as GameObject).transform.parent = canvas.transform;
+                Instantiate(item).transform.parent = canvas.transform;
             }
         }
     }

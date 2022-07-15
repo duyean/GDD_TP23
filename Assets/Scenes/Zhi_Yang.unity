@@ -335,9 +335,8 @@ MonoBehaviour:
   firstSlot: {fileID: 731411375}
   secondSlot: {fileID: 780851677}
   questionText: {fileID: 1325950169}
+  questionLoader: {fileID: 1969515358}
   question: {fileID: 0}
-  correctlyAnswered: 0
-  currentQuestion: 0
 --- !u!1 &731411375 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8878105185590181304, guid: 8168d3167dc2f60469e585f4f2593385, type: 3}
