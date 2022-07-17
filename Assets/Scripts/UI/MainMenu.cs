@@ -7,10 +7,8 @@ public class MainMenu : MonoBehaviour
 {
     public GameObject LevelSelection;
 
-    private void Start()
-    {
-        // play sound
-    }
+
+
 
     public void SelectLevel()
     {
@@ -18,4 +16,8 @@ public class MainMenu : MonoBehaviour
         LevelSelection.SetActive(true);
     }
 
+    public void StartGame(string sceneName)
+    {
+        SceneManager.LoadScene(sceneName);
+    }
 }
