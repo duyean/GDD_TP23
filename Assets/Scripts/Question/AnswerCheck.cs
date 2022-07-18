@@ -9,13 +9,12 @@ public class AnswerCheck : MonoBehaviour
     public GameObject questionText;
     public QuestionLoader questionLoader;
     public Data question;
-    private int numberOfQuesetions;
+    private int numberOfQuestions;
 
     // Start is called before the first frame update
     void Awake()
     {
         questionText.SetActive(false);
-        numberOfQuesetions = question.questionID;
     }
 
     // Update is called once per frame

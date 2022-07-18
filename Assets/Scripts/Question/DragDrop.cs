@@ -5,7 +5,7 @@ using UnityEngine.EventSystems;
 
 public class DragDrop : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, IEndDragHandler, IDragHandler
 {
-    [SerializeField] private Canvas canvas;
+    public Canvas canvas;
     private RectTransform rectTransform;
     private CanvasGroup canvasGroup;
     //public Vector3 currentLocation; 
@@ -16,7 +16,6 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, I
     {
         rectTransform = GetComponent<RectTransform>();
         canvasGroup = GetComponent<CanvasGroup>();
-        canvas = GetComponent<Canvas>();
         //currentLocation = GetComponent<Transform>().position;
     }
 

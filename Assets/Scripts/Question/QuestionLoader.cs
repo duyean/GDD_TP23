@@ -33,6 +33,7 @@ public class QuestionLoader : MonoBehaviour
             {
                 item.GetComponent<DragDrop>().itemValue = s;
                 Instantiate(item).transform.parent = canvas.transform;
+                item.GetComponent<DragDrop>().canvas = canvas;
             }
         }
     }
