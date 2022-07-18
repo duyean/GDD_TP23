@@ -20,4 +20,9 @@ public class MainMenu : MonoBehaviour
     {
         SceneManager.LoadScene(sceneName);
     }
+
+    public void OpenCustomize()
+    {
+        CharacterManager.Instance.OpenCustomizeMenu();
+    }
 }
