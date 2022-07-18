@@ -20,6 +20,7 @@ public class AnswerCheck : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //If statements to check if the item values add up to the final answer
         if (question.subject == "Math")
         {
             if (int.Parse(firstSlot.GetComponent<Slot>().value) + int.Parse(secondSlot.GetComponent<Slot>().value) == int.Parse(question.finalAnswer))
@@ -27,6 +28,10 @@ public class AnswerCheck : MonoBehaviour
                 questionText.SetActive(true);
                 questionLoader.question++;
                 Debug.Log("correct");
+            }
+            else
+            {
+                Debug.Log("wrong");
             }
         }
         if(question.subject == "English")
