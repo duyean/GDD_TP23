@@ -1,9 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.Events;
+using UnityEngine.UI;
+using TMPro;
 public class AnswerCheck : MonoBehaviour
 {
+
     public GameObject firstSlot;
     public GameObject secondSlot;
     public GameObject questionText;
@@ -21,6 +24,7 @@ public class AnswerCheck : MonoBehaviour
     void Update()
     {
         //If statements to check if the item values add up to the final answer
+        //int.Parse is to convert the parameter value in the brackets into int
         if (question.subject == "Math")
         {
             if (int.Parse(firstSlot.GetComponent<Slot>().value) + int.Parse(secondSlot.GetComponent<Slot>().value) == int.Parse(question.finalAnswer))
@@ -29,7 +33,7 @@ public class AnswerCheck : MonoBehaviour
                 questionLoader.question++;
                 Debug.Log("correct");
             }
-            else
+            else if (int.Parse(firstSlot.GetComponent<Slot>().value) + int.Parse(secondSlot.GetComponent<Slot>().value) != int.Parse(question.finalAnswer))
             {
                 Debug.Log("wrong");
             }
@@ -41,6 +45,11 @@ public class AnswerCheck : MonoBehaviour
                 questionText.SetActive(true);
                 questionLoader.question++;
                 Debug.Log("correct");
+            }
+            else if (firstSlot.GetComponent<Slot>().value + secondSlot.GetComponent<Slot>().value != question.finalAnswer)
+            {
+                Debug.Log("wrong");
+
             }
         }
         if (question.finalLevel)
