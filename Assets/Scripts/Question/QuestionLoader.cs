@@ -12,6 +12,7 @@ public class QuestionLoader : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        //load questions based on parameters set in inspector
         answerCheck.question = (Data)Resources.Load("Questions/" + level + "_" + question);
         SpawnAnswers(question);
     }
@@ -25,6 +26,7 @@ public class QuestionLoader : MonoBehaviour
         }
     }
 
+    //Instantiate item prefab with answer values from specified scriptable object
     void SpawnAnswers(int level)
     {
         if (answerCheck.question.questionID == level)
