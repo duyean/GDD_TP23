@@ -135,6 +135,7 @@ GameObject:
   - component: {fileID: 22252579}
   - component: {fileID: 22252578}
   - component: {fileID: 22252580}
+  - component: {fileID: 22252581}
   m_Layer: 6
   m_Name: Tilemap
   m_TagString: Player
@@ -472,6 +473,26 @@ TilemapCollider2D:
   m_Offset: {x: 0, y: 0}
   m_MaximumTileChangeCount: 2
   m_ExtrusionFactor: 0.00001
+--- !u!95 &22252581
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 22252576}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 4373426c7ebb1a44a95c8c95e2f1bf90, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &270920395
 GameObject:
   m_ObjectHideFlags: 0
@@ -647,6 +668,7 @@ GameObject:
   - component: {fileID: 745258510}
   - component: {fileID: 745258509}
   - component: {fileID: 745258511}
+  - component: {fileID: 745258512}
   m_Layer: 3
   m_Name: guycharacter
   m_TagString: Untagged
@@ -829,6 +851,26 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   controller: {fileID: 745258507}
   runspeed: 100
+--- !u!95 &745258512
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 745258504}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: c11dba99ea7df1849b3ccaf57243e26c, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &1005059954
 GameObject:
   m_ObjectHideFlags: 0
