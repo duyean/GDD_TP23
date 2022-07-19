@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
+using TMPro;
 
 public class DragDrop : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, IEndDragHandler, IDragHandler
 {
@@ -10,13 +12,16 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, I
     private CanvasGroup canvasGroup;
     //public Vector3 currentLocation; 
     public string itemValue;
+    public TextMeshProUGUI valueText;
+    
 
-
-    private void Awake()
+    public void Start()
     {
+        valueText = GetComponentInChildren<TextMeshProUGUI>();
         rectTransform = GetComponent<RectTransform>();
         canvasGroup = GetComponent<CanvasGroup>();
         //currentLocation = GetComponent<Transform>().position;
+        valueText.SetText(itemValue);
     }
 
 
