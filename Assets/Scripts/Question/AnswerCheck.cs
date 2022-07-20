@@ -13,10 +13,18 @@ public class AnswerCheck : MonoBehaviour
     public QuestionLoader questionLoader;
     public Data question;
     private int numberOfQuestions;
+<<<<<<< Updated upstream
+=======
+    public TextMeshProUGUI displayAnswerText;
+>>>>>>> Stashed changes
 
     // Start is called before the first frame update
     void Awake()
     {
+<<<<<<< Updated upstream
+=======
+        displayAnswerText = GetComponentInChildren<TextMeshProUGUI>();
+>>>>>>> Stashed changes
         questionText.SetActive(false);
     }
 
@@ -27,30 +35,46 @@ public class AnswerCheck : MonoBehaviour
         //int.Parse is to convert the parameter value in the brackets into int
         if (question.subject == "Math")
         {
-            if (int.Parse(firstSlot.GetComponent<Slot>().value) + int.Parse(secondSlot.GetComponent<Slot>().value) == int.Parse(question.finalAnswer))
+            displayAnswerText.SetText(question.finalAnswer); //Displaying the answer in the last box
+            if(firstSlot.GetComponent<Slot>().value != null && secondSlot.GetComponent<Slot>().value != null)
             {
-                questionText.SetActive(true);
-                questionLoader.question++;
-                Debug.Log("correct");
+                if (int.Parse(firstSlot.GetComponent<Slot>().value) + int.Parse(secondSlot.GetComponent<Slot>().value) == int.Parse(question.finalAnswer))
+                {
+                    questionText.SetActive(true);
+                    questionLoader.question++;
+                    Debug.Log("correct");
+                }
+                else if (int.Parse(firstSlot.GetComponent<Slot>().value) + int.Parse(secondSlot.GetComponent<Slot>().value) != int.Parse(question.finalAnswer))
+                {
+                    Debug.Log("wrong");
+                }
             }
-            else if (int.Parse(firstSlot.GetComponent<Slot>().value) + int.Parse(secondSlot.GetComponent<Slot>().value) != int.Parse(question.finalAnswer))
+            else
             {
-                Debug.Log("wrong");
+                Debug.Log("checking");
             }
         }
         if(question.subject == "English")
         {
-            if (firstSlot.GetComponent<Slot>().value + secondSlot.GetComponent<Slot>().value == question.finalAnswer)
+            displayAnswerText.SetText(question.finalAnswer); //Displaying the answer in the last box
+            if (firstSlot.GetComponent<Slot>().value != null && secondSlot.GetComponent<Slot>().value != null)
             {
-                questionText.SetActive(true);
-                questionLoader.question++;
-                Debug.Log("correct");
+                if (firstSlot.GetComponent<Slot>().value + secondSlot.GetComponent<Slot>().value == question.finalAnswer)
+                {
+                    questionText.SetActive(true);
+                    questionLoader.question++;
+                    Debug.Log("correct");
+                }
+                else if (firstSlot.GetComponent<Slot>().value + secondSlot.GetComponent<Slot>().value != question.finalAnswer)
+                {
+                    Debug.Log("wrong");
+                }
             }
-            else if (firstSlot.GetComponent<Slot>().value + secondSlot.GetComponent<Slot>().value != question.finalAnswer)
+            else
             {
-                Debug.Log("wrong");
-
+                    Debug.Log("checking");
             }
+                
         }
         if (question.finalLevel)
         {
