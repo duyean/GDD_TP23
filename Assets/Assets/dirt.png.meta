@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 3ed8f6ddfb8a95540b94c3b3e7e51284
+guid: f569468f33b2fb843bde371c3ced3fc8
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -116,64 +116,190 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: BrackeysTilesetTemplate_0
+      name: dirt_0
       rect:
         serializedVersion: 2
-        x: 460
-        y: 771
+        x: 0
+        y: 322
         width: 32
         height: 32
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a50ae55af51e1e14e82f92fd4d8f035d
-      internalID: -1719193489
+      spriteID: 00d20b0652f11cc4bb0ec715ed768542
+      internalID: -1702610228
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: BrackeysTilesetTemplate_6
+      name: dirt_1
       rect:
         serializedVersion: 2
-        x: 508
-        y: 771
+        x: 32
+        y: 322
         width: 32
         height: 32
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b0b3e7d12c854fe4e8a890223fa36d11
-      internalID: -617187256
+      spriteID: 0897fa4b0c20bb747aed556e0dd5cae6
+      internalID: -49526293
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: BrackeysTilesetTemplate_7
+      name: dirt_2
       rect:
         serializedVersion: 2
-        x: 508
-        y: 727
+        x: 64
+        y: 322
         width: 32
         height: 32
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2080a5bc1fe65524092db7d669d44ae7
-      internalID: 1878504421
+      spriteID: 26c7dc5a90e8178499a45383b22941f1
+      internalID: 443733469
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dirt_3
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 290
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f292e5b45dc89f540ae0d40edf3f1968
+      internalID: 3139451
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dirt_4
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 290
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e015b6c7bdaa14e40a3ad9729809bf73
+      internalID: 122024092
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dirt_5
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 290
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ee87f33c74296484db2d941c55dcf967
+      internalID: -1224430859
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dirt_6
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 258
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 30bf1d0890bf74e499477150cc4ad1ba
+      internalID: 390034255
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dirt_7
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 258
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2df0c5df51d2650479771d66022c20e4
+      internalID: 926197364
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dirt_8
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 258
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d8a27ac548af81747a266c4f79493e6e
+      internalID: -591990015
       vertices: []
       indices: 
       edges: []
@@ -189,14 +315,15 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      BrackeysTilesetTemplate_0: -1719193489
-      BrackeysTilesetTemplate_1: 337737401
-      BrackeysTilesetTemplate_2: 992069883
-      BrackeysTilesetTemplate_3: -1811681048
-      BrackeysTilesetTemplate_5: 1359368171
-      BrackeysTilesetTemplate_6: -617187256
-      BrackeysTilesetTemplate_7: 1878504421
-      BrackeysTilesetTemplate_4: -956716363
+      dirt_6: 390034255
+      dirt_8: -591990015
+      dirt_7: 926197364
+      dirt_4: 122024092
+      dirt_5: -1224430859
+      dirt_1: -49526293
+      dirt_2: 443733469
+      dirt_0: -1702610228
+      dirt_3: 3139451
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
