@@ -2,10 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CoinColliders : MonoBehaviour
+public class Coin : MonoBehaviour
 {
 
 	public GameObject canvas;
+	public int level;
+	public int questionNumber;
 
 	// Start is called before the first frame update
 	void Start()
@@ -22,9 +24,8 @@ public class CoinColliders : MonoBehaviour
 	private void OnCollisionEnter2D(Collision2D collision)
 	{
 		Debug.Log(collision.transform.tag);
-		if(collision.transform.tag == "Coin")
+		if(collision.transform.tag == "Player")
         {
-			Debug.Log("collision detected");
 			canvas.SetActive(true);
 		}
 	}

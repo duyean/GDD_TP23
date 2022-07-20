@@ -5,14 +5,29 @@ using UnityEngine;
 public class QuestionLoader : MonoBehaviour
 {
     public AnswerCheck answerCheck;
-    public int level = 1;
-    public int question = 1;
+    public int level;
+    public int question;
     public GameObject item;
     public Canvas canvas;
+    public GameObject[] coins;
+    private Coin coin;
+
+    void Awake()
+    {
+        coins = GameObject.FindGameObjectsWithTag("Coin");
+        foreach (GameObject i in coins)
+        {
+            coin = i.GetComponent<Coin>();
+        }
+        level = coin.level;
+        question = coin.questionNumber;
+    }
+
     // Start is called before the first frame update
     void Start()
     {
-        //load questions based on parameters set in inspector
+        Debug.Log(level + question);
+        //load questions based on parameters set by coin
         answerCheck.question = (Data)Resources.Load("Questions/" + level + "_" + question);
         SpawnAnswers(question);
     }
@@ -20,10 +35,6 @@ public class QuestionLoader : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (answerCheck.question.finalLevel)
-        {
-            level++;
-        }
     }
 
     //Instantiate item prefab with answer values from specified scriptable object
