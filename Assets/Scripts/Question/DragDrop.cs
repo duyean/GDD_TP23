@@ -13,7 +13,6 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, I
     //public Vector3 currentLocation; 
     public string itemValue;
     public TextMeshProUGUI valueText;
-    
 
     public void Start()
     {
@@ -24,7 +23,10 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, I
         valueText.SetText(itemValue);
     }
 
-
+    void Update()
+    {
+        
+    }
 
     public void OnBeginDrag(PointerEventData eventData)
     {

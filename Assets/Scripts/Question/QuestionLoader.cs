@@ -8,17 +8,21 @@ public class QuestionLoader : MonoBehaviour
     public int level;
     public int question;
     public GameObject item;
+    public GameObject canvasGameObject;
     public Canvas canvas;
     public GameObject[] coins;
+    public List<GameObject> itemList;
     private Coin coin;
 
     void Awake()
     {
+        //Get coins for the level
         coins = GameObject.FindGameObjectsWithTag("Coin");
         foreach (GameObject i in coins)
         {
             coin = i.GetComponent<Coin>();
         }
+        //assign level and question number for question loader
         level = coin.level;
         question = coin.questionNumber;
     }
@@ -35,6 +39,11 @@ public class QuestionLoader : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //disable canvas and destroy item clones if answer is correct
+        if (answerCheck.correct)
+        {
+            canvasGameObject.SetActive(false);
+        }
     }
 
     //Instantiate item prefab with answer values from specified scriptable object
@@ -47,6 +56,7 @@ public class QuestionLoader : MonoBehaviour
                 item.GetComponent<DragDrop>().itemValue = s;
                 Instantiate(item).transform.parent = canvas.transform;
                 item.GetComponent<DragDrop>().canvas = canvas;
+                itemList.Add(item);
             }
         }
     }

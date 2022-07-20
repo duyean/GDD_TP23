@@ -2256,6 +2256,8 @@ MonoBehaviour:
   questionText: {fileID: 406516004}
   questionLoader: {fileID: 1910510225}
   question: {fileID: 0}
+  displayAnswerText: {fileID: 406516006}
+  correct: 0
 --- !u!4 &1898983171
 Transform:
   m_ObjectHideFlags: 0
@@ -2304,8 +2306,10 @@ MonoBehaviour:
   level: 1
   question: 1
   item: {fileID: 2170202485578305287, guid: efc468eaad6c98c45b39714c73ffed75, type: 3}
+  canvasGameObject: {fileID: 2140286071}
   canvas: {fileID: 2140286074}
   coins: []
+  itemList: []
 --- !u!4 &1910510226
 Transform:
   m_ObjectHideFlags: 0

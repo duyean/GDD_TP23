@@ -12,16 +12,16 @@ public class AnswerCheck : MonoBehaviour
     public GameObject questionText;
     public QuestionLoader questionLoader;
     public Data question;
-    private int numberOfQuestions;
     public TextMeshProUGUI displayAnswerText;
+    public bool correct;
 
     // Start is called before the first frame update
     void Start()
     {
         displayAnswerText.GetComponentInChildren<TextMeshProUGUI>();
         questionText.SetActive(false);
-       
 
+        correct = false;
     }
 
     // Update is called once per frame
@@ -38,11 +38,11 @@ public class AnswerCheck : MonoBehaviour
             {
                 questionText.SetActive(true);
                 questionLoader.question++;
-                Debug.Log("correct");
+                correct = true;
             }
             else if (int.Parse(firstSlot.GetComponent<Slot>().value) + int.Parse(secondSlot.GetComponent<Slot>().value) != int.Parse(question.finalAnswer))
             {
-                Debug.Log("wrong");
+                correct = false;
             }
         }
         if(question.subject == "English")
@@ -53,12 +53,11 @@ public class AnswerCheck : MonoBehaviour
             {
                 questionText.SetActive(true);
                 questionLoader.question++;
-                Debug.Log("correct");
+                correct = true;
             }
             else if (firstSlot.GetComponent<Slot>().value + secondSlot.GetComponent<Slot>().value != question.finalAnswer)
             {
-                Debug.Log("wrong");
-
+                correct = false;
             }
         }
         if (question.finalLevel)
