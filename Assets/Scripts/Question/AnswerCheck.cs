@@ -13,16 +13,25 @@ public class AnswerCheck : MonoBehaviour
     public QuestionLoader questionLoader;
     public Data question;
     private int numberOfQuestions;
+    public string answerText;
+    public TextMeshProUGUI displayAnswerText;
 
     // Start is called before the first frame update
-    void Awake()
+    void Start()
     {
+        answerText = question.finalAnswer;
+        displayAnswerText.GetComponentInChildren<TextMeshProUGUI>();
+        displayAnswerText.SetText(answerText);
+        Debug.Log(answerText);
         questionText.SetActive(false);
+       
+
     }
 
     // Update is called once per frame
     void Update()
     {
+
         //If statements to check if the item values add up to the final answer
         //int.Parse is to convert the parameter value in the brackets into int
         if (question.subject == "Math")
