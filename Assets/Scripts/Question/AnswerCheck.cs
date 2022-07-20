@@ -9,6 +9,7 @@ public class AnswerCheck : MonoBehaviour
 
     public GameObject firstSlot;
     public GameObject secondSlot;
+    public GameObject thirdSlot;
     public GameObject questionText;
     public QuestionLoader questionLoader;
     public Data question;
@@ -34,28 +35,38 @@ public class AnswerCheck : MonoBehaviour
         {
             displayAnswerText.SetText(question.finalAnswer);
 
-            if (int.Parse(firstSlot.GetComponent<Slot>().value) + int.Parse(secondSlot.GetComponent<Slot>().value) == int.Parse(question.finalAnswer))
+            //if (int.Parse(firstSlot.GetComponent<Slot>().value) + int.Parse(secondSlot.GetComponent<Slot>().value) == int.Parse(question.finalAnswer))
+            //{
+            //    questionText.SetActive(true);
+            //    questionLoader.question++;
+            //    correct = true;
+            //}
+            //else if (int.Parse(firstSlot.GetComponent<Slot>().value) + int.Parse(secondSlot.GetComponent<Slot>().value) != int.Parse(question.finalAnswer))
+            //{
+            //    correct = false;
+            //}
+            if (firstSlot.GetComponent<Slot>().value == "1" && secondSlot.GetComponent<Slot>().value == "2" && thirdSlot.GetComponent<Slot>().value == "3")
             {
                 questionText.SetActive(true);
                 questionLoader.question++;
                 correct = true;
             }
-            else if (int.Parse(firstSlot.GetComponent<Slot>().value) + int.Parse(secondSlot.GetComponent<Slot>().value) != int.Parse(question.finalAnswer))
+            else /*if (firstSlot.GetComponent<Slot>().value + secondSlot.GetComponent<Slot>().value != question.finalAnswer)*/
             {
                 correct = false;
             }
         }
         if(question.subject == "English")
         {
-            displayAnswerText.SetText(question.finalAnswer);
+            //displayAnswerText.SetText(question.finalAnswer);
 
-            if (firstSlot.GetComponent<Slot>().value + secondSlot.GetComponent<Slot>().value == question.finalAnswer)
+            if (firstSlot.GetComponent<Slot>().value == "1" &&  secondSlot.GetComponent<Slot>().value == "2" && thirdSlot.GetComponent<Slot>().value == "3")
             {
                 questionText.SetActive(true);
                 questionLoader.question++;
                 correct = true;
             }
-            else if (firstSlot.GetComponent<Slot>().value + secondSlot.GetComponent<Slot>().value != question.finalAnswer)
+            else /*if (firstSlot.GetComponent<Slot>().value + secondSlot.GetComponent<Slot>().value != question.finalAnswer)*/
             {
                 correct = false;
             }
