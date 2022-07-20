@@ -19,15 +19,20 @@ public class CSV_Import
         {
             string[] splitData = s.Split(',');
             string[] splitAnswerData = splitData[3].Split('|');
+            string[] splitFilledValueData = splitData[4].Split('|');
             Data data = ScriptableObject.CreateInstance<Data>();
             data.levelNumber = int.Parse(splitData[0]);
             data.questionID = int.Parse(splitData[1]);
             data.subject = splitData[2];
-            data.finalAnswer = splitData[4];
-            data.finalLevel = bool.Parse(splitData[5]);
+            data.finalAnswer = splitData[5];
+            data.finalLevel = bool.Parse(splitData[6]);
             foreach(string i in splitAnswerData)
             {
                 data.answers.Add(i);
+            }
+            foreach (string i in splitFilledValueData)
+            {
+                data.filledValues.Add(i);
             }
             //create the Scriptable Object
             AssetDatabase.CreateAsset(data,$"Assets/Resources/Questions/{data.levelNumber + "_" + data.questionID}.asset");

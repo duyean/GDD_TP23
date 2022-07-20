@@ -10,6 +10,7 @@ public class QuestionLoader : MonoBehaviour
     public GameObject item;
     public GameObject canvasGameObject;
     public Canvas canvas;
+    public FilledSlot[] filledSlots;
     public List<GameObject> itemList;
     private Coin coin;
 
@@ -20,6 +21,10 @@ public class QuestionLoader : MonoBehaviour
         //assign level and question number for question loader
         level = coin.level;
         question = coin.questionNumber;
+        foreach (FilledSlot filledSlot in filledSlots)
+        {
+            filledSlot.question = (Data)Resources.Load("Questions/" + level + "_" + question);
+        }
     }
 
     // Start is called before the first frame update

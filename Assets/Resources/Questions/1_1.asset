@@ -19,5 +19,8 @@ MonoBehaviour:
   - Test Question1
   - Test Question2
   - Test Question3
+  filledValues:
+  - Test Question4
+  - Test Question5
   finalAnswer: Test Question1Test Question2
   finalLevel: 0

@@ -10,6 +10,7 @@ public class Data : ScriptableObject
     public int questionID;
     public string subject;
     public List<string> answers = new List<string>();
+    public List<string> filledValues = new List<string>();
     public string finalAnswer;
     public bool finalLevel;
 }

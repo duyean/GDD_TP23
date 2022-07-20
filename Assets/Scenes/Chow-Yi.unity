@@ -837,7 +837,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &804917176
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2815,11 +2815,22 @@ PrefabInstance:
       value: Filled Slot
       objectReference: {fileID: 0}
     - target: {fileID: 4207900386580670894, guid: 678c474833bfe214d970dc7eeeb2ef9a, type: 3}
-      propertyPath: filledValue
-      value: 4
+      propertyPath: slotNumber
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 678c474833bfe214d970dc7eeeb2ef9a, type: 3}
+--- !u!114 &1702835237 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4207900386580670894, guid: 678c474833bfe214d970dc7eeeb2ef9a, type: 3}
+  m_PrefabInstance: {fileID: 1516649744}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 96d0f556136f9f544853480bfd7004fd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1710957842
 GameObject:
   m_ObjectHideFlags: 0
@@ -3074,6 +3085,9 @@ MonoBehaviour:
   item: {fileID: 2170202485578305287, guid: efc468eaad6c98c45b39714c73ffed75, type: 3}
   canvasGameObject: {fileID: 804917175}
   canvas: {fileID: 804917178}
+  filledSlots:
+  - {fileID: 1702835237}
+  - {fileID: 2003919392}
   itemList: []
 --- !u!4 &1735884282
 Transform:
@@ -3187,8 +3201,8 @@ PrefabInstance:
       value: Filled Slot (1)
       objectReference: {fileID: 0}
     - target: {fileID: 4207900386580670894, guid: 678c474833bfe214d970dc7eeeb2ef9a, type: 3}
-      propertyPath: filledValue
-      value: 5
+      propertyPath: slotNumber
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 678c474833bfe214d970dc7eeeb2ef9a, type: 3}
@@ -3279,6 +3293,7 @@ MonoBehaviour:
   item: {fileID: 2170202485578305287, guid: efc468eaad6c98c45b39714c73ffed75, type: 3}
   canvasGameObject: {fileID: 2140286071}
   canvas: {fileID: 2140286074}
+  filledSlots: []
   itemList: []
 --- !u!4 &1910510226
 Transform:
@@ -3301,6 +3316,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 2170202485578305284, guid: 678c474833bfe214d970dc7eeeb2ef9a, type: 3}
   m_PrefabInstance: {fileID: 1746565839}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &2003919392 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4207900386580670894, guid: 678c474833bfe214d970dc7eeeb2ef9a, type: 3}
+  m_PrefabInstance: {fileID: 1746565839}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 96d0f556136f9f544853480bfd7004fd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2069150926
 GameObject:
   m_ObjectHideFlags: 0
