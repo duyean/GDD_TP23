@@ -10,18 +10,13 @@ public class QuestionLoader : MonoBehaviour
     public GameObject item;
     public GameObject canvasGameObject;
     public Canvas canvas;
-    public GameObject[] coins;
     public List<GameObject> itemList;
     private Coin coin;
 
     void Awake()
     {
         //Get coins for the level
-        coins = GameObject.FindGameObjectsWithTag("Coin");
-        foreach (GameObject i in coins)
-        {
-            coin = i.GetComponent<Coin>();
-        }
+        coin = gameObject.GetComponentInChildren<Coin>();
         //assign level and question number for question loader
         level = coin.level;
         question = coin.questionNumber;
@@ -30,7 +25,6 @@ public class QuestionLoader : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Debug.Log(level + question);
         //load questions based on parameters set by coin
         answerCheck.question = (Data)Resources.Load("Questions/" + level + "_" + question);
         SpawnAnswers(question);
