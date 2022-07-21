@@ -10,17 +10,16 @@ public class AnswerCheck : MonoBehaviour
     public GameObject firstSlot;
     public GameObject secondSlot;
     public GameObject thirdSlot;
-    public GameObject questionText;
+    public GameObject correctWrongText;
     public QuestionLoader questionLoader;
     public Data question;
-    public TextMeshProUGUI displayAnswerText;
     public bool correct;
 
     // Start is called before the first frame update
     void Start()
     {
-        displayAnswerText.GetComponentInChildren<TextMeshProUGUI>();
-        questionText.SetActive(false);
+        correctWrongText.GetComponentInChildren<TextMeshProUGUI>();
+        correctWrongText.SetActive(false);
 
         correct = false;
     }
@@ -33,7 +32,6 @@ public class AnswerCheck : MonoBehaviour
         //int.Parse is to convert the parameter value in the brackets into int
         if (question.subject == "Math")
         {
-            displayAnswerText.SetText(question.finalAnswer);
 
             //if (int.Parse(firstSlot.GetComponent<Slot>().value) + int.Parse(secondSlot.GetComponent<Slot>().value) == int.Parse(question.finalAnswer))
             //{
@@ -47,26 +45,34 @@ public class AnswerCheck : MonoBehaviour
             //}
             if (firstSlot.GetComponent<Slot>().value == "1" && secondSlot.GetComponent<Slot>().value == "2" && thirdSlot.GetComponent<Slot>().value == "3")
             {
-                questionText.SetActive(true);
+                correctWrongText.SetActive(true);
                 questionLoader.question++;
                 correct = true;
             }
-            else /*if (firstSlot.GetComponent<Slot>().value + secondSlot.GetComponent<Slot>().value != question.finalAnswer)*/
+            else
             {
                 correct = false;
             }
         }
         if(question.subject == "English")
         {
-            //displayAnswerText.SetText(question.finalAnswer);
-
+            //if (firstSlot.GetComponent<Slot>().value + secondSlot.GetComponent<Slot>().value == question.finalAnswer)
+            //{
+            //    questionText.SetActive(true);
+            //    questionLoader.question++;
+            //    correct = true;
+            //}
+            //else if (firstSlot.GetComponent<Slot>().value + secondSlot.GetComponent<Slot>().value != question.finalAnswer)
+            //{
+            //    correct = false;
+            //}
             if (firstSlot.GetComponent<Slot>().value == "1" &&  secondSlot.GetComponent<Slot>().value == "2" && thirdSlot.GetComponent<Slot>().value == "3")
             {
-                questionText.SetActive(true);
+                correctWrongText.SetActive(true);
                 questionLoader.question++;
                 correct = true;
             }
-            else /*if (firstSlot.GetComponent<Slot>().value + secondSlot.GetComponent<Slot>().value != question.finalAnswer)*/
+            else
             {
                 correct = false;
             }
