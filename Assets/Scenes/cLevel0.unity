@@ -2034,5 +2034,3 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   GuyCharacter: {fileID: 7570700530015188866, guid: 51fa42403cb23a445b3f46cf8ed803af, type: 3}
   GirlCharacter: {fileID: 2374882559912370782, guid: 549c7737f6d634648972c3064a681e47, type: 3}
-  Cat: {fileID: 5885922671837356439, guid: c95d67a58027d4c4c8672ceac02dfcb3, type: 3}
-  Frog: {fileID: 4435934810936067307, guid: cafabca442ae43e419715ef815bac7d6, type: 3}

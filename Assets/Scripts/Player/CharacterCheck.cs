@@ -6,8 +6,9 @@ public class CharacterCheck : MonoBehaviour
 {
     public GameObject GuyCharacter;
     public GameObject GirlCharacter;
-    public GameObject Cat;
-    public GameObject Frog;
+
+    public GameObject instantiatedCharacter;
+
 
     void Awake()
     {
@@ -19,28 +20,28 @@ public class CharacterCheck : MonoBehaviour
     {
         if (CharacterManager.Instance.isMale == true)
         {
-            Instantiate(GuyCharacter);
+            instantiatedCharacter = Instantiate(GuyCharacter);
         }
         else
         {
-            Instantiate(GirlCharacter);
+            instantiatedCharacter = Instantiate(GirlCharacter);
         }
 
     }
+
     public void CheckPet()
     {
-        if(CharacterManager.Instance.pet == "Cat")
+        if (CharacterManager.Instance.pet == "Cat")
         {
-            Instantiate(Cat);
-            
+            instantiatedCharacter.GetComponent<PlayerMovement>().pets[0].SetActive(true);
         }
-       // CharacterManager.Instance.pet = "Rabbit";
-       // {
-      //      Instantiate(Rabbit);
-      //  }
-        if(CharacterManager.Instance.pet == "Frog")
+        if (CharacterManager.Instance.pet == "Rabbit")
         {
-            Instantiate(Frog);
+            instantiatedCharacter.GetComponent<PlayerMovement>().pets[1].SetActive(true);
+        }
+        if (CharacterManager.Instance.pet == "Frog")
+        {
+            instantiatedCharacter.GetComponent<PlayerMovement>().pets[2].SetActive(true);
         }
     }
     // Update is called once per frame

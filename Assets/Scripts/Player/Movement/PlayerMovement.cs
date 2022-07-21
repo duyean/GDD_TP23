@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
+    public GameObject[] pets;
+
+
     public CharacterController2D controller;
     public float runspeed = 40f;
     float horizontalMove = 0f;
