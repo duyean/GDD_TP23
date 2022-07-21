@@ -11,6 +11,7 @@ public class AnswerCheck : MonoBehaviour
     public GameObject secondSlot;
     public GameObject thirdSlot;
     public GameObject correctWrongText;
+    public QuestionCounter questionCounter;
     public QuestionLoader questionLoader;
     public Data question;
     public bool correct;
@@ -42,7 +43,7 @@ public class AnswerCheck : MonoBehaviour
             //{
             //    correct = false;
             //}
-            if (firstSlot.GetComponent<Slot>().value == "1" && secondSlot.GetComponent<Slot>().value == "2" && thirdSlot.GetComponent<Slot>().value == "3")
+            if (firstSlot.GetComponent<Slot>().value == question.finalAnswers[0] && secondSlot.GetComponent<Slot>().value == question.finalAnswers[1] && thirdSlot.GetComponent<Slot>().value == question.finalAnswers[2])
             {
                 correctWrongText.SetActive(true);
                 questionLoader.question++;
@@ -65,10 +66,9 @@ public class AnswerCheck : MonoBehaviour
             //{
             //    correct = false;
             //}
-            if (firstSlot.GetComponent<Slot>().value == "1" &&  secondSlot.GetComponent<Slot>().value == "2" && thirdSlot.GetComponent<Slot>().value == "3")
+            if (firstSlot.GetComponent<Slot>().value == question.finalAnswers[0] && secondSlot.GetComponent<Slot>().value == question.finalAnswers[1] && thirdSlot.GetComponent<Slot>().value == question.finalAnswers[2])
             {
                 correctWrongText.SetActive(true);
-                questionLoader.question++;
                 correct = true;
             }
             else
@@ -80,6 +80,7 @@ public class AnswerCheck : MonoBehaviour
         if (correct)
         {
             coin.SetActive(false);
+            questionCounter.answerToFinish--;
         }
     }
 }

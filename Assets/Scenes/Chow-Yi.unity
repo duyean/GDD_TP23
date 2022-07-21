@@ -479,6 +479,7 @@ MonoBehaviour:
   secondSlot: {fileID: 864878279}
   thirdSlot: {fileID: 741605489}
   correctWrongText: {fileID: 1098532946}
+  questionCounter: {fileID: 1360622939}
   questionLoader: {fileID: 1735884281}
   question: {fileID: 0}
   correct: 0
@@ -2108,12 +2109,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9672372362e8bfc4c9440334d4631ac3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  coins:
-  - {fileID: 2096089212}
-  - {fileID: 2069150928}
-  questions:
-  - {fileID: 1910510224}
-  - {fileID: 1735884280}
   answerToFinish: 2
 --- !u!1001 &1416656021
 PrefabInstance:
@@ -3164,6 +3159,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   answerCheck: {fileID: 499017018}
+  subject: Math
   level: 1
   question: 2
   item: {fileID: 2170202485578305287, guid: efc468eaad6c98c45b39714c73ffed75, type: 3}
@@ -3323,7 +3319,8 @@ MonoBehaviour:
   firstSlot: {fileID: 1416656023}
   secondSlot: {fileID: 1170770448}
   thirdSlot: {fileID: 0}
-  correctWrongText: {fileID: 0}
+  correctWrongText: {fileID: 406516004}
+  questionCounter: {fileID: 1360622939}
   questionLoader: {fileID: 1910510225}
   question: {fileID: 0}
   correct: 0
@@ -3372,6 +3369,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   answerCheck: {fileID: 1898983170}
+  subject: English
   level: 1
   question: 1
   item: {fileID: 2170202485578305287, guid: efc468eaad6c98c45b39714c73ffed75, type: 3}

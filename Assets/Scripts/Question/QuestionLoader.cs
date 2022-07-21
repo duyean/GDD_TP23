@@ -5,6 +5,7 @@ using UnityEngine;
 public class QuestionLoader : MonoBehaviour
 {
     public AnswerCheck answerCheck;
+    public string subject;
     public int level;
     public int question;
     public GameObject item;
@@ -23,7 +24,7 @@ public class QuestionLoader : MonoBehaviour
         question = coin.questionNumber;
         foreach (FilledSlot filledSlot in filledSlots)
         {
-            filledSlot.question = (Data)Resources.Load("Questions/" + level + "_" + question);
+            filledSlot.question = (Data)Resources.Load("Questions/" + subject + "_" + level + "_" + question);
         }
     }
 
@@ -31,7 +32,7 @@ public class QuestionLoader : MonoBehaviour
     void Start()
     {
         //load questions based on parameters set by coin
-        answerCheck.question = (Data)Resources.Load("Questions/" + level + "_" + question);
+        answerCheck.question = (Data)Resources.Load("Questions/" + subject + "_" + level + "_" + question);
         SpawnAnswers(question);
     }
 

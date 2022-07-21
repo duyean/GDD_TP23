@@ -6,11 +6,12 @@ using UnityEngine;
 
 public class Data : ScriptableObject
 {
+    public string subject;
     public int levelNumber;
     public int questionID;
-    public string subject;
+    public string question;
     public List<string> answers = new List<string>();
     public List<string> filledValues = new List<string>();
-    public string finalAnswer;
+    public List<string> finalAnswers = new List<string>();
     public bool finalLevel;
 }
