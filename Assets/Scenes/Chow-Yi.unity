@@ -478,10 +478,9 @@ MonoBehaviour:
   firstSlot: {fileID: 906697912}
   secondSlot: {fileID: 864878279}
   thirdSlot: {fileID: 741605489}
-  questionText: {fileID: 1098532946}
+  correctWrongText: {fileID: 1098532946}
   questionLoader: {fileID: 1735884281}
   question: {fileID: 0}
-  displayAnswerText: {fileID: 1098532948}
   correct: 0
 --- !u!1 &520102960
 GameObject:
@@ -3324,10 +3323,9 @@ MonoBehaviour:
   firstSlot: {fileID: 1416656023}
   secondSlot: {fileID: 1170770448}
   thirdSlot: {fileID: 0}
-  questionText: {fileID: 406516004}
+  correctWrongText: {fileID: 0}
   questionLoader: {fileID: 1910510225}
   question: {fileID: 0}
-  displayAnswerText: {fileID: 406516006}
   correct: 0
 --- !u!4 &1898983171
 Transform:
