@@ -6,7 +6,7 @@ using UnityEngine.UI;
 using TMPro;
 public class AnswerCheck : MonoBehaviour
 {
-
+    public GameObject coin;
     public GameObject firstSlot;
     public GameObject secondSlot;
     public GameObject thirdSlot;
@@ -28,7 +28,6 @@ public class AnswerCheck : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
         //If statements to check if the item values add up to the final answer
         //int.Parse is to convert the parameter value in the brackets into int
         if (question.subject == "Math")
@@ -71,9 +70,10 @@ public class AnswerCheck : MonoBehaviour
                 correct = false;
             }
         }
-        if (question.finalLevel)
-        {
 
+        if (correct)
+        {
+            coin.SetActive(false);
         }
     }
 }
