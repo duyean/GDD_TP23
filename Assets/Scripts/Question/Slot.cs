@@ -12,8 +12,20 @@ public class Slot : MonoBehaviour, IDropHandler
         Debug.Log("OnDrop");
         if (eventData.pointerDrag != null)
         {
+
             eventData.pointerDrag.GetComponent<RectTransform>().anchoredPosition = GetComponent<RectTransform>().anchoredPosition; //Anchors the item to the slot when it is dropped on the slot
             value = eventData.pointerDrag.GetComponent<DragDrop>().itemValue; //Gets the itemValue from the object and parses into the value variable
         }
+    }
+    
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+       
+            value = null;
+        
+    }
+    void Update()
+    {
+        Debug.Log(value);
     }
 }
