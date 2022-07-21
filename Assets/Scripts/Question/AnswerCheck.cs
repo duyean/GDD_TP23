@@ -48,6 +48,7 @@ public class AnswerCheck : MonoBehaviour
                 correctWrongText.SetActive(true);
                 questionLoader.question++;
                 correct = true;
+                Time.timeScale = 1;
             }
             else
             {
@@ -70,6 +71,7 @@ public class AnswerCheck : MonoBehaviour
             {
                 correctWrongText.SetActive(true);
                 correct = true;
+                Time.timeScale = 1;
             }
             else
             {

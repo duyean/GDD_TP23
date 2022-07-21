@@ -14,9 +14,11 @@ public class QuestionLoader : MonoBehaviour
     public FilledSlot[] filledSlots;
     public List<GameObject> itemList;
     private Coin coin;
+    private Vector2 position;
 
     void Awake()
     {
+        position = new Vector2(960, 540);
         //Get coins for the level
         coin = gameObject.GetComponentInChildren<Coin>();
         //assign level and question number for question loader
@@ -54,10 +56,11 @@ public class QuestionLoader : MonoBehaviour
             foreach (string s in answerCheck.question.answers)
             {
                 item.GetComponent<DragDrop>().itemValue = s;
-                Instantiate(item).transform.parent = canvas.transform;
+                Instantiate(item, position, Quaternion.identity).transform.parent = canvas.transform;
                 item.GetComponent<DragDrop>().canvas = canvas;
                 itemList.Add(item);
             }
         }
+        canvasGameObject.SetActive(false);
     }
 }
