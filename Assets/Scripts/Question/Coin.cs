@@ -21,10 +21,10 @@ public class Coin : MonoBehaviour
 
 	}
 
-	private void OnCollisionEnter2D(Collision2D collision)
-	{
-		if(collision.transform.tag == "Player")
-        {
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+		if (collision.transform.tag == "Player")
+		{
 			canvas.SetActive(true);
 			Time.timeScale = 0;
 		}

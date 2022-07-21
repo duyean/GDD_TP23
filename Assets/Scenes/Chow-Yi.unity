@@ -478,7 +478,7 @@ MonoBehaviour:
   firstSlot: {fileID: 906697912}
   secondSlot: {fileID: 864878279}
   thirdSlot: {fileID: 741605489}
-  correctWrongText: {fileID: 1098532946}
+  correctWrongText: {fileID: 1098532948}
   questionCounter: {fileID: 1360622939}
   questionLoader: {fileID: 1735884281}
   question: {fileID: 0}
@@ -2259,7 +2259,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1435022750}
   - component: {fileID: 1435022749}
-  - component: {fileID: 1435022751}
   m_Layer: 3
   m_Name: Player Sprite
   m_TagString: Untagged
@@ -2334,32 +2333,6 @@ Transform:
   m_Father: {fileID: 1511403408}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!61 &1435022751
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1435022748}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
-    newSize: {x: 1, y: 1}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1}
-  m_EdgeRadius: 0
 --- !u!224 &1440844580 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 2170202485578305284, guid: 678c474833bfe214d970dc7eeeb2ef9a, type: 3}
@@ -2733,6 +2706,7 @@ GameObject:
   - component: {fileID: 1511403408}
   - component: {fileID: 1511403411}
   - component: {fileID: 1511403410}
+  - component: {fileID: 1511403412}
   m_Layer: 3
   m_Name: Player
   m_TagString: Player
@@ -2798,6 +2772,32 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   currentVelocity: {x: 0, y: 0}
+--- !u!61 &1511403412
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1511403407}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1}
+  m_EdgeRadius: 0
 --- !u!1001 &1516649744
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3164,15 +3164,18 @@ MonoBehaviour:
   question: 2
   item: {fileID: 2170202485578305287, guid: efc468eaad6c98c45b39714c73ffed75, type: 3}
   canvasGameObject: {fileID: 804917175}
+  filledSlot: {fileID: 0}
   canvas: {fileID: 804917178}
   filledSlots:
   - {fileID: 1702835237}
   - {fileID: 2003919392}
   itemList: []
-  positions:
-  - {x: 600, y: 500}
-  - {x: 800, y: 500}
-  - {x: 1200, y: 500}
+  filledSlotList: []
+  itemPositions:
+  - {x: 600, y: 540}
+  - {x: 800, y: 540}
+  - {x: 1200, y: 540}
+  filledSlotPositions: []
 --- !u!4 &1735884282
 Transform:
   m_ObjectHideFlags: 0
@@ -3323,7 +3326,7 @@ MonoBehaviour:
   firstSlot: {fileID: 1416656023}
   secondSlot: {fileID: 1170770448}
   thirdSlot: {fileID: 0}
-  correctWrongText: {fileID: 406516004}
+  correctWrongText: {fileID: 406516006}
   questionCounter: {fileID: 1360622939}
   questionLoader: {fileID: 1910510225}
   question: {fileID: 0}
@@ -3378,13 +3381,16 @@ MonoBehaviour:
   question: 1
   item: {fileID: 2170202485578305287, guid: efc468eaad6c98c45b39714c73ffed75, type: 3}
   canvasGameObject: {fileID: 2140286071}
+  filledSlot: {fileID: 0}
   canvas: {fileID: 2140286074}
   filledSlots: []
   itemList: []
-  positions:
+  filledSlotList: []
+  itemPositions:
   - {x: 600, y: 540}
   - {x: 800, y: 540}
   - {x: 1200, y: 540}
+  filledSlotPositions: []
 --- !u!4 &1910510226
 Transform:
   m_ObjectHideFlags: 0
@@ -3476,7 +3482,7 @@ CircleCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -3630,7 +3636,7 @@ CircleCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}

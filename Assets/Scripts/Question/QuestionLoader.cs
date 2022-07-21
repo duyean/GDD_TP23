@@ -55,6 +55,7 @@ public class QuestionLoader : MonoBehaviour
     {
         if (answerCheck.question.questionID == level)
         {
+            answerCheck.correctWrongText.text = answerCheck.question.question;
             foreach (string s in answerCheck.question.answers)
             {
                 item.GetComponent<DragDrop>().itemValue = s;
@@ -64,12 +65,12 @@ public class QuestionLoader : MonoBehaviour
                 item.GetComponent<DragDrop>().canvas = canvas;
                 itemList.Add(item);
             }
-            foreach (string s in answerCheck.question.filledValues)
-            {
-                filledSlot.GetComponent<FilledSlot>().filledValue = s;
-                Instantiate(filledSlot, filledSlotPositions[Random.Range(0, filledSlotPositions.Count)], Quaternion.identity).transform.parent = canvas.transform;
-                filledSlotList.Add(filledSlot);
-            }
+            //foreach (string s in answerCheck.question.filledValues)
+            //{
+            //    filledSlot.GetComponent<FilledSlot>().filledValue = s;
+            //    Instantiate(filledSlot, filledSlotPositions[Random.Range(0, filledSlotPositions.Count)], Quaternion.identity).transform.parent = canvas.transform;
+            //    filledSlotList.Add(filledSlot);
+            //}
         }
         canvasGameObject.SetActive(false);
     }

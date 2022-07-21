@@ -10,7 +10,7 @@ public class AnswerCheck : MonoBehaviour
     public GameObject firstSlot;
     public GameObject secondSlot;
     public GameObject thirdSlot;
-    public GameObject correctWrongText;
+    public TextMeshProUGUI correctWrongText;
     public QuestionCounter questionCounter;
     public QuestionLoader questionLoader;
     public Data question;
@@ -19,8 +19,7 @@ public class AnswerCheck : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        correctWrongText.GetComponentInChildren<TextMeshProUGUI>();
-        correctWrongText.SetActive(false);
+        //correctWrongText.SetActive(true);
 
         correct = false;
     }
@@ -45,7 +44,7 @@ public class AnswerCheck : MonoBehaviour
             //}
             if (firstSlot.GetComponent<Slot>().value == question.finalAnswers[0] && secondSlot.GetComponent<Slot>().value == question.finalAnswers[1] && thirdSlot.GetComponent<Slot>().value == question.finalAnswers[2])
             {
-                correctWrongText.SetActive(true);
+                //correctWrongText.SetActive(true);
                 questionLoader.question++;
                 correct = true;
                 Time.timeScale = 1;
@@ -69,7 +68,7 @@ public class AnswerCheck : MonoBehaviour
             //}
             if (firstSlot.GetComponent<Slot>().value == question.finalAnswers[0] && secondSlot.GetComponent<Slot>().value == question.finalAnswers[1] && thirdSlot.GetComponent<Slot>().value == question.finalAnswers[2])
             {
-                correctWrongText.SetActive(true);
+                //correctWrongText.SetActive(true);
                 correct = true;
                 Time.timeScale = 1;
             }
