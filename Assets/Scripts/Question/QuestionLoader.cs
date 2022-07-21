@@ -55,6 +55,8 @@ public class QuestionLoader : MonoBehaviour
             foreach (string s in answerCheck.question.answers)
             {
                 item.GetComponent<DragDrop>().itemValue = s;
+                //RaycastHit2D hit = Physics2D.BoxCast(item.transform.position, new Vector2(1,1),0,Vector2.one);
+                //if()
                 Instantiate(item, positions[Random.Range(0, positions.Count)], Quaternion.identity).transform.parent = canvas.transform;
                 item.GetComponent<DragDrop>().canvas = canvas;
                 itemList.Add(item);
