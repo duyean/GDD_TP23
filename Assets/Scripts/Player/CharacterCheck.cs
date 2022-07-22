@@ -7,13 +7,20 @@ public class CharacterCheck : MonoBehaviour
     public GameObject GuyCharacter;
     public GameObject GirlCharacter;
 
-    public GameObject instantiatedCharacter;
+    GameObject instantiatedCharacter;
+    GameObject gameCamera;
 
+    Vector3 camOffset = new Vector3(0, 3, -10);
 
     void Awake()
     {
         CheckGender();
         CheckPet();
+    }
+
+    private void Start()
+    {
+        gameCamera = GameObject.FindGameObjectWithTag("MainCamera");
     }
 
     public void CheckGender()
@@ -47,6 +54,6 @@ public class CharacterCheck : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        gameCamera.transform.position = instantiatedCharacter.transform.position + camOffset;
     }
 }
