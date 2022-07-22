@@ -18,6 +18,9 @@ public class AnswerCheck : MonoBehaviour
     public GameObject player;
     private Rigidbody2D rb2d;
 
+    //To do:
+    //Make slots an array instead of hard coded
+
     // Start is called before the first frame update
     void Start()
     {
@@ -25,8 +28,6 @@ public class AnswerCheck : MonoBehaviour
         rb2d = player.GetComponent<Rigidbody2D>();
         correct = false;
     }
-
-
     
     // Update is called once per frame
     void Update()

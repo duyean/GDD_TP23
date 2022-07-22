@@ -15,15 +15,18 @@ public class QuestionLoader : MonoBehaviour
     public FilledSlot[] filledSlots;
     public List<GameObject> itemList;
     public List<GameObject> filledSlotList;
-    private Coin coin;
     public List<Vector2> itemPositions;
     public List<Vector2> filledSlotPositions;
+
+    private Coin coin;
+    private int integer;
 
     void Awake()
     {
         //Get coins for the level
         coin = gameObject.GetComponentInChildren<Coin>();
         //assign level and question number for question loader
+        subject = coin.subject;
         level = coin.level;
         question = coin.questionNumber;
         foreach (FilledSlot filledSlot in filledSlots)
@@ -56,21 +59,20 @@ public class QuestionLoader : MonoBehaviour
         if (answerCheck.question.questionID == level)
         {
             answerCheck.correctWrongText.text = answerCheck.question.question;
-            foreach (string s in answerCheck.question.answers)
+            for (int i = 0; i <= answerCheck.question.answers.Count; i++)
             {
-                item.GetComponent<DragDrop>().itemValue = s;
-                //RaycastHit2D hit = Physics2D.BoxCast(item.transform.position, new Vector2(1,1),0,Vector2.one);
-                //if()
-                Instantiate(item, itemPositions[Random.Range(0, itemPositions.Count)], Quaternion.identity).transform.parent = canvas.transform;
+                item.GetComponent<DragDrop>().itemValue = answerCheck.question.answers[i];
+                Instantiate(item, itemPositions[i], Quaternion.identity).transform.parent = canvas.transform;
                 item.GetComponent<DragDrop>().canvas = canvas;
                 itemList.Add(item);
             }
-            //foreach (string s in answerCheck.question.filledValues)
-            //{
-            //    filledSlot.GetComponent<FilledSlot>().filledValue = s;
-            //    Instantiate(filledSlot, filledSlotPositions[Random.Range(0, filledSlotPositions.Count)], Quaternion.identity).transform.parent = canvas.transform;
-            //    filledSlotList.Add(filledSlot);
-            //}
+            for (int i = 0; i <= answerCheck.question.filledValues.Count; i++)
+            {
+                filledSlot.GetComponent<FilledSlot>().filledValue = answerCheck.question.filledValues[i];
+                Instantiate(filledSlot, filledSlotPositions[i], Quaternion.identity).transform.parent = canvas.transform;
+                filledSlotList.Add(filledSlot);
+            }
+
         }
         canvasGameObject.SetActive(false);
     }
