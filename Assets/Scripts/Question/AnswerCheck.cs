@@ -15,6 +15,8 @@ public class AnswerCheck : MonoBehaviour
     public QuestionLoader questionLoader;
     public Data question;
     public bool correct;
+    public GameObject player;
+    private Rigidbody2D rb2d;
 
     //To do:
     //Make slots an array instead of hard coded
@@ -23,27 +25,13 @@ public class AnswerCheck : MonoBehaviour
     void Start()
     {
         //correctWrongText.SetActive(true);
-
+        rb2d = player.GetComponent<Rigidbody2D>();
         correct = false;
     }
     
     // Update is called once per frame
     void Update()
     {
-        if (firstSlot.GetComponent<Slot>().value != question.finalAnswers[0])
-        {
-            firstSlot.GetComponent<Slot>().value = null;
-        }
-        if (secondSlot.GetComponent<Slot>().value != question.finalAnswers[1])
-        {
-            secondSlot.GetComponent<Slot>().value = null;
-        }
-        if (thirdSlot.GetComponent<Slot>().value != question.finalAnswers[2])
-        {
-            thirdSlot.GetComponent<Slot>().value = null;
-        }
-
-        
         //If statements to check if the item values add up to the final answer
         //int.Parse is to convert the parameter value in the brackets into int
         if (question.subject == "Math")
@@ -92,8 +80,15 @@ public class AnswerCheck : MonoBehaviour
 
         if (correct)
         {
+            UnFreeze();
             coin.SetActive(false);
             questionCounter.answerToFinish--;
         }
     }
+   
+    void UnFreeze()
+    {
+        rb2d.constraints = RigidbodyConstraints2D.None | RigidbodyConstraints2D.FreezeRotation;
+    }
+
 }
