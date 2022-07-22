@@ -18,6 +18,13 @@ public class AnswerCheck : MonoBehaviour
 
     //To do:
     //Make slots an array instead of hard coded
+    [SerializeField]
+    GameObject[] tileMapSpawns;
+
+    [SerializeField]
+    GameObject treasure;
+
+
 
     // Start is called before the first frame update
     void Start()
@@ -61,10 +68,11 @@ public class AnswerCheck : MonoBehaviour
             //}
             if (firstSlot.GetComponent<Slot>().value == question.finalAnswers[0] && secondSlot.GetComponent<Slot>().value == question.finalAnswers[1] && thirdSlot.GetComponent<Slot>().value == question.finalAnswers[2])
             {
-                //correctWrongText.SetActive(true);
+                correctWrongText.SetActive(true);
+                spawnPlatform(questionLoader.question);
                 questionLoader.question++;
                 correct = true;
-                Time.timeScale = 1;
+                
             }
             else
             {
@@ -85,9 +93,11 @@ public class AnswerCheck : MonoBehaviour
             //}
             if (firstSlot.GetComponent<Slot>().value == question.finalAnswers[0] && secondSlot.GetComponent<Slot>().value == question.finalAnswers[1] && thirdSlot.GetComponent<Slot>().value == question.finalAnswers[2])
             {
-                //correctWrongText.SetActive(true);
+                correctWrongText.SetActive(true);
+                spawnPlatform(questionLoader.question);
+                questionLoader.question++;
                 correct = true;
-                Time.timeScale = 1;
+
             }
             else
             {
@@ -99,6 +109,22 @@ public class AnswerCheck : MonoBehaviour
         {
             coin.SetActive(false);
             questionCounter.answerToFinish--;
+        }
+    }
+
+
+
+    //functions to add
+    public void spawnPlatform(int questionNum)
+    {
+        tileMapSpawns[questionNum - 1].SetActive(true);
+    }
+
+    public void checkWin(int level, int question)
+    {
+        if (question - level == -1)
+        {
+            treasure.GetComponent<levelWin>().win = true;
         }
     }
 }
