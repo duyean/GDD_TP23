@@ -68,7 +68,7 @@ public class AnswerCheck : MonoBehaviour
             //}
             if (firstSlot.GetComponent<Slot>().value == question.finalAnswers[0] && secondSlot.GetComponent<Slot>().value == question.finalAnswers[1] && thirdSlot.GetComponent<Slot>().value == question.finalAnswers[2])
             {
-                correctWrongText.SetActive(true);
+                //correctWrongText.SetActive(true);
                 spawnPlatform(questionLoader.question);
                 questionLoader.question++;
                 correct = true;
@@ -93,7 +93,7 @@ public class AnswerCheck : MonoBehaviour
             //}
             if (firstSlot.GetComponent<Slot>().value == question.finalAnswers[0] && secondSlot.GetComponent<Slot>().value == question.finalAnswers[1] && thirdSlot.GetComponent<Slot>().value == question.finalAnswers[2])
             {
-                correctWrongText.SetActive(true);
+                //correctWrongText.SetActive(true);
                 spawnPlatform(questionLoader.question);
                 questionLoader.question++;
                 correct = true;
