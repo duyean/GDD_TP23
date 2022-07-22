@@ -27,7 +27,6 @@ public class Coin : MonoBehaviour
 		if (collision.transform.tag == "Player")
 		{
 			canvas.SetActive(true);
-			Time.timeScale = 0;
 		}
 	}
 }
