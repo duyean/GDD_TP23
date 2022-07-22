@@ -18,6 +18,8 @@ public class AnswerCheck : MonoBehaviour
     [SerializeField]
     GameObject[] tileMapSpawns;
 
+    [SerializeField]
+    GameObject treasure;
 
 
 
@@ -93,8 +95,19 @@ public class AnswerCheck : MonoBehaviour
         }
     }
 
+
+
+    //functions to add
     public void spawnPlatform(int questionNum)
     {
         tileMapSpawns[questionNum - 1].SetActive(true);
+    }
+
+    public void checkWin(int level, int question)
+    {
+        if (question - level == -1)
+        {
+            treasure.GetComponent<levelWin>().win = true;
+        }
     }
 }
