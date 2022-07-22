@@ -18,19 +18,29 @@ public class CSV_Import
         foreach(string s in allLines)
         {
             string[] splitData = s.Split(',');
-            string[] splitAnswerData = splitData[3].Split('|');
+            string[] splitAnswerData = splitData[4].Split('|');
+            string[] splitFilledValueData = splitData[5].Split('|');
+            string[] splitFinalAnswerData = splitData[6].Split('|');
             Data data = ScriptableObject.CreateInstance<Data>();
-            data.levelNumber = int.Parse(splitData[0]);
-            data.questionID = int.Parse(splitData[1]);
-            data.subject = splitData[2];
-            data.finalAnswer = splitData[4];
-            data.finalLevel = bool.Parse(splitData[5]);
+            data.subject = splitData[0];
+            data.levelNumber = int.Parse(splitData[1]);
+            data.questionID = int.Parse(splitData[2]);
+            data.question = splitData[3];
             foreach(string i in splitAnswerData)
             {
                 data.answers.Add(i);
             }
+            foreach (string i in splitFilledValueData)
+            {
+                data.filledValues.Add(i);
+            }
+            foreach (string i in splitFinalAnswerData)
+            {
+                Debug.Log(i);
+                data.finalAnswers.Add(i);
+            }
             //create the Scriptable Object
-            AssetDatabase.CreateAsset(data,$"Assets/Resources/Questions/{data.levelNumber + "_" + data.questionID}.asset");
+            AssetDatabase.CreateAsset(data,$"Assets/Resources/Questions/{data.subject + "_" + data.levelNumber + "_" + data.questionID}.asset");
         }
 
         AssetDatabase.SaveAssets();

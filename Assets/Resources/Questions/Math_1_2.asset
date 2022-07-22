@@ -10,14 +10,21 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e8e3ca251e675634cba503098bc008e6, type: 3}
-  m_Name: 1_2
+  m_Name: Math_1_2
   m_EditorClassIdentifier: 
+  subject: Math
   levelNumber: 1
   questionID: 2
-  subject: Math
+  question: math is fun
   answers:
   - 1
   - 2
   - 3
-  finalAnswer: 3
-  finalLevel: 1
+  - 4
+  filledValues:
+  - 4
+  - 5
+  finalAnswers:
+  - 1
+  - 2
+  - 3

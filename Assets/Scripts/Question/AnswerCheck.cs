@@ -6,28 +6,44 @@ using UnityEngine.UI;
 using TMPro;
 public class AnswerCheck : MonoBehaviour
 {
-
+    public GameObject coin;
     public GameObject firstSlot;
     public GameObject secondSlot;
     public GameObject thirdSlot;
-    public GameObject correctWrongText;
+    public TextMeshProUGUI correctWrongText;
+    public QuestionCounter questionCounter;
     public QuestionLoader questionLoader;
     public Data question;
     public bool correct;
 
+    //To do:
+    //Make slots an array instead of hard coded
+
     // Start is called before the first frame update
     void Start()
     {
-        correctWrongText.GetComponentInChildren<TextMeshProUGUI>();
-        correctWrongText.SetActive(false);
+        //correctWrongText.SetActive(true);
 
         correct = false;
     }
-
+    
     // Update is called once per frame
     void Update()
     {
+        if (firstSlot.GetComponent<Slot>().value != question.finalAnswers[0])
+        {
+            firstSlot.GetComponent<Slot>().value = null;
+        }
+        if (secondSlot.GetComponent<Slot>().value != question.finalAnswers[1])
+        {
+            secondSlot.GetComponent<Slot>().value = null;
+        }
+        if (thirdSlot.GetComponent<Slot>().value != question.finalAnswers[2])
+        {
+            thirdSlot.GetComponent<Slot>().value = null;
+        }
 
+        
         //If statements to check if the item values add up to the final answer
         //int.Parse is to convert the parameter value in the brackets into int
         if (question.subject == "Math")
@@ -43,11 +59,12 @@ public class AnswerCheck : MonoBehaviour
             //{
             //    correct = false;
             //}
-            if (firstSlot.GetComponent<Slot>().value == "1" && secondSlot.GetComponent<Slot>().value == "2" && thirdSlot.GetComponent<Slot>().value == "3")
+            if (firstSlot.GetComponent<Slot>().value == question.finalAnswers[0] && secondSlot.GetComponent<Slot>().value == question.finalAnswers[1] && thirdSlot.GetComponent<Slot>().value == question.finalAnswers[2])
             {
-                correctWrongText.SetActive(true);
+                //correctWrongText.SetActive(true);
                 questionLoader.question++;
                 correct = true;
+                Time.timeScale = 1;
             }
             else
             {
@@ -66,20 +83,22 @@ public class AnswerCheck : MonoBehaviour
             //{
             //    correct = false;
             //}
-            if (firstSlot.GetComponent<Slot>().value == "1" &&  secondSlot.GetComponent<Slot>().value == "2" && thirdSlot.GetComponent<Slot>().value == "3")
+            if (firstSlot.GetComponent<Slot>().value == question.finalAnswers[0] && secondSlot.GetComponent<Slot>().value == question.finalAnswers[1] && thirdSlot.GetComponent<Slot>().value == question.finalAnswers[2])
             {
-                correctWrongText.SetActive(true);
-                questionLoader.question++;
+                //correctWrongText.SetActive(true);
                 correct = true;
+                Time.timeScale = 1;
             }
             else
             {
                 correct = false;
             }
         }
-        if (question.finalLevel)
-        {
 
+        if (correct)
+        {
+            coin.SetActive(false);
+            questionCounter.answerToFinish--;
         }
     }
 }

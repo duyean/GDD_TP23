@@ -5,28 +5,41 @@ using UnityEngine;
 public class QuestionLoader : MonoBehaviour
 {
     public AnswerCheck answerCheck;
+    public string subject;
     public int level;
     public int question;
     public GameObject item;
     public GameObject canvasGameObject;
+    public GameObject filledSlot;
     public Canvas canvas;
+    public FilledSlot[] filledSlots;
     public List<GameObject> itemList;
+    public List<GameObject> filledSlotList;
+    public List<Vector2> itemPositions;
+    public List<Vector2> filledSlotPositions;
+
     private Coin coin;
+    private int integer;
 
     void Awake()
     {
         //Get coins for the level
         coin = gameObject.GetComponentInChildren<Coin>();
         //assign level and question number for question loader
+        subject = coin.subject;
         level = coin.level;
         question = coin.questionNumber;
+        foreach (FilledSlot filledSlot in filledSlots)
+        {
+            filledSlot.question = (Data)Resources.Load("Questions/" + subject + "_" + level + "_" + question);
+        }
     }
 
     // Start is called before the first frame update
     void Start()
     {
         //load questions based on parameters set by coin
-        answerCheck.question = (Data)Resources.Load("Questions/" + level + "_" + question);
+        answerCheck.question = (Data)Resources.Load("Questions/" + subject + "_" + level + "_" + question);
         SpawnAnswers(question);
     }
 
@@ -45,13 +58,22 @@ public class QuestionLoader : MonoBehaviour
     {
         if (answerCheck.question.questionID == level)
         {
-            foreach (string s in answerCheck.question.answers)
+            answerCheck.correctWrongText.text = answerCheck.question.question;
+            for (int i = 0; i <= answerCheck.question.answers.Count; i++)
             {
-                item.GetComponent<DragDrop>().itemValue = s;
-                Instantiate(item).transform.parent = canvas.transform;
+                item.GetComponent<DragDrop>().itemValue = answerCheck.question.answers[i];
+                Instantiate(item, itemPositions[i], Quaternion.identity).transform.parent = canvas.transform;
                 item.GetComponent<DragDrop>().canvas = canvas;
                 itemList.Add(item);
             }
+            for (int i = 0; i <= answerCheck.question.filledValues.Count; i++)
+            {
+                filledSlot.GetComponent<FilledSlot>().filledValue = answerCheck.question.filledValues[i];
+                Instantiate(filledSlot, filledSlotPositions[i], Quaternion.identity).transform.parent = canvas.transform;
+                filledSlotList.Add(filledSlot);
+            }
+
         }
+        canvasGameObject.SetActive(false);
     }
 }
