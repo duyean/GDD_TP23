@@ -483,6 +483,7 @@ MonoBehaviour:
   questionLoader: {fileID: 1735884281}
   question: {fileID: 0}
   correct: 0
+  player: {fileID: 1511403407}
 --- !u!1 &520102960
 GameObject:
   m_ObjectHideFlags: 0
@@ -3331,6 +3332,7 @@ MonoBehaviour:
   questionLoader: {fileID: 1910510225}
   question: {fileID: 0}
   correct: 0
+  player: {fileID: 1511403407}
 --- !u!4 &1898983171
 Transform:
   m_ObjectHideFlags: 0
@@ -3472,6 +3474,7 @@ MonoBehaviour:
   canvas: {fileID: 804917175}
   level: 1
   questionNumber: 2
+  player: {fileID: 1511403407}
 --- !u!58 &2069150929
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -3657,6 +3660,7 @@ MonoBehaviour:
   canvas: {fileID: 2140286071}
   level: 1
   questionNumber: 1
+  player: {fileID: 1511403407}
 --- !u!1 &2140286071
 GameObject:
   m_ObjectHideFlags: 0
