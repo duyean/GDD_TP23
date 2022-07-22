@@ -32,6 +32,7 @@ public class QuestionLoader : MonoBehaviour
         foreach (FilledSlot filledSlot in filledSlots)
         {
             filledSlot.question = (Data)Resources.Load("Questions/" + subject + "_" + level + "_" + question);
+            Debug.Log(filledSlot.question);
         }
     }
 
@@ -59,14 +60,14 @@ public class QuestionLoader : MonoBehaviour
         if (answerCheck.question.questionID == level)
         {
             answerCheck.correctWrongText.text = answerCheck.question.question;
-            for (int i = 0; i <= answerCheck.question.answers.Count; i++)
+            for (int i = 0; i < answerCheck.question.answers.Count; i++)
             {
                 item.GetComponent<DragDrop>().itemValue = answerCheck.question.answers[i];
                 Instantiate(item, itemPositions[i], Quaternion.identity).transform.parent = canvas.transform;
                 item.GetComponent<DragDrop>().canvas = canvas;
                 itemList.Add(item);
             }
-            for (int i = 0; i <= answerCheck.question.filledValues.Count; i++)
+            for (int i = 0; i < answerCheck.question.filledValues.Count; i++)
             {
                 filledSlot.GetComponent<FilledSlot>().filledValue = answerCheck.question.filledValues[i];
                 Instantiate(filledSlot, filledSlotPositions[i], Quaternion.identity).transform.parent = canvas.transform;
