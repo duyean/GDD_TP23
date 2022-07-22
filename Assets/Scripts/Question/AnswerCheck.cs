@@ -15,8 +15,8 @@ public class AnswerCheck : MonoBehaviour
     public QuestionLoader questionLoader;
     public Data question;
     public bool correct;
-    public GameObject player;
-    private Rigidbody2D rb2d;
+    //public GameObject player;
+    //private Rigidbody2D rb2d;
 
     //To do:
     //Make slots an array instead of hard coded
@@ -32,7 +32,7 @@ public class AnswerCheck : MonoBehaviour
     void Start()
     {
         //correctWrongText.SetActive(true);
-        rb2d = player.GetComponent<Rigidbody2D>();
+        //rb2d = player.GetComponent<Rigidbody2D>();
         correct = false;
     }
     
@@ -95,7 +95,7 @@ public class AnswerCheck : MonoBehaviour
 
         if (correct)
         {
-            UnFreeze();
+            //UnFreeze();
             coin.SetActive(false);
             questionCounter.answerToFinish--;
         }
@@ -115,9 +115,9 @@ public class AnswerCheck : MonoBehaviour
         }
     }
    
-    void UnFreeze()
-    {
-        rb2d.constraints = RigidbodyConstraints2D.None | RigidbodyConstraints2D.FreezeRotation;
-    }
+    //void UnFreeze()
+    //{
+    //    rb2d.constraints = RigidbodyConstraints2D.None | RigidbodyConstraints2D.FreezeRotation;
+    //}
 
 }

@@ -17,6 +17,7 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, I
     public void Start()
     {
         valueText = GetComponentInChildren<TextMeshProUGUI>();
+        canvas = GetComponentInParent<Canvas>();
         rectTransform = GetComponent<RectTransform>();
         canvasGroup = GetComponent<CanvasGroup>();
         //currentLocation = GetComponent<Transform>().position;
