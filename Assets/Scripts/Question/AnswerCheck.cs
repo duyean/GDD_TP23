@@ -16,6 +16,9 @@ public class AnswerCheck : MonoBehaviour
     public Data question;
     public bool correct;
 
+    //To do:
+    //Make slots an array instead of hard coded
+
     // Start is called before the first frame update
     void Start()
     {
@@ -23,8 +26,6 @@ public class AnswerCheck : MonoBehaviour
 
         correct = false;
     }
-
-
     
     // Update is called once per frame
     void Update()

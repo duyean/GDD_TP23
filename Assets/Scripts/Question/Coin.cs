@@ -6,6 +6,7 @@ public class Coin : MonoBehaviour
 {
 
 	public GameObject canvas;
+	public string subject;
 	public int level;
 	public int questionNumber;
 

@@ -26,6 +26,5 @@ public class Slot : MonoBehaviour, IDropHandler
     }
     void Update()
     {
-        Debug.Log(value);
     }
 }
