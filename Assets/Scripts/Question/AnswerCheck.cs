@@ -15,6 +15,12 @@ public class AnswerCheck : MonoBehaviour
     public Data question;
     public bool correct;
 
+    [SerializeField]
+    GameObject[] tileMapSpawns;
+
+
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -46,8 +52,10 @@ public class AnswerCheck : MonoBehaviour
             if (firstSlot.GetComponent<Slot>().value == "1" && secondSlot.GetComponent<Slot>().value == "2" && thirdSlot.GetComponent<Slot>().value == "3")
             {
                 correctWrongText.SetActive(true);
+                spawnPlatform(questionLoader.question);
                 questionLoader.question++;
                 correct = true;
+                
             }
             else
             {
@@ -69,8 +77,10 @@ public class AnswerCheck : MonoBehaviour
             if (firstSlot.GetComponent<Slot>().value == "1" &&  secondSlot.GetComponent<Slot>().value == "2" && thirdSlot.GetComponent<Slot>().value == "3")
             {
                 correctWrongText.SetActive(true);
+                spawnPlatform(questionLoader.question);
                 questionLoader.question++;
                 correct = true;
+
             }
             else
             {
@@ -81,5 +91,10 @@ public class AnswerCheck : MonoBehaviour
         {
 
         }
+    }
+
+    public void spawnPlatform(int questionNum)
+    {
+        tileMapSpawns[questionNum - 1].SetActive(true);
     }
 }
