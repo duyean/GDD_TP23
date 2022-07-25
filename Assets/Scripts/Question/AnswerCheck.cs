@@ -22,7 +22,8 @@ public class AnswerCheck : MonoBehaviour
 	[SerializeField]
 	GameObject treasure;
 
-	private List<string> slotValues = new List<string>();
+	private int integer = 0;
+	private Dictionary<string,string> slotValues = new Dictionary<string, string>();
 	private List<string> answers = new List<string>();
 	//To do:
 	//Write logic to get and check slot values
@@ -36,18 +37,30 @@ public class AnswerCheck : MonoBehaviour
 	public void GetValues(string value)
     {
 		//Get values from slot list
-		slotValues.Add(value);
+		slotValues.Add(new string("Answer" + integer),value);
         if (sort)
         {
-			slotValues.Sort();
+			//sort later
 		}
+		integer++;
 	}
 
+<<<<<<< Updated upstream
 	public IEnumerator CheckValues()
     {
 		yield return new WaitForEndOfFrame();
 		
 		yield return null;
+=======
+	public void RemoveValues(string value)
+	{
+		//Get values from slot list
+		slotValues.Remove(value);
+		if (sort)
+		{
+			//sort later
+		}
+>>>>>>> Stashed changes
 	}
 
 	// Update is called once per frame
@@ -64,17 +77,18 @@ public class AnswerCheck : MonoBehaviour
 				}
             }
         }
+
 		//Then check values against answer array
 		//if all values align, then set boolean to true
-		if (slotValues.SequenceEqual(answers))
-		{
-			correct = true;
-		}
-        //else set to false;
-        else
-        {
-            correct = false;
-        }
+		//if (slotValues.SequenceEqual(answers))
+		//{
+		//	correct = true;
+		//}
+  //      //else set to false;
+  //      else
+  //      {
+  //          correct = false;
+  //      }
 
         if (correct)
 		{
