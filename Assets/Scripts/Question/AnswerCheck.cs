@@ -15,17 +15,24 @@ public class AnswerCheck : MonoBehaviour
     public QuestionLoader questionLoader;
     public Data question;
     public bool correct;
-    public GameObject player;
-    private Rigidbody2D rb2d;
+    //public GameObject player;
+    //private Rigidbody2D rb2d;
 
     //To do:
     //Make slots an array instead of hard coded
+    [SerializeField]
+    GameObject[] tileMapSpawns;
+
+    [SerializeField]
+    GameObject treasure;
+
+
 
     // Start is called before the first frame update
     void Start()
     {
         //correctWrongText.SetActive(true);
-        rb2d = player.GetComponent<Rigidbody2D>();
+        //rb2d = player.GetComponent<Rigidbody2D>();
         correct = false;
     }
     
@@ -49,7 +56,11 @@ public class AnswerCheck : MonoBehaviour
             //}
             if (firstSlot.GetComponent<Slot>().value == question.finalAnswers[0] && secondSlot.GetComponent<Slot>().value == question.finalAnswers[1] && thirdSlot.GetComponent<Slot>().value == question.finalAnswers[2])
             {
+                //correctWrongText.SetActive(true);
+                spawnPlatform(questionLoader.question);
+                questionLoader.question++;
                 correct = true;
+                
             }
             else
             {
@@ -70,7 +81,11 @@ public class AnswerCheck : MonoBehaviour
             //}
             if (firstSlot.GetComponent<Slot>().value == question.finalAnswers[0] && secondSlot.GetComponent<Slot>().value == question.finalAnswers[1] && thirdSlot.GetComponent<Slot>().value == question.finalAnswers[2])
             {
+                //correctWrongText.SetActive(true);
+                spawnPlatform(questionLoader.question);
+                questionLoader.question++;
                 correct = true;
+
             }
             else
             {
@@ -80,15 +95,29 @@ public class AnswerCheck : MonoBehaviour
 
         if (correct)
         {
-            UnFreeze();
+            //UnFreeze();
             coin.SetActive(false);
             questionCounter.answerToFinish--;
         }
     }
-   
-    void UnFreeze()
+
+    //functions to add
+    public void spawnPlatform(int questionNum)
     {
-        rb2d.constraints = RigidbodyConstraints2D.None | RigidbodyConstraints2D.FreezeRotation;
+        tileMapSpawns[questionNum - 1].SetActive(true);
     }
+
+    public void checkWin(int level, int question)
+    {
+        if (question - level == -1)
+        {
+            treasure.GetComponent<levelWin>().win = true;
+        }
+    }
+   
+    //void UnFreeze()
+    //{
+    //    rb2d.constraints = RigidbodyConstraints2D.None | RigidbodyConstraints2D.FreezeRotation;
+    //}
 
 }

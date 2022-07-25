@@ -4,9 +4,8 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - Coin
-  - Slot
-  - Item
+  - CharacterAttributes
+  - CustomizationMenu
   layers:
   - Default
   - TransparentFX
@@ -16,7 +15,7 @@ TagManager:
   - UI
   - Ground
   - Platform
-  - 
+  - BGUI
   - 
   - 
   - 

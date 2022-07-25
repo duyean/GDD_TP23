@@ -9,12 +9,13 @@ public class Coin : MonoBehaviour
 	public string subject;
 	public int level;
 	public int questionNumber;
-	public GameObject player;
-	private Rigidbody2D rb2d;
+	//public GameObject player;
+	//private Rigidbody2D rb2d;
 	// Start is called before the first frame update
 	void Start()
 	{
-		rb2d = player.GetComponent<Rigidbody2D>();
+		canvas.SetActive(false);
+		//rb2d = player.GetComponent<Rigidbody2D>();
 	}
 
 	// Update is called once per frame
@@ -28,12 +29,12 @@ public class Coin : MonoBehaviour
 		if (collision.transform.tag == "Player")
 		{
 			canvas.SetActive(true);
-			Freeze();
+			//Freeze();
 		}
         
 	}
-	void Freeze()
-	{
-		rb2d.constraints = RigidbodyConstraints2D.FreezePosition;
-	}
+	//void Freeze()
+	//{
+	//	rb2d.constraints = RigidbodyConstraints2D.FreezePosition;
+	//}
 }
