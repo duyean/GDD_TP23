@@ -29,12 +29,12 @@ public class Coin : MonoBehaviour
 		if (collision.transform.tag == "Player")
 		{
 			canvas.SetActive(true);
-			//Freeze();
+			Freeze();
 		}
         
 	}
-	//void Freeze()
-	//{
-	//	rb2d.constraints = RigidbodyConstraints2D.FreezePosition;
-	//}
+    void Freeze()
+    {
+        //Disable joypad
+    }
 }

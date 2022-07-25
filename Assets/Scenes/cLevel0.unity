@@ -2023,51 +2023,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 8878105185590181304, guid: 8168d3167dc2f60469e585f4f2593385, type: 3}
   m_PrefabInstance: {fileID: 1555665197}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1668542008
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1668542009}
-  - component: {fileID: 1668542010}
-  m_Layer: 0
-  m_Name: QuestionCounter (1)
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1668542009
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1668542008}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1829914707}
-  m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1668542010
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1668542008}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9672372362e8bfc4c9440334d4631ac3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  answerToFinish: 2
 --- !u!1 &1716045619
 GameObject:
   m_ObjectHideFlags: 0
@@ -2577,7 +2532,7 @@ MonoBehaviour:
   secondSlot: {fileID: 679432624}
   thirdSlot: {fileID: 1555665199}
   correctWrongText: {fileID: 798117904}
-  questionCounter: {fileID: 1668542010}
+  questionCounter: {fileID: 0}
   questionLoader: {fileID: 1829914706}
   question: {fileID: 0}
   correct: 0
@@ -2639,13 +2594,13 @@ MonoBehaviour:
   itemList: []
   filledSlotList: []
   itemPositions:
-  - {x: 600, y: 540}
-  - {x: 800, y: 540}
-  - {x: 1200, y: 540}
-  - {x: 1300, y: 540}
+  - {x: 600, y: 500}
+  - {x: 800, y: 500}
+  - {x: 1000, y: 500}
+  - {x: 1200, y: 500}
   filledSlotPositions:
-  - {x: 1400, y: 540}
-  - {x: 1800, y: 540}
+  - {x: 1110, y: 614}
+  - {x: 1300, y: 614}
 --- !u!4 &1829914707
 Transform:
   m_ObjectHideFlags: 0
@@ -2661,7 +2616,6 @@ Transform:
   - {fileID: 455717192}
   - {fileID: 1786941829}
   - {fileID: 2100464683}
-  - {fileID: 1668542009}
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2947,7 +2901,7 @@ GameObject:
   - component: {fileID: 2100464682}
   - component: {fileID: 2100464681}
   m_Layer: 5
-  m_Name: Canvas (1)
+  m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

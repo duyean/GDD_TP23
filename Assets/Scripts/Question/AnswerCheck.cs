@@ -31,8 +31,6 @@ public class AnswerCheck : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //correctWrongText.SetActive(true);
-        //rb2d = player.GetComponent<Rigidbody2D>();
         correct = false;
     }
     
@@ -56,7 +54,6 @@ public class AnswerCheck : MonoBehaviour
             //}
             if (firstSlot.GetComponent<Slot>().value == question.finalAnswers[0] && secondSlot.GetComponent<Slot>().value == question.finalAnswers[1] && thirdSlot.GetComponent<Slot>().value == question.finalAnswers[2])
             {
-                //correctWrongText.SetActive(true);
                 spawnPlatform(questionLoader.question);
                 questionLoader.question++;
                 correct = true;
@@ -81,7 +78,6 @@ public class AnswerCheck : MonoBehaviour
             //}
             if (firstSlot.GetComponent<Slot>().value == question.finalAnswers[0] && secondSlot.GetComponent<Slot>().value == question.finalAnswers[1] && thirdSlot.GetComponent<Slot>().value == question.finalAnswers[2])
             {
-                //correctWrongText.SetActive(true);
                 spawnPlatform(questionLoader.question);
                 questionLoader.question++;
                 correct = true;
@@ -95,7 +91,7 @@ public class AnswerCheck : MonoBehaviour
 
         if (correct)
         {
-            //UnFreeze();
+            UnFreeze();
             coin.SetActive(false);
             questionCounter.answerToFinish--;
         }
@@ -114,10 +110,10 @@ public class AnswerCheck : MonoBehaviour
             treasure.GetComponent<levelWin>().win = true;
         }
     }
-   
-    //void UnFreeze()
-    //{
-    //    rb2d.constraints = RigidbodyConstraints2D.None | RigidbodyConstraints2D.FreezeRotation;
-    //}
+
+    void UnFreeze()
+    {
+        //Enable joypad
+    }
 
 }
