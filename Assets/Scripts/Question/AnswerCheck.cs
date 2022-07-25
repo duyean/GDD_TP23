@@ -25,7 +25,7 @@ public class AnswerCheck : MonoBehaviour
 	private List<string> slotValues = new List<string>();
 	private List<string> answers = new List<string>();
 	//To do:
-	//Write logic to get and check slot values
+	//Fix Slot values not resetting
 
 	// Start is called before the first frame update
 	void Start()
@@ -81,6 +81,7 @@ public class AnswerCheck : MonoBehaviour
 			UnFreeze();
 			coin.SetActive(false);
 			questionCounter.answerToFinish--;
+			checkWin(questionCounter.answerToFinish);
 		}
 	}
 
@@ -90,15 +91,15 @@ public class AnswerCheck : MonoBehaviour
 		tileMapSpawns[questionNum - 1].SetActive(true);
 	}
 
-	public void checkWin(int level, int question)
+	public void checkWin(int answerToFinish)
 	{
-		if (question - level == -1)
+		if (answerToFinish == 0)
 		{
 			treasure.GetComponent<levelWin>().win = true;
 		}
 	}
 
-	void UnFreeze()
+		void UnFreeze()
 	{
 		//Enable joypad
 	}
