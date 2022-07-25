@@ -13,18 +13,18 @@ public class AnswerCheck : MonoBehaviour
 	public QuestionLoader questionLoader;
 	public Data question;
 	public bool correct;
-
-	private string[] answer;
-	private string[] questionAnswers;
-
 	public Dictionary<string, string> answerDictionary = new Dictionary<string, string>();
-	//To do:
-	//Make slots an array instead of hard coded
+
 	[SerializeField]
 	GameObject[] tileMapSpawns;
 
 	[SerializeField]
 	GameObject treasure;
+
+	private List<string> slotValues;
+	private List<string> answers;
+	//To do:
+	//Write logic to get and check slot values
 
 	// Start is called before the first frame update
 	void Start()
@@ -33,11 +33,6 @@ public class AnswerCheck : MonoBehaviour
 		for (int i = 0; i < question.answers.Count; i++)
 		{
 			answerDictionary.Add(new string("Answer" + i), question.answers[i]);
-		}
-		for (int i = 0; i < question.finalAnswers.Count; i++)
-		{
-			answer[i] = answerDictionary[new string("Answer" + i)];
-			questionAnswers[i] = question.finalAnswers[i];
 		}
 	}
 
@@ -48,58 +43,59 @@ public class AnswerCheck : MonoBehaviour
 		//int.Parse is to convert the parameter value in the brackets into int
 		if (question.subject == "Math")
 		{
-			//if (int.Parse(firstSlot.GetComponent<Slot>().value) + int.Parse(secondSlot.GetComponent<Slot>().value) == int.Parse(question.finalAnswer))
+			//Get values from slot list
+			foreach(GameObject slot in Slots)
+            {
+                slotValues.Add(slot.GetComponent<Slot>().value);
+            }
+			//Get values from answer array
+			//Then check values against answer array
+			foreach (string answer in question.answers)
+            {
+				answers.Add(answer);
+            }
+			//if all values align, then set boolean to true
+			//if (int.Parse(slotValues[]) == int.Parse(answers[]))
+			//{
+			//	correct = true;
+            //}
+            //else set to false;
+		    //else
+			//{
+				//correct = false;
+			//}
+		}
+
+		if (question.subject == "English")
+		{
+			//if (firstSlot.GetComponent<Slot>().value + secondSlot.GetComponent<Slot>().value == question.finalAnswer)
 			//{
 			//    questionText.SetActive(true);
 			//    questionLoader.question++;
 			//    correct = true;
 			//}
-			//else if (int.Parse(firstSlot.GetComponent<Slot>().value) + int.Parse(secondSlot.GetComponent<Slot>().value) != int.Parse(question.finalAnswer))
+			//else if (firstSlot.GetComponent<Slot>().value + secondSlot.GetComponent<Slot>().value != question.finalAnswer)
 			//{
 			//    correct = false;
 			//}
-			
-			if (int.Parse(answer[Slots.Count]) == int.Parse(questionAnswers[Slots.Count]))
-			{
-				spawnPlatform(questionLoader.question);
-				correct = true;
-			}
-			else
-			{
-				correct = false;
-			}
+			//if (firstSlot.GetComponent<Slot>().value == question.finalAnswers[0] && secondSlot.GetComponent<Slot>().value == question.finalAnswers[1] && thirdSlot.GetComponent<Slot>().value == question.finalAnswers[2])
+			//{
+			//	spawnPlatform(questionLoader.question);
+			//	questionLoader.question++;
+			//	correct = true;
 
-			if (question.subject == "English")
-			{
-				//if (firstSlot.GetComponent<Slot>().value + secondSlot.GetComponent<Slot>().value == question.finalAnswer)
-				//{
-				//    questionText.SetActive(true);
-				//    questionLoader.question++;
-				//    correct = true;
-				//}
-				//else if (firstSlot.GetComponent<Slot>().value + secondSlot.GetComponent<Slot>().value != question.finalAnswer)
-				//{
-				//    correct = false;
-				//}
-				//if (firstSlot.GetComponent<Slot>().value == question.finalAnswers[0] && secondSlot.GetComponent<Slot>().value == question.finalAnswers[1] && thirdSlot.GetComponent<Slot>().value == question.finalAnswers[2])
-				//{
-				//	spawnPlatform(questionLoader.question);
-				//	questionLoader.question++;
-				//	correct = true;
+			//}
+			//else
+			//{
+			//	correct = false;
+			//}
+		}
 
-				//}
-				//else
-				//{
-				//	correct = false;
-				//}
-			}
-
-			if (correct)
-			{
-				UnFreeze();
-				coin.SetActive(false);
-				questionCounter.answerToFinish--;
-			}
+		if (correct)
+		{
+			UnFreeze();
+			coin.SetActive(false);
+			questionCounter.answerToFinish--;
 		}
 	}
 

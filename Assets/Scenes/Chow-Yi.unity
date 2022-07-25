@@ -303,7 +303,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   coin: {fileID: 2069150926}
-  Slots: []
+  Slots:
+  - {fileID: 906697912}
+  - {fileID: 864878279}
+  - {fileID: 741605489}
   correctWrongText: {fileID: 1098532948}
   questionCounter: {fileID: 1360622939}
   questionLoader: {fileID: 1735884281}
@@ -311,6 +314,11 @@ MonoBehaviour:
   correct: 0
   tileMapSpawns: []
   treasure: {fileID: 0}
+--- !u!1 &741605489 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8878105185590181304, guid: 8168d3167dc2f60469e585f4f2593385, type: 3}
+  m_PrefabInstance: {fileID: 1268794247}
+  m_PrefabAsset: {fileID: 0}
 --- !u!224 &741605490 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 8878105185590181287, guid: 8168d3167dc2f60469e585f4f2593385, type: 3}
@@ -620,6 +628,11 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 8878105185590181287, guid: 8168d3167dc2f60469e585f4f2593385, type: 3}
   m_PrefabInstance: {fileID: 864878277}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &864878279 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8878105185590181304, guid: 8168d3167dc2f60469e585f4f2593385, type: 3}
+  m_PrefabInstance: {fileID: 864878277}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &906697910
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -752,6 +765,11 @@ PrefabInstance:
 --- !u!224 &906697911 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 8878105185590181287, guid: 8168d3167dc2f60469e585f4f2593385, type: 3}
+  m_PrefabInstance: {fileID: 906697910}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &906697912 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8878105185590181304, guid: 8168d3167dc2f60469e585f4f2593385, type: 3}
   m_PrefabInstance: {fileID: 906697910}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1077449658
