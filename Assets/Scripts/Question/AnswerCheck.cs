@@ -57,6 +57,7 @@ public class AnswerCheck : MonoBehaviour
             if (firstSlot.GetComponent<Slot>().value == question.finalAnswers[0] && secondSlot.GetComponent<Slot>().value == question.finalAnswers[1] && thirdSlot.GetComponent<Slot>().value == question.finalAnswers[2])
             {
                 //correctWrongText.SetActive(true);
+                Debug.Log(questionLoader.question);
                 spawnPlatform(questionLoader.question);
                 questionLoader.question++;
                 correct = true;
@@ -98,6 +99,7 @@ public class AnswerCheck : MonoBehaviour
             //UnFreeze();
             coin.SetActive(false);
             questionCounter.answerToFinish--;
+            checkWin(questionCounter.answerToFinish);
         }
     }
 
@@ -107,9 +109,9 @@ public class AnswerCheck : MonoBehaviour
         tileMapSpawns[questionNum - 1].SetActive(true);
     }
 
-    public void checkWin(int level, int question)
+    public void checkWin(int answerToFinish)
     {
-        if (question - level == -1)
+        if (answerToFinish == 0)
         {
             treasure.GetComponent<levelWin>().win = true;
         }
