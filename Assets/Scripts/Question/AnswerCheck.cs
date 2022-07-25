@@ -84,6 +84,7 @@ public class AnswerCheck : MonoBehaviour
 			UnFreeze();
 			coin.SetActive(false);
 			questionCounter.answerToFinish--;
+			spawnPlatform(questionLoader.question);
 			checkWin(questionCounter.answerToFinish);
 		}
 	}

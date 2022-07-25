@@ -2252,8 +2252,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1615451681}
   - component: {fileID: 1615451680}
-  - component: {fileID: 1615451678}
   - component: {fileID: 1615451682}
+  - component: {fileID: 1615451683}
   m_Layer: 0
   m_Name: Square
   m_TagString: Untagged
@@ -2261,20 +2261,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1615451678
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1615451677}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c379f753ad8ea5d49ab03d1d94009144, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  treasure: {fileID: 1615451677}
-  win: 0
 --- !u!212 &1615451680
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2368,6 +2354,20 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &1615451683
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1615451677}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c379f753ad8ea5d49ab03d1d94009144, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  treasure: {fileID: 1615451677}
+  win: 0
 --- !u!1 &1668542008
 GameObject:
   m_ObjectHideFlags: 0
@@ -3241,7 +3241,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1995766652}
   - component: {fileID: 1995766653}
-  - component: {fileID: 1995766654}
   m_Layer: 0
   m_Name: check
   m_TagString: Untagged
@@ -3278,20 +3277,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   GuyCharacter: {fileID: 7570700530015188866, guid: 51fa42403cb23a445b3f46cf8ed803af, type: 3}
   GirlCharacter: {fileID: 2374882559912370782, guid: 549c7737f6d634648972c3064a681e47, type: 3}
---- !u!114 &1995766654
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1995766650}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c379f753ad8ea5d49ab03d1d94009144, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  treasure: {fileID: 1615451677}
-  win: 0
 --- !u!1 &2100464679
 GameObject:
   m_ObjectHideFlags: 0
