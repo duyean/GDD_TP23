@@ -34,14 +34,15 @@ public class QuestionLoader : MonoBehaviour
 			filledSlot.question = (Data)Resources.Load("Questions/" + subject + "_" + level + "_" + question);
 			Debug.Log(filledSlot.question);
 		}
+		//load questions based on parameters set by coin
+		answerCheck.question = (Data)Resources.Load("Questions/" + subject + "_" + level + "_" + question);
+		SpawnAnswers(question);
 	}
 
 	// Start is called before the first frame update
 	void Start()
 	{
-		//load questions based on parameters set by coin
-		answerCheck.question = (Data)Resources.Load("Questions/" + subject + "_" + level + "_" + question);
-		SpawnAnswers(question);
+		
 	}
 
 	// Update is called once per frame
