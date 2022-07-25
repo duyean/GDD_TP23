@@ -24,7 +24,6 @@ public class Grounded_State : State
         base.HandleInput();
         if (Input.GetButtonDown("Jump"))
         {
-            Debug.Log("Jumping");
             stateMachine.ChangeState(player.jumping);
         }
     }
@@ -32,6 +31,10 @@ public class Grounded_State : State
     public override void PhysicsUpdate()
     {
         base.PhysicsUpdate();
+        if (!player.jumping.grounded)
+        {
+            stateMachine.ChangeState(player.jumping);
+        }
         player.move();
     }
 }

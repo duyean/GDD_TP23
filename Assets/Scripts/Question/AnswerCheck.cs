@@ -1,125 +1,106 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
 using TMPro;
 public class AnswerCheck : MonoBehaviour
 {
-    public GameObject coin;
-    public GameObject firstSlot;
-    public GameObject secondSlot;
-    public GameObject thirdSlot;
-    public TextMeshProUGUI correctWrongText;
-    public QuestionCounter questionCounter;
-    public QuestionLoader questionLoader;
-    public Data question;
-    public bool correct;
-    //public GameObject player;
-    //private Rigidbody2D rb2d;
+	public GameObject coin;
+	public List<GameObject> Slots;
+	public TextMeshProUGUI correctWrongText;
+	public QuestionCounter questionCounter;
+	public QuestionLoader questionLoader;
+	public Data question;
+	public bool correct;
+	public bool sort;
+	
+	[SerializeField]
+	GameObject[] tileMapSpawns;
 
-    //To do:
-    //Make slots an array instead of hard coded
-    [SerializeField]
-    GameObject[] tileMapSpawns;
+	[SerializeField]
+	GameObject treasure;
 
-    [SerializeField]
-    GameObject treasure;
+	private List<string> slotValues = new List<string>();
+	private List<string> answers = new List<string>();
+	//To do:
+	//Write logic to get and check slot values
 
+	// Start is called before the first frame update
+	void Start()
+	{
+		correct = false;
+	}
 
-
-    // Start is called before the first frame update
-    void Start()
+	public void GetValues(string value)
     {
-        //correctWrongText.SetActive(true);
-        //rb2d = player.GetComponent<Rigidbody2D>();
-        correct = false;
-    }
-    
-    // Update is called once per frame
-    void Update()
-    {
-        //If statements to check if the item values add up to the final answer
-        //int.Parse is to convert the parameter value in the brackets into int
-        if (question.subject == "Math")
+		//Get values from slot list
+		slotValues.Add(value);
+        if (sort)
         {
+			slotValues.Sort();
+		}
+	}
 
-            //if (int.Parse(firstSlot.GetComponent<Slot>().value) + int.Parse(secondSlot.GetComponent<Slot>().value) == int.Parse(question.finalAnswer))
-            //{
-            //    questionText.SetActive(true);
-            //    questionLoader.question++;
-            //    correct = true;
-            //}
-            //else if (int.Parse(firstSlot.GetComponent<Slot>().value) + int.Parse(secondSlot.GetComponent<Slot>().value) != int.Parse(question.finalAnswer))
-            //{
-            //    correct = false;
-            //}
-            if (firstSlot.GetComponent<Slot>().value == question.finalAnswers[0] && secondSlot.GetComponent<Slot>().value == question.finalAnswers[1] && thirdSlot.GetComponent<Slot>().value == question.finalAnswers[2])
+	public IEnumerator CheckValues()
+    {
+		yield return new WaitForEndOfFrame();
+		
+		yield return null;
+	}
+
+	// Update is called once per frame
+	void Update()
+	{
+		//Get values from answer list
+        foreach (string answer in question.finalAnswers)
+        {
+            if (answer != null)
             {
-                //correctWrongText.SetActive(true);
-                Debug.Log(questionLoader.question);
-                spawnPlatform(questionLoader.question);
-                questionLoader.question++;
-                correct = true;
-                
-            }
-            else
-            {
-                correct = false;
+                if (!answers.Contains(answer))
+				{
+					answers.Add(answer);
+				}
             }
         }
-        if(question.subject == "English")
+		//Then check values against answer array
+		//if all values align, then set boolean to true
+		if (slotValues.SequenceEqual(answers))
+		{
+			correct = true;
+		}
+        //else set to false;
+        else
         {
-            //if (firstSlot.GetComponent<Slot>().value + secondSlot.GetComponent<Slot>().value == question.finalAnswer)
-            //{
-            //    questionText.SetActive(true);
-            //    questionLoader.question++;
-            //    correct = true;
-            //}
-            //else if (firstSlot.GetComponent<Slot>().value + secondSlot.GetComponent<Slot>().value != question.finalAnswer)
-            //{
-            //    correct = false;
-            //}
-            if (firstSlot.GetComponent<Slot>().value == question.finalAnswers[0] && secondSlot.GetComponent<Slot>().value == question.finalAnswers[1] && thirdSlot.GetComponent<Slot>().value == question.finalAnswers[2])
-            {
-                //correctWrongText.SetActive(true);
-                spawnPlatform(questionLoader.question);
-                questionLoader.question++;
-                correct = true;
-
-            }
-            else
-            {
-                correct = false;
-            }
+            correct = false;
         }
 
         if (correct)
-        {
-            //UnFreeze();
-            coin.SetActive(false);
-            questionCounter.answerToFinish--;
-            checkWin(questionCounter.answerToFinish);
-        }
-    }
+		{
+			UnFreeze();
+			coin.SetActive(false);
+			questionCounter.answerToFinish--;
+		}
+	}
 
-    //functions to add
-    public void spawnPlatform(int questionNum)
-    {
-        tileMapSpawns[questionNum - 1].SetActive(true);
-    }
+	//functions to add
+	public void spawnPlatform(int questionNum)
+	{
+		tileMapSpawns[questionNum - 1].SetActive(true);
+	}
 
-    public void checkWin(int answerToFinish)
-    {
-        if (answerToFinish == 0)
-        {
-            treasure.GetComponent<levelWin>().win = true;
-        }
-    }
-   
-    //void UnFreeze()
-    //{
-    //    rb2d.constraints = RigidbodyConstraints2D.None | RigidbodyConstraints2D.FreezeRotation;
-    //}
+	public void checkWin(int level, int question)
+	{
+		if (question - level == -1)
+		{
+			treasure.GetComponent<levelWin>().win = true;
+		}
+	}
+
+	void UnFreeze()
+	{
+		//Enable joypad
+	}
 
 }
