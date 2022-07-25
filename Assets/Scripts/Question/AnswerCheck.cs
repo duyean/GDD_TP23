@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
@@ -13,16 +14,16 @@ public class AnswerCheck : MonoBehaviour
 	public QuestionLoader questionLoader;
 	public Data question;
 	public bool correct;
-	public Dictionary<string, string> answerDictionary = new Dictionary<string, string>();
-
+	public bool sort;
+	
 	[SerializeField]
 	GameObject[] tileMapSpawns;
 
 	[SerializeField]
 	GameObject treasure;
 
-	private List<string> slotValues;
-	private List<string> answers;
+	private List<string> slotValues = new List<string>();
+	private List<string> answers = new List<string>();
 	//To do:
 	//Write logic to get and check slot values
 
@@ -30,68 +31,52 @@ public class AnswerCheck : MonoBehaviour
 	void Start()
 	{
 		correct = false;
-		for (int i = 0; i < question.answers.Count; i++)
-		{
-			answerDictionary.Add(new string("Answer" + i), question.answers[i]);
+	}
+
+	public void GetValues(string value)
+    {
+		//Get values from slot list
+		slotValues.Add(value);
+        if (sort)
+        {
+			slotValues.Sort();
 		}
+	}
+
+	public IEnumerator CheckValues()
+    {
+		yield return new WaitForEndOfFrame();
+		
+		yield return null;
 	}
 
 	// Update is called once per frame
 	void Update()
 	{
-		//If statements to check if the item values add up to the final answer
-		//int.Parse is to convert the parameter value in the brackets into int
-		if (question.subject == "Math")
-		{
-			//Get values from slot list
-			foreach(GameObject slot in Slots)
+		//Get values from answer list
+        foreach (string answer in question.finalAnswers)
+        {
+            if (answer != null)
             {
-                slotValues.Add(slot.GetComponent<Slot>().value);
+                if (!answers.Contains(answer))
+				{
+					answers.Add(answer);
+				}
             }
-			//Get values from answer array
-			//Then check values against answer array
-			foreach (string answer in question.answers)
-            {
-				answers.Add(answer);
-            }
-			//if all values align, then set boolean to true
-			//if (int.Parse(slotValues[]) == int.Parse(answers[]))
-			//{
-			//	correct = true;
-            //}
-            //else set to false;
-		    //else
-			//{
-				//correct = false;
-			//}
-		}
-
-		if (question.subject == "English")
+        }
+		//Then check values against answer array
+		//if all values align, then set boolean to true
+		if (slotValues.SequenceEqual(answers))
 		{
-			//if (firstSlot.GetComponent<Slot>().value + secondSlot.GetComponent<Slot>().value == question.finalAnswer)
-			//{
-			//    questionText.SetActive(true);
-			//    questionLoader.question++;
-			//    correct = true;
-			//}
-			//else if (firstSlot.GetComponent<Slot>().value + secondSlot.GetComponent<Slot>().value != question.finalAnswer)
-			//{
-			//    correct = false;
-			//}
-			//if (firstSlot.GetComponent<Slot>().value == question.finalAnswers[0] && secondSlot.GetComponent<Slot>().value == question.finalAnswers[1] && thirdSlot.GetComponent<Slot>().value == question.finalAnswers[2])
-			//{
-			//	spawnPlatform(questionLoader.question);
-			//	questionLoader.question++;
-			//	correct = true;
-
-			//}
-			//else
-			//{
-			//	correct = false;
-			//}
+			correct = true;
 		}
+        //else set to false;
+        else
+        {
+            correct = false;
+        }
 
-		if (correct)
+        if (correct)
 		{
 			UnFreeze();
 			coin.SetActive(false);

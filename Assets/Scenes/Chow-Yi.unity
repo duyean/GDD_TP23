@@ -267,7 +267,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 499017017}
-  - component: {fileID: 499017018}
   m_Layer: 0
   m_Name: Slot Manager
   m_TagString: Untagged
@@ -290,30 +289,6 @@ Transform:
   m_Father: {fileID: 1735884282}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &499017018
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 499017016}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 41681ee4f61571344b149eb3b582734c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  coin: {fileID: 2069150926}
-  Slots:
-  - {fileID: 906697912}
-  - {fileID: 864878279}
-  - {fileID: 741605489}
-  correctWrongText: {fileID: 1098532948}
-  questionCounter: {fileID: 1360622939}
-  questionLoader: {fileID: 1735884281}
-  question: {fileID: 0}
-  correct: 0
-  tileMapSpawns: []
-  treasure: {fileID: 0}
 --- !u!1 &741605489 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8878105185590181304, guid: 8168d3167dc2f60469e585f4f2593385, type: 3}
@@ -2053,6 +2028,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1735884282}
   - component: {fileID: 1735884281}
+  - component: {fileID: 1735884283}
   m_Layer: 0
   m_Name: QuestionLoader (1)
   m_TagString: Untagged
@@ -2072,7 +2048,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e24b63edbff46684cb3dbc101ae94dfa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  answerCheck: {fileID: 499017018}
+  answerCheck: {fileID: 1735884283}
   subject: Math
   level: 1
   question: 2
@@ -2109,6 +2085,31 @@ Transform:
   m_Father: {fileID: 804802735}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1735884283
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1735884280}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41681ee4f61571344b149eb3b582734c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  coin: {fileID: 2069150926}
+  Slots:
+  - {fileID: 906697912}
+  - {fileID: 864878279}
+  - {fileID: 741605489}
+  correctWrongText: {fileID: 1098532948}
+  questionCounter: {fileID: 1360622939}
+  questionLoader: {fileID: 1735884281}
+  question: {fileID: 0}
+  correct: 0
+  sort: 0
+  tileMapSpawns: []
+  treasure: {fileID: 0}
 --- !u!1 &1898983169
 GameObject:
   m_ObjectHideFlags: 0
@@ -2118,7 +2119,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1898983171}
-  - component: {fileID: 1898983170}
   m_Layer: 0
   m_Name: Slot Manager
   m_TagString: Untagged
@@ -2126,27 +2126,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1898983170
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1898983169}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 41681ee4f61571344b149eb3b582734c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  coin: {fileID: 2096089208}
-  Slots: []
-  correctWrongText: {fileID: 406516006}
-  questionCounter: {fileID: 1360622939}
-  questionLoader: {fileID: 1910510225}
-  question: {fileID: 0}
-  correct: 0
-  tileMapSpawns: []
-  treasure: {fileID: 0}
 --- !u!4 &1898983171
 Transform:
   m_ObjectHideFlags: 0
@@ -2172,6 +2151,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1910510226}
   - component: {fileID: 1910510225}
+  - component: {fileID: 1910510227}
   m_Layer: 0
   m_Name: QuestionLoader
   m_TagString: Untagged
@@ -2191,7 +2171,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e24b63edbff46684cb3dbc101ae94dfa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  answerCheck: {fileID: 1898983170}
+  answerCheck: {fileID: 1910510227}
   subject: English
   level: 1
   question: 1
@@ -2226,6 +2206,28 @@ Transform:
   m_Father: {fileID: 804802735}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1910510227
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1910510224}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41681ee4f61571344b149eb3b582734c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  coin: {fileID: 2096089208}
+  Slots: []
+  correctWrongText: {fileID: 406516006}
+  questionCounter: {fileID: 1360622939}
+  questionLoader: {fileID: 1910510225}
+  question: {fileID: 0}
+  correct: 0
+  sort: 0
+  tileMapSpawns: []
+  treasure: {fileID: 0}
 --- !u!1 &2069150926
 GameObject:
   m_ObjectHideFlags: 0
