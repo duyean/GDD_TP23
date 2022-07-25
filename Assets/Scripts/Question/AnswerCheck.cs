@@ -25,7 +25,7 @@ public class AnswerCheck : MonoBehaviour
 	private List<string> slotValues = new List<string>();
 	private List<string> answers = new List<string>();
 	//To do:
-	//Write logic to get and check slot values
+	//Fix Slot values not resetting
 
 	// Start is called before the first frame update
 	void Start()
