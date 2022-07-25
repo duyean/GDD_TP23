@@ -43,11 +43,14 @@ public class AnswerCheck : MonoBehaviour
 		}
 	}
 
-	public IEnumerator CheckValues()
-    {
-		yield return new WaitForEndOfFrame();
-		
-		yield return null;
+	public void RemoveValues(string value)
+	{
+		//Get values from slot list
+		slotValues.Remove(value);
+		if (sort)
+		{
+			slotValues.Sort();
+		}
 	}
 
 	// Update is called once per frame
@@ -81,6 +84,7 @@ public class AnswerCheck : MonoBehaviour
 			UnFreeze();
 			coin.SetActive(false);
 			questionCounter.answerToFinish--;
+			spawnPlatform(questionLoader.question);
 			checkWin(questionCounter.answerToFinish);
 		}
 	}
