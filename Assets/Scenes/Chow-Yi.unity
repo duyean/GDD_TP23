@@ -2051,7 +2051,7 @@ MonoBehaviour:
   answerCheck: {fileID: 1735884283}
   subject: Math
   level: 1
-  question: 2
+  question: 1
   item: {fileID: 2170202485578305287, guid: efc468eaad6c98c45b39714c73ffed75, type: 3}
   canvasGameObject: {fileID: 804917175}
   filledSlot: {fileID: 2170202485578305287, guid: 678c474833bfe214d970dc7eeeb2ef9a, type: 3}
@@ -2277,7 +2277,7 @@ MonoBehaviour:
   canvas: {fileID: 804917175}
   subject: Math
   level: 1
-  questionNumber: 2
+  questionNumber: 1
 --- !u!58 &2069150929
 CircleCollider2D:
   m_ObjectHideFlags: 0
