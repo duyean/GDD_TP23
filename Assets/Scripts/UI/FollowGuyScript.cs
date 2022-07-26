@@ -1,0 +1,14 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class FollowGuyScript : MonoBehaviour
+{
+    // this script takes in the player's transform updates
+
+    // Update is called once per frame
+    void Update()
+    {
+        gameObject.transform.position = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>().position;
+    }
+}
