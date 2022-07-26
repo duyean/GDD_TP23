@@ -55,20 +55,14 @@ public class MovementScript : MonoBehaviour
     {
         if (moveLeft)
         {
-            if(rb.velocity.x < -moveSpeed)
-            {
-                return;
-            }
-            rb.velocity += new Vector2(-moveSpeed, 0f);
+
+            rb.velocity = new Vector2(-moveSpeed, rb.velocity.y) ;
         }
 
         if (moveRight)
         {
-            if (rb.velocity.x > moveSpeed)
-            {
-                return;
-            }
-            rb.velocity += new Vector2(moveSpeed, 0f);
+
+            rb.velocity = new Vector2(moveSpeed, rb.velocity.y) ;
         }
 
     }
