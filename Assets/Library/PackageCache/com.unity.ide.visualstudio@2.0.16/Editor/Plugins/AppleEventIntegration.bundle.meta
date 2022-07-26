@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<< HEAD
 guid: b0939628abead3146992bf1f379c060e
+=======
+guid: 1dd9ff88676f422439320548b0fb7b17
+>>>>>>> ruijie2
 folderAsset: yes
 PluginImporter:
   externalObjects: {}
