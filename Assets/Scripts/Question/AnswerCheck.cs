@@ -45,13 +45,6 @@ public class AnswerCheck : MonoBehaviour
 		integer++;
 	}
 
-<<<<<<< Updated upstream
-	public IEnumerator CheckValues()
-    {
-		yield return new WaitForEndOfFrame();
-		
-		yield return null;
-=======
 	public void RemoveValues(string value)
 	{
 		//Get values from slot list
@@ -60,7 +53,6 @@ public class AnswerCheck : MonoBehaviour
 		{
 			//sort later
 		}
->>>>>>> Stashed changes
 	}
 
 	// Update is called once per frame
