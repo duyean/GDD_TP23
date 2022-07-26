@@ -24,9 +24,11 @@ public class Slot : MonoBehaviour, IDropHandler
         }
     }
     
+    //Reset slot value when item is dragged out
     private void OnTriggerExit2D(Collider2D collision)
     {
-        value = null;       
+        answerCheck.RemoveValues(value);
+        value = null;
     }
 
     

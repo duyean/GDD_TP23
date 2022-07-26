@@ -30,5 +30,6 @@ public class WinUI : Singleton<WinUI>
     public void backToTitle()
     {
         SceneManager.LoadScene("MainMenu");
+        WinUI.Instance.winUI.SetActive(false) ;
     }
 }
