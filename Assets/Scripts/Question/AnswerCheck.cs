@@ -22,8 +22,9 @@ public class AnswerCheck : MonoBehaviour
 	[SerializeField]
 	GameObject treasure;
 
-	private List<string> slotValues = new List<string>();
-	private List<string> answers = new List<string>();
+	private Dictionary<string, string> slotValues = new Dictionary<string, string>();
+	private Dictionary<string, string> sortedValues = new Dictionary<string, string>();
+	private Dictionary<string, string> answers = new Dictionary<string, string>();
 	//To do:
 	//Fix Slot values not resetting
 
@@ -33,53 +34,61 @@ public class AnswerCheck : MonoBehaviour
 		correct = false;
 	}
 
-	public void GetValues(string value)
+	public void SortValues()
     {
-		//Get values from slot list
-		slotValues.Add(value);
-        if (sort)
+		//From https://www.tutorialsteacher.com/linq/linq-sorting-operators-orderby-orderbydescending#orderby
+		var orderByKey = from s in slotValues
+						 orderby s.Key
+						 select s;
+		foreach (var item in orderByKey)
         {
-			slotValues.Sort();
-		}
+			sortedValues.TryAdd(item.Key, item.Value);
+        }
 	}
 
-	public void RemoveValues(string value)
+	public void AddValues(string key, string value)
+    {
+		//Get values from slot list
+		slotValues.Add(key, value);
+		sortedValues.Add(key, value);
+	}
+
+	public void RemoveValues(string key)
 	{
 		//Get values from slot list
-		slotValues.Remove(value);
-		if (sort)
-		{
-			slotValues.Sort();
-		}
+		slotValues.Remove(key);
 	}
 
 	// Update is called once per frame
 	void Update()
 	{
-		//Get values from answer list
-        foreach (string answer in question.finalAnswers)
-        {
-            if (answer != null)
-            {
-                if (!answers.Contains(answer))
-				{
-					answers.Add(answer);
-				}
-            }
-        }
-		//Then check values against answer array
-		//if all values align, then set boolean to true
-		if (slotValues.SequenceEqual(answers))
+        if (!correct)
 		{
-			correct = true;
+			//Sort dictionary
+			SortValues();
+			//Get values from answer list
+			for (int i = 0; i < question.finalAnswers.Count; i++)
+			{
+				if (!answers.ContainsValue(question.finalAnswers[i]))
+				{
+					answers.Add(new string("Slot (" + i + ")"), question.finalAnswers[i]);
+				}
+			}
+			//Then check values against answer array
+			//if all values align, then set boolean to true
+			if (sortedValues.SequenceEqual(answers))
+			{
+				correct = true;
+			}
+			//else set to false;
+			else
+			{
+				correct = false;
+				sortedValues.Clear();
+			}
 		}
-        //else set to false;
-        else
-        {
-            correct = false;
-        }
 
-        if (correct)
+        else
 		{
 			UnFreeze();
 			coin.SetActive(false);
