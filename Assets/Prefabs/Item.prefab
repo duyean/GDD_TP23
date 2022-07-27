@@ -166,7 +166,7 @@ RectTransform:
   m_GameObject: {fileID: 2170202485578305287}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.4773, y: 1.4773, z: 1.4773}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5139223446631301869}
@@ -229,7 +229,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canvas: {fileID: 0}
-  itemValue: Test Question3
+  itemValue: 4
   valueText: {fileID: 1838541352124162153}
 --- !u!225 &2170202485578305280
 CanvasGroup:

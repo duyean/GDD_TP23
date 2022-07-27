@@ -23,7 +23,9 @@ public class Slot : MonoBehaviour, IDropHandler
             answerCheck.AddValues(gameObject.name,value);
         }
     }
+
     
+
     //Reset slot value when item is dragged out
     private void OnTriggerExit2D(Collider2D collision)
     {
@@ -32,7 +34,10 @@ public class Slot : MonoBehaviour, IDropHandler
     }
 
     
+
     void FixedUpdate()
     {
     }
+
+    
 }
