@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 8872267265170631178}
   - component: {fileID: 1255048414434191859}
   m_Layer: 5
-  m_Name: Slot
+  m_Name: Slots
   m_TagString: Slot
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -92,6 +92,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   value: 
+  answerCheck: {fileID: 0}
+  itemIn: 
 --- !u!61 &8872267265170631178
 BoxCollider2D:
   m_ObjectHideFlags: 0
