@@ -162,8 +162,8 @@ MonoBehaviour:
     y: 0
     width: 907
     height: 486
-  m_MinSize: {x: 201, y: 221}
-  m_MaxSize: {x: 4001, y: 4021}
+  m_MinSize: {x: 200, y: 200}
+  m_MaxSize: {x: 4000, y: 4000}
   m_ActualView: {fileID: 5}
   m_Panes:
   - {fileID: 5}
@@ -416,9 +416,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: 1228.9512, y: 717.9833, z: 3.0905914}
+    m_Target: {x: 829.0174, y: 839.08057, z: 9.132348}
     speed: 2
-    m_Value: {x: 1228.9512, y: 717.9833, z: 3.0905914}
+    m_Value: {x: 829.0174, y: 839.08057, z: 9.132348}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -469,9 +469,9 @@ MonoBehaviour:
     speed: 2
     m_Value: {x: 0, y: 0, z: 0, w: 1}
   m_Size:
-    m_Target: 971.29004
+    m_Target: 332.0678
     speed: 2
-    m_Value: 971.29004
+    m_Value: 332.0678
   m_Ortho:
     m_Target: 1
     speed: 2
@@ -546,7 +546,7 @@ MonoBehaviour:
   m_MinSize: {x: 100, y: 200}
   m_MaxSize: {x: 8096, y: 16192}
   vertical: 1
-  controlID: 973
+  controlID: 1472
 --- !u!114 &8
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -566,8 +566,8 @@ MonoBehaviour:
     y: 0
     width: 445
     height: 495
-  m_MinSize: {x: 202, y: 221}
-  m_MaxSize: {x: 4002, y: 4021}
+  m_MinSize: {x: 200, y: 200}
+  m_MaxSize: {x: 4000, y: 4000}
   m_ActualView: {fileID: 9}
   m_Panes:
   - {fileID: 9}
@@ -604,9 +604,9 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: 10bfffff
-      m_LastClickedID: -16624
-      m_ExpandedIDs: 22bfffff24bfffff
+      m_SelectedIDs: f8beffff
+      m_LastClickedID: -16648
+      m_ExpandedIDs: 10bfffff22bfffff24bfffff
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -765,8 +765,8 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
   m_ListAreaState:
-    m_SelectedInstanceIDs: 10bfffff
-    m_LastClickedInstanceID: -16624
+    m_SelectedInstanceIDs: f8beffff
+    m_LastClickedInstanceID: -16648
     m_HadKeyboardFocusLastEvent: 0
     m_ExpandedInstanceIDs: 
     m_RenameOverlay:
