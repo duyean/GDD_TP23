@@ -13,6 +13,7 @@ public class AnswerCheck : MonoBehaviour
 	public QuestionCounter questionCounter;
 	public QuestionLoader questionLoader;
 	public Data question;
+	public List<string> excludedSubjects;
 	public bool correct;
 	public bool sort;
 	
@@ -74,16 +75,23 @@ public class AnswerCheck : MonoBehaviour
 					answers.Add(new string("Slot (" + i + ")"), question.finalAnswers[i]);
 				}
 			}
-			//Then check values against answer array
-			//if all values align, then set boolean to true
-			if (sortedValues.SequenceEqual(answers))
+			Debug.Log(!excludedSubjects.Contains(question.subject));
+			if (!excludedSubjects.Contains(question.subject))
+			{
+				//Then check values against answer array
+				//if all values align, then set boolean to true
+				if (sortedValues.SequenceEqual(answers))
+				{
+					correct = true;
+				}
+			}
+			else if (sortedValues.Values.Sum(x => int.Parse(x)) == question.finalAnswers.Sum(x => int.Parse(x)) && sortedValues.Values.Count > 1)
 			{
 				correct = true;
 			}
-			//else set to false;
-			else
+
+			if (!correct)
 			{
-				correct = false;
 				sortedValues.Clear();
 			}
 		}

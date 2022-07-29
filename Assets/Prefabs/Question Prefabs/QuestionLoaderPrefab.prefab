@@ -462,6 +462,8 @@ MonoBehaviour:
   questionCounter: {fileID: 0}
   questionLoader: {fileID: 3687099115687641614}
   question: {fileID: 0}
+  excludedSubjects:
+  - Math_Addition
   correct: 0
   sort: 0
   tileMapSpawns:

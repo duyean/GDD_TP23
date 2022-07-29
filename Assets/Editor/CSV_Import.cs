@@ -36,7 +36,6 @@ public class CSV_Import
             }
             foreach (string i in splitFinalAnswerData)
             {
-                Debug.Log(i);
                 data.finalAnswers.Add(i);
             }
             //create the Scriptable Object
