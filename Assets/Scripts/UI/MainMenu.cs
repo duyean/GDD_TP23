@@ -25,4 +25,9 @@ public class MainMenu : MonoBehaviour
     {
         CharacterManager.Instance.OpenCustomizeMenu();
     }
+
+    public void quitGame()
+    {
+        Application.Quit();
+    }
 }
