@@ -31,11 +31,12 @@ public class GridManager : MonoBehaviour
                 var isOffset = (x % 2 == 0 && y % 2 != 0) || (y % 2 == 0 && x % 2 != 0);
                 spawnedTile.Init(isOffset);
 
+                
                 tiles[new Vector2(x, y)] = spawnedTile;
             }
         }
 
-        cameraPos.transform.position = new Vector3((float)width / 2 - 0.5f, (float)height / 2 - 0.5f, -10f);
+        //cameraPos.transform.position = new Vector3((float)width / 2 - 0.5f, (float)height / 2 - 0.5f, -10f);
     }
 
     public Tile GetTileAtPosition(Vector2 pos)

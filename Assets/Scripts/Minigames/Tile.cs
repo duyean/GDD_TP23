@@ -6,7 +6,6 @@ using UnityEngine;
 
 public class Tile : MonoBehaviour
 {
-
     [SerializeField] private Color baseColour, offsetColour;
     [SerializeField] private SpriteRenderer spriteRenderer;
     [SerializeField] private GameObject highlight;
@@ -31,12 +30,4 @@ public class Tile : MonoBehaviour
     {
         rb.MovePosition(new Vector3(Camera.main.ScreenToWorldPoint(Input.mousePosition).x, Camera.main.ScreenToWorldPoint(Input.mousePosition).y, transform.localPosition.z));
     }
-
-    //private void OnCollisionEnter2D(Collision2D collision)
-    //{
-    //    if(collision != null)
-    //    {
-
-    //    }
-    //}
 }

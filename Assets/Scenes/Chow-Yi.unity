@@ -792,6 +792,7 @@ MonoBehaviour:
   width: 4
   height: 3
   tilePrefab: {fileID: -8019807163613272100, guid: d328058e49674b24ab6c58d7c238b34e, type: 3}
+  barrierPrefab: {fileID: 754238006283836805, guid: d1757957b2d4d73448c90b87d602a039, type: 3}
   cameraPos: {fileID: 1714399475}
 --- !u!4 &1732281106
 Transform:
