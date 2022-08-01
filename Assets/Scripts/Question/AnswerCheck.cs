@@ -89,7 +89,16 @@ public class AnswerCheck : MonoBehaviour
 				wrongAnswerText.enabled = true;
 			}
 		}
+		if(correct)
+        {
+			coin.SetActive(false);
+			questionCounter.answerToFinish--;
+			spawnPlatform(questionLoader.question);
+			checkWin(questionCounter.answerToFinish);
+		}
 	}
+
+	
 
 	void CloseCanvas()
     {
@@ -129,13 +138,7 @@ public class AnswerCheck : MonoBehaviour
         {
 			controlButtons.SetActive(false); //Disables movement buttons when question canvas opened
         }
-        if (correct)
-        {
-            coin.SetActive(false);
-            questionCounter.answerToFinish--;
-            spawnPlatform(questionLoader.question);
-            checkWin(questionCounter.answerToFinish);
-        }
+        
 
 		//Obsolete??
 
