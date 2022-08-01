@@ -134,10 +134,10 @@ public class AnswerCheck : MonoBehaviour
 	// Update is called once per frame
 	void Update()
 	{
-		if(questionCanvas.isActiveAndEnabled)
-        {
-			controlButtons.SetActive(false); //Disables movement buttons when question canvas opened
-        }
+		//if(questionCanvas.isActiveAndEnabled)
+  //      {
+		//	controlButtons.SetActive(false); //Disables movement buttons when question canvas opened
+  //      }
         
 
 		//Obsolete??
