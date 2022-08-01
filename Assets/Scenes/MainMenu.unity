@@ -3640,7 +3640,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 47081925}
         m_TargetAssemblyTypeName: MainMenu, Assembly-CSharp
-        m_MethodName: OpenCustomize
+        m_MethodName: quitGame
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -5076,8 +5076,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 2, y: -81}
-  m_SizeDelta: {x: 316.68884, y: 292.61572}
+  m_AnchoredPosition: {x: 2, y: -61.952}
+  m_SizeDelta: {x: 366.049, y: 338.2238}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1550462104
 MonoBehaviour:
@@ -6330,12 +6330,12 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 50
+  m_fontSize: 57.02
   m_fontSizeBase: 50
   m_fontWeight: 400
   m_enableAutoSizing: 1
   m_fontSizeMin: 10
-  m_fontSizeMax: 50
+  m_fontSizeMax: 57.02
   m_fontStyle: 0
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
