@@ -77,7 +77,6 @@ public class AnswerCheck : MonoBehaviour
 					correct = true;
 					questionFinishedCanvas.SetActive(true);
 					wrongAnswerText.enabled = false;
-					UnFreeze();
 				}
 			}
 			else if (sortedValues.Values.Sum(x => int.Parse(x)) == question.finalAnswers.Sum(x => int.Parse(x)) && sortedValues.Values.Count > 1)
@@ -85,7 +84,6 @@ public class AnswerCheck : MonoBehaviour
 				correct = true;
 				questionFinishedCanvas.SetActive(true);
 				wrongAnswerText.enabled = false;
-				UnFreeze();
 			}
 
 			if (!correct)
@@ -200,12 +198,5 @@ public class AnswerCheck : MonoBehaviour
 			treasure.GetComponent<levelWin>().win = true;
 		}
 	}
-
-    //Obsolete
-
-    void UnFreeze()
-    {
-		coinScript.rb2d.constraints = RigidbodyConstraints2D.None | RigidbodyConstraints2D.FreezeRotation;
-    }
 
 }

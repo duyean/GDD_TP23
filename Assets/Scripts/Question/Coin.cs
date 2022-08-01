@@ -32,12 +32,8 @@ public class Coin : MonoBehaviour
 		if (collision.transform.tag == "Player")
 		{
 			canvas.SetActive(true);
-            Freeze();
+            GameObject.FindGameObjectWithTag("Player").GetComponent<MovementScript>().StopMoving();
         }
         
 	}
-    void Freeze()
-    {
-		rb2d.constraints = RigidbodyConstraints2D.FreezeAll;
-    }
 }
