@@ -60,7 +60,7 @@ public class QuestionLoader : MonoBehaviour
 	{
 		if (answerCheck.question.questionID == level)
 		{
-			answerCheck.correctWrongText.text = answerCheck.question.question;
+			answerCheck.questionText.text = answerCheck.question.question;
 			for (int i = 0; i < answerCheck.question.answers.Count; i++)
 			{
 				item.GetComponent<DragDrop>().itemValue = answerCheck.question.answers[i];

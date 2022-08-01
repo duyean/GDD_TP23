@@ -9,6 +9,7 @@ public class Coin : MonoBehaviour
 	public string subject;
 	public int level;
 	public int questionNumber;
+
 	//public GameObject player;
 	//private Rigidbody2D rb2d;
 	// Start is called before the first frame update

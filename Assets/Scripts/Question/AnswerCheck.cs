@@ -9,14 +9,21 @@ public class AnswerCheck : MonoBehaviour
 {
 	public GameObject coin;
 	public List<GameObject> Slots;
-	public TextMeshProUGUI correctWrongText;
+	public TextMeshProUGUI questionText;
+	public TextMeshProUGUI wrongAnswerText;
+	public TextMeshProUGUI correctText;
 	public QuestionCounter questionCounter;
 	public QuestionLoader questionLoader;
 	public Data question;
 	public List<string> excludedSubjects;
 	public bool correct;
 	public bool sort;
-	
+	public Button answerButton;
+	public Button closeButton;
+	public Canvas questionCanvas;
+	public GameObject questionFinishedCanvas;
+	public GameObject controlButtons;
+
 	[SerializeField]
 	GameObject[] tileMapSpawns;
 
@@ -33,8 +40,63 @@ public class AnswerCheck : MonoBehaviour
 	void Start()
 	{
 		correct = false;
+		Button checkButton = answerButton.GetComponent<Button>();
+		Button canvasCloseButton = closeButton.GetComponent<Button>();
+		checkButton.onClick.AddListener(CheckAnswer); //When button is clicked, calls the CheckAnswer function
+		canvasCloseButton.onClick.AddListener(CloseCanvas);
+		correctText.color = Color.green;
+		wrongAnswerText.color = Color.red;
+		wrongAnswerText.enabled = false;
 	}
 
+	void CheckAnswer()
+    {
+		if (!correct)
+		{
+			//Sort dictionary
+			SortValues();
+			//Get values from answer list
+			for (int i = 0; i < question.finalAnswers.Count; i++)
+			{
+				if (!answers.ContainsValue(question.finalAnswers[i]))
+				{
+					answers.Add(new string("Slot (" + i + ")"), question.finalAnswers[i]);
+				}
+			}
+			Debug.Log(!excludedSubjects.Contains(question.subject));
+			if (!excludedSubjects.Contains(question.subject))
+			{
+				//Then check values against answer array
+				//if all values align, then set boolean to true
+				if (sortedValues.SequenceEqual(answers))
+				{
+					correct = true;
+					questionFinishedCanvas.SetActive(true);
+					wrongAnswerText.enabled = false;
+
+				}
+			}
+			else if (sortedValues.Values.Sum(x => int.Parse(x)) == question.finalAnswers.Sum(x => int.Parse(x)) && sortedValues.Values.Count > 1)
+			{
+				correct = true;
+				questionFinishedCanvas.SetActive(true);
+				wrongAnswerText.enabled = false;
+			}
+
+			if (!correct)
+			{
+				sortedValues.Clear();
+				wrongAnswerText.enabled = true;
+			}
+		}
+	}
+
+	void CloseCanvas()
+    {
+		questionFinishedCanvas.SetActive(false);
+		controlButtons.SetActive(true); //Enables movement buttons when second canvas is closed
+
+	}
 	public void SortValues()
     {
 		//From https://www.tutorialsteacher.com/linq/linq-sorting-operators-orderby-orderbydescending#orderby
@@ -63,48 +125,62 @@ public class AnswerCheck : MonoBehaviour
 	// Update is called once per frame
 	void Update()
 	{
-        if (!correct)
-		{
-			//Sort dictionary
-			SortValues();
-			//Get values from answer list
-			for (int i = 0; i < question.finalAnswers.Count; i++)
-			{
-				if (!answers.ContainsValue(question.finalAnswers[i]))
-				{
-					answers.Add(new string("Slot (" + i + ")"), question.finalAnswers[i]);
-				}
-			}
-			Debug.Log(!excludedSubjects.Contains(question.subject));
-			if (!excludedSubjects.Contains(question.subject))
-			{
-				//Then check values against answer array
-				//if all values align, then set boolean to true
-				if (sortedValues.SequenceEqual(answers))
-				{
-					correct = true;
-				}
-			}
-			else if (sortedValues.Values.Sum(x => int.Parse(x)) == question.finalAnswers.Sum(x => int.Parse(x)) && sortedValues.Values.Count > 1)
-			{
-				correct = true;
-			}
+		if(questionCanvas.isActiveAndEnabled)
+        {
+			controlButtons.SetActive(false); //Disables movement buttons when question canvas opened
+        }
+        if (correct)
+        {
+            coin.SetActive(false);
+            questionCounter.answerToFinish--;
+            spawnPlatform(questionLoader.question);
+            checkWin(questionCounter.answerToFinish);
+        }
 
-			if (!correct)
-			{
-				sortedValues.Clear();
-			}
-		}
+		//Obsolete??
 
-        else
-		{
-			UnFreeze();
-			coin.SetActive(false);
-			questionCounter.answerToFinish--;
-			spawnPlatform(questionLoader.question);
-			checkWin(questionCounter.answerToFinish);
-		}
-	}
+        //      if (!correct)
+        //{
+        //	//Sort dictionary
+        //	SortValues();
+        //	//Get values from answer list
+        //	for (int i = 0; i < question.finalAnswers.Count; i++)
+        //	{
+        //		if (!answers.ContainsValue(question.finalAnswers[i]))
+        //		{
+        //			answers.Add(new string("Slot (" + i + ")"), question.finalAnswers[i]);
+        //		}
+        //	}
+        //	Debug.Log(!excludedSubjects.Contains(question.subject));
+        //	if (!excludedSubjects.Contains(question.subject))
+        //	{
+        //		//Then check values against answer array
+        //		//if all values align, then set boolean to true
+        //		if (sortedValues.SequenceEqual(answers))
+        //		{
+        //			correct = true;
+        //		}
+        //	}
+        //	else if (sortedValues.Values.Sum(x => int.Parse(x)) == question.finalAnswers.Sum(x => int.Parse(x)) && sortedValues.Values.Count > 1)
+        //	{
+        //		correct = true;
+        //	}
+
+        //	if (!correct)
+        //	{
+        //		sortedValues.Clear();
+        //	}
+        //}
+
+        //      else
+        //{
+        //	UnFreeze();
+        //	coin.SetActive(false);
+        //	questionCounter.answerToFinish--;
+        //	spawnPlatform(questionLoader.question);
+        //	checkWin(questionCounter.answerToFinish);
+        //}
+    }
 
 	//functions to add
 	public void spawnPlatform(int questionNum)
@@ -120,9 +196,11 @@ public class AnswerCheck : MonoBehaviour
 		}
 	}
 
-		void UnFreeze()
-	{
-		//Enable joypad
-	}
+	//Obsolete
+
+	//	void UnFreeze()
+	//{
+	//	//Enable joypad
+	//}
 
 }
