@@ -11,7 +11,7 @@ public class MainMenuBackgroundFade : MonoBehaviour
     int BGNum = 0;
 
     float a;
-    float elapsedTime = 5;
+    float elapsedTime = 8;
     private void Start()
     {
 
@@ -35,7 +35,7 @@ public class MainMenuBackgroundFade : MonoBehaviour
         if (bgCol.a >= 0 )
         {
             Color tempColor = bgCol;
-            tempColor.a -= Time.deltaTime * 0.5f;
+            tempColor.a -= Time.deltaTime * 0.3f;
             BGImages[bg].GetComponent<Image>().color = tempColor;
         }
         else if (BGImages[bg].GetComponent<Image>().color.a<=0)
