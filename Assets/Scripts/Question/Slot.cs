@@ -7,7 +7,7 @@ public class Slot : MonoBehaviour, IDropHandler
 {
     public string value;
     public AnswerCheck answerCheck;
-    public string itemIn;
+    public string itemIn; 
 
     public void Start()
     {
@@ -38,8 +38,6 @@ public class Slot : MonoBehaviour, IDropHandler
     }
     void Update()
     {
-        value = itemIn;
+        value = itemIn; //To debug the slot no longer getting values
     }
-
-    
 }
