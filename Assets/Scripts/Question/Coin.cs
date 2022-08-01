@@ -33,6 +33,7 @@ public class Coin : MonoBehaviour
 		{
 			canvas.SetActive(true);
             GameObject.FindGameObjectWithTag("Player").GetComponent<MovementScript>().StopMoving();
+            GameObject.FindGameObjectWithTag("MovementButtons").SetActive(false);
         }
         
 	}

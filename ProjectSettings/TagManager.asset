@@ -9,6 +9,7 @@ TagManager:
   - Slot
   - Coin
   - Item
+  - MovementButtons
   layers:
   - Default
   - TransparentFX

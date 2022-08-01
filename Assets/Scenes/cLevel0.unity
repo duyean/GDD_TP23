@@ -3112,6 +3112,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   coin: {fileID: 455717188}
+  coinScript: {fileID: 0}
   Slots: []
   questionText: {fileID: 0}
   wrongAnswerText: {fileID: 0}
