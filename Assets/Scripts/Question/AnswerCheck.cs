@@ -10,7 +10,6 @@ public class AnswerCheck : MonoBehaviour
 	//public GameObject player;
 	//public Rigidbody2D rb2d;
 	public GameObject coin;
-	public Coin coinScript;
 	public List<GameObject> Slots;
 	public TextMeshProUGUI questionText;
 	public TextMeshProUGUI wrongAnswerText;
@@ -42,7 +41,6 @@ public class AnswerCheck : MonoBehaviour
 	{
 		//player = GameObject.FindGameObjectWithTag("Player");
 		//rb2d = player.GetComponent<Rigidbody2D>();
-		coinScript = coin.GetComponent<Coin>();
 		correct = false;
 		Button checkButton = answerButton.GetComponent<Button>();
 		Button canvasCloseButton = closeButton.GetComponent<Button>();
@@ -137,55 +135,7 @@ public class AnswerCheck : MonoBehaviour
 	// Update is called once per frame
 	void Update()
 	{
-		//if(questionCanvas.isActiveAndEnabled)
-  //      {
-		//	controlButtons.SetActive(false); //Disables movement buttons when question canvas opened
-  //      }
-        
-
-		//Obsolete??
-
-        //      if (!correct)
-        //{
-        //	//Sort dictionary
-        //	SortValues();
-        //	//Get values from answer list
-        //	for (int i = 0; i < question.finalAnswers.Count; i++)
-        //	{
-        //		if (!answers.ContainsValue(question.finalAnswers[i]))
-        //		{
-        //			answers.Add(new string("Slot (" + i + ")"), question.finalAnswers[i]);
-        //		}
-        //	}
-        //	Debug.Log(!excludedSubjects.Contains(question.subject));
-        //	if (!excludedSubjects.Contains(question.subject))
-        //	{
-        //		//Then check values against answer array
-        //		//if all values align, then set boolean to true
-        //		if (sortedValues.SequenceEqual(answers))
-        //		{
-        //			correct = true;
-        //		}
-        //	}
-        //	else if (sortedValues.Values.Sum(x => int.Parse(x)) == question.finalAnswers.Sum(x => int.Parse(x)) && sortedValues.Values.Count > 1)
-        //	{
-        //		correct = true;
-        //	}
-
-        //	if (!correct)
-        //	{
-        //		sortedValues.Clear();
-        //	}
-        //}
-
-        //      else
-        //{
-        //	UnFreeze();
-        //	coin.SetActive(false);
-        //	questionCounter.answerToFinish--;
-        //	spawnPlatform(questionLoader.question);
-        //	checkWin(questionCounter.answerToFinish);
-        //}
+       
     }
 
 	//functions to add
