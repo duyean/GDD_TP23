@@ -7,7 +7,10 @@ using UnityEngine.UI;
 using TMPro;
 public class AnswerCheck : MonoBehaviour
 {
+	//public GameObject player;
+	//public Rigidbody2D rb2d;
 	public GameObject coin;
+	public Coin coinScript;
 	public List<GameObject> Slots;
 	public TextMeshProUGUI questionText;
 	public TextMeshProUGUI wrongAnswerText;
@@ -33,12 +36,13 @@ public class AnswerCheck : MonoBehaviour
 	private Dictionary<string, string> slotValues = new Dictionary<string, string>();
 	private Dictionary<string, string> sortedValues = new Dictionary<string, string>();
 	private Dictionary<string, string> answers = new Dictionary<string, string>();
-	//To do:
-	//Fix Slot values not resetting
 
 	// Start is called before the first frame update
 	void Start()
 	{
+		//player = GameObject.FindGameObjectWithTag("Player");
+		//rb2d = player.GetComponent<Rigidbody2D>();
+		coinScript = coin.GetComponent<Coin>();
 		correct = false;
 		Button checkButton = answerButton.GetComponent<Button>();
 		Button canvasCloseButton = closeButton.GetComponent<Button>();
@@ -73,7 +77,7 @@ public class AnswerCheck : MonoBehaviour
 					correct = true;
 					questionFinishedCanvas.SetActive(true);
 					wrongAnswerText.enabled = false;
-
+					UnFreeze();
 				}
 			}
 			else if (sortedValues.Values.Sum(x => int.Parse(x)) == question.finalAnswers.Sum(x => int.Parse(x)) && sortedValues.Values.Count > 1)
@@ -81,6 +85,7 @@ public class AnswerCheck : MonoBehaviour
 				correct = true;
 				questionFinishedCanvas.SetActive(true);
 				wrongAnswerText.enabled = false;
+				UnFreeze();
 			}
 
 			if (!correct)
@@ -196,11 +201,11 @@ public class AnswerCheck : MonoBehaviour
 		}
 	}
 
-	//Obsolete
+    //Obsolete
 
-	//	void UnFreeze()
-	//{
-	//	//Enable joypad
-	//}
+    void UnFreeze()
+    {
+		coinScript.rb2d.constraints = RigidbodyConstraints2D.None | RigidbodyConstraints2D.FreezeRotation;
+    }
 
 }

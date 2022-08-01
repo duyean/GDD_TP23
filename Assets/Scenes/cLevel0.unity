@@ -3111,6 +3111,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 41681ee4f61571344b149eb3b582734c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 0}
+  rb2d: {fileID: 0}
   coin: {fileID: 455717188}
   Slots: []
   questionText: {fileID: 0}
