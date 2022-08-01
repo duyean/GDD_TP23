@@ -19,7 +19,7 @@ public class QuestionLoader : MonoBehaviour
 	public List<Vector2> filledSlotPositions;
 
 	private Coin coin;
-	private int integer;
+	//private int integer;
 
 	void Awake()
 	{
