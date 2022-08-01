@@ -7,7 +7,10 @@ using UnityEngine.UI;
 using TMPro;
 public class AnswerCheck : MonoBehaviour
 {
+	//public GameObject player;
+	//public Rigidbody2D rb2d;
 	public GameObject coin;
+	public Coin coinScript;
 	public List<GameObject> Slots;
 	public TextMeshProUGUI questionText;
 	public TextMeshProUGUI wrongAnswerText;
@@ -33,17 +36,18 @@ public class AnswerCheck : MonoBehaviour
 	private Dictionary<string, string> slotValues = new Dictionary<string, string>();
 	private Dictionary<string, string> sortedValues = new Dictionary<string, string>();
 	private Dictionary<string, string> answers = new Dictionary<string, string>();
-	//To do:
-	//Fix Slot values not resetting
 
 	// Start is called before the first frame update
 	void Start()
 	{
+		//player = GameObject.FindGameObjectWithTag("Player");
+		//rb2d = player.GetComponent<Rigidbody2D>();
+		coinScript = coin.GetComponent<Coin>();
 		correct = false;
 		Button checkButton = answerButton.GetComponent<Button>();
 		Button canvasCloseButton = closeButton.GetComponent<Button>();
 		checkButton.onClick.AddListener(CheckAnswer); //When button is clicked, calls the CheckAnswer function
-		canvasCloseButton.onClick.AddListener(CloseCanvas); //When button is clicked, calls the CloseCanvas function
+		canvasCloseButton.onClick.AddListener(CloseCanvas);
 		correctText.color = Color.green;
 		wrongAnswerText.color = Color.red;
 		wrongAnswerText.enabled = false;
@@ -73,7 +77,6 @@ public class AnswerCheck : MonoBehaviour
 					correct = true;
 					questionFinishedCanvas.SetActive(true);
 					wrongAnswerText.enabled = false;
-
 				}
 			}
 			else if (sortedValues.Values.Sum(x => int.Parse(x)) == question.finalAnswers.Sum(x => int.Parse(x)) && sortedValues.Values.Count > 1)
@@ -198,12 +201,5 @@ public class AnswerCheck : MonoBehaviour
 			treasure.GetComponent<levelWin>().win = true;
 		}
 	}
-
-	//Obsolete
-
-	//	void UnFreeze()
-	//{
-	//	//Enable joypad
-	//}
 
 }
