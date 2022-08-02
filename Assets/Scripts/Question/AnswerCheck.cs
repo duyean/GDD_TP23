@@ -26,6 +26,7 @@ public class AnswerCheck : MonoBehaviour
 	public GameObject questionFinishedCanvas;
 	public GameObject controlButtons;
 
+
 	[SerializeField]
 	GameObject[] tileMapSpawns;
 
@@ -50,6 +51,7 @@ public class AnswerCheck : MonoBehaviour
 		wrongAnswerText.color = Color.red;
 		wrongAnswerText.enabled = false;
 	}
+
 
 	void CheckAnswer()
     {
@@ -88,6 +90,7 @@ public class AnswerCheck : MonoBehaviour
 			{
 				sortedValues.Clear();
 				wrongAnswerText.enabled = true;
+				Invoke("TryAgain", 2f);
 			}
 		}
 		if(correct)
@@ -99,7 +102,10 @@ public class AnswerCheck : MonoBehaviour
 		}
 	}
 
-	
+	void TryAgain()
+    {
+		wrongAnswerText.enabled = false;
+    }
 
 	void CloseCanvas()
     {
