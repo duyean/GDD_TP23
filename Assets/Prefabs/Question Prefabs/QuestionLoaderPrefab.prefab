@@ -829,6 +829,8 @@ MonoBehaviour:
   subject: Math_Addition
   level: 1
   questionNumber: 1
+  player: {fileID: 0}
+  rb2d: {fileID: 0}
 --- !u!95 &7158880219104091998
 Animator:
   serializedVersion: 4
@@ -1064,6 +1066,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   coin: {fileID: 3687099115320528118}
+  coinScript: {fileID: 0}
   Slots: []
   questionText: {fileID: 3687099115624470260}
   wrongAnswerText: {fileID: 957261607830762911}
@@ -1564,7 +1567,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8878105185590181287, guid: 8168d3167dc2f60469e585f4f2593385, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 8878105185590181287, guid: 8168d3167dc2f60469e585f4f2593385, type: 3}
       propertyPath: m_AnchorMin.x
@@ -1572,7 +1575,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8878105185590181287, guid: 8168d3167dc2f60469e585f4f2593385, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 0
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 8878105185590181287, guid: 8168d3167dc2f60469e585f4f2593385, type: 3}
       propertyPath: m_SizeDelta.x
@@ -1580,7 +1583,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8878105185590181287, guid: 8168d3167dc2f60469e585f4f2593385, type: 3}
       propertyPath: m_SizeDelta.y
-      value: -1436
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 8878105185590181287, guid: 8168d3167dc2f60469e585f4f2593385, type: 3}
       propertyPath: m_LocalScale.x
@@ -1698,7 +1701,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8878105185590181287, guid: 8168d3167dc2f60469e585f4f2593385, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 8878105185590181287, guid: 8168d3167dc2f60469e585f4f2593385, type: 3}
       propertyPath: m_AnchorMin.x
@@ -1706,7 +1709,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8878105185590181287, guid: 8168d3167dc2f60469e585f4f2593385, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 0
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 8878105185590181287, guid: 8168d3167dc2f60469e585f4f2593385, type: 3}
       propertyPath: m_SizeDelta.x
@@ -1714,7 +1717,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8878105185590181287, guid: 8168d3167dc2f60469e585f4f2593385, type: 3}
       propertyPath: m_SizeDelta.y
-      value: -1436
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 8878105185590181287, guid: 8168d3167dc2f60469e585f4f2593385, type: 3}
       propertyPath: m_LocalScale.x
@@ -1814,6 +1817,10 @@ PrefabInstance:
       propertyPath: questionText
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 8878105185590181286, guid: 8168d3167dc2f60469e585f4f2593385, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 40e5f5a32762f9c48a889ee0d1332147, type: 3}
     - target: {fileID: 8878105185590181287, guid: 8168d3167dc2f60469e585f4f2593385, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -1832,7 +1839,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8878105185590181287, guid: 8168d3167dc2f60469e585f4f2593385, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 8878105185590181287, guid: 8168d3167dc2f60469e585f4f2593385, type: 3}
       propertyPath: m_AnchorMin.x
@@ -1840,7 +1847,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8878105185590181287, guid: 8168d3167dc2f60469e585f4f2593385, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 0
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 8878105185590181287, guid: 8168d3167dc2f60469e585f4f2593385, type: 3}
       propertyPath: m_SizeDelta.x
@@ -1848,7 +1855,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8878105185590181287, guid: 8168d3167dc2f60469e585f4f2593385, type: 3}
       propertyPath: m_SizeDelta.y
-      value: -1436
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 8878105185590181287, guid: 8168d3167dc2f60469e585f4f2593385, type: 3}
       propertyPath: m_LocalScale.x
