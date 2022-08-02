@@ -18,21 +18,14 @@ public class MoveBlock : MonoBehaviour
         if(Input.mousePosition.x > 0)
         {
             rb.constraints = RigidbodyConstraints2D.None;
-            rb.AddForce(Vector2.right);
+            rb.constraints = RigidbodyConstraints2D.FreezeRotation;
+            rb.velocity = Vector3.right * speed;
         }
         if (Input.mousePosition.x < 0)
         {
             rb.constraints = RigidbodyConstraints2D.None;
-            rb.AddForce(Vector2.left);
-        }
-    }
-
-    private void OnCollisionEnter(Collision collision)
-    {
-        Debug.Log(collision);
-        if(collision != null)
-        {
-            rb.constraints = RigidbodyConstraints2D.FreezeAll;
+            rb.constraints = RigidbodyConstraints2D.FreezeRotation;
+            rb.velocity = Vector3.left * speed;
         }
     }
 
@@ -45,6 +38,9 @@ public class MoveBlock : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //Debug.Log(Input.mousePosition.x);
+        if(rb.velocity == Vector2.zero)
+        {
+            rb.constraints = RigidbodyConstraints2D.FreezeAll;
+        }
     }
 }
