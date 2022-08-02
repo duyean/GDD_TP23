@@ -36,8 +36,12 @@ public class Slot : MonoBehaviour, IDropHandler
         value = null;
         
     }
-    void Update()
+    private void OnTriggerEnter2D(Collider2D collision)
     {
         value = itemIn; //To debug the slot no longer getting values
+    }
+    void Update()
+    {
+        
     }
 }

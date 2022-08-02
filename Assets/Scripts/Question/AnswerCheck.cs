@@ -105,7 +105,6 @@ public class AnswerCheck : MonoBehaviour
     {
 		questionFinishedCanvas.SetActive(false);
 		controlButtons.SetActive(true); //Enables movement buttons when second canvas is closed
-
 	}
 	public void SortValues()
     {
