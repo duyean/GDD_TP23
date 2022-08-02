@@ -119,8 +119,8 @@ TextureImporter:
       name: cityblock_0
       rect:
         serializedVersion: 2
-        x: 47
-        y: 289
+        x: 0
+        y: 322
         width: 32
         height: 32
       alignment: 0
@@ -130,8 +130,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5210b05fbc21f6247871a42a98708c2f
-      internalID: -23371032
+      spriteID: 6baa6ec767d9466409372bbadb35730e
+      internalID: 211987045
       vertices: []
       indices: 
       edges: []
@@ -140,8 +140,8 @@ TextureImporter:
       name: cityblock_1
       rect:
         serializedVersion: 2
-        x: 79
-        y: 289
+        x: 32
+        y: 322
         width: 32
         height: 32
       alignment: 0
@@ -151,8 +151,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6d98fe51f7d2b364a9b6115814c7e62e
-      internalID: 429512202
+      spriteID: db8e786e522cc8e46b24f8fb437803a8
+      internalID: 1625013574
       vertices: []
       indices: 
       edges: []
@@ -161,8 +161,8 @@ TextureImporter:
       name: cityblock_2
       rect:
         serializedVersion: 2
-        x: 111
-        y: 289
+        x: 64
+        y: 322
         width: 32
         height: 32
       alignment: 0
@@ -172,8 +172,29 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4e5e0bbe6e1a4e0488b83aed4a15ab06
-      internalID: 800842750
+      spriteID: af107c21814f8264f83a9eceb2533f88
+      internalID: -327210782
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: cityblock_3
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 322
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4c3017de3cd4e764fbbe1364172de634
+      internalID: 1007886101
       vertices: []
       indices: 
       edges: []
@@ -182,8 +203,8 @@ TextureImporter:
       name: cityblock_4
       rect:
         serializedVersion: 2
-        x: 47
-        y: 257
+        x: 128
+        y: 322
         width: 32
         height: 32
       alignment: 0
@@ -193,8 +214,29 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b51eea171cd1978428c0ae1803cd7f70
-      internalID: -984506684
+      spriteID: 55e86497b33fb5e48acd569a859edcbf
+      internalID: 1186286490
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: cityblock_5
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 290
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8b0c2f1e5d4655340b07a7f88ed64d08
+      internalID: 489374765
       vertices: []
       indices: 
       edges: []
@@ -203,8 +245,8 @@ TextureImporter:
       name: cityblock_6
       rect:
         serializedVersion: 2
-        x: 79
-        y: 257
+        x: 32
+        y: 290
         width: 32
         height: 32
       alignment: 0
@@ -214,8 +256,29 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 72d72b3c798044144b39d0678889afff
-      internalID: 1034024992
+      spriteID: 3833e603ba6f455429606cdc5bd400f2
+      internalID: 1004942979
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: cityblock_7
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 290
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3a4d22bde3791194ea828ebfffa5d25b
+      internalID: 1930461808
       vertices: []
       indices: 
       edges: []
@@ -224,8 +287,8 @@ TextureImporter:
       name: cityblock_8
       rect:
         serializedVersion: 2
-        x: 111
-        y: 257
+        x: 96
+        y: 290
         width: 32
         height: 32
       alignment: 0
@@ -235,8 +298,71 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0f4de461e8ae3914890049e9b43881e5
-      internalID: 2140107629
+      spriteID: 863dc2dc4a00e5e4e9d8f5aafc2e41ba
+      internalID: 1540537653
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: cityblock_9
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 290
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 21a41a5dc6baebb468189494afd012a2
+      internalID: -149010862
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: cityblock_10
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 258
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8f95e095b3b723e429a1e380b80b6fcc
+      internalID: -1146967206
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: cityblock_11
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 258
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 749c43303f72da241acf53b43dd2da25
+      internalID: 1131442182
       vertices: []
       indices: 
       edges: []
@@ -245,8 +371,8 @@ TextureImporter:
       name: cityblock_12
       rect:
         serializedVersion: 2
-        x: 47
-        y: 225
+        x: 64
+        y: 258
         width: 32
         height: 32
       alignment: 0
@@ -256,71 +382,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c6fb7c21f406c334c8a1dd4eefe94f1b
-      internalID: 398332321
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: cityblock_13
-      rect:
-        serializedVersion: 2
-        x: 79
-        y: 225
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 956f507a2267b174ba9a908a523e7870
-      internalID: -945835339
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: cityblock_14
-      rect:
-        serializedVersion: 2
-        x: 111
-        y: 225
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: aed88518a82f7e144b26f00c04ab5d9e
-      internalID: -1166329716
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: cityblock_15
-      rect:
-        serializedVersion: 2
-        x: 79
-        y: 257
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: af6adb79515d29842bd68440a16cab37
-      internalID: -1359366609
+      spriteID: 8eb319f3f49a48240a4965613c9a09cd
+      internalID: 1670769916
       vertices: []
       indices: 
       edges: []
@@ -336,22 +399,19 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      cityblock_9: -176485325
-      cityblock_10: -1690558248
-      cityblock_14: -1166329716
-      cityblock_6: 1034024992
-      cityblock_4: -984506684
-      cityblock_5: -1994858239
-      cityblock_1: 429512202
-      cityblock_11: -1257532784
-      cityblock_15: -1359366609
-      cityblock_13: -945835339
-      cityblock_7: 91981570
-      cityblock_12: 398332321
-      cityblock_2: 800842750
-      cityblock_8: 2140107629
-      cityblock_3: -501629430
-      cityblock_0: -23371032
+      cityblock_9: -149010862
+      cityblock_10: -1146967206
+      cityblock_6: 1004942979
+      cityblock_4: 1186286490
+      cityblock_5: 489374765
+      cityblock_1: 1625013574
+      cityblock_11: 1131442182
+      cityblock_7: 1930461808
+      cityblock_12: 1670769916
+      cityblock_2: -327210782
+      cityblock_8: 1540537653
+      cityblock_3: 1007886101
+      cityblock_0: 211987045
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
