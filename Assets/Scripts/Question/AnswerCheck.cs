@@ -129,6 +129,7 @@ public class AnswerCheck : MonoBehaviour
 	public void RemoveValues(string key)
 	{
 		//Get values from slot list
+		sortedValues.Remove(key);
 		slotValues.Remove(key);
 	}
 

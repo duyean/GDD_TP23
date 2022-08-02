@@ -9,7 +9,7 @@ public class Coin : MonoBehaviour
 	public string subject;
 	public int level;
 	public int questionNumber;
-
+	
     // Start is called before the first frame update
     void Start()
 	{
@@ -22,13 +22,17 @@ public class Coin : MonoBehaviour
 
 	}
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnCollisionEnter2D(Collision2D collision)
     {
 		if (collision.transform.tag == "Player")
 		{
 			canvas.SetActive(true);
             GameObject.FindGameObjectWithTag("Player").GetComponent<MovementScript>().StopMoving();
-            GameObject.FindGameObjectWithTag("MovementButtons").SetActive(false);
+            if (GameObject.FindGameObjectWithTag("MovementButtons").activeSelf)
+            {
+                GameObject.FindGameObjectWithTag("MovementButtons").SetActive(false);
+            }
+
         }
         
 	}
