@@ -35,8 +35,7 @@ public class MoveBlock : MonoBehaviour
         
     }
 
-    // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         if(rb.velocity == Vector2.zero)
         {
