@@ -15,7 +15,7 @@ MonoBehaviour:
   subject: Math_Addition
   levelNumber: 1
   questionID: 1
-  question: math is fun
+  question: Fill in the blanks!
   answers:
   - 1
   - 2
@@ -24,5 +24,6 @@ MonoBehaviour:
   filledValues:
   - +
   - =
+  - 3
   finalAnswers:
   - 3
