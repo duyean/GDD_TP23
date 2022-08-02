@@ -18,20 +18,14 @@ public class MoveBlockUpright : MonoBehaviour
         if(Input.mousePosition.y > 0)
         {
             rb.constraints = RigidbodyConstraints2D.None;
+            rb.constraints = RigidbodyConstraints2D.FreezeRotation;
             rb.velocity = Vector3.up * speed;
         }
         if (Input.mousePosition.y < 0)
         {
             rb.constraints = RigidbodyConstraints2D.None;
+            rb.constraints = RigidbodyConstraints2D.FreezeRotation;
             rb.velocity = Vector3.down * speed;
-        }
-    }
-
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        if(collision != null && collision.transform.tag == "Wall")
-        {
-            rb.constraints = RigidbodyConstraints2D.FreezeAll;
         }
     }
 
@@ -44,6 +38,9 @@ public class MoveBlockUpright : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (rb.velocity == Vector2.zero)
+        {
+            rb.constraints = RigidbodyConstraints2D.FreezeAll;
+        }
     }
 }
