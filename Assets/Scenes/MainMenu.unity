@@ -272,6 +272,7 @@ GameObject:
   - component: {fileID: 47081921}
   - component: {fileID: 47081925}
   - component: {fileID: 47081926}
+  - component: {fileID: 47081927}
   m_Layer: 8
   m_Name: Canvas
   m_TagString: Untagged
@@ -398,6 +399,18 @@ MonoBehaviour:
   - {fileID: 1722733121}
   - {fileID: 349608944}
   - {fileID: 796625548}
+--- !u!114 &47081927
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 47081920}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9249304440c82847b8bec496cbfb1d3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &60658990
 GameObject:
   m_ObjectHideFlags: 0
@@ -4152,9 +4165,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 47081925}
-        m_TargetAssemblyTypeName: MainMenu, Assembly-CSharp
-        m_MethodName: quitGame
+      - m_Target: {fileID: 47081927}
+        m_TargetAssemblyTypeName: QuitApp, Assembly-CSharp-firstpass
+        m_MethodName: closeTab
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
