@@ -9,7 +9,8 @@ TagManager:
   - Slot
   - Coin
   - Item
-  - MovementButtons
+  - Wall
+  - Moveable_Block
   layers:
   - Default
   - TransparentFX
