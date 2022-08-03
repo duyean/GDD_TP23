@@ -24,7 +24,7 @@ public class AnswerCheck : MonoBehaviour
 	public Button closeButton;
 	public Canvas questionCanvas;
 	public GameObject questionFinishedCanvas;
-	public GameObject controlButtons;
+	//public GameObject controlButtons;
 
 
 	[SerializeField]
@@ -110,7 +110,7 @@ public class AnswerCheck : MonoBehaviour
 	void CloseCanvas()
     {
 		questionFinishedCanvas.SetActive(false);
-		controlButtons.SetActive(true); //Enables movement buttons when second canvas is closed
+		//controlButtons.SetActive(true); //Enables movement buttons when second canvas is closed
 	}
 	public void SortValues()
     {
@@ -133,7 +133,7 @@ public class AnswerCheck : MonoBehaviour
 
 	public void RemoveValues(string key)
 	{
-		//Get values from slot list
+		//Remove values from slot list
 		sortedValues.Remove(key);
 		slotValues.Remove(key);
 	}
