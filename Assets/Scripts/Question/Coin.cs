@@ -30,7 +30,7 @@ public class Coin : MonoBehaviour
             GameObject.FindGameObjectWithTag("Player").GetComponent<MovementScript>().StopMoving();
             if (GameObject.FindGameObjectWithTag("MovementButtons") != null)
             {
-                GameObject.FindGameObjectWithTag("MovementButtons").SetActive(false);
+				GameObject.FindGameObjectWithTag("MovementButtons").GetComponentInChildren<Canvas>().enabled = false;
             }
 
         }
