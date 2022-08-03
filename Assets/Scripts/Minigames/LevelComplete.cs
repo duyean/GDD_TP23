@@ -1,13 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class LevelComplete : MonoBehaviour
 {
+
+    public TextMeshProUGUI text;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        text.gameObject.SetActive(false);
     }
 
     // Update is called once per frame
@@ -20,7 +24,8 @@ public class LevelComplete : MonoBehaviour
     {
         if (collision != null && collision.transform.tag == "Moveable_Block")
         {
-            collision.transform.gameObject.SetActive(false);
+            text.gameObject.SetActive(true);
+            text.SetText("Nice");
         }
     }
 }
