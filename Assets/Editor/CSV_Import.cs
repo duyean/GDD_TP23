@@ -5,7 +5,7 @@ using System.IO;
 //tutorial from Comp-3 Interactive (https://www.youtube.com/watch?v=1EdLTF43d70)
 public class CSV_Import
 {
-    private static string questionCSVPath = "/Scripts/Data/CSV/Questions.csv";
+    private static string questionCSVPath = "/Resources/CSV/Questions.csv";
 
     //Add tab to generate questions in the Unity Editor
     [MenuItem("Utilities/Generate Questions")]
