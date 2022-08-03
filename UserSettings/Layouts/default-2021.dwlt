@@ -19,7 +19,7 @@ MonoBehaviour:
     width: 1280
     height: 637.3334
   m_ShowMode: 4
-  m_Title: Hierarchy
+  m_Title: Scene
   m_RootView: {fileID: 11}
   m_MinSize: {x: 875, y: 300}
   m_MaxSize: {x: 10000, y: 10000}
@@ -101,7 +101,7 @@ MonoBehaviour:
   m_MinSize: {x: 100, y: 300}
   m_MaxSize: {x: 8096, y: 24288}
   vertical: 1
-  controlID: 51
+  controlID: 313
 --- !u!114 &5
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -178,7 +178,7 @@ MonoBehaviour:
   m_MinSize: {x: 100, y: 200}
   m_MaxSize: {x: 8096, y: 16192}
   vertical: 1
-  controlID: 132
+  controlID: 143
 --- !u!114 &8
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -230,7 +230,7 @@ MonoBehaviour:
   m_MinSize: {x: 300, y: 300}
   m_MaxSize: {x: 24288, y: 24288}
   vertical: 0
-  controlID: 131
+  controlID: 142
 --- !u!114 &10
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -369,22 +369,22 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Scenes/Maths
+    - Assets/Scenes
     m_Globs: []
     m_OriginalText: 
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets/Scenes/Maths
+  - Assets/Scenes
   m_LastFoldersGridSize: -1
   m_LastProjectPath: C:\Users\cylee\OneDrive\Documents\GitHub\GDD-MP
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
-    scrollPos: {x: 0, y: 338.33334}
-    m_SelectedIDs: 76660000
-    m_LastClickedID: 26230
-    m_ExpandedIDs: 000000006464000066640000686400006a6400006c6400006e6400007064000000ca9a3b
+    scrollPos: {x: 0, y: 344}
+    m_SelectedIDs: 82660000
+    m_LastClickedID: 26242
+    m_ExpandedIDs: 000000004465000046650000486500004a6500004c650000806600008266000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -412,7 +412,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 000000006464000066640000686400006a6400006c6400006e64000070640000
+    m_ExpandedIDs: 000000004465000046650000486500004a6500004c6500004e650000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -464,7 +464,7 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
     m_NewAssetIndexInList: -1
-    m_ScrollPosition: {x: 0, y: 45.333344}
+    m_ScrollPosition: {x: 0, y: 510.33334}
     m_GridSize: 64
   m_SkipHiddenPackages: 0
   m_DirectoriesAreaWidth: 209
@@ -540,9 +540,9 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: 
-      m_LastClickedID: 0
-      m_ExpandedIDs: a6e8ffff36eaffffb6ebffff22edffff82eeffff5cf0ffffa6f1ffffe6f2ffff0af4ffff40f5ffff4cf6ffff7af7fffff0faffff
+      m_SelectedIDs: 048b0000
+      m_LastClickedID: 35588
+      m_ExpandedIDs: 7cdaffffe4dbffff48e1ffff90e1ffff26e2ffffa8eefffffaf6ffff38f8ffff6cf9ffff2e6700009e870000a8870000e8870000568b0000
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -665,7 +665,7 @@ MonoBehaviour:
       floating: 0
       collapsed: 0
       displayed: 1
-      snapOffset: {x: 0, y: 0}
+      snapOffset: {x: 0, y: 25.333334}
       snapOffsetDelta: {x: 0, y: 0}
       snapCorner: 0
       id: unity-transform-toolbar
@@ -815,7 +815,7 @@ MonoBehaviour:
   m_Position:
     m_Target: {x: 0.029689202, y: -0.9566427, z: -0.13376224}
     speed: 2
-    m_Value: {x: 0.029689202, y: -0.9566427, z: -0.13376224}
+    m_Value: {x: 0.0027979668, y: -0.8801061, z: -0.13776492}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -868,7 +868,7 @@ MonoBehaviour:
   m_Size:
     m_Target: 8.494532
     speed: 2
-    m_Value: 8.494532
+    m_Value: 8.894797
   m_Ortho:
     m_Target: 1
     speed: 2
