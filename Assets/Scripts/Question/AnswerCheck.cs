@@ -24,7 +24,7 @@ public class AnswerCheck : MonoBehaviour
 	public Button closeButton;
 	public Canvas questionCanvas;
 	public GameObject questionFinishedCanvas;
-	//public GameObject controlButtons;
+	public Canvas movementButtons;
 
 
 	[SerializeField]
@@ -40,8 +40,6 @@ public class AnswerCheck : MonoBehaviour
 	// Start is called before the first frame update
 	void Start()
 	{
-		//player = GameObject.FindGameObjectWithTag("Player");
-		//rb2d = player.GetComponent<Rigidbody2D>();
 		correct = false;
 		Button checkButton = answerButton.GetComponent<Button>();
 		Button canvasCloseButton = closeButton.GetComponent<Button>();
@@ -50,6 +48,7 @@ public class AnswerCheck : MonoBehaviour
 		correctText.color = Color.green;
 		wrongAnswerText.color = Color.red;
 		wrongAnswerText.enabled = false;
+		movementButtons = GameObject.FindGameObjectWithTag("MovementButtons").GetComponentInChildren<Canvas>();
 	}
 
 
@@ -67,7 +66,6 @@ public class AnswerCheck : MonoBehaviour
 					answers.Add(new string("Slot (" + i + ")"), question.finalAnswers[i]);
 				}
 			}
-			Debug.Log(!excludedSubjects.Contains(question.subject));
 			if (!excludedSubjects.Contains(question.subject))
 			{
 				//Then check values against answer array
@@ -110,8 +108,7 @@ public class AnswerCheck : MonoBehaviour
 	void CloseCanvas()
     {
 		questionFinishedCanvas.SetActive(false);
-		GameObject.FindGameObjectWithTag("MovementButtons").GetComponentInChildren<Canvas>().enabled = true;
-		//controlButtons.SetActive(true); //Enables movement buttons when second canvas is closed
+		movementButtons.enabled = true;
 	}
 	public void SortValues()
     {
@@ -139,13 +136,6 @@ public class AnswerCheck : MonoBehaviour
 		slotValues.Remove(key);
 	}
 
-	// Update is called once per frame
-	void Update()
-	{
-       
-    }
-
-	//functions to add
 	public void spawnPlatform(int questionNum)
 	{
 		tileMapSpawns[questionNum - 1].SetActive(true);
@@ -158,5 +148,4 @@ public class AnswerCheck : MonoBehaviour
 			treasure.GetComponent<levelWin>().win = true;
 		}
 	}
-
 }

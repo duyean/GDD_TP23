@@ -15,6 +15,4 @@ public class levelWin : MonoBehaviour
             WinUI.Instance.winUI.SetActive(true);
         }
     }
-
-    
 }

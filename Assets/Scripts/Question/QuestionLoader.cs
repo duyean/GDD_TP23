@@ -23,7 +23,7 @@ public class QuestionLoader : MonoBehaviour
 
 	void Awake()
 	{
-		//Get coins for the level
+		//Get coin for the level
 		coin = gameObject.GetComponentInChildren<Coin>();
 		//assign level and question number for question loader
 		subject = coin.subject;
@@ -32,23 +32,16 @@ public class QuestionLoader : MonoBehaviour
 		foreach (FilledSlot filledSlot in filledSlots)
 		{
 			filledSlot.question = (Data)Resources.Load("Questions/" + subject + "_" + level + "_" + question);
-			Debug.Log(filledSlot.question);
 		}
 		//load questions based on parameters set by coin
 		answerCheck.question = (Data)Resources.Load("Questions/" + subject + "_" + level + "_" + question);
 		SpawnAnswers(question);
 	}
 
-	// Start is called before the first frame update
-	void Start()
-	{
-		
-	}
-
 	// Update is called once per frame
 	void Update()
 	{
-		//disable canvas and destroy item clones if answer is correct
+		//disable canvas if answer is correct
 		if (answerCheck.correct)
 		{
 			canvasGameObject.SetActive(false);

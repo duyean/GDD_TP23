@@ -324,7 +324,6 @@ GameObject:
   m_Component:
   - component: {fileID: 7570700530015188868}
   - component: {fileID: 7570700530015188869}
-  - component: {fileID: 7570700530015188871}
   - component: {fileID: 7570700530015188870}
   - component: {fileID: 7570700530015188888}
   - component: {fileID: -8450526866748076963}
@@ -408,34 +407,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &7570700530015188871
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7570700530015188866}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7f47957c07ab6fc48bcd461eb2af2c3d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_JumpForce: 400
-  m_CrouchSpeed: 0.36
-  m_MovementSmoothing: 0.05
-  m_AirControl: 1
-  m_WhatIsGround:
-    serializedVersion: 2
-    m_Bits: 64
-  m_GroundCheck: {fileID: 7570700529605934076}
-  m_CeilingCheck: {fileID: 7570700529523561967}
-  m_CrouchDisableCollider: {fileID: 0}
-  OnLandEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  OnCrouchEvent:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!50 &7570700530015188870
 Rigidbody2D:
   serializedVersion: 4
@@ -473,7 +444,7 @@ MonoBehaviour:
   - {fileID: 647154437}
   - {fileID: 1838527534}
   - {fileID: 544424069}
-  controller: {fileID: 7570700530015188871}
+  controller: {fileID: 0}
   runspeed: 40
 --- !u!114 &-8450526866748076963
 MonoBehaviour:

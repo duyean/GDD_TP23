@@ -5,7 +5,7 @@ using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using TMPro;
 
-public class DragDrop : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, IEndDragHandler, IDragHandler
+public class DragDrop : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDragHandler
 {
     public Canvas canvas; 
     private RectTransform rectTransform;
@@ -22,15 +22,12 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, I
         valueText.SetText(itemValue);
     }
 
-    void Update()
-    {
-        
-    }
-
     public void OnBeginDrag(PointerEventData eventData)
     {
-        canvasGroup.alpha = .4f; //Set item transparent when dragging
-        canvasGroup.blocksRaycasts = false; //Allows raycasts to go through the item to detect the slot
+        //Set item transparent when dragging
+        canvasGroup.alpha = .4f;
+        //Allows raycasts to go through the item to detect the slot
+        canvasGroup.blocksRaycasts = false;
     }
 
     public void OnDrag(PointerEventData eventData)
@@ -40,12 +37,8 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, I
 
     public void OnEndDrag(PointerEventData eventData)
     {
-        canvasGroup.alpha = 1f; //Set item to translucent when no longer dragging
-        canvasGroup.blocksRaycasts = true; //Allow item to block raycasts.
+        //Set item to translucent when no longer dragging
+        canvasGroup.alpha = 1f;
+        canvasGroup.blocksRaycasts = true;
     }
-
-    public void OnPointerDown(PointerEventData eventData)
-    {
-    }
-
 }

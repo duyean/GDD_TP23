@@ -7,9 +7,6 @@ public class MainMenu : MonoBehaviour
 {
     public GameObject LevelSelection;
 
-
-
-
     public void SelectLevel()
     {
         // activating level selection UI
