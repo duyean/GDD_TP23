@@ -110,7 +110,7 @@ public class AnswerCheck : MonoBehaviour
 	void CloseCanvas()
     {
 		questionFinishedCanvas.SetActive(false);
-		GameObject.FindGameObjectWithTag("MovementButtons").SetActive(true);
+		GameObject.FindGameObjectWithTag("MovementButtons").GetComponentInChildren<Canvas>().enabled = true;
 		//controlButtons.SetActive(true); //Enables movement buttons when second canvas is closed
 	}
 	public void SortValues()
