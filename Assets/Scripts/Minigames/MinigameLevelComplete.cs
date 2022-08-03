@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
-public class LevelComplete : MonoBehaviour
+public class MinigameLevelComplete : MonoBehaviour
 {
 
     public TextMeshProUGUI text;
