@@ -5,9 +5,6 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 0
-    path: Assets/Scenes/SampleScene.unity
-    guid: 2cda990e2423bbf4892e6590ba056729
   - enabled: 1
     path: Assets/Scenes/_preload.unity
     guid: aa25a4b066a91e145b076776df767a38
@@ -15,12 +12,33 @@ EditorBuildSettings:
     path: Assets/Scenes/MainMenu.unity
     guid: 054cf1d09b6f8244490d4323b50f6f3d
   - enabled: 1
-    path: Assets/Scenes/Test.unity
-    guid: d643d5acdf2f6164db8b77fbc47889c7
-  - enabled: 0
-    path: Assets/Scenes/John.unity
-    guid: cd899bd6cfc4ebc47ad73fac655b141b
-  - enabled: 1
     path: Assets/Scenes/Chinese/cLevel0.unity
     guid: 75ca5f2bde789a64eae1036e7bdb445c
+  - enabled: 1
+    path: Assets/Scenes/Chinese/cLevel1.unity
+    guid: 7cb9ef8bcadc95246ae012fd8107e4c6
+  - enabled: 1
+    path: Assets/Scenes/Chinese/cLevel2.unity
+    guid: b16ffb70d7832cb48acd1efcee58fe36
+  - enabled: 1
+    path: Assets/Scenes/Chinese/cLevel3.unity
+    guid: e62313ab387e25846a2f64b69eed4651
+  - enabled: 1
+    path: Assets/Scenes/Chinese/cLevel4.unity
+    guid: cf44ab89d0a8a01458a90a2ee6cf0f81
+  - enabled: 1
+    path: Assets/Scenes/Maths/mLevel0.unity
+    guid: 0fc0b15f8acb89e4a91edaec379bd1ce
+  - enabled: 1
+    path: Assets/Scenes/Maths/mLevel1.unity
+    guid: 1ad1668c57abce5428767b67d220f380
+  - enabled: 1
+    path: Assets/Scenes/Maths/mLevel2.unity
+    guid: 476534c7a77fb6f4bb3642d68b6283d2
+  - enabled: 1
+    path: Assets/Scenes/Maths/mLevel3.unity
+    guid: 549378a036989034fbf92cba4e458591
+  - enabled: 1
+    path: Assets/Scenes/Maths/mLevel4.unity
+    guid: 1e08327204e85214cbb3b785dcf68643
   m_configObjects: {}
