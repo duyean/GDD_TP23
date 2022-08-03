@@ -6588,12 +6588,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   coin: {fileID: 0}
   Slots: []
-  correctWrongText: {fileID: 0}
+  questionText: {fileID: 0}
+  wrongAnswerText: {fileID: 0}
+  correctText: {fileID: 0}
   questionCounter: {fileID: 0}
   questionLoader: {fileID: 0}
   question: {fileID: 0}
+  excludedSubjects: []
   correct: 0
   sort: 0
+  answerButton: {fileID: 0}
+  closeButton: {fileID: 0}
+  questionCanvas: {fileID: 0}
+  questionFinishedCanvas: {fileID: 0}
+  controlButtons: {fileID: 0}
   tileMapSpawns: []
   treasure: {fileID: 0}
 --- !u!4 &1786941829
