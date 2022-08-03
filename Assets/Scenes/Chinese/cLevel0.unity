@@ -147,18 +147,6 @@ PrefabInstance:
       value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 3687099115687641613, guid: 6f5b011a0f9d36e448bcbf67d28df4d5, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 1.1933653
-      objectReference: {fileID: 0}
-    - target: {fileID: 3687099115687641613, guid: 6f5b011a0f9d36e448bcbf67d28df4d5, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 0.61993
-      objectReference: {fileID: 0}
-    - target: {fileID: 3687099115687641613, guid: 6f5b011a0f9d36e448bcbf67d28df4d5, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 0.61993
-      objectReference: {fileID: 0}
-    - target: {fileID: 3687099115687641613, guid: 6f5b011a0f9d36e448bcbf67d28df4d5, type: 3}
       propertyPath: m_LocalPosition.x
       value: 3.9
       objectReference: {fileID: 0}
@@ -5448,12 +5436,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   coin: {fileID: 0}
   Slots: []
-  correctWrongText: {fileID: 0}
+  questionText: {fileID: 0}
+  wrongAnswerText: {fileID: 0}
+  correctText: {fileID: 0}
   questionCounter: {fileID: 0}
   questionLoader: {fileID: 0}
   question: {fileID: 0}
+  excludedSubjects: []
   correct: 0
   sort: 0
+  answerButton: {fileID: 0}
+  closeButton: {fileID: 0}
+  questionCanvas: {fileID: 0}
+  questionFinishedCanvas: {fileID: 0}
+  controlButtons: {fileID: 0}
   tileMapSpawns: []
   treasure: {fileID: 0}
 --- !u!4 &1786941829
