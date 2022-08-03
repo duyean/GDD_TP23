@@ -9,7 +9,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 6050350438699612532, guid: 2a7841c2bb95a544589e8fdab15563de, type: 3}
       propertyPath: m_Name
-      value: Block
+      value: Upright Block
       objectReference: {fileID: 0}
     - target: {fileID: 7507583850611506500, guid: 2a7841c2bb95a544589e8fdab15563de, type: 3}
       propertyPath: m_RootOrder
@@ -76,7 +76,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 9132979788723072981}
-  speed: 6
+  speed: 9
 --- !u!50 &9132979788723072981 stripped
 Rigidbody2D:
   m_CorrespondingSourceObject: {fileID: -6725192625547244429, guid: 2a7841c2bb95a544589e8fdab15563de, type: 3}
