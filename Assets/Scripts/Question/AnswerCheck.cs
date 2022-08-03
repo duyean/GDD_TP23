@@ -45,8 +45,8 @@ public class AnswerCheck : MonoBehaviour
 		Button canvasCloseButton = closeButton.GetComponent<Button>();
 		checkButton.onClick.AddListener(CheckAnswer); //When button is clicked, calls the CheckAnswer function
 		canvasCloseButton.onClick.AddListener(CloseCanvas);
-		correctText.color = Color.green;
-		wrongAnswerText.color = Color.red;
+		//correctText.color = Color.green;
+		//wrongAnswerText.color = Color.red;
 		wrongAnswerText.enabled = false;
 		movementButtons = GameObject.FindGameObjectWithTag("MovementButtons").GetComponentInChildren<Canvas>();
 	}
