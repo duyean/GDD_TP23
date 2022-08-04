@@ -1,14 +1,11 @@
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
-using UnityEngine.Events;
 using UnityEngine.UI;
 using TMPro;
+
 public class AnswerCheck : MonoBehaviour
 {
-	//public GameObject player;
-	//public Rigidbody2D rb2d;
 	public GameObject coin;
 	public List<GameObject> Slots;
 	public TextMeshProUGUI questionText;
