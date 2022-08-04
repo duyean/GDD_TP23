@@ -8,6 +8,7 @@ public class JumpButton : MonoBehaviour, IPointerDownHandler
     public void OnPointerDown(PointerEventData eventData)
     {
         GameObject.FindGameObjectWithTag("Player").GetComponent<MovementScript>().Jump();
+        SFX.Instance.JumpSound();
     }
 
 }
