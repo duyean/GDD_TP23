@@ -1066,6 +1066,7 @@ MonoBehaviour:
   closeButton: {fileID: 1714848055350135648}
   questionCanvas: {fileID: 3687099114782643163}
   questionFinishedCanvas: {fileID: 5780421848358765133}
+  movementButtons: {fileID: 0}
   tileMapSpawns:
   - {fileID: 0}
   treasure: {fileID: 0}
