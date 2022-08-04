@@ -1639,6 +1639,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5560557075334198408, guid: 94d50462512ad41449085ccfc18fcc5f, type: 3}
+      propertyPath: m_EdgeRadius
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5560557075334198409, guid: 94d50462512ad41449085ccfc18fcc5f, type: 3}
       propertyPath: m_Name
       value: Movable Block
