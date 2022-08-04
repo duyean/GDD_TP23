@@ -3,7 +3,14 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - CharacterAttributes
+  - CustomizationMenu
+  - Slot
+  - Coin
+  - Item
+  - Wall
+  - Moveable_Block
   layers:
   - Default
   - TransparentFX
@@ -13,7 +20,7 @@ TagManager:
   - UI
   - Ground
   - Platform
-  - 
+  - BGUI
   - 
   - 
   - 
@@ -38,6 +45,9 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: BG
+    uniqueID: 1806305877
+    locked: 0
   - name: Default
     uniqueID: 0
     locked: 0
