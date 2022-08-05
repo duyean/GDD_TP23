@@ -9,6 +9,19 @@ public class BGM : Singleton<BGM>
     [SerializeField]
     AudioSource bgmSource;
 
+    [SerializeField]
+    AudioClip Theme;
+
+    [SerializeField]
+    AudioClip Mountain;
+
+    [SerializeField]
+    AudioClip Desert;
+
+    [SerializeField]
+    AudioClip City;
+
+
     private void Start()
     {
         if (!PlayerPrefs.HasKey("BGMVolume"))
@@ -24,7 +37,7 @@ public class BGM : Singleton<BGM>
     }
     public void changeBGMVolume()
     {
-        AudioListener.volume = BGMSlider.value;
+        bgmSource.volume = BGMSlider.value;
         saveBGMPref();
     }
 
@@ -32,10 +45,18 @@ public class BGM : Singleton<BGM>
     private void loadBGM()
     {
         BGMSlider.value = PlayerPrefs.GetFloat("BGMVolume");
+        bgmSource.clip = Theme;
+        bgmSource.Play();
     }
 
     private void saveBGMPref()
     {
         PlayerPrefs.SetFloat("BGMVolume", BGMSlider.value);
+    }
+
+    public void ChineseLevelBGM()
+    {
+        bgmSource.clip = Mountain;
+        bgmSource.Play();
     }
 }
