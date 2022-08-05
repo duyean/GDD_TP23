@@ -85,7 +85,7 @@ public class AnswerCheck : MonoBehaviour
 			{
 				sortedValues.Clear();
 				wrongAnswerText.enabled = true;
-				Invoke("TryAgain", 2f);
+				Invoke(nameof(TryAgain), 2f);
 			}
 		}
 		if(correct)
