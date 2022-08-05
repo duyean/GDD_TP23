@@ -25,14 +25,14 @@ public class MovementScript : MonoBehaviour
     {
         moveLeft = true;
         Vector3 scale = new Vector3(-1,1,1);
-        GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>().localScale = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>().localScale =scale;
+        GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>().localScale = scale;
     }
 
     public void MoveRight()
     {
         moveRight = true;
         Vector3 scale = new Vector3(1, 1, 1);
-        GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>().localScale = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>().localScale = scale;
+        GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>().localScale = scale;
     }
 
     public void Jump()
@@ -40,6 +40,7 @@ public class MovementScript : MonoBehaviour
         if (rb.velocity.y == 0)
         {
             rb.AddForce(Vector2.up * jumpForce);
+            SFX.Instance.JumpSound();
         }
     }
 
