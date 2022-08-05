@@ -91,8 +91,8 @@ public class AnswerCheck : MonoBehaviour
 			{
 				sortedValues.Clear();
 				wrongAnswerText.enabled = true;
-				Invoke("TryAgain", 2f);
 				SFX.Instance.LoseSound();
+				Invoke(nameof(TryAgain), 2f);				
 			}
 		}
 		if(correct)
