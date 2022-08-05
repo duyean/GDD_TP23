@@ -86,10 +86,12 @@ public class AnswerCheck : MonoBehaviour
 				sortedValues.Clear();
 				wrongAnswerText.enabled = true;
 				Invoke("TryAgain", 2f);
+				SFX.Instance.LoseSound();
 			}
 		}
 		if(correct)
         {
+			SFX.Instance.WinSound();
 			coin.SetActive(false);
 			questionCounter.answerToFinish--;
 			spawnPlatform(questionLoader.question);

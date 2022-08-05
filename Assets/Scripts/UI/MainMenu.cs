@@ -27,4 +27,10 @@ public class MainMenu : MonoBehaviour
     {
         Application.Quit();
     }
+
+    public void CloseLevelSelection()
+    {
+        // closes level selection used for back button in level select
+        LevelSelection.SetActive(false) ;
+    }
 }
