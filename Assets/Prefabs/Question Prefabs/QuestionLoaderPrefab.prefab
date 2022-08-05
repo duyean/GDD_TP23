@@ -1064,9 +1064,9 @@ MonoBehaviour:
   sort: 0
   answerButton: {fileID: 5373327225076012058}
   closeButton: {fileID: 1714848055350135648}
-  questionCanvas: {fileID: 3687099114782643163}
-  questionFinishedCanvas: {fileID: 5780421848358765133}
   movementButtons: {fileID: 0}
+  questionCanvas: {fileID: 3687099114782643167}
+  questionFinishedCanvas: {fileID: 5780421848358765133}
   tileMapSpawns:
   - {fileID: 0}
   treasure: {fileID: 0}
