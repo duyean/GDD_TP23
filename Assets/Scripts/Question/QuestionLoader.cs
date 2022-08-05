@@ -38,16 +38,7 @@ public class QuestionLoader : MonoBehaviour
 		SpawnAnswers(question);
 	}
 
-	// Update is called once per frame
-	void Update()
-	{
-		//disable canvas if answer is correct
-		if (answerCheck.correct)
-		{
-			canvasGameObject.SetActive(false);
-		}
-	}
-
+	
 	//Instantiate item prefab with answer values from specified scriptable object
 	void SpawnAnswers(int level)
 	{

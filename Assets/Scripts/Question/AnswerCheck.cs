@@ -8,20 +8,26 @@ public class AnswerCheck : MonoBehaviour
 {
 	public GameObject coin;
 	public List<GameObject> Slots;
+
 	public TextMeshProUGUI questionText;
 	public TextMeshProUGUI wrongAnswerText;
 	public TextMeshProUGUI correctText;
+
 	public QuestionCounter questionCounter;
 	public QuestionLoader questionLoader;
 	public Data question;
 	public List<string> excludedSubjects;
+
 	public bool correct;
 	public bool sort;
+
 	public Button answerButton;
 	public Button closeButton;
-	public Canvas questionCanvas;
-	public GameObject questionFinishedCanvas;
 	public Canvas movementButtons;
+
+	public GameObject questionCanvas;
+	public GameObject questionFinishedCanvas;
+
 
 
 	[SerializeField]
@@ -41,7 +47,7 @@ public class AnswerCheck : MonoBehaviour
 		Button checkButton = answerButton.GetComponent<Button>();
 		Button canvasCloseButton = closeButton.GetComponent<Button>();
 		checkButton.onClick.AddListener(CheckAnswer); //When button is clicked, calls the CheckAnswer function
-		canvasCloseButton.onClick.AddListener(CloseCanvas);
+		canvasCloseButton.onClick.AddListener(CloseCanvas); //When close button is clicked, calls CloseCanvas function
 		//correctText.color = Color.green;
 		//wrongAnswerText.color = Color.red;
 		wrongAnswerText.enabled = false;
@@ -90,6 +96,7 @@ public class AnswerCheck : MonoBehaviour
 		}
 		if(correct)
         {
+			questionCanvas.SetActive(false);
 			coin.SetActive(false);
 			questionCounter.answerToFinish--;
 			spawnPlatform(questionLoader.question);
