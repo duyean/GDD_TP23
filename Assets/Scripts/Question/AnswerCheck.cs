@@ -36,6 +36,9 @@ public class AnswerCheck : MonoBehaviour
 	[SerializeField]
 	GameObject treasure;
 
+	[SerializeField]
+	GameObject arrow;
+
 	private Dictionary<string, string> slotValues = new Dictionary<string, string>();
 	private Dictionary<string, string> sortedValues = new Dictionary<string, string>();
 	private Dictionary<string, string> answers = new Dictionary<string, string>();
@@ -102,6 +105,7 @@ public class AnswerCheck : MonoBehaviour
 			coin.SetActive(false);
 			questionCounter.answerToFinish--;
 			spawnPlatform(questionLoader.question);
+			spawnArrow();
 			checkWin(questionCounter.answerToFinish);
 		}
 	}
@@ -146,6 +150,11 @@ public class AnswerCheck : MonoBehaviour
 	{
 		tileMapSpawns[questionNum - 1].SetActive(true);
 	}
+
+	public void spawnArrow()
+    {
+		arrow.SetActive(true);
+    }
 
 	public void checkWin(int answerToFinish)
 	{

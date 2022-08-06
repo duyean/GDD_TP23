@@ -9,7 +9,11 @@ public class levelWin : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collider)
     {
-        Destroy(treasure);
-        WinUI.Instance.winUI.SetActive(true);
+        if (win)
+        {
+            Destroy(treasure);
+            WinUI.Instance.winUI.SetActive(true);
+        }
+
     }
 }

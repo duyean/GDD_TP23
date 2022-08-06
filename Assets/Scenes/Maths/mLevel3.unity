@@ -9674,6 +9674,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Treasure
       objectReference: {fileID: 0}
+    - target: {fileID: 4435991787935342497, guid: 90d3c680ee5de1e4098688c89cd6746a, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4435991787935342498, guid: 90d3c680ee5de1e4098688c89cd6746a, type: 3}
       propertyPath: m_RootOrder
       value: 3
@@ -9838,7 +9842,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9672372362e8bfc4c9440334d4631ac3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  answerToFinish: 0
+  answerToFinish: 4
 --- !u!1 &1716045619
 GameObject:
   m_ObjectHideFlags: 0
