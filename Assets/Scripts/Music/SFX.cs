@@ -73,7 +73,7 @@ public class SFX : Singleton<SFX>
 
     public void LoseSound()
     {
-        sfxSource.PlayOneShot(wrong);
+        sfxSource.PlayOneShot(wrong,sfxSource.volume*0.25f);
     }
 
 

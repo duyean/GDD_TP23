@@ -24,7 +24,7 @@ public class SettingMenu : Singleton<SettingMenu>
     public void Menu()
     {
         SceneManager.LoadScene("MainMenu");
-        gameObject.SetActive(false);
+        settingMenu.SetActive(false);
     }
 
 }
