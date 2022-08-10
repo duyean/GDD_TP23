@@ -8,7 +8,6 @@ public class AnswerCheck : MonoBehaviour
 {
 	public GameObject coin;
 	public List<GameObject> Slots;
-	public DragDrop dragDrop;
 
 	public TextMeshProUGUI questionText;
 	public TextMeshProUGUI wrongAnswerText;
@@ -62,7 +61,6 @@ public class AnswerCheck : MonoBehaviour
 
 	public void CheckAnswer()
     {
-		//dragDrop = GameObject.FindGameObjectWithTag("Item").GetComponent<DragDrop>();
 		
 		if (!correct)
 		{
@@ -100,7 +98,6 @@ public class AnswerCheck : MonoBehaviour
 				wrongAnswerText.enabled = true;
 				SFX.Instance.LoseSound();
 				Invoke(nameof(TryAgain), 2f);
-				//dragDrop.ReturnPos();
 			}
 		}
 		if(correct)
