@@ -10,9 +10,6 @@ public class MovementScript : MonoBehaviour
     private float moveSpeed, jumpForce;
 
     private bool moveLeft, moveRight;
-
-    public GameObject groundedCheck;
-
     // Start is called before the first frame update
     void Start()
     {
