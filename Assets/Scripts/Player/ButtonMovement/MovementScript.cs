@@ -36,7 +36,7 @@ public class MovementScript : MonoBehaviour
 
     public void Jump()
     {
-        if (rb.velocity.y == 0 && gameObject.GetComponent<groundedOrNot>().grounded)
+        if (rb.velocity.y == 0 && gameObject.GetComponent<GroundedOrNot>().grounded)
         {
             rb.AddForce(Vector2.up * jumpForce);
             SFX.Instance.JumpSound();

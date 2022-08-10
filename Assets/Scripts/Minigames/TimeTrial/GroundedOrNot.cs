@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class groundedOrNot : MonoBehaviour
+public class GroundedOrNot : MonoBehaviour
 {
     public bool grounded;
     private void Start()
