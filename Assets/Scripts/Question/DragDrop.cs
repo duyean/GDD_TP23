@@ -5,13 +5,14 @@ using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using TMPro;
 
-public class DragDrop : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDragHandler
+public class DragDrop : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDragHandler, IPointerDownHandler
 {
     public Canvas canvas; 
-    private RectTransform rectTransform;
+    public RectTransform rectTransform;
     private CanvasGroup canvasGroup;
     public string itemValue;
     public TextMeshProUGUI valueText;
+    public Vector2 originalPos;
 
     public void Start()
     {
@@ -20,7 +21,9 @@ public class DragDrop : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDrag
         rectTransform = GetComponent<RectTransform>();
         canvasGroup = GetComponent<CanvasGroup>();
         valueText.SetText(itemValue);
+        
     }
+
 
     public void OnBeginDrag(PointerEventData eventData)
     {
@@ -40,5 +43,10 @@ public class DragDrop : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDrag
         //Set item to translucent when no longer dragging
         canvasGroup.alpha = 1f;
         canvasGroup.blocksRaycasts = true;
+    }
+
+    public void OnPointerDown(PointerEventData eventData)
+    {
+        originalPos = rectTransform.anchoredPosition;
     }
 }

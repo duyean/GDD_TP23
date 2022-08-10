@@ -8,6 +8,7 @@ public class AnswerCheck : MonoBehaviour
 {
 	public GameObject coin;
 	public List<GameObject> Slots;
+	public DragDrop dragDrop;
 
 	public TextMeshProUGUI questionText;
 	public TextMeshProUGUI wrongAnswerText;
@@ -55,11 +56,14 @@ public class AnswerCheck : MonoBehaviour
 		//wrongAnswerText.color = Color.red;
 		wrongAnswerText.enabled = false;
 		movementButtons = GameObject.FindGameObjectWithTag("MovementButtons").GetComponentInChildren<Canvas>();
+		
 	}
 
+	
 
 	void CheckAnswer()
     {
+		dragDrop = GameObject.FindGameObjectWithTag("Item").GetComponent<DragDrop>();
 		if (!correct)
 		{
 			//Sort dictionary
@@ -92,10 +96,12 @@ public class AnswerCheck : MonoBehaviour
 
 			if (!correct)
 			{
+
 				sortedValues.Clear();
 				wrongAnswerText.enabled = true;
 				SFX.Instance.LoseSound();
-				Invoke(nameof(TryAgain), 2f);				
+				Invoke(nameof(TryAgain), 2f);
+				dragDrop.rectTransform.anchoredPosition = dragDrop.originalPos;
 			}
 		}
 		if(correct)
