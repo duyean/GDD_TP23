@@ -13,6 +13,7 @@ public class DragDrop : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDrag
     public string itemValue;
     public TextMeshProUGUI valueText;
     public Vector2 originalPos;
+    public AnswerCheck answerCheck;
 
     public void Start()
     {
@@ -24,9 +25,16 @@ public class DragDrop : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDrag
         
     }
 
+    public void ReturnPos()
+    {
+        rectTransform.anchoredPosition = originalPos;
+    }
+
 
     public void OnBeginDrag(PointerEventData eventData)
     {
+        answerCheck = GetComponentInParent<AnswerCheck>();
+        originalPos = rectTransform.anchoredPosition;
         //Set item transparent when dragging
         canvasGroup.alpha = .4f;
         //Allows raycasts to go through the item to detect the slot
@@ -47,6 +55,5 @@ public class DragDrop : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDrag
 
     public void OnPointerDown(PointerEventData eventData)
     {
-        originalPos = rectTransform.anchoredPosition;
     }
 }

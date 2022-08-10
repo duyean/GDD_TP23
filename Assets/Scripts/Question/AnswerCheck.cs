@@ -55,15 +55,15 @@ public class AnswerCheck : MonoBehaviour
 		//correctText.color = Color.green;
 		//wrongAnswerText.color = Color.red;
 		wrongAnswerText.enabled = false;
-		movementButtons = GameObject.FindGameObjectWithTag("MovementButtons").GetComponentInChildren<Canvas>();
-		
+		movementButtons = GameObject.FindGameObjectWithTag("MovementButtons").GetComponentInChildren<Canvas>();		
 	}
 
 	
 
 	void CheckAnswer()
     {
-		dragDrop = GameObject.FindGameObjectWithTag("Item").GetComponent<DragDrop>();
+		//dragDrop = GameObject.FindGameObjectWithTag("Item").GetComponent<DragDrop>();
+		
 		if (!correct)
 		{
 			//Sort dictionary
@@ -101,7 +101,7 @@ public class AnswerCheck : MonoBehaviour
 				wrongAnswerText.enabled = true;
 				SFX.Instance.LoseSound();
 				Invoke(nameof(TryAgain), 2f);
-				dragDrop.rectTransform.anchoredPosition = dragDrop.originalPos;
+				//dragDrop.ReturnPos();
 			}
 		}
 		if(correct)
