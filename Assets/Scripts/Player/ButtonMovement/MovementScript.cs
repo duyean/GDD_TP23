@@ -11,6 +11,8 @@ public class MovementScript : MonoBehaviour
 
     private bool moveLeft, moveRight;
 
+    public GameObject groundedCheck;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -25,21 +27,22 @@ public class MovementScript : MonoBehaviour
     {
         moveLeft = true;
         Vector3 scale = new Vector3(-1,1,1);
-        GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>().localScale = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>().localScale =scale;
+        GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>().localScale = scale;
     }
 
     public void MoveRight()
     {
         moveRight = true;
         Vector3 scale = new Vector3(1, 1, 1);
-        GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>().localScale = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>().localScale = scale;
+        GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>().localScale = scale;
     }
 
     public void Jump()
     {
-        if (rb.velocity.y == 0)
+        if (rb.velocity.y == 0 && gameObject.GetComponent<groundedOrNot>().grounded)
         {
             rb.AddForce(Vector2.up * jumpForce);
+            SFX.Instance.JumpSound();
         }
     }
 

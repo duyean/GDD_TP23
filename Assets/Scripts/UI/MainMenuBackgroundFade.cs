@@ -5,36 +5,28 @@ using UnityEngine.UI;
 
 public class MainMenuBackgroundFade : MonoBehaviour
 {
-    [SerializeField]
-    GameObject[] BGImages;
+    [SerializeField] GameObject[] BGImages;
 
-    int BGNum = 0;
+    public int BGNum = 0;
+    public float elapsedTime = 8;
 
-    float a;
-    float elapsedTime = 8;
-    private void Start()
-    {
-
-    } 
-
+    private Color bgCol;
+    private Color tempColor;
     public void Update()
     {
-
         elapsedTime -= Time.deltaTime;
         if (elapsedTime<=0)
         {
             fade(BGNum);
         }
-
-        
     }
 
     public void fade(int bg)
     {
-        Color bgCol = BGImages[bg].GetComponent<Image>().color;
+        bgCol = BGImages[bg].GetComponent<Image>().color;
         if (bgCol.a >= 0 )
         {
-            Color tempColor = bgCol;
+            tempColor = bgCol;
             tempColor.a -= Time.deltaTime * 0.3f;
             BGImages[bg].GetComponent<Image>().color = tempColor;
         }
@@ -52,17 +44,12 @@ public class MainMenuBackgroundFade : MonoBehaviour
 
                 for (int i = 0; i <= 2; i++)
                 {
-                    Color tempColor = bgCol;
+                    tempColor = bgCol;
                     tempColor.a = 1;
                     BGImages[i].GetComponent<Image>().color = tempColor;
                 }
                 BGNum = 0;
-
             }
-
         }
     }
-    
-
-
 }

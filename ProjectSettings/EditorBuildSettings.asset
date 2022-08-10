@@ -13,7 +13,7 @@ EditorBuildSettings:
     guid: 054cf1d09b6f8244490d4323b50f6f3d
   - enabled: 1
     path: Assets/Scenes/Chinese/cLevel0.unity
-    guid: 75ca5f2bde789a64eae1036e7bdb445c
+    guid: 01077c0d1e9a18541b3e816fb72009a4
   - enabled: 1
     path: Assets/Scenes/Chinese/cLevel1.unity
     guid: 7cb9ef8bcadc95246ae012fd8107e4c6

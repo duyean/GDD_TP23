@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FollowGuyScript : MonoBehaviour
+public class CameraFollowPlayer : MonoBehaviour
 {
     // this script takes in the player's transform updates
 

@@ -98,8 +98,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c379f753ad8ea5d49ab03d1d94009144, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  treasure: {fileID: 4435991787935342494}
-  win: 1
+  treasure: {fileID: 0}
+  win: 0
 --- !u!61 &4435991787935342497
 BoxCollider2D:
   m_ObjectHideFlags: 0

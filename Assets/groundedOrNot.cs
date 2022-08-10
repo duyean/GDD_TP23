@@ -1,0 +1,28 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class groundedOrNot : MonoBehaviour
+{
+    public bool grounded;
+    private void Start()
+    {
+        grounded = false;
+    }
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if(collision.transform.gameObject.layer == LayerMask.NameToLayer("Ground"))
+        {
+            grounded = true;
+        }
+
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.transform.gameObject.layer == LayerMask.NameToLayer("Ground"))
+        {
+            grounded = false;
+        }
+    }
+}

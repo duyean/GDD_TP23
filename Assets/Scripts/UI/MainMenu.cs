@@ -7,9 +7,6 @@ public class MainMenu : MonoBehaviour
 {
     public GameObject LevelSelection;
 
-
-
-
     public void SelectLevel()
     {
         // activating level selection UI
@@ -29,5 +26,11 @@ public class MainMenu : MonoBehaviour
     public void quitGame()
     {
         Application.Quit();
+    }
+
+    public void CloseLevelSelection()
+    {
+        // closes level selection used for back button in level select
+        LevelSelection.SetActive(false) ;
     }
 }

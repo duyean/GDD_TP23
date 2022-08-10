@@ -11,6 +11,8 @@ TagManager:
   - Item
   - Wall
   - Moveable_Block
+  - MovementButtons
+  - AnswerButton
   layers:
   - Default
   - TransparentFX
@@ -50,4 +52,7 @@ TagManager:
     locked: 0
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Arrow
+    uniqueID: 3032753211
     locked: 0

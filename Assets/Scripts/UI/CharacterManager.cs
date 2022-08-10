@@ -9,15 +9,13 @@ public class CharacterManager : Singleton<CharacterManager>
     public string pet = "Cat";
     public TextMeshProUGUI indicationText;
 
-
-    [SerializeField]
-    GameObject menu;
+    [SerializeField] private GameObject menu;
 
     // change pet 
     public void ChangePet(string petName)
     {
         pet = petName;
-        indicationText.text = returnGender(isMale) + " And " + petName;
+        indicationText.text = ReturnGender(isMale) + " And " + petName;
         // add dingdong / correct sound effect here
     }
 
@@ -25,20 +23,17 @@ public class CharacterManager : Singleton<CharacterManager>
     public void ChangeGender(bool maleOrNo)
     {
         isMale = maleOrNo;
-        indicationText.text = returnGender(maleOrNo) + " And " + pet;
+        indicationText.text = ReturnGender(maleOrNo) + " And " + pet;
         // add sound effect here
     }
 
-    public string returnGender(bool isMale)
+    public string ReturnGender(bool isMale)
     {
         if (isMale)
         {
             return "Boy";
         }
-        else
-        {
-            return "Girl";
-        }
+        return "Girl";
     }
 
     public void OpenCustomizeMenu()
@@ -49,10 +44,5 @@ public class CharacterManager : Singleton<CharacterManager>
     public void CloseCustomizeMenu()
     {
         menu.SetActive(false);
-    }
-
-    private void Update()
-    {
-        
     }
 }

@@ -1,30 +1,33 @@
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
-using UnityEngine.Events;
 using UnityEngine.UI;
 using TMPro;
+
 public class AnswerCheck : MonoBehaviour
 {
-	//public GameObject player;
-	//public Rigidbody2D rb2d;
 	public GameObject coin;
 	public List<GameObject> Slots;
+
 	public TextMeshProUGUI questionText;
 	public TextMeshProUGUI wrongAnswerText;
 	public TextMeshProUGUI correctText;
+
 	public QuestionCounter questionCounter;
 	public QuestionLoader questionLoader;
 	public Data question;
 	public List<string> excludedSubjects;
+
 	public bool correct;
 	public bool sort;
+
 	public Button answerButton;
 	public Button closeButton;
-	public Canvas questionCanvas;
+	public Canvas movementButtons;
+
+	public GameObject questionCanvas;
 	public GameObject questionFinishedCanvas;
-	//public GameObject controlButtons;
+
 
 
 	[SerializeField]
@@ -33,6 +36,9 @@ public class AnswerCheck : MonoBehaviour
 	[SerializeField]
 	GameObject treasure;
 
+	[SerializeField]
+	GameObject arrow;
+
 	private Dictionary<string, string> slotValues = new Dictionary<string, string>();
 	private Dictionary<string, string> sortedValues = new Dictionary<string, string>();
 	private Dictionary<string, string> answers = new Dictionary<string, string>();
@@ -40,21 +46,22 @@ public class AnswerCheck : MonoBehaviour
 	// Start is called before the first frame update
 	void Start()
 	{
-		//player = GameObject.FindGameObjectWithTag("Player");
-		//rb2d = player.GetComponent<Rigidbody2D>();
 		correct = false;
 		Button checkButton = answerButton.GetComponent<Button>();
 		Button canvasCloseButton = closeButton.GetComponent<Button>();
-		checkButton.onClick.AddListener(CheckAnswer); //When button is clicked, calls the CheckAnswer function
-		canvasCloseButton.onClick.AddListener(CloseCanvas);
-		correctText.color = Color.green;
-		wrongAnswerText.color = Color.red;
+        checkButton.onClick.AddListener(CheckAnswer); //When button is clicked, calls the CheckAnswer function
+        canvasCloseButton.onClick.AddListener(CloseCanvas); //When close button is clicked, calls CloseCanvas function
+		//correctText.color = Color.green;
+		//wrongAnswerText.color = Color.red;
 		wrongAnswerText.enabled = false;
+		movementButtons = GameObject.FindGameObjectWithTag("MovementButtons").GetComponentInChildren<Canvas>();		
 	}
 
+	
 
-	void CheckAnswer()
+	public void CheckAnswer()
     {
+		
 		if (!correct)
 		{
 			//Sort dictionary
@@ -67,7 +74,6 @@ public class AnswerCheck : MonoBehaviour
 					answers.Add(new string("Slot (" + i + ")"), question.finalAnswers[i]);
 				}
 			}
-			Debug.Log(!excludedSubjects.Contains(question.subject));
 			if (!excludedSubjects.Contains(question.subject))
 			{
 				//Then check values against answer array
@@ -90,14 +96,18 @@ public class AnswerCheck : MonoBehaviour
 			{
 				sortedValues.Clear();
 				wrongAnswerText.enabled = true;
-				Invoke("TryAgain", 2f);
+				SFX.Instance.LoseSound();
+				Invoke(nameof(TryAgain), 2f);
 			}
 		}
 		if(correct)
         {
+			SFX.Instance.WinSound();
+			questionCanvas.SetActive(false);
 			coin.SetActive(false);
 			questionCounter.answerToFinish--;
 			spawnPlatform(questionLoader.question);
+			spawnArrow();
 			checkWin(questionCounter.answerToFinish);
 		}
 	}
@@ -110,7 +120,7 @@ public class AnswerCheck : MonoBehaviour
 	void CloseCanvas()
     {
 		questionFinishedCanvas.SetActive(false);
-		//controlButtons.SetActive(true); //Enables movement buttons when second canvas is closed
+		movementButtons.enabled = true;
 	}
 	public void SortValues()
     {
@@ -138,17 +148,15 @@ public class AnswerCheck : MonoBehaviour
 		slotValues.Remove(key);
 	}
 
-	// Update is called once per frame
-	void Update()
-	{
-       
-    }
-
-	//functions to add
 	public void spawnPlatform(int questionNum)
 	{
 		tileMapSpawns[questionNum - 1].SetActive(true);
 	}
+
+	public void spawnArrow()
+    {
+		arrow.SetActive(true);
+    }
 
 	public void checkWin(int answerToFinish)
 	{
@@ -157,5 +165,4 @@ public class AnswerCheck : MonoBehaviour
 			treasure.GetComponent<levelWin>().win = true;
 		}
 	}
-
 }

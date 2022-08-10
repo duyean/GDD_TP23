@@ -7,6 +7,24 @@ public class SFX : Singleton<SFX>
 {
     [SerializeField] Slider SFXSlider;
 
+    [SerializeField]
+    AudioSource sfxSource;
+
+    [SerializeField]
+    AudioClip click;
+
+    [SerializeField]
+    AudioClip jump;
+
+    [SerializeField]
+    AudioClip win;
+
+    [SerializeField]
+    AudioClip wrong;
+
+
+
+
     private void Start()
     {
         if (!PlayerPrefs.HasKey("SFXVolume"))
@@ -22,19 +40,42 @@ public class SFX : Singleton<SFX>
 
     public void changeSFXVolume()
     {
-        AudioListener.volume = SFXSlider.value;
+        sfxSource.volume = SFXSlider.value;
         saveSFXPref();
     }
 
 
     private void loadSFX()
     {
-        SFXSlider.value = PlayerPrefs.GetFloat("BGMVolume");
+        //SFXSlider.value = PlayerPrefs.GetFloat("BGMVolume");
     }
 
     private void saveSFXPref()
     {
         PlayerPrefs.SetFloat("SFXVolume", SFXSlider.value);
     }
+
+    public void ClickSound()
+    {
+        sfxSource.PlayOneShot(click);
+    }
+
+    public void JumpSound()
+    {
+        //sfxSource.PlayOneShot(jump);
+    }
+
+    public void WinSound()
+    {
+
+        sfxSource.PlayOneShot(win);
+    }
+
+    public void LoseSound()
+    {
+        sfxSource.PlayOneShot(wrong,sfxSource.volume*0.25f);
+    }
+
+
 }
 

@@ -4,36 +4,31 @@ using UnityEngine;
 
 public class Coin : MonoBehaviour
 {
-
 	public GameObject canvas;
 	public string subject;
 	public int level;
 	public int questionNumber;
+    private GameObject movementButtons;
+    private MovementScript movementScript;
 	
     // Start is called before the first frame update
     void Start()
 	{
-        canvas.SetActive(false);       
+        movementScript = GameObject.FindGameObjectWithTag("Player").GetComponent<MovementScript>();
+        canvas.SetActive(false);
+        movementButtons = GameObject.FindGameObjectWithTag("MovementButtons");
     }
-
-	// Update is called once per frame
-	void Update()
-	{
-
-	}
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
 		if (collision.transform.tag == "Player")
 		{
 			canvas.SetActive(true);
-            GameObject.FindGameObjectWithTag("Player").GetComponent<MovementScript>().StopMoving();
-            if (GameObject.FindGameObjectWithTag("MovementButtons") != null)
+            movementScript.StopMoving();
+            if (movementButtons != null)
             {
-                GameObject.FindGameObjectWithTag("MovementButtons").SetActive(false);
+                movementButtons.GetComponentInChildren<Canvas>().enabled = false;
             }
-
         }
-        
 	}
 }
