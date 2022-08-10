@@ -20,6 +20,7 @@ public class AnswerCheck : MonoBehaviour
 
 	public bool correct;
 	public bool sort;
+	public int hint = 0;
 
 	public Button answerButton;
 	public Button closeButton;
@@ -60,8 +61,7 @@ public class AnswerCheck : MonoBehaviour
 	
 
 	public void CheckAnswer()
-    {
-		
+    {		
 		if (!correct)
 		{
 			//Sort dictionary
@@ -94,11 +94,16 @@ public class AnswerCheck : MonoBehaviour
 
 			if (!correct)
 			{
+				hint += 1;
 				sortedValues.Clear();
 				wrongAnswerText.enabled = true;
 				SFX.Instance.LoseSound();
 				Invoke(nameof(TryAgain), 2f);
 			}
+			if (hint ==3)
+            {
+
+            }
 		}
 		if(correct)
         {
