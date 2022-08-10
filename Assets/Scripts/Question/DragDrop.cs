@@ -13,28 +13,35 @@ public class DragDrop : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDrag
     public string itemValue;
     public TextMeshProUGUI valueText;
     public Vector2 originalPos;
+    public Button checkButton;
+    public GameObject questionParent;
     public AnswerCheck answerCheck;
 
     public void Start()
     {
+        answerCheck = questionParent.GetComponent<AnswerCheck>();
         valueText = GetComponentInChildren<TextMeshProUGUI>();
         canvas = GetComponentInParent<Canvas>();
         rectTransform = GetComponent<RectTransform>();
         canvasGroup = GetComponent<CanvasGroup>();
         valueText.SetText(itemValue);
-        
+        checkButton = GameObject.FindGameObjectWithTag("AnswerButton").GetComponent<Button>(); 
+        checkButton.onClick.AddListener(ExecuteCheck); //When button is clicked, calls the ExecuteCheck function
+        originalPos = rectTransform.anchoredPosition;
     }
 
-    public void ReturnPos()
+    //Set the items back to original position if the answer is wrong
+    void ExecuteCheck()
     {
-        rectTransform.anchoredPosition = originalPos;
+        if (answerCheck.correct == false)
+        {
+            rectTransform.anchoredPosition = originalPos;
+        }
     }
-
 
     public void OnBeginDrag(PointerEventData eventData)
     {
-        answerCheck = GetComponentInParent<AnswerCheck>();
-        originalPos = rectTransform.anchoredPosition;
+        
         //Set item transparent when dragging
         canvasGroup.alpha = .4f;
         //Allows raycasts to go through the item to detect the slot
@@ -55,5 +62,6 @@ public class DragDrop : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDrag
 
     public void OnPointerDown(PointerEventData eventData)
     {
+
     }
 }

@@ -229,8 +229,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canvas: {fileID: 0}
+  rectTransform: {fileID: 0}
   itemValue: 4
   valueText: {fileID: 1838541352124162153}
+  originalPos: {x: 0, y: 0}
+  checkButton: {fileID: 0}
+  questionParent: {fileID: 3687099115687641600, guid: 6f5b011a0f9d36e448bcbf67d28df4d5, type: 3}
+  answerCheck: {fileID: 0}
 --- !u!225 &2170202485578305280
 CanvasGroup:
   m_ObjectHideFlags: 0

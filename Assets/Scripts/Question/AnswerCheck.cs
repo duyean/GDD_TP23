@@ -50,8 +50,8 @@ public class AnswerCheck : MonoBehaviour
 		correct = false;
 		Button checkButton = answerButton.GetComponent<Button>();
 		Button canvasCloseButton = closeButton.GetComponent<Button>();
-		checkButton.onClick.AddListener(CheckAnswer); //When button is clicked, calls the CheckAnswer function
-		canvasCloseButton.onClick.AddListener(CloseCanvas); //When close button is clicked, calls CloseCanvas function
+        checkButton.onClick.AddListener(CheckAnswer); //When button is clicked, calls the CheckAnswer function
+        canvasCloseButton.onClick.AddListener(CloseCanvas); //When close button is clicked, calls CloseCanvas function
 		//correctText.color = Color.green;
 		//wrongAnswerText.color = Color.red;
 		wrongAnswerText.enabled = false;
@@ -60,7 +60,7 @@ public class AnswerCheck : MonoBehaviour
 
 	
 
-	void CheckAnswer()
+	public void CheckAnswer()
     {
 		//dragDrop = GameObject.FindGameObjectWithTag("Item").GetComponent<DragDrop>();
 		
@@ -96,7 +96,6 @@ public class AnswerCheck : MonoBehaviour
 
 			if (!correct)
 			{
-
 				sortedValues.Clear();
 				wrongAnswerText.enabled = true;
 				SFX.Instance.LoseSound();

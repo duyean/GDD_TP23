@@ -212,7 +212,7 @@ GameObject:
   - component: {fileID: 5373327225076012058}
   m_Layer: 5
   m_Name: CheckButton
-  m_TagString: Untagged
+  m_TagString: AnswerButton
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1052,6 +1052,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   coin: {fileID: 3687099115320528118}
   Slots: []
+  dragDrop: {fileID: 0}
   questionText: {fileID: 3687099115624470260}
   wrongAnswerText: {fileID: 957261607830762911}
   correctText: {fileID: 8028542804541405041}
@@ -1070,6 +1071,7 @@ MonoBehaviour:
   tileMapSpawns:
   - {fileID: 0}
   treasure: {fileID: 0}
+  arrow: {fileID: 0}
 --- !u!1 &5780421848358765133
 GameObject:
   m_ObjectHideFlags: 0
