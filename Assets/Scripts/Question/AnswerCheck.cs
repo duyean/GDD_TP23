@@ -12,6 +12,8 @@ public class AnswerCheck : MonoBehaviour
 	public TextMeshProUGUI questionText;
 	public TextMeshProUGUI wrongAnswerText;
 	public TextMeshProUGUI correctText;
+	public TextMeshProUGUI hintAnswerText;
+	public TextMeshProUGUI triesLeftText;
 
 	public QuestionCounter questionCounter;
 	public QuestionLoader questionLoader;
@@ -20,12 +22,15 @@ public class AnswerCheck : MonoBehaviour
 
 	public bool correct;
 	public bool sort;
+	public int hint;
 
 	public Button answerButton;
-	public Button closeButton;
+	public Button closeFinishedButton;
+	public Button closeHintButton;
 	public Canvas movementButtons;
 
 	public GameObject questionCanvas;
+	public GameObject hintCanvas;
 	public GameObject questionFinishedCanvas;
 
 
@@ -46,22 +51,23 @@ public class AnswerCheck : MonoBehaviour
 	// Start is called before the first frame update
 	void Start()
 	{
+		hint = 3;
 		correct = false;
 		Button checkButton = answerButton.GetComponent<Button>();
-		Button canvasCloseButton = closeButton.GetComponent<Button>();
-        checkButton.onClick.AddListener(CheckAnswer); //When button is clicked, calls the CheckAnswer function
-        canvasCloseButton.onClick.AddListener(CloseCanvas); //When close button is clicked, calls CloseCanvas function
+		Button canvasCloseFinishedButton = closeFinishedButton.GetComponent<Button>();
+		Button canvasCloseHintButton = closeHintButton.GetComponent<Button>();
+		checkButton.onClick.AddListener(CheckAnswer); //When button is clicked, calls the function in brackets
+        canvasCloseFinishedButton.onClick.AddListener(CloseFinishedCanvas);
+		canvasCloseHintButton.onClick.AddListener(CloseHintCanvas);
 		//correctText.color = Color.green;
 		//wrongAnswerText.color = Color.red;
 		wrongAnswerText.enabled = false;
-		movementButtons = GameObject.FindGameObjectWithTag("MovementButtons").GetComponentInChildren<Canvas>();		
+		movementButtons = GameObject.FindGameObjectWithTag("MovementButtons").GetComponentInChildren<Canvas>();
+		triesLeftText.text = "Tries left: " + hint;
 	}
 
-	
-
 	public void CheckAnswer()
-    {
-		
+    {		
 		if (!correct)
 		{
 			//Sort dictionary
@@ -91,14 +97,20 @@ public class AnswerCheck : MonoBehaviour
 				questionFinishedCanvas.SetActive(true);
 				wrongAnswerText.enabled = false;
 			}
-
 			if (!correct)
 			{
+				hint -= 1;
 				sortedValues.Clear();
 				wrongAnswerText.enabled = true;
 				SFX.Instance.LoseSound();
 				Invoke(nameof(TryAgain), 2f);
 			}
+			if (hint == 0)
+			{
+				hintCanvas.SetActive(true);
+				questionCanvas.SetActive(false);
+				sortedValues.Clear();
+            }
 		}
 		if(correct)
         {
@@ -110,6 +122,7 @@ public class AnswerCheck : MonoBehaviour
 			spawnArrow();
 			checkWin(questionCounter.answerToFinish);
 		}
+		triesLeftText.text = "Tries left: " + hint;
 	}
 
 	void TryAgain()
@@ -117,11 +130,16 @@ public class AnswerCheck : MonoBehaviour
 		wrongAnswerText.enabled = false;
     }
 
-	void CloseCanvas()
+	void CloseFinishedCanvas()
     {
 		questionFinishedCanvas.SetActive(false);
 		movementButtons.enabled = true;
 	}
+	void CloseHintCanvas()
+    {
+		hintCanvas.SetActive(false);
+		movementButtons.enabled = true;
+    }
 	public void SortValues()
     {
 		//From https://www.tutorialsteacher.com/linq/linq-sorting-operators-orderby-orderbydescending#orderby
