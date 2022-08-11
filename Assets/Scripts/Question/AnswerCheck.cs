@@ -64,7 +64,7 @@ public class AnswerCheck : MonoBehaviour
 		wrongAnswerText.enabled = false;
 		movementButtons = GameObject.FindGameObjectWithTag("MovementButtons").GetComponentInChildren<Canvas>();
 		triesLeftText.text = "Tries left: " + tries;
-		hintAnswerText.SetText(question.hint);
+		
 	}
 
 	public void CheckAnswer()

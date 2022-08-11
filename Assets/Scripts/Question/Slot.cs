@@ -5,9 +5,9 @@ using UnityEngine.EventSystems;
 
 public class Slot : MonoBehaviour, IDropHandler
 {
-    public string value; //Value of the slot
+    public string value;
     public AnswerCheck answerCheck;
-    public string itemIn;
+    public string itemIn; 
 
     public void Start()
     {
@@ -28,13 +28,14 @@ public class Slot : MonoBehaviour, IDropHandler
     //Reset slot value when item is dragged out
     private void OnTriggerExit2D(Collider2D collision)
     {
+        
         answerCheck.RemoveValues(gameObject.name);
-        value = null; //Necessary code to debug the slot no longer getting values
-
+        value = null;
+        
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        value = itemIn; //Necessary code to debug the slot no longer getting values
-
+        //To debug the slot no longer getting values
+        value = itemIn;
     }
 }
