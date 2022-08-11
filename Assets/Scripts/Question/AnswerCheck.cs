@@ -63,7 +63,7 @@ public class AnswerCheck : MonoBehaviour
 		//wrongAnswerText.color = Color.red;
 		wrongAnswerText.enabled = false;
 		movementButtons = GameObject.FindGameObjectWithTag("MovementButtons").GetComponentInChildren<Canvas>();
-		triesLeftText.text = "Tries left: " + hint;
+		triesLeftText.text = "Tries left: " + tries;
 		
 	}
 
