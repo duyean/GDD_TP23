@@ -28,3 +28,4 @@ MonoBehaviour:
   finalAnswers:
   - 3
   hint: Hint
+  solution: Solution

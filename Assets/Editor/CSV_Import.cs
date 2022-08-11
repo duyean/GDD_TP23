@@ -27,6 +27,7 @@ public class CSV_Import
             data.questionID = int.Parse(splitData[2]);
             data.question = splitData[3];
             data.hint = splitData[7];
+            data.solution = splitData[8];
             foreach(string i in splitAnswerData)
             {
                 data.answers.Add(i);
