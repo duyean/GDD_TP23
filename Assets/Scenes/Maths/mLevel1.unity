@@ -10809,7 +10809,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1454685780}
   - component: {fileID: 1454685779}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Grid
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11431,7 +11431,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8967172386681878451}
   - component: {fileID: 8967172386681878450}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: collider (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11448,7 +11448,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8967172387445421031}
   - component: {fileID: 8967172387445421030}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: collider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11547,7 +11547,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8967172387931398190}
   - component: {fileID: 8967172387931398189}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: collider (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11616,7 +11616,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8967172388116992839}
   - component: {fileID: 8967172388116992832}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: platform2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11693,7 +11693,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8967172388628675166}
   - component: {fileID: 8967172388628675165}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: collider (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
