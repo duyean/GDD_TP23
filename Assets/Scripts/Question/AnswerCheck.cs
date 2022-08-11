@@ -137,6 +137,11 @@ public class AnswerCheck : MonoBehaviour
 	}
 	void CloseHintCanvas()
     {
+		coin.SetActive(false);
+		questionCounter.answerToFinish--;
+		spawnPlatform(questionLoader.question);
+		spawnArrow();
+		checkWin(questionCounter.answerToFinish);
 		hintCanvas.SetActive(false);
 		movementButtons.enabled = true;
     }
