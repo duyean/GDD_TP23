@@ -26,7 +26,7 @@ public class DragDrop : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDrag
         canvasGroup = GetComponent<CanvasGroup>();
         valueText.SetText(itemValue);
         checkButton = GameObject.FindGameObjectWithTag("AnswerButton").GetComponent<Button>(); 
-        checkButton.onClick.AddListener(ExecuteCheck); //When button is clicked, calls the ExecuteCheck function
+        checkButton.onClick.AddListener(ExecuteCheck); //When button is clicked, calls the corresponding function
         originalPos = rectTransform.anchoredPosition;
     }
 
