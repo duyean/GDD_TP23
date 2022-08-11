@@ -41,4 +41,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Maths/mLevel4.unity
     guid: 1e08327204e85214cbb3b785dcf68643
+  - enabled: 1
+    path: Assets/Scenes/English/eLevel0.unity
+    guid: 72adc278790414e4ea9cba863e39a57e
   m_configObjects: {}
