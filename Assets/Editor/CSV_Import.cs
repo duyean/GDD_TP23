@@ -26,6 +26,7 @@ public class CSV_Import
             data.levelNumber = int.Parse(splitData[1]);
             data.questionID = int.Parse(splitData[2]);
             data.question = splitData[3];
+            data.hint = splitData[7];
             foreach(string i in splitAnswerData)
             {
                 data.answers.Add(i);

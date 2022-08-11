@@ -13,4 +13,5 @@ public class Data : ScriptableObject
     public List<string> answers = new List<string>();
     public List<string> filledValues = new List<string>();
     public List<string> finalAnswers = new List<string>();
+    public string hint;
 }
