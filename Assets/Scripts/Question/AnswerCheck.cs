@@ -22,7 +22,7 @@ public class AnswerCheck : MonoBehaviour
 
 	public bool correct;
 	public bool sort;
-	public int hint;
+	public int tries;
 
 	public Button answerButton;
 	public Button closeFinishedButton;
@@ -51,7 +51,7 @@ public class AnswerCheck : MonoBehaviour
 	// Start is called before the first frame update
 	void Start()
 	{
-		hint = 3;
+		tries = 3;
 		correct = false;
 		Button checkButton = answerButton.GetComponent<Button>();
 		Button canvasCloseFinishedButton = closeFinishedButton.GetComponent<Button>();
@@ -64,6 +64,7 @@ public class AnswerCheck : MonoBehaviour
 		wrongAnswerText.enabled = false;
 		movementButtons = GameObject.FindGameObjectWithTag("MovementButtons").GetComponentInChildren<Canvas>();
 		triesLeftText.text = "Tries left: " + hint;
+		
 	}
 
 	public void CheckAnswer()
@@ -99,13 +100,13 @@ public class AnswerCheck : MonoBehaviour
 			}
 			if (!correct)
 			{
-				hint -= 1;
+				tries -= 1;
 				sortedValues.Clear();
 				wrongAnswerText.enabled = true;
 				SFX.Instance.LoseSound();
 				Invoke(nameof(TryAgain), 2f);
 			}
-			if (hint == 0)
+			if (tries == 0)
 			{
 				hintCanvas.SetActive(true);
 				questionCanvas.SetActive(false);
@@ -122,7 +123,7 @@ public class AnswerCheck : MonoBehaviour
 			spawnArrow();
 			checkWin(questionCounter.answerToFinish);
 		}
-		triesLeftText.text = "Tries left: " + hint;
+		triesLeftText.text = "Tries left: " + tries;
 	}
 
 	void TryAgain()
