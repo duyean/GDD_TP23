@@ -174,7 +174,7 @@ public class AnswerCheck : MonoBehaviour
 
 	public void spawnPlatform(int questionNum)
 	{
-		tileMapSpawns[questionNum - 1].SetActive(true);
+		tileMapSpawns[questionNum - 1].SetActive(!tileMapSpawns[questionNum - 1].activeSelf);
 	}
 
 	public void spawnArrow()
