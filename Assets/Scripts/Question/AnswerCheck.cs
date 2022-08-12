@@ -3,6 +3,7 @@ using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using System.Collections;
 
 public class AnswerCheck : MonoBehaviour
 {
@@ -38,6 +39,7 @@ public class AnswerCheck : MonoBehaviour
 	public GameObject questionFinishedCanvas;
 
 
+	string link;
 
 	[SerializeField]
 	GameObject[] tileMapSpawns;
@@ -55,6 +57,7 @@ public class AnswerCheck : MonoBehaviour
 	// Start is called before the first frame update
 	void Start()
 	{
+		link = question.hint;
 		tries = 5;
 		correct = false;
 		Button checkButton = answerButton.GetComponent<Button>();
@@ -70,7 +73,7 @@ public class AnswerCheck : MonoBehaviour
 		wrongAnswerText.enabled = false;
 		movementButtons = GameObject.FindGameObjectWithTag("MovementButtons").GetComponentInChildren<Canvas>();
 		triesLeftText.text = "Tries left: " + tries;
-		//hintImage.GetComponent<Image>().sprite = images;
+		//hintImage.GetComponent<Image>().sprite = question.hint;
 		solutionAnswerText.SetText(question.solution);
 	}
 
@@ -113,12 +116,13 @@ public class AnswerCheck : MonoBehaviour
 				SFX.Instance.LoseSound();
 				Invoke(nameof(TryAgain), 2f);
 			}
-			if (tries == 2)
+			if (tries == 2 && !correct)
 			{
 				hintCanvas.SetActive(true);
-				questionCanvas.SetActive(false);
+				StartCoroutine(GetComponent<HintScript>().LoadImageCoroutine(link));
+				//questionCanvas.SetActive(false);
             }
-			if (tries == 0)
+			if (tries == 0 && !correct)
 			{
 				solutionCanvas.SetActive(true);
 				questionCanvas.SetActive(false);
@@ -126,6 +130,7 @@ public class AnswerCheck : MonoBehaviour
 		}
 		if(correct)
         {
+			hintCanvas.SetActive(false);
 			SFX.Instance.WinSound();
 			questionCanvas.SetActive(false);
 			coin.SetActive(false);
@@ -150,7 +155,7 @@ public class AnswerCheck : MonoBehaviour
 	void CloseHintCanvas()
     {
 		hintCanvas.SetActive(false);
-		questionCanvas.SetActive(true);
+		//questionCanvas.SetActive(true);
 	}
 	void CloseSolutionCanvas()
     {
