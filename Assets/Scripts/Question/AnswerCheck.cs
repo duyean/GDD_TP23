@@ -3,6 +3,7 @@ using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using System.Collections;
 
 public class AnswerCheck : MonoBehaviour
 {
@@ -12,8 +13,10 @@ public class AnswerCheck : MonoBehaviour
 	public TextMeshProUGUI questionText;
 	public TextMeshProUGUI wrongAnswerText;
 	public TextMeshProUGUI correctText;
-	public TextMeshProUGUI hintAnswerText;
+	public TextMeshProUGUI solutionAnswerText;
 	public TextMeshProUGUI triesLeftText;
+
+	public Image hintImage;
 
 	public QuestionCounter questionCounter;
 	public QuestionLoader questionLoader;
@@ -27,13 +30,16 @@ public class AnswerCheck : MonoBehaviour
 	public Button answerButton;
 	public Button closeFinishedButton;
 	public Button closeHintButton;
+	public Button closeSolutionButton;
 	public Canvas movementButtons;
 
 	public GameObject questionCanvas;
 	public GameObject hintCanvas;
+	public GameObject solutionCanvas;
 	public GameObject questionFinishedCanvas;
 
 
+	string link;
 
 	[SerializeField]
 	GameObject[] tileMapSpawns;
@@ -51,20 +57,24 @@ public class AnswerCheck : MonoBehaviour
 	// Start is called before the first frame update
 	void Start()
 	{
-		tries = 3;
+		link = question.hint;
+		tries = 5;
 		correct = false;
 		Button checkButton = answerButton.GetComponent<Button>();
 		Button canvasCloseFinishedButton = closeFinishedButton.GetComponent<Button>();
 		Button canvasCloseHintButton = closeHintButton.GetComponent<Button>();
+		Button canvasCloseSolutionButton = closeSolutionButton.GetComponent<Button>();
 		checkButton.onClick.AddListener(CheckAnswer); //When button is clicked, calls the function in brackets
         canvasCloseFinishedButton.onClick.AddListener(CloseFinishedCanvas);
 		canvasCloseHintButton.onClick.AddListener(CloseHintCanvas);
+		canvasCloseSolutionButton.onClick.AddListener(CloseSolutionCanvas);
 		//correctText.color = Color.green;
 		//wrongAnswerText.color = Color.red;
 		wrongAnswerText.enabled = false;
 		movementButtons = GameObject.FindGameObjectWithTag("MovementButtons").GetComponentInChildren<Canvas>();
 		triesLeftText.text = "Tries left: " + tries;
-		hintAnswerText.SetText(question.solution);
+		//hintImage.GetComponent<Image>().sprite = question.hint;
+		solutionAnswerText.SetText(question.solution);
 	}
 
 	public void CheckAnswer()
@@ -106,15 +116,21 @@ public class AnswerCheck : MonoBehaviour
 				SFX.Instance.LoseSound();
 				Invoke(nameof(TryAgain), 2f);
 			}
-			if (tries == 0)
+			if (tries == 2 && !correct)
 			{
 				hintCanvas.SetActive(true);
-				questionCanvas.SetActive(false);
-				sortedValues.Clear();
+				StartCoroutine(GetComponent<HintScript>().LoadImageCoroutine(link));
+				//questionCanvas.SetActive(false);
             }
+			if (tries == 0 && !correct)
+			{
+				solutionCanvas.SetActive(true);
+				questionCanvas.SetActive(false);
+			}
 		}
 		if(correct)
         {
+			hintCanvas.SetActive(false);
 			SFX.Instance.WinSound();
 			questionCanvas.SetActive(false);
 			coin.SetActive(false);
@@ -138,14 +154,19 @@ public class AnswerCheck : MonoBehaviour
 	}
 	void CloseHintCanvas()
     {
-		coin.SetActive(false);
-		questionCounter.answerToFinish--;
-		spawnPlatform(questionLoader.question);
-		spawnArrow();
-		checkWin(questionCounter.answerToFinish);
 		hintCanvas.SetActive(false);
+		//questionCanvas.SetActive(true);
+	}
+	void CloseSolutionCanvas()
+    {
+        coin.SetActive(false);
+        questionCounter.answerToFinish--;
+        spawnPlatform(questionLoader.question);
+        spawnArrow();
+        checkWin(questionCounter.answerToFinish);
+		solutionCanvas.SetActive(false);
 		movementButtons.enabled = true;
-    }
+	}
 	public void SortValues()
     {
 		//From https://www.tutorialsteacher.com/linq/linq-sorting-operators-orderby-orderbydescending#orderby
