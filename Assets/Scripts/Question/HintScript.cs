@@ -5,16 +5,13 @@ using UnityEngine.Networking;
 using UnityEngine.UI;
 public class HintScript : MonoBehaviour
 {
-    string url = "https://ednovation.com/wp-content/uploads/2020/02/dr-richard-yen.jpg";
-    private float progress;
-
     [SerializeField]
     private Image image;
 
     // automatically called when game started
     void Start()
     {
-        StartCoroutine(LoadImageCoroutine(url)); // execute the section independently
+        //StartCoroutine(LoadImageCoroutine(url)); // execute the section independently
     }
 
     // this section will be run independently
@@ -36,17 +33,16 @@ public class HintScript : MonoBehaviour
 
         while (!www.isDone)
         {
-            progress = asyncOp.progress;
             yield return null;
         }
 
-        progress = 1f;
 
         if (!string.IsNullOrEmpty(www.error))
         {
-            Debug.Log("Error");
+            Debug.Log(www.error);
+            Debug.Log(url);
         }
-
+        Debug.Log(www.isDone);
         var texture = DownloadHandlerTexture.GetContent(www);
 
         image.sprite = Sprite.Create(texture, new Rect(0, 0, texture.width, texture.height), new Vector2(0, 0));
