@@ -307,6 +307,18 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 133079918}
     - target: {fileID: 3687099115687641615, guid: 6f5b011a0f9d36e448bcbf67d28df4d5, type: 3}
+      propertyPath: arrows.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3687099115687641615, guid: 6f5b011a0f9d36e448bcbf67d28df4d5, type: 3}
+      propertyPath: arrows.Array.data[0]
+      value: 
+      objectReference: {fileID: 821650033}
+    - target: {fileID: 3687099115687641615, guid: 6f5b011a0f9d36e448bcbf67d28df4d5, type: 3}
+      propertyPath: arrows.Array.data[1]
+      value: 
+      objectReference: {fileID: 611270109}
+    - target: {fileID: 3687099115687641615, guid: 6f5b011a0f9d36e448bcbf67d28df4d5, type: 3}
       propertyPath: tileMapSpawns.Array.data[0]
       value: 
       objectReference: {fileID: 290903666}
@@ -443,6 +455,11 @@ PrefabInstance:
 --- !u!4 &821650032 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8041415533957906113, guid: 43501001ffba5b847b1c14470fbf30e4, type: 3}
+  m_PrefabInstance: {fileID: 821650031}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &821650033 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1757926458727140382, guid: 43501001ffba5b847b1c14470fbf30e4, type: 3}
   m_PrefabInstance: {fileID: 821650031}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &839949862 stripped
@@ -3863,8 +3880,9 @@ MonoBehaviour:
   questionText: {fileID: 0}
   wrongAnswerText: {fileID: 0}
   correctText: {fileID: 0}
-  hintAnswerText: {fileID: 0}
+  solutionAnswerText: {fileID: 0}
   triesLeftText: {fileID: 0}
+  hintImage: {fileID: 0}
   questionCounter: {fileID: 0}
   questionLoader: {fileID: 0}
   question: {fileID: 0}
@@ -3875,13 +3893,16 @@ MonoBehaviour:
   answerButton: {fileID: 0}
   closeFinishedButton: {fileID: 0}
   closeHintButton: {fileID: 0}
+  closeSolutionButton: {fileID: 0}
   movementButtons: {fileID: 0}
   questionCanvas: {fileID: 0}
   hintCanvas: {fileID: 0}
+  solutionCanvas: {fileID: 0}
   questionFinishedCanvas: {fileID: 0}
   tileMapSpawns: []
   treasure: {fileID: 0}
   arrow: {fileID: 0}
+  arrows: []
 --- !u!4 &1786941829
 Transform:
   m_ObjectHideFlags: 0

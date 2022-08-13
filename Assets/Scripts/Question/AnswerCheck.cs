@@ -50,6 +50,9 @@ public class AnswerCheck : MonoBehaviour
 	[SerializeField]
 	GameObject arrow;
 
+	[SerializeField]
+	GameObject[] arrows;
+
 	private Dictionary<string, string> slotValues = new Dictionary<string, string>();
 	private Dictionary<string, string> sortedValues = new Dictionary<string, string>();
 	private Dictionary<string, string> answers = new Dictionary<string, string>();
@@ -200,6 +203,11 @@ public class AnswerCheck : MonoBehaviour
 
 	public void spawnArrow()
     {
+		for (int i = 0; i < arrows.Length; i++)
+		{
+			arrows[i].SetActive(false);
+		}
+
 		arrow.SetActive(true);
     }
 
