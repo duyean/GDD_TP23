@@ -454,6 +454,7 @@ GameObject:
   - component: {fileID: -8450526866748076963}
   - component: {fileID: 1166293755080417780}
   - component: {fileID: 212248053197754818}
+  - component: {fileID: 1977664546}
   m_Layer: 3
   m_Name: guy
   m_TagString: Player
@@ -562,7 +563,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7570700530015188866}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4e385ebf9c9972a4dab64df7bd6da2b1, type: 3}
   m_Name: 
@@ -571,7 +572,7 @@ MonoBehaviour:
   - {fileID: 647154437}
   - {fileID: 1838527534}
   - {fileID: 544424069}
-  controller: {fileID: 0}
+  controller: {fileID: 1977664546}
   runspeed: 40
 --- !u!114 &-8450526866748076963
 MonoBehaviour:
@@ -585,7 +586,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd0e5cad9e1807e4eaf1cd473199c266, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  groundedCheck: {fileID: 910647417}
 --- !u!61 &1166293755080417780
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -625,3 +625,31 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   grounded: 0
+--- !u!114 &1977664546
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7570700530015188866}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f47957c07ab6fc48bcd461eb2af2c3d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_JumpForce: 400
+  m_CrouchSpeed: 0.36
+  m_MovementSmoothing: 0.05
+  m_AirControl: 1
+  m_WhatIsGround:
+    serializedVersion: 2
+    m_Bits: 2147483647
+  m_GroundCheck: {fileID: 7570700529605934076}
+  m_CeilingCheck: {fileID: 7570700529523561967}
+  m_CrouchDisableCollider: {fileID: 0}
+  OnLandEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  OnCrouchEvent:
+    m_PersistentCalls:
+      m_Calls: []
