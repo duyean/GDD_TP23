@@ -3,12 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class JumpButton : MonoBehaviour, IPointerDownHandler
+public class JumpButton : MonoBehaviour, IPointerEnterHandler
 {
-    public void OnPointerDown(PointerEventData eventData)
+    public void OnPointerEnter(PointerEventData eventData)
     {
         GameObject.FindGameObjectWithTag("Player").GetComponent<MovementScript>().Jump();
     }
 
+
 }
+
 
