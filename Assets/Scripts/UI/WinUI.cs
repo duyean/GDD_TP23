@@ -11,7 +11,7 @@ public class WinUI : Singleton<WinUI>
     [SerializeField]
     GameObject nextLevelButton;
     public GameObject winUI;
-
+    public GameObject loseUI;
 
     // checks whether this is last level and disables the next level button if true;
     private void Update()
@@ -30,7 +30,7 @@ public class WinUI : Singleton<WinUI>
     public void nextLevel()
     {
         string sceneName = SceneManager.GetActiveScene().name;
-        string subject = sceneName.Substring(0);
+        string subject = sceneName.Substring(0,1);
         char level = sceneName[sceneName.Length - 1];
         int nextLevelNo = int.Parse(level.ToString()) + 1 ;
 
@@ -38,6 +38,7 @@ public class WinUI : Singleton<WinUI>
 
 
         winUI.SetActive(false);
+        loseUI.SetActive(false);
     }
 
 
@@ -53,6 +54,7 @@ public class WinUI : Singleton<WinUI>
 
 
         winUI.SetActive(false);
+        loseUI.SetActive(false);
     }
 
 

@@ -6,7 +6,7 @@ using TMPro;
 public class Check : MonoBehaviour
 {
     public GameObject LoseUI;
-    public GameObject WinUI;
+
 
     public GameObject moveButton;
 
@@ -31,27 +31,32 @@ public class Check : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // checks if time should be ticking
         if (isChecking)
         {
             timeLeft -= Time.deltaTime;
         }
 
-        if (Vector3.Distance(transform.position, player.transform.position)<=1f)
+        // sets time to tick and enables movement if camera is on player
+        if (!isChecking && !win && Vector3.Distance(transform.position, player.transform.position)<=1f)
         {
             moveButton.SetActive(true);
             setMoveButton = false;
             isChecking = true;
         }
 
+        // checks for lose
         if(timeLeft <= 0 && isChecking)
         {
-            LoseUI.SetActive(true);
+            WinUI.Instance.loseUI.SetActive(true);
             isChecking = false;
         }
 
+
+        // checks for win
         if (timeLeft >= 0 && win)
         {
-            LoseUI.SetActive(true);
+            WinUI.Instance.winUI.SetActive(true) ;
             isChecking = false;
         }
 
@@ -60,4 +65,7 @@ public class Check : MonoBehaviour
         timeLeftText.text = "Time Left: " + timeLeft.ToString("F2");
 
     }
+
+
+
 }
