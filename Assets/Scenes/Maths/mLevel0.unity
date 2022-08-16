@@ -14223,6 +14223,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: QuestionLoaderPrefab (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 3687099115687641600, guid: 6f5b011a0f9d36e448bcbf67d28df4d5, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3687099115687641613, guid: 6f5b011a0f9d36e448bcbf67d28df4d5, type: 3}
       propertyPath: m_RootOrder
       value: 7

@@ -5,6 +5,7 @@ using UnityEngine.EventSystems;
 
 public class Slot : MonoBehaviour, IDropHandler
 {
+    public string slotName;
     public string value;
     public AnswerCheck answerCheck;
     public string itemIn; 
@@ -21,7 +22,7 @@ public class Slot : MonoBehaviour, IDropHandler
             eventData.pointerDrag.GetComponent<RectTransform>().anchoredPosition = GetComponent<RectTransform>().anchoredPosition; //Anchors the item to the slot when it is dropped on the slot
             value = eventData.pointerDrag.GetComponent<DragDrop>().itemValue; //Gets the itemValue from the object and parses into the value variable
             itemIn = eventData.pointerDrag.GetComponent<DragDrop>().itemValue;
-            answerCheck.AddValues(gameObject.name,value);
+            answerCheck.AddValues(gameObject.GetComponent<Slot>().slotName,value);
         }
     }
 

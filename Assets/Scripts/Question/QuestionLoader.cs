@@ -11,6 +11,7 @@ public class QuestionLoader : MonoBehaviour
 	public GameObject item;
 	public GameObject canvasGameObject;
 	public GameObject filledSlot;
+	public GameObject slot;
 	public Canvas canvas;
 	public FilledSlot[] filledSlots;
 	public List<GameObject> itemList;
@@ -45,6 +46,22 @@ public class QuestionLoader : MonoBehaviour
 		if (answerCheck.question.questionID == level)
 		{
 			answerCheck.questionText.text = answerCheck.question.question;
+
+			for (int i = 0; i < answerCheck.question.filledValues.Count; i++)
+			{
+				if (answerCheck.question.filledValues[i] != "")
+				{
+					filledSlot.GetComponent<FilledSlot>().filledValue = answerCheck.question.filledValues[i];
+					Instantiate(filledSlot, filledSlotPositions[i], Quaternion.identity).transform.SetParent(canvas.transform, false);       //old code in case need: Instantiate(filledSlot, filledSlotPositions[i], Quaternion.identity).transform.parent = canvas.transform;
+					filledSlotList.Add(filledSlot);
+				}
+				//Spawn slot
+				else
+				{
+					slot.GetComponent<Slot>().slotName = "Slot (" + i + ")";
+					Instantiate(slot, filledSlotPositions[i], Quaternion.identity).transform.SetParent(canvas.transform, false);       //old code in case need: Instantiate(item, itemPositions[i], Quaternion.identity).transform.parent = canvas.transform;
+				}
+			}
 			for (int i = 0; i < answerCheck.question.answers.Count; i++)
 			{
                 if(answerCheck.question.answers[i] != "")
@@ -54,17 +71,8 @@ public class QuestionLoader : MonoBehaviour
 					item.GetComponent<DragDrop>().canvas = canvas;
 					itemList.Add(item);
 				}
+				
 			}
-			for (int i = 0; i < answerCheck.question.filledValues.Count; i++)
-			{
-                if (answerCheck.question.filledValues[i] != "")
-				{
-					filledSlot.GetComponent<FilledSlot>().filledValue = answerCheck.question.filledValues[i];
-					Instantiate(filledSlot, filledSlotPositions[i], Quaternion.identity).transform.SetParent(canvas.transform, false);       //old code in case need: Instantiate(filledSlot, filledSlotPositions[i], Quaternion.identity).transform.parent = canvas.transform;
-					filledSlotList.Add(filledSlot);
-				}
-			}
-
 		}
 		canvasGameObject.SetActive(false);
 	}
