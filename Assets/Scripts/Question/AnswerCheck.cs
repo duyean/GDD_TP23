@@ -3,7 +3,6 @@ using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
-using System.Collections;
 
 public class AnswerCheck : MonoBehaviour
 {
@@ -94,6 +93,10 @@ public class AnswerCheck : MonoBehaviour
 					answers.Add(new string("Slot (" + i + ")"), question.finalAnswers[i]);
 				}
 			}
+			for(int i = 0; i < question.finalAnswers.Count; i++)
+			{
+				Debug.Log(question.finalAnswers[i]);
+            }
 			if (!excludedSubjects.Contains(question.subject))
 			{
 				//Then check values against answer array
