@@ -17,7 +17,7 @@ MonoBehaviour:
   questionID: 1
   question: Chinese L1Q1
   answers:
-  - 1
+  - "\u4E2D\u56FD"
   - 2
   - 3
   - 4
