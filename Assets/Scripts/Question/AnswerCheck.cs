@@ -59,7 +59,6 @@ public class AnswerCheck : MonoBehaviour
 	// Start is called before the first frame update
 	void Start()
 	{
-		link = question.hint;
 		tries = 5;
 		correct = false;
 		Button checkButton = answerButton.GetComponent<Button>();
@@ -120,6 +119,7 @@ public class AnswerCheck : MonoBehaviour
 			}
 			if (tries == 2 && !correct)
 			{
+				link = question.hint;
 				hintCanvas.SetActive(true);
 				StartCoroutine(GetComponent<HintScript>().LoadImageCoroutine(link));
 				//questionCanvas.SetActive(false);
