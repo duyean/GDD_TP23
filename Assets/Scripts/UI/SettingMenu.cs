@@ -9,7 +9,7 @@ public class SettingMenu : Singleton<SettingMenu>
 
     private void Start()
     {
-        SceneManager.LoadScene("cMinigame0");
+        SceneManager.LoadScene("cMinigame1");
     }
     public void openMenu()
     {
