@@ -30,7 +30,7 @@ public class Slot : MonoBehaviour, IDropHandler
     private void OnTriggerExit2D(Collider2D collision)
     {
         
-        answerCheck.RemoveValues(gameObject.name);
+        answerCheck.RemoveValues(gameObject.GetComponent<Slot>().slotName);
         value = null;
         
     }

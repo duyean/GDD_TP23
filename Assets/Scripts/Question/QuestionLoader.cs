@@ -21,6 +21,7 @@ public class QuestionLoader : MonoBehaviour
 	public TMPro.TMP_FontAsset chineseFont;
 
 	private Coin coin;
+	private bool spawnedSlots;
 	//private int integer;
 
 	void Awake()
@@ -40,7 +41,6 @@ public class QuestionLoader : MonoBehaviour
 		SpawnAnswers(question);
 	}
 
-	
 	//Instantiate item prefab with answer values from specified scriptable object
 	void SpawnAnswers(int level)
 	{
@@ -65,19 +65,19 @@ public class QuestionLoader : MonoBehaviour
 						Instantiate(slot, filledSlotPositions[i], Quaternion.identity).transform.SetParent(canvas.transform, false);       //old code in case need: Instantiate(item, itemPositions[i], Quaternion.identity).transform.parent = canvas.transform;
 					}
 				}
-					for (int i = 0; i < answerCheck.question.answers.Count; i++)
+				for (int i = 0; i < answerCheck.question.answers.Count; i++)
+				{
+					if (answerCheck.question.answers[i] != "")
 					{
-						if (answerCheck.question.answers[i] != "")
-						{
-							var font = item.GetComponentInChildren<TMPro.TextMeshProUGUI>();
-							font.font = chineseFont;
-							item.GetComponent<DragDrop>().itemValue = answerCheck.question.answers[i];
-							Instantiate(item, itemPositions[i], Quaternion.identity).transform.SetParent(canvas.transform, false);       //old code in case need: Instantiate(item, itemPositions[i], Quaternion.identity).transform.parent = canvas.transform;
-							item.GetComponent<DragDrop>().canvas = canvas;
-							itemList.Add(item);
-						}
-
+						var font = item.GetComponentInChildren<TMPro.TextMeshProUGUI>();
+						font.font = chineseFont;
+						item.GetComponent<DragDrop>().itemValue = answerCheck.question.answers[i];
+						Instantiate(item, itemPositions[i], Quaternion.identity).transform.SetParent(canvas.transform, false);       //old code in case need: Instantiate(item, itemPositions[i], Quaternion.identity).transform.parent = canvas.transform;
+						item.GetComponent<DragDrop>().canvas = canvas;
+						itemList.Add(item);
 					}
+
+				}
 			}
             else
             {
@@ -89,11 +89,20 @@ public class QuestionLoader : MonoBehaviour
 						Instantiate(filledSlot, filledSlotPositions[i], Quaternion.identity).transform.SetParent(canvas.transform, false);       //old code in case need: Instantiate(filledSlot, filledSlotPositions[i], Quaternion.identity).transform.parent = canvas.transform;
 						filledSlotList.Add(filledSlot);
 					}
-					//Spawn slot
-					else
+					else if (answerCheck.excludedSubjects.Contains(answerCheck.question.subject))
 					{
 						slot.GetComponent<Slot>().slotName = "Slot (" + i + ")";
 						Instantiate(slot, filledSlotPositions[i], Quaternion.identity).transform.SetParent(canvas.transform, false);       //old code in case need: Instantiate(item, itemPositions[i], Quaternion.identity).transform.parent = canvas.transform;
+						spawnedSlots = true;
+					}
+				}
+				//Spawn slot
+				if (answerCheck.question.answers.Count > answerCheck.question.finalAnswers.Count && spawnedSlots != true)
+				{
+					for (int j = 0; j < answerCheck.question.finalAnswers.Count; j++)
+					{
+						slot.GetComponent<Slot>().slotName = "Slot (" + j + ")";
+						Instantiate(slot, filledSlotPositions[j], Quaternion.identity).transform.SetParent(canvas.transform, false);       //old code in case need: Instantiate(item, itemPositions[i], Quaternion.identity).transform.parent = canvas.transform;
 					}
 				}
 				for (int i = 0; i < answerCheck.question.answers.Count; i++)
