@@ -20061,6 +20061,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3687099115687641614, guid: 6f5b011a0f9d36e448bcbf67d28df4d5, type: 3}
+      propertyPath: subject
+      value: English
+      objectReference: {fileID: 0}
     - target: {fileID: 3687099115687641615, guid: 6f5b011a0f9d36e448bcbf67d28df4d5, type: 3}
       propertyPath: arrow
       value: 
@@ -20398,6 +20402,10 @@ PrefabInstance:
     - target: {fileID: 3687099115687641613, guid: 6f5b011a0f9d36e448bcbf67d28df4d5, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3687099115687641614, guid: 6f5b011a0f9d36e448bcbf67d28df4d5, type: 3}
+      propertyPath: subject
+      value: English
       objectReference: {fileID: 0}
     - target: {fileID: 3687099115687641615, guid: 6f5b011a0f9d36e448bcbf67d28df4d5, type: 3}
       propertyPath: arrow
@@ -20748,6 +20756,10 @@ PrefabInstance:
     - target: {fileID: 3687099115687641613, guid: 6f5b011a0f9d36e448bcbf67d28df4d5, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3687099115687641614, guid: 6f5b011a0f9d36e448bcbf67d28df4d5, type: 3}
+      propertyPath: subject
+      value: English
       objectReference: {fileID: 0}
     - target: {fileID: 3687099115687641615, guid: 6f5b011a0f9d36e448bcbf67d28df4d5, type: 3}
       propertyPath: arrow
@@ -21325,7 +21337,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1867589102}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.00000023841858, y: 0, z: -10}
+  m_LocalPosition: {x: -0.00000047683716, y: 0, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -21468,6 +21480,10 @@ PrefabInstance:
     - target: {fileID: 3687099115687641613, guid: 6f5b011a0f9d36e448bcbf67d28df4d5, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3687099115687641614, guid: 6f5b011a0f9d36e448bcbf67d28df4d5, type: 3}
+      propertyPath: subject
+      value: English
       objectReference: {fileID: 0}
     - target: {fileID: 3687099115687641615, guid: 6f5b011a0f9d36e448bcbf67d28df4d5, type: 3}
       propertyPath: arrow
@@ -22870,7 +22886,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.3333334, y: 1}
+    m_SensorSize: {x: 1.7777778, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -22904,7 +22920,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1180812032002328865}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.00000023841858, y: 0, z: -10}
+  m_LocalPosition: {x: -0.00000047683716, y: 0, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
