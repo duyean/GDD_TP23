@@ -7,6 +7,6 @@ public class Fullscreen : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Screen.fullScreenMode = FullScreenMode.FullScreenWindow;
+        Application.ExternalCall("SetFullScreen", 1);
     } 
 }
