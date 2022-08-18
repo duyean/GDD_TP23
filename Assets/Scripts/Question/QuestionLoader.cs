@@ -54,6 +54,8 @@ public class QuestionLoader : MonoBehaviour
 				{
 					if (answerCheck.question.filledValues[i] != "")
 					{
+						var font = filledSlot.GetComponentInChildren<TMPro.TextMeshProUGUI>();
+						font.font = chineseFont;
 						filledSlot.GetComponent<FilledSlot>().filledValue = answerCheck.question.filledValues[i];
 						Instantiate(filledSlot, filledSlotPositions[i], Quaternion.identity).transform.SetParent(canvas.transform, false);       //old code in case need: Instantiate(filledSlot, filledSlotPositions[i], Quaternion.identity).transform.parent = canvas.transform;
 						filledSlotList.Add(filledSlot);

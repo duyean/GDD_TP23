@@ -17,20 +17,18 @@ MonoBehaviour:
   questionID: 2
   question: Chinese L3Q2
   answers:
-  - 1
-  - 2
-  - 3
-  - 4
+  - "\u4EBB"
+  - "\u5F73"
+  - "\u6708"
+  - "\u53E3"
   - 
   filledValues:
   - 
-  - 
-  - 
-  - 4
-  - 5
+  - +
+  - "\u95E8"
+  - =
+  - "\u4EEC"
   finalAnswers:
-  - 1
-  - 2
-  - 3
+  - "\u4EBB"
   hint: https://upload.wikimedia.org/wikipedia/commons/thumb/9/99/Hanzi.svg/800px-Hanzi.svg.png
   solution: Solution
