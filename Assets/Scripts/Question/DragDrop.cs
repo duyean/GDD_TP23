@@ -28,7 +28,7 @@ public class DragDrop : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDrag
         checkButton = GameObject.FindGameObjectWithTag("AnswerButton").GetComponent<Button>(); 
         checkButton.onClick.AddListener(ExecuteCheck); //When button is clicked, calls the ExecuteCheck function
         originalPos = rectTransform.anchoredPosition;
-    }
+        }
 
     //Set the items back to original position if the answer is wrong
     void ExecuteCheck()
@@ -58,10 +58,11 @@ public class DragDrop : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDrag
         //Set item to translucent when no longer dragging
         canvasGroup.alpha = 1f;
         canvasGroup.blocksRaycasts = true;
+        Cursor.lockState = CursorLockMode.None; //Unlocks the cursor
     }
 
     public void OnPointerDown(PointerEventData eventData)
     {
-
+        Cursor.lockState = CursorLockMode.Confined; //Locks the cursor so that it cannot go out of the screen while dragging
     }
 }
