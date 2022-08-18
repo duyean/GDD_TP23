@@ -41,7 +41,6 @@ public class QuestionLoader : MonoBehaviour
 		SpawnAnswers(question);
 	}
 
-	
 	//Instantiate item prefab with answer values from specified scriptable object
 	void SpawnAnswers(int level)
 	{
@@ -100,10 +99,8 @@ public class QuestionLoader : MonoBehaviour
 				//Spawn slot
 				if (answerCheck.question.answers.Count > answerCheck.question.finalAnswers.Count && spawnedSlots != true)
 				{
-					Debug.Log("running 2");
 					for (int j = 0; j < answerCheck.question.finalAnswers.Count; j++)
 					{
-						Debug.Log(j);
 						slot.GetComponent<Slot>().slotName = "Slot (" + j + ")";
 						Instantiate(slot, filledSlotPositions[j], Quaternion.identity).transform.SetParent(canvas.transform, false);       //old code in case need: Instantiate(item, itemPositions[i], Quaternion.identity).transform.parent = canvas.transform;
 					}
