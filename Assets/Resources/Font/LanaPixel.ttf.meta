@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 4ce9d1d27671b174b9c2ab10c12e7ff8
+guid: 960277512232219438ea1309683ac382
 TrueTypeFontImporter:
   externalObjects: {}
   serializedVersion: 4
@@ -9,7 +9,7 @@ TrueTypeFontImporter:
   characterPadding: 1
   includeFontData: 1
   fontNames:
-  - Zpix
+  - LanaPixel
   fallbackFontReferences: []
   customCharacters: 
   fontRenderingMode: 0
