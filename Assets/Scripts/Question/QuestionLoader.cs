@@ -133,6 +133,7 @@ public class QuestionLoader : MonoBehaviour
 							splitString.Add(answerCheck.question.answers[i].Split("|")[0]);
 							splitString.Add(answerCheck.question.answers[i].Split("|")[1]);
 							StartCoroutine(LoadSlotCoroutine(splitString[1]));
+							item.GetComponent<Image>().sprite = sprite;
 							item.GetComponent<DragDrop>().itemValue = splitString[0];
 							Instantiate(item, itemPositions[i], Quaternion.identity).transform.SetParent(canvas.transform, false);       //old code in case need: Instantiate(item, itemPositions[i], Quaternion.identity).transform.parent = canvas.transform;
 							item.GetComponent<DragDrop>().canvas = canvas;
@@ -170,9 +171,8 @@ public class QuestionLoader : MonoBehaviour
 		Debug.Log(www.isDone);
 		var texture = DownloadHandlerTexture.GetContent(www);
 
-		sprite = Sprite.Create(texture, new Rect(0, 0, texture.width, texture.height), new Vector2(0, 0)); ;
+		//sprite = Sprite.Create(texture, new Rect(0, 0, texture.width, texture.height), new Vector2(0, 0)); ;
 		filledSlot.GetComponent<Image>().sprite = Sprite.Create(texture, new Rect(0, 0, texture.width, texture.height), new Vector2(0, 0));;
-		filledSlot.GetComponent<Image>().SetNativeSize();
 	}
 
 	public IEnumerator LoadSlotCoroutine(string url)
@@ -193,8 +193,6 @@ public class QuestionLoader : MonoBehaviour
 		Debug.Log(www.isDone);
 		var texture = DownloadHandlerTexture.GetContent(www);
 
-		sprite = Sprite.Create(texture, new Rect(0, 0, texture.width, texture.height), new Vector2(0, 0)); ;
-		item.GetComponent<Image>().sprite = Sprite.Create(texture, new Rect(0, 0, texture.width, texture.height), new Vector2(0, 0));;
-		item.GetComponent<Image>().SetNativeSize();
+		sprite = Sprite.Create(texture, new Rect(0, 0, texture.width, texture.height), new Vector2(0, 0));
 	}
 }
