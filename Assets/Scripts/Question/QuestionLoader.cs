@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Networking;
+using UnityEngine.UI;
 
 public class QuestionLoader : MonoBehaviour
 {
@@ -20,6 +22,7 @@ public class QuestionLoader : MonoBehaviour
 	public List<Vector2> filledSlotPositions;
 	public TMPro.TMP_FontAsset chineseFont;
 
+	[SerializeField] private Sprite sprite;
 	private Coin coin;
 	private bool spawnedSlots;
 	//private int integer;
@@ -87,9 +90,22 @@ public class QuestionLoader : MonoBehaviour
 				{
 					if (answerCheck.question.filledValues[i] != "")
 					{
-						filledSlot.GetComponent<FilledSlot>().filledValue = answerCheck.question.filledValues[i];
-						Instantiate(filledSlot, filledSlotPositions[i], Quaternion.identity).transform.SetParent(canvas.transform, false);       //old code in case need: Instantiate(filledSlot, filledSlotPositions[i], Quaternion.identity).transform.parent = canvas.transform;
-						filledSlotList.Add(filledSlot);
+                        if (answerCheck.question.filledValues[i].Contains("http"))
+                        {
+							List<string> splitString = new List<string>();
+							splitString.Add(answerCheck.question.filledValues[i].Split("|")[0]);
+							splitString.Add(answerCheck.question.filledValues[i].Split("|")[1]);
+                            StartCoroutine(LoadFilledSlotCoroutine(splitString[1]));
+							filledSlot.GetComponent<FilledSlot>().filledValue = splitString[0];
+							Instantiate(filledSlot, filledSlotPositions[i], Quaternion.identity).transform.SetParent(canvas.transform, false);       //old code in case need: Instantiate(filledSlot, filledSlotPositions[i], Quaternion.identity).transform.parent = canvas.transform;
+							filledSlotList.Add(filledSlot);
+						}
+						else
+                        {
+							filledSlot.GetComponent<FilledSlot>().filledValue = answerCheck.question.filledValues[i];
+							Instantiate(filledSlot, filledSlotPositions[i], Quaternion.identity).transform.SetParent(canvas.transform, false);       //old code in case need: Instantiate(filledSlot, filledSlotPositions[i], Quaternion.identity).transform.parent = canvas.transform;
+							filledSlotList.Add(filledSlot);
+						}
 					}
 					else if (answerCheck.excludedSubjects.Contains(answerCheck.question.subject))
 					{
@@ -111,15 +127,74 @@ public class QuestionLoader : MonoBehaviour
 				{
 					if (answerCheck.question.answers[i] != "")
 					{
-						item.GetComponent<DragDrop>().itemValue = answerCheck.question.answers[i];
-						Instantiate(item, itemPositions[i], Quaternion.identity).transform.SetParent(canvas.transform, false);       //old code in case need: Instantiate(item, itemPositions[i], Quaternion.identity).transform.parent = canvas.transform;
-						item.GetComponent<DragDrop>().canvas = canvas;
-						itemList.Add(item);
+						if (answerCheck.question.answers[i].Contains("http"))
+						{
+							List<string> splitString = new List<string>();
+							splitString.Add(answerCheck.question.answers[i].Split("|")[0]);
+							splitString.Add(answerCheck.question.answers[i].Split("|")[1]);
+							StartCoroutine(LoadSlotCoroutine(splitString[1]));
+							item.GetComponent<DragDrop>().itemValue = splitString[0];
+							Instantiate(item, itemPositions[i], Quaternion.identity).transform.SetParent(canvas.transform, false);       //old code in case need: Instantiate(item, itemPositions[i], Quaternion.identity).transform.parent = canvas.transform;
+							item.GetComponent<DragDrop>().canvas = canvas;
+							itemList.Add(item);
+						}
+                        else
+                        {
+							item.GetComponent<DragDrop>().itemValue = answerCheck.question.answers[i];
+							Instantiate(item, itemPositions[i], Quaternion.identity).transform.SetParent(canvas.transform, false);       //old code in case need: Instantiate(item, itemPositions[i], Quaternion.identity).transform.parent = canvas.transform;
+							item.GetComponent<DragDrop>().canvas = canvas;
+							itemList.Add(item);
+						}
 					}
 				}
 			}
-			
 		}
 		canvasGameObject.SetActive(false);
+	}
+
+	public IEnumerator LoadFilledSlotCoroutine(string url)
+	{
+		UnityWebRequest www = UnityWebRequestTexture.GetTexture(url);
+		var asyncOp = www.SendWebRequest();
+
+		while (!www.isDone)
+		{
+			yield return null;
+		}
+
+		if (!string.IsNullOrEmpty(www.error))
+		{
+			Debug.Log(www.error);
+			Debug.Log(url);
+		}
+		Debug.Log(www.isDone);
+		var texture = DownloadHandlerTexture.GetContent(www);
+
+		sprite = Sprite.Create(texture, new Rect(0, 0, texture.width, texture.height), new Vector2(0, 0)); ;
+		filledSlot.GetComponent<Image>().sprite = Sprite.Create(texture, new Rect(0, 0, texture.width, texture.height), new Vector2(0, 0));;
+		filledSlot.GetComponent<Image>().SetNativeSize();
+	}
+
+	public IEnumerator LoadSlotCoroutine(string url)
+	{
+		UnityWebRequest www = UnityWebRequestTexture.GetTexture(url);
+		var asyncOp = www.SendWebRequest();
+
+		while (!www.isDone)
+		{
+			yield return null;
+		}
+
+		if (!string.IsNullOrEmpty(www.error))
+		{
+			Debug.Log(www.error);
+			Debug.Log(url);
+		}
+		Debug.Log(www.isDone);
+		var texture = DownloadHandlerTexture.GetContent(www);
+
+		sprite = Sprite.Create(texture, new Rect(0, 0, texture.width, texture.height), new Vector2(0, 0)); ;
+		item.GetComponent<Image>().sprite = Sprite.Create(texture, new Rect(0, 0, texture.width, texture.height), new Vector2(0, 0));;
+		item.GetComponent<Image>().SetNativeSize();
 	}
 }

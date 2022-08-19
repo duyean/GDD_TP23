@@ -1598,6 +1598,8 @@ MonoBehaviour:
   - {x: 180, y: 74.74518}
   - {x: 456, y: 74.74518}
   chineseFont: {fileID: 11400000, guid: ea65733a73dd2324d8897bc55d00af3f, type: 2}
+  filledSlotImage: {fileID: 2170202485578305282, guid: 678c474833bfe214d970dc7eeeb2ef9a, type: 3}
+  itemSlotImage: {fileID: 2170202485578305282, guid: efc468eaad6c98c45b39714c73ffed75, type: 3}
 --- !u!114 &3687099115687641615
 MonoBehaviour:
   m_ObjectHideFlags: 0
