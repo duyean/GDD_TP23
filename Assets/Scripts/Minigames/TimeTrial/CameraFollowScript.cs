@@ -5,9 +5,12 @@ using UnityEngine;
 public class CameraFollowScript : MonoBehaviour
 {
     public float speed = 7f;
-    public GameObject player;
+    private GameObject player;
 
-
+    private void Start()
+    {
+        player = GameObject.FindGameObjectWithTag("Player");
+    }
     void Update()
     {
         var step = speed * Time.deltaTime; // calculate distance to move

@@ -46,7 +46,7 @@ public class WinUI : Singleton<WinUI>
     public void loadMinigame()
     {
         string sceneName = SceneManager.GetActiveScene().name;
-        string subject = sceneName.Substring(0);
+        string subject = sceneName.Substring(0,1);
         char level = sceneName[sceneName.Length - 1];
         int levelNo = int.Parse(level.ToString());
 
@@ -63,5 +63,11 @@ public class WinUI : Singleton<WinUI>
     {
         SceneManager.LoadScene("MainMenu");
         winUI.SetActive(false) ;
+    }
+
+
+    public void tryAgain()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }

@@ -501,11 +501,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4c73db62a66cc4b428e4af026a96adca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  LoseUI: {fileID: 0}
   moveButton: {fileID: 6654279647851554540}
   timeLeft: 60
   win: 0
-  player: {fileID: 0}
   timeLeftText: {fileID: 6654279647529992447}
 --- !u!114 &6654279646139802211
 MonoBehaviour:
@@ -520,7 +518,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 10
-  player: {fileID: 0}
 --- !u!1 &6654279646287218482
 GameObject:
   m_ObjectHideFlags: 0
@@ -6358,7 +6355,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 239478895534557234, guid: 7b15d946023258a4ebc3d1dab2df8499, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 239478895534557237, guid: 7b15d946023258a4ebc3d1dab2df8499, type: 3}
       propertyPath: m_RootOrder

@@ -5,8 +5,6 @@ using TMPro;
 
 public class Check : MonoBehaviour
 {
-    public GameObject LoseUI;
-
 
     public GameObject moveButton;
 
@@ -14,10 +12,9 @@ public class Check : MonoBehaviour
 
 
     bool isChecking;
-    bool setMoveButton;
     public bool win;
 
-    public GameObject player;
+    private GameObject player;
 
     public TextMeshProUGUI timeLeftText;
 
@@ -26,7 +23,7 @@ public class Check : MonoBehaviour
     {
         timeLeft = 60f;
         isChecking = false;
-        setMoveButton = true;
+        player = GameObject.FindGameObjectWithTag("Player");
     }
     // Update is called once per frame
     void Update()
@@ -41,23 +38,25 @@ public class Check : MonoBehaviour
         if (!isChecking && !win && Vector3.Distance(transform.position, player.transform.position)<=1f)
         {
             moveButton.SetActive(true);
-            setMoveButton = false;
             isChecking = true;
         }
 
         // checks for lose
         if(timeLeft <= 0 && isChecking)
         {
+            moveButton.SetActive(false);
             WinUI.Instance.loseUI.SetActive(true);
             isChecking = false;
         }
 
 
         // checks for win
-        if (timeLeft >= 0 && win)
+        if (timeLeft >= 0 && win && isChecking)
         {
+            moveButton.SetActive(false);
             WinUI.Instance.winUI.SetActive(true) ;
             isChecking = false;
+            
         }
 
         
