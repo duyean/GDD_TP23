@@ -14,6 +14,9 @@ public class QuestionLoader : MonoBehaviour
 	public GameObject canvasGameObject;
 	public GameObject filledSlot;
 	public GameObject slot;
+
+	public GameObject instantiatedObj;
+
 	public Canvas canvas;
 	public FilledSlot[] filledSlots;
 	public List<GameObject> itemList;
@@ -132,11 +135,11 @@ public class QuestionLoader : MonoBehaviour
 							List<string> splitString = new List<string>();
 							splitString.Add(answerCheck.question.answers[i].Split("|")[0]);
 							splitString.Add(answerCheck.question.answers[i].Split("|")[1]);
+							instantiatedObj = Instantiate(item, itemPositions[i], Quaternion.identity);
 							StartCoroutine(LoadSlotCoroutine(splitString[1]));
-							item.GetComponent<Image>().sprite = sprite;
-							item.GetComponent<DragDrop>().itemValue = splitString[0];
-							Instantiate(item, itemPositions[i], Quaternion.identity).transform.SetParent(canvas.transform, false);       //old code in case need: Instantiate(item, itemPositions[i], Quaternion.identity).transform.parent = canvas.transform;
-							item.GetComponent<DragDrop>().canvas = canvas;
+
+							//setting values for the instantiatedObj
+							instantiatedObj.GetComponent<DragDrop>().itemValue = splitString[0];
 							itemList.Add(item);
 						}
                         else
@@ -194,5 +197,9 @@ public class QuestionLoader : MonoBehaviour
 		var texture = DownloadHandlerTexture.GetContent(www);
 
 		sprite = Sprite.Create(texture, new Rect(0, 0, texture.width, texture.height), new Vector2(0, 0));
+		instantiatedObj.transform.SetParent(canvas.transform, false);//old code in case need: Instantiate(item, itemPositions[i], Quaternion.identity).transform.parent = canvas.transform;
+		instantiatedObj.GetComponent<Image>().sprite = sprite;
+		instantiatedObj.GetComponent<DragDrop>().canvas = canvas;
+		Debug.Log($"BBBBBBBBBBB {sprite}");
 	}
 }
