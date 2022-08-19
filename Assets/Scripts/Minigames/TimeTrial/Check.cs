@@ -5,8 +5,6 @@ using TMPro;
 
 public class Check : MonoBehaviour
 {
-    public GameObject LoseUI;
-    public GameObject WinUI;
 
     public GameObject moveButton;
 
@@ -14,10 +12,9 @@ public class Check : MonoBehaviour
 
 
     bool isChecking;
-    bool setMoveButton;
     public bool win;
 
-    public GameObject player;
+    private GameObject player;
 
     public TextMeshProUGUI timeLeftText;
 
@@ -26,33 +23,40 @@ public class Check : MonoBehaviour
     {
         timeLeft = 60f;
         isChecking = false;
-        setMoveButton = true;
+        player = GameObject.FindGameObjectWithTag("Player");
     }
     // Update is called once per frame
     void Update()
     {
+        // checks if time should be ticking
         if (isChecking)
         {
             timeLeft -= Time.deltaTime;
         }
 
-        if (Vector3.Distance(transform.position, player.transform.position)<=1f)
+        // sets time to tick and enables movement if camera is on player
+        if (!isChecking && !win && Vector3.Distance(transform.position, player.transform.position)<=1f)
         {
             moveButton.SetActive(true);
-            setMoveButton = false;
             isChecking = true;
         }
 
+        // checks for lose
         if(timeLeft <= 0 && isChecking)
         {
-            LoseUI.SetActive(true);
+            moveButton.SetActive(false);
+            WinUI.Instance.loseUI.SetActive(true);
             isChecking = false;
         }
 
-        if (timeLeft >= 0 && win)
+
+        // checks for win
+        if (timeLeft >= 0 && win && isChecking)
         {
-            LoseUI.SetActive(true);
+            moveButton.SetActive(false);
+            WinUI.Instance.winUI.SetActive(true) ;
             isChecking = false;
+            
         }
 
         
@@ -60,4 +64,7 @@ public class Check : MonoBehaviour
         timeLeftText.text = "Time Left: " + timeLeft.ToString("F2");
 
     }
+
+
+
 }

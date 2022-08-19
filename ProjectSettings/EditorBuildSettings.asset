@@ -56,4 +56,22 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/English/eLevel4.unity
     guid: 3b09d25133f9e6f4681ae155a1c4c2d7
+  - enabled: 1
+    path: Assets/Scenes/Minigames/TimeTrial/cMinigame2.unity
+    guid: 83d9072fe1c3b90418bf1abcf5c5512f
+  - enabled: 1
+    path: Assets/Scenes/Minigames/TimeTrial/cMinigame3.unity
+    guid: 28d0a4584ebf3594db7c185b71d9a1f6
+  - enabled: 1
+    path: Assets/Scenes/Minigames/TimeTrial/eMinigame2.unity
+    guid: 952e57cd77c0e0943980189e224cd1da
+  - enabled: 1
+    path: Assets/Scenes/Minigames/TimeTrial/eMinigame3.unity
+    guid: ba59b00aa5a7baf4fa43190668055d54
+  - enabled: 1
+    path: Assets/Scenes/Minigames/TimeTrial/mMinigame2.unity
+    guid: b0eee7fcfb08d5b47b175b4b0b918ea3
+  - enabled: 1
+    path: Assets/Scenes/Minigames/TimeTrial/mMinigame3.unity
+    guid: 1337731030b8a6f4fb53890c56e36faf
   m_configObjects: {}

@@ -24,7 +24,6 @@ public class CharacterManager : Singleton<CharacterManager>
     {
         isMale = maleOrNo;
         indicationText.text = ReturnGender(maleOrNo) + " And " + pet;
-        // add sound effect here
     }
 
     public string ReturnGender(bool isMale)
