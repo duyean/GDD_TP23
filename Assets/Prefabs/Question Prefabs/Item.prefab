@@ -233,7 +233,7 @@ MonoBehaviour:
   itemValue: 4
   valueText: {fileID: 1838541352124162153}
   originalPos: {x: 0, y: 0}
-  checkButton: {fileID: 4291478323614231225, guid: b99b33cacd074114db4d835aa15f26f2, type: 3}
+  checkButton: {fileID: 0}
   questionParent: {fileID: 3687099115687641600, guid: 6f5b011a0f9d36e448bcbf67d28df4d5, type: 3}
   answerCheck: {fileID: 0}
 --- !u!225 &2170202485578305280
