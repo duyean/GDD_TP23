@@ -15,7 +15,11 @@ public class QuestionLoader : MonoBehaviour
 	public GameObject filledSlot;
 	public GameObject slot;
 
-	public GameObject instantiatedObj;
+	public GameObject instantiatedAnswerSlotObj;
+	public GameObject instantiatedSlotObj;
+	public GameObject instantiatedImageObj;
+	public GameObject instantiatedFilledObj;
+	public GameObject instantiatedFilledImgObj;
 
 	public Canvas canvas;
 	public FilledSlot[] filledSlots;
@@ -60,31 +64,34 @@ public class QuestionLoader : MonoBehaviour
 				{
 					if (answerCheck.question.filledValues[i] != "")
 					{
-						var font = filledSlot.GetComponentInChildren<TMPro.TextMeshProUGUI>();
+						instantiatedFilledImgObj = Instantiate(filledSlot, filledSlotPositions[i], Quaternion.identity);
+						var font = instantiatedFilledImgObj.GetComponentInChildren<TMPro.TextMeshProUGUI>();
 						font.font = chineseFont;
-						filledSlot.GetComponent<FilledSlot>().filledValue = answerCheck.question.filledValues[i];
-						Instantiate(filledSlot, filledSlotPositions[i], Quaternion.identity).transform.SetParent(canvas.transform, false);       //old code in case need: Instantiate(filledSlot, filledSlotPositions[i], Quaternion.identity).transform.parent = canvas.transform;
-						filledSlotList.Add(filledSlot);
+						instantiatedFilledImgObj.GetComponent<FilledSlot>().filledValue = answerCheck.question.filledValues[i];
+						instantiatedFilledImgObj.transform.SetParent(canvas.transform, false);       //old code in case need: Instantiate(filledSlot, filledSlotPositions[i], Quaternion.identity).transform.parent = canvas.transform;
+						filledSlotList.Add(instantiatedFilledImgObj);
 					}
-					//Spawn slot
+					//Spawn answer slot
 					else
 					{
-						slot.GetComponent<Slot>().slotName = "Slot (" + i + ")";
-						Instantiate(slot, filledSlotPositions[i], Quaternion.identity).transform.SetParent(canvas.transform, false);       //old code in case need: Instantiate(item, itemPositions[i], Quaternion.identity).transform.parent = canvas.transform;
+						instantiatedAnswerSlotObj = Instantiate(slot, filledSlotPositions[i], Quaternion.identity);
+						instantiatedAnswerSlotObj.GetComponent<Slot>().slotName = "Slot (" + i + ")";
+						instantiatedAnswerSlotObj.transform.SetParent(canvas.transform, false);       //old code in case need: Instantiate(item, itemPositions[i], Quaternion.identity).transform.parent = canvas.transform;
 					}
 				}
 				for (int i = 0; i < answerCheck.question.answers.Count; i++)
 				{
 					if (answerCheck.question.answers[i] != "")
 					{
-						var font = item.GetComponentInChildren<TMPro.TextMeshProUGUI>();
+						instantiatedSlotObj = Instantiate(item, itemPositions[i], Quaternion.identity);
+						var font = instantiatedSlotObj.GetComponentInChildren<TMPro.TextMeshProUGUI>();
 						font.font = chineseFont;
-						item.GetComponent<DragDrop>().itemValue = answerCheck.question.answers[i];
-						Instantiate(item, itemPositions[i], Quaternion.identity).transform.SetParent(canvas.transform, false);       //old code in case need: Instantiate(item, itemPositions[i], Quaternion.identity).transform.parent = canvas.transform;
-						item.GetComponent<DragDrop>().canvas = canvas;
-						itemList.Add(item);
+						instantiatedSlotObj.GetComponent<DragDrop>().itemValue = answerCheck.question.answers[i];
+						instantiatedSlotObj.GetComponent<DragDrop>().valueText.SetText(answerCheck.question.answers[i]);
+						instantiatedSlotObj.transform.SetParent(canvas.transform, false);       //old code in case need: Instantiate(item, itemPositions[i], Quaternion.identity).transform.parent = canvas.transform;
+						instantiatedSlotObj.GetComponent<DragDrop>().canvas = canvas;
+						itemList.Add(instantiatedSlotObj);
 					}
-
 				}
 			}
             else
@@ -98,22 +105,28 @@ public class QuestionLoader : MonoBehaviour
 							List<string> splitString = new List<string>();
 							splitString.Add(answerCheck.question.filledValues[i].Split("|")[0]);
 							splitString.Add(answerCheck.question.filledValues[i].Split("|")[1]);
-                            StartCoroutine(LoadFilledSlotCoroutine(splitString[1]));
-							filledSlot.GetComponent<FilledSlot>().filledValue = splitString[0];
-							Instantiate(filledSlot, filledSlotPositions[i], Quaternion.identity).transform.SetParent(canvas.transform, false);       //old code in case need: Instantiate(filledSlot, filledSlotPositions[i], Quaternion.identity).transform.parent = canvas.transform;
-							filledSlotList.Add(filledSlot);
+							instantiatedFilledImgObj = Instantiate(filledSlot, filledSlotPositions[i], Quaternion.identity);
+
+							//set filledslot values
+							StartCoroutine(LoadFilledSlotCoroutine(splitString[1]));
+							instantiatedFilledImgObj.GetComponent<FilledSlot>().filledValue = splitString[0];
+							instantiatedFilledImgObj.GetComponent<FilledSlot>().filledText.SetText("");
+							instantiatedFilledImgObj.transform.SetParent(canvas.transform, false);       //old code in case need: Instantiate(filledSlot, filledSlotPositions[i], Quaternion.identity).transform.parent = canvas.transform;
+							filledSlotList.Add(instantiatedFilledImgObj);
 						}
 						else
                         {
-							filledSlot.GetComponent<FilledSlot>().filledValue = answerCheck.question.filledValues[i];
-							Instantiate(filledSlot, filledSlotPositions[i], Quaternion.identity).transform.SetParent(canvas.transform, false);       //old code in case need: Instantiate(filledSlot, filledSlotPositions[i], Quaternion.identity).transform.parent = canvas.transform;
-							filledSlotList.Add(filledSlot);
+							instantiatedFilledObj = Instantiate(filledSlot, filledSlotPositions[i], Quaternion.identity);
+							instantiatedFilledObj.GetComponent<FilledSlot>().filledValue = answerCheck.question.filledValues[i];
+							instantiatedFilledObj.transform.SetParent(canvas.transform, false);       //old code in case need: Instantiate(filledSlot, filledSlotPositions[i], Quaternion.identity).transform.parent = canvas.transform;
+							filledSlotList.Add(instantiatedFilledObj);
 						}
 					}
 					else if (answerCheck.excludedSubjects.Contains(answerCheck.question.subject))
 					{
-						slot.GetComponent<Slot>().slotName = "Slot (" + i + ")";
-						Instantiate(slot, filledSlotPositions[i], Quaternion.identity).transform.SetParent(canvas.transform, false);       //old code in case need: Instantiate(item, itemPositions[i], Quaternion.identity).transform.parent = canvas.transform;
+						instantiatedSlotObj = Instantiate(slot, filledSlotPositions[i], Quaternion.identity);
+						instantiatedSlotObj.GetComponent<Slot>().slotName = "Slot (" + i + ")";
+						instantiatedSlotObj.transform.SetParent(canvas.transform, false);       //old code in case need: Instantiate(item, itemPositions[i], Quaternion.identity).transform.parent = canvas.transform;
 						spawnedSlots = true;
 					}
 				}
@@ -122,8 +135,9 @@ public class QuestionLoader : MonoBehaviour
 				{
 					for (int j = 0; j < answerCheck.question.finalAnswers.Count; j++)
 					{
-						slot.GetComponent<Slot>().slotName = "Slot (" + j + ")";
-						Instantiate(slot, filledSlotPositions[j], Quaternion.identity).transform.SetParent(canvas.transform, false);       //old code in case need: Instantiate(item, itemPositions[i], Quaternion.identity).transform.parent = canvas.transform;
+						instantiatedAnswerSlotObj = Instantiate(slot, filledSlotPositions[j], Quaternion.identity);
+						instantiatedAnswerSlotObj.GetComponent<Slot>().slotName = "Slot (" + j + ")";
+						instantiatedAnswerSlotObj.transform.SetParent(canvas.transform, false);       //old code in case need: Instantiate(item, itemPositions[i], Quaternion.identity).transform.parent = canvas.transform;
 					}
 				}
 				for (int i = 0; i < answerCheck.question.answers.Count; i++)
@@ -135,19 +149,24 @@ public class QuestionLoader : MonoBehaviour
 							List<string> splitString = new List<string>();
 							splitString.Add(answerCheck.question.answers[i].Split("|")[0]);
 							splitString.Add(answerCheck.question.answers[i].Split("|")[1]);
-							instantiatedObj = Instantiate(item, itemPositions[i], Quaternion.identity);
-							StartCoroutine(LoadSlotCoroutine(splitString[1]));
+							instantiatedImageObj = Instantiate(item, itemPositions[i], Quaternion.identity);
 
 							//setting values for the instantiatedObj
-							instantiatedObj.GetComponent<DragDrop>().itemValue = splitString[0];
-							itemList.Add(item);
+							StartCoroutine(LoadSlotCoroutine(splitString[1]));
+							instantiatedImageObj.transform.SetParent(canvas.transform, false);//old code in case need: Instantiate(item, itemPositions[i], Quaternion.identity).transform.parent = canvas.transform;
+							instantiatedImageObj.GetComponent<DragDrop>().canvas = canvas;
+							instantiatedImageObj.GetComponent<DragDrop>().itemValue = splitString[0];
+							instantiatedImageObj.GetComponent<DragDrop>().valueText.SetText("");
+							itemList.Add(instantiatedImageObj);
 						}
                         else
                         {
-							item.GetComponent<DragDrop>().itemValue = answerCheck.question.answers[i];
-							Instantiate(item, itemPositions[i], Quaternion.identity).transform.SetParent(canvas.transform, false);       //old code in case need: Instantiate(item, itemPositions[i], Quaternion.identity).transform.parent = canvas.transform;
-							item.GetComponent<DragDrop>().canvas = canvas;
-							itemList.Add(item);
+							instantiatedSlotObj = Instantiate(item, itemPositions[i], Quaternion.identity);
+							instantiatedSlotObj.transform.SetParent(canvas.transform, false);//old code in case need: Instantiate(item, itemPositions[i], Quaternion.identity).transform.parent = canvas.transform;
+							instantiatedSlotObj.GetComponent<DragDrop>().itemValue = answerCheck.question.answers[i];
+							instantiatedSlotObj.GetComponent<DragDrop>().canvas = canvas;
+							instantiatedSlotObj.GetComponent<DragDrop>().valueText.SetText(answerCheck.question.answers[i]);
+							itemList.Add(instantiatedSlotObj);
 						}
 					}
 				}
@@ -175,7 +194,7 @@ public class QuestionLoader : MonoBehaviour
 		var texture = DownloadHandlerTexture.GetContent(www);
 
 		//sprite = Sprite.Create(texture, new Rect(0, 0, texture.width, texture.height), new Vector2(0, 0)); ;
-		filledSlot.GetComponent<Image>().sprite = Sprite.Create(texture, new Rect(0, 0, texture.width, texture.height), new Vector2(0, 0));;
+		instantiatedFilledImgObj.GetComponent<Image>().sprite = Sprite.Create(texture, new Rect(0, 0, texture.width, texture.height), new Vector2(0, 0));;
 	}
 
 	public IEnumerator LoadSlotCoroutine(string url)
@@ -197,9 +216,6 @@ public class QuestionLoader : MonoBehaviour
 		var texture = DownloadHandlerTexture.GetContent(www);
 
 		sprite = Sprite.Create(texture, new Rect(0, 0, texture.width, texture.height), new Vector2(0, 0));
-		instantiatedObj.transform.SetParent(canvas.transform, false);//old code in case need: Instantiate(item, itemPositions[i], Quaternion.identity).transform.parent = canvas.transform;
-		instantiatedObj.GetComponent<Image>().sprite = sprite;
-		instantiatedObj.GetComponent<DragDrop>().canvas = canvas;
-		Debug.Log($"BBBBBBBBBBB {sprite}");
+		instantiatedImageObj.GetComponent<Image>().sprite = sprite;
 	}
 }

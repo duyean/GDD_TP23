@@ -12,6 +12,5 @@ public class FilledSlot : MonoBehaviour
     void Start()
     {
         filledText = GetComponentInChildren<TextMeshProUGUI>();
-        filledText.SetText(filledValue);
     }
 }

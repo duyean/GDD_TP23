@@ -24,7 +24,6 @@ public class DragDrop : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDrag
         canvas = GetComponentInParent<Canvas>();
         rectTransform = GetComponent<RectTransform>();
         canvasGroup = GetComponent<CanvasGroup>();
-        valueText.SetText(itemValue);
         checkButton = GameObject.FindGameObjectWithTag("AnswerButton").GetComponent<Button>(); 
         checkButton.onClick.AddListener(ExecuteCheck); //When button is clicked, calls the ExecuteCheck function
         originalPos = rectTransform.anchoredPosition;
