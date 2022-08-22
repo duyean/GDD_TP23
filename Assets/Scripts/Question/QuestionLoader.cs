@@ -118,6 +118,7 @@ public class QuestionLoader : MonoBehaviour
                         {
 							instantiatedFilledObj = Instantiate(filledSlot, filledSlotPositions[i], Quaternion.identity);
 							instantiatedFilledObj.GetComponent<FilledSlot>().filledValue = answerCheck.question.filledValues[i];
+							instantiatedFilledObj.GetComponent<FilledSlot>().filledText.SetText(answerCheck.question.filledValues[i]);
 							instantiatedFilledObj.transform.SetParent(canvas.transform, false);       //old code in case need: Instantiate(filledSlot, filledSlotPositions[i], Quaternion.identity).transform.parent = canvas.transform;
 							filledSlotList.Add(instantiatedFilledObj);
 						}
