@@ -57,6 +57,24 @@ EditorBuildSettings:
     path: Assets/Scenes/English/eLevel4.unity
     guid: 3b09d25133f9e6f4681ae155a1c4c2d7
   - enabled: 1
+    path: Assets/Scenes/Minigames/MoveBlock/cMinigame0.unity
+    guid: 63df18eadf2bce84e883115b114fefe3
+  - enabled: 1
+    path: Assets/Scenes/Minigames/MoveBlock/cMinigame1.unity
+    guid: 3aecfe3494c5f0d48b10e044c7315a29
+  - enabled: 1
+    path: Assets/Scenes/Minigames/MoveBlock/eMinigame0.unity
+    guid: 09544e517bc0720489f3bcc45fda3654
+  - enabled: 1
+    path: Assets/Scenes/Minigames/MoveBlock/eMinigame1.unity
+    guid: 8359a11aae0020a458fc8a81a209b298
+  - enabled: 1
+    path: Assets/Scenes/Minigames/MoveBlock/mMinigame0.unity
+    guid: 4041835c6b0006848bbf2f2009b60a6f
+  - enabled: 1
+    path: Assets/Scenes/Minigames/MoveBlock/mMinigame1.unity
+    guid: 23c99cd1c9bf26c4fa36c737d78655c5
+  - enabled: 1
     path: Assets/Scenes/Minigames/TimeTrial/cMinigame2.unity
     guid: 83d9072fe1c3b90418bf1abcf5c5512f
   - enabled: 1

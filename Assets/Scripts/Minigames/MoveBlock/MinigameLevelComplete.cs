@@ -24,8 +24,9 @@ public class MinigameLevelComplete : MonoBehaviour
     {
         if (collision != null && collision.transform.tag == "Moveable_Block")
         {
-            text.gameObject.SetActive(true);
-            text.SetText("Nice");
+            //text.gameObject.SetActive(true);
+            //text.SetText("Nice");
+            WinUI.Instance.winUI.SetActive(true);
         }
     }
 }
