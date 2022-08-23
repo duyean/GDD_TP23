@@ -9,12 +9,28 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1144659637247056594, guid: dd7c2fa293d2f5e4e98737fc5aa8f76e, type: 3}
       propertyPath: m_Name
-      value: Upright Block
+      value: Desert Upright Block Variant
       objectReference: {fileID: 0}
     - target: {fileID: 1147632822615347974, guid: dd7c2fa293d2f5e4e98737fc5aa8f76e, type: 3}
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 21300000, guid: 254809b61de7e5f419aaa707161aaff3, type: 3}
+    - target: {fileID: 1226243673720506184, guid: dd7c2fa293d2f5e4e98737fc5aa8f76e, type: 3}
+      propertyPath: m_Size.x
+      value: 2.6556225
+      objectReference: {fileID: 0}
+    - target: {fileID: 1226243673720506184, guid: dd7c2fa293d2f5e4e98737fc5aa8f76e, type: 3}
+      propertyPath: m_Size.y
+      value: 1.7745459
+      objectReference: {fileID: 0}
+    - target: {fileID: 1226243673720506184, guid: dd7c2fa293d2f5e4e98737fc5aa8f76e, type: 3}
+      propertyPath: m_Offset.x
+      value: -0.09264636
+      objectReference: {fileID: 0}
+    - target: {fileID: 1226243673720506184, guid: dd7c2fa293d2f5e4e98737fc5aa8f76e, type: 3}
+      propertyPath: m_Offset.y
+      value: 0.06010291
+      objectReference: {fileID: 0}
     - target: {fileID: 1226243673720506184, guid: dd7c2fa293d2f5e4e98737fc5aa8f76e, type: 3}
       propertyPath: m_SpriteTilingProperty.border.w
       value: 0

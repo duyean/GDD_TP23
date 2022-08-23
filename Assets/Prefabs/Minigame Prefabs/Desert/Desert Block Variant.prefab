@@ -20,6 +20,22 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 21300000, guid: d8092edf03cfdb743b8fd8f8e7e4ec48, type: 3}
     - target: {fileID: 5553486263344522478, guid: 2a7841c2bb95a544589e8fdab15563de, type: 3}
+      propertyPath: m_Size.x
+      value: 2.6384718
+      objectReference: {fileID: 0}
+    - target: {fileID: 5553486263344522478, guid: 2a7841c2bb95a544589e8fdab15563de, type: 3}
+      propertyPath: m_Size.y
+      value: 1.7916974
+      objectReference: {fileID: 0}
+    - target: {fileID: 5553486263344522478, guid: 2a7841c2bb95a544589e8fdab15563de, type: 3}
+      propertyPath: m_Offset.x
+      value: -0.10122168
+      objectReference: {fileID: 0}
+    - target: {fileID: 5553486263344522478, guid: 2a7841c2bb95a544589e8fdab15563de, type: 3}
+      propertyPath: m_Offset.y
+      value: 0.034376442
+      objectReference: {fileID: 0}
+    - target: {fileID: 5553486263344522478, guid: 2a7841c2bb95a544589e8fdab15563de, type: 3}
       propertyPath: m_SpriteTilingProperty.border.w
       value: 0
       objectReference: {fileID: 0}
@@ -37,7 +53,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6050350438699612532, guid: 2a7841c2bb95a544589e8fdab15563de, type: 3}
       propertyPath: m_Name
-      value: Block
+      value: Desert Block Variant
       objectReference: {fileID: 0}
     - target: {fileID: 6050790274183344288, guid: 2a7841c2bb95a544589e8fdab15563de, type: 3}
       propertyPath: m_Sprite
