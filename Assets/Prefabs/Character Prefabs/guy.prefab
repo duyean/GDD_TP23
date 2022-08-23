@@ -455,6 +455,7 @@ GameObject:
   - component: {fileID: 1166293755080417780}
   - component: {fileID: 212248053197754818}
   - component: {fileID: 1977664546}
+  - component: {fileID: 78861387}
   m_Layer: 3
   m_Name: guy
   m_TagString: Player
@@ -524,7 +525,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: e30ec2e1deaf6664eb447a8e8b0253c3, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 17562f1ce89ff9344849b4db457088df, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -602,7 +603,7 @@ BoxCollider2D:
   m_Offset: {x: 0.19724524, y: 0.09065652}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.27073035, y: 0.456489}
+    pivot: {x: 0.5, y: 0.5}
     oldSize: {x: 3.54, y: 3.54}
     newSize: {x: 3.54, y: 3.54}
     adaptiveTilingThreshold: 0.5
@@ -647,9 +648,32 @@ MonoBehaviour:
   m_GroundCheck: {fileID: 7570700529605934076}
   m_CeilingCheck: {fileID: 7570700529523561967}
   m_CrouchDisableCollider: {fileID: 0}
+  Walking: {fileID: 7400000, guid: 500398048ef41fc439a0557899841820, type: 2}
+  Idle: {fileID: 7400000, guid: 1218966eef132824595a55f77db9dc6d, type: 2}
+  anim: {fileID: 0}
   OnLandEvent:
     m_PersistentCalls:
       m_Calls: []
   OnCrouchEvent:
     m_PersistentCalls:
       m_Calls: []
+--- !u!95 &78861387
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7570700530015188866}
+  m_Enabled: 0
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 96ed3b29cea456743a5bcadc0847f308, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
