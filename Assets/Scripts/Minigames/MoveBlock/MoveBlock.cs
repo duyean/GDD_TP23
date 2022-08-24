@@ -15,7 +15,7 @@ public class MoveBlock : MonoBehaviour
 
     void moveBlock()
     {
-        if(Input.mousePosition.x > 0)
+        if (Input.mousePosition.x > 0)
         {
             rb.constraints = RigidbodyConstraints2D.None;
             rb.constraints = RigidbodyConstraints2D.FreezeRotation;
