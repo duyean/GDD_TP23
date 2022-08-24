@@ -64,16 +64,35 @@ public class QuestionLoader : MonoBehaviour
 				{
 					if (answerCheck.question.filledValues[i] != "")
 					{
-						instantiatedFilledImgObj = Instantiate(filledSlot, filledSlotPositions[i], Quaternion.identity);
-						var font = instantiatedFilledImgObj.GetComponentInChildren<TMPro.TextMeshProUGUI>();
-						font.font = chineseFont;
-						instantiatedFilledImgObj.GetComponent<FilledSlot>().filledValue = answerCheck.question.filledValues[i];
-						instantiatedFilledImgObj.GetComponent<FilledSlot>().filledText.SetText(answerCheck.question.filledValues[i]);
-						instantiatedFilledImgObj.transform.SetParent(canvas.transform, false);       //old code in case need: Instantiate(filledSlot, filledSlotPositions[i], Quaternion.identity).transform.parent = canvas.transform;
-						filledSlotList.Add(instantiatedFilledImgObj);
+                        if (answerCheck.question.filledValues[i].Contains("http"))
+                        {
+							instantiatedFilledImgObj = Instantiate(filledSlot, filledSlotPositions[i], Quaternion.identity);
+							var font = instantiatedFilledImgObj.GetComponentInChildren<TMPro.TextMeshProUGUI>();
+							font.font = chineseFont;
+							StartCoroutine("LoadFilledSlotCoroutine");
+							instantiatedFilledImgObj.GetComponent<FilledSlot>().filledValue = answerCheck.question.filledValues[i];
+							instantiatedFilledImgObj.GetComponent<FilledSlot>().filledText.SetText(answerCheck.question.filledValues[i]);
+							instantiatedFilledImgObj.transform.SetParent(canvas.transform, false);       //old code in case need: Instantiate(filledSlot, filledSlotPositions[i], Quaternion.identity).transform.parent = canvas.transform;
+							filledSlotList.Add(instantiatedFilledImgObj);
+						}
+                        else
+                        {
+							instantiatedFilledObj = Instantiate(filledSlot, filledSlotPositions[i], Quaternion.identity);
+							var font = instantiatedFilledObj.GetComponentInChildren<TMPro.TextMeshProUGUI>();
+							font.font = chineseFont;
+							instantiatedFilledObj.GetComponent<FilledSlot>().filledValue = answerCheck.question.filledValues[i];
+							instantiatedFilledObj.GetComponent<FilledSlot>().filledText.SetText(answerCheck.question.filledValues[i]);
+							instantiatedFilledObj.transform.SetParent(canvas.transform, false);       //old code in case need: Instantiate(filledSlot, filledSlotPositions[i], Quaternion.identity).transform.parent = canvas.transform;
+							filledSlotList.Add(instantiatedFilledObj);
+						}
+					}
+					//skip slot if special character is found
+					else if (answerCheck.question.filledValues[i] == "~")
+					{
+						return;
 					}
 					//Spawn answer slot
-					else
+					else if (answerCheck.question.filledValues[i] == "")
 					{
 						instantiatedAnswerSlotObj = Instantiate(slot, filledSlotPositions[i], Quaternion.identity);
 						instantiatedAnswerSlotObj.GetComponent<Slot>().slotName = "Slot (" + i + ")";
@@ -99,7 +118,7 @@ public class QuestionLoader : MonoBehaviour
             {
 				for (int i = 0; i < answerCheck.question.filledValues.Count; i++)
 				{
-					if (answerCheck.question.filledValues[i] != "")
+					if (answerCheck.question.filledValues[i] != "" && answerCheck.question.filledValues[i] != "~")
 					{
                         if (answerCheck.question.filledValues[i].Contains("http"))
                         {
@@ -124,6 +143,12 @@ public class QuestionLoader : MonoBehaviour
 							filledSlotList.Add(instantiatedFilledObj);
 						}
 					}
+					//skip slot if special character is found
+					else if (answerCheck.question.answers[i] == "~")
+					{
+						return;
+					}
+					//spawn answer slot
 					else if (answerCheck.excludedSubjects.Contains(answerCheck.question.subject))
 					{
 						instantiatedSlotObj = Instantiate(slot, filledSlotPositions[i], Quaternion.identity);
