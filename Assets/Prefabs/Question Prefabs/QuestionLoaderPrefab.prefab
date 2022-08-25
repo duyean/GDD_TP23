@@ -1574,13 +1574,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   answerCheck: {fileID: 3687099115687641615}
-  subject: Math
-  level: 1
-  question: 1
+  subject: 
+  level: 0
+  question: 0
   item: {fileID: 2170202485578305287, guid: efc468eaad6c98c45b39714c73ffed75, type: 3}
   canvasGameObject: {fileID: 3687099114782643167}
   filledSlot: {fileID: 2170202485578305287, guid: 678c474833bfe214d970dc7eeeb2ef9a, type: 3}
   slot: {fileID: 8878105185590181304, guid: 8168d3167dc2f60469e585f4f2593385, type: 3}
+  emptyGameObject: {fileID: 2170202485578305287, guid: 49b902ab8d0cf3b448e8f46a5f6b9c2e, type: 3}
   instantiatedAnswerSlotObj: {fileID: 0}
   instantiatedSlotObj: {fileID: 0}
   instantiatedImageObj: {fileID: 0}

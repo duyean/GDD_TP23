@@ -76,14 +76,15 @@ public class AnswerCheck : MonoBehaviour
 		triesLeftText.text = "Tries left: " + tries;
 		//hintImage.GetComponent<Image>().sprite = question.hint;
 		solutionAnswerText.SetText(question.solution);
-	}
+    }
 
 	public void CheckAnswer()
-    {		
-		if (!correct)
+    {
+        if (!correct)
 		{
 			//Sort dictionary
 			SortValues();
+			Debug.Log(sortedValues.Values.ToString());
 			//Get values from answer list
 			for (int i = 0; i < question.finalAnswers.Count; i++)
 			{
@@ -96,6 +97,16 @@ public class AnswerCheck : MonoBehaviour
 			{
 				//Then check values against answer array
 				//if all values align, then set boolean to true
+				//If there is only one final answer, only check value no matter the key
+				if (question.finalAnswers.Count == 1)
+                {
+                    if (sortedValues.ContainsValue(question.finalAnswers[0]))
+					{
+                        correct = true;
+                        questionFinishedCanvas.SetActive(true);
+                        wrongAnswerText.enabled = false;
+                    }
+				}
 				if (sortedValues.SequenceEqual(answers))
 				{
 					correct = true;
@@ -171,6 +182,13 @@ public class AnswerCheck : MonoBehaviour
 	}
 	public void SortValues()
     {
+		if (answers.ContainsValue(""))
+		{
+			for (int i = 0; i < question.finalAnswers.Count; i++)
+			{
+                sortedValues.TryAdd(new string("Slot (" + i + ")"), "");
+            }
+		}
 		//From https://www.tutorialsteacher.com/linq/linq-sorting-operators-orderby-orderbydescending#orderby
 		var orderByKey = from s in slotValues
 						 orderby s.Key

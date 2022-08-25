@@ -15,11 +15,11 @@ public class QuestionLoader : MonoBehaviour
 	public GameObject filledSlot;
 	public GameObject slot;
 
-	public GameObject instantiatedAnswerSlotObj;
-	public GameObject instantiatedSlotObj;
-	public GameObject instantiatedImageObj;
-	public GameObject instantiatedFilledObj;
-	public GameObject instantiatedFilledImgObj;
+    [HideInInspector] public GameObject instantiatedAnswerSlotObj;
+    [HideInInspector] public GameObject instantiatedSlotObj;
+    [HideInInspector] public GameObject instantiatedImageObj;
+    [HideInInspector] public GameObject instantiatedFilledObj;
+	[HideInInspector] public GameObject instantiatedFilledImgObj;
 
 	public Canvas canvas;
 	public FilledSlot[] filledSlots;
@@ -31,7 +31,6 @@ public class QuestionLoader : MonoBehaviour
 
 	[SerializeField] private Sprite sprite;
 	private Coin coin;
-	private bool spawnedSlots;
 	//private int integer;
 
 	void Awake()
@@ -54,127 +53,115 @@ public class QuestionLoader : MonoBehaviour
 	//Instantiate item prefab with answer values from specified scriptable object
 	void SpawnAnswers(int level)
 	{
+		//double check that question loaded is correct
 		if (answerCheck.question.questionID == level)
 		{
+			//set question display text
 			answerCheck.questionText.text = answerCheck.question.question;
 
+			//check for Chinese, then change font
 			if (answerCheck.question.subject == "Chinese")
 			{
+				//for every filled value, conduct the following checks
 				for (int i = 0; i < answerCheck.question.filledValues.Count; i++)
 				{
-					if (answerCheck.question.filledValues[i] != "")
-					{
-                        if (answerCheck.question.filledValues[i].Contains("http"))
+					//check if filled value is not null/empty
+					if (!answerCheck.question.filledValues[i].Equals(""))
+                    {
+                        //check if filled slot contains "~", if it does, skip slot
+                        if (answerCheck.question.filledValues[i].Equals("~"))
+                        {
+                            //skip slot
+                        }
+                        //then check if filled value contains "http", if it does, load image
+                        else if (answerCheck.question.filledValues[i].Contains("http"))
                         {
 							instantiatedFilledImgObj = Instantiate(filledSlot, filledSlotPositions[i], Quaternion.identity);
 							var font = instantiatedFilledImgObj.GetComponentInChildren<TMPro.TextMeshProUGUI>();
 							font.font = chineseFont;
 							StartCoroutine("LoadFilledSlotCoroutine");
-							instantiatedFilledImgObj.GetComponent<FilledSlot>().filledValue = answerCheck.question.filledValues[i];
-							instantiatedFilledImgObj.GetComponent<FilledSlot>().filledText.SetText(answerCheck.question.filledValues[i]);
-							instantiatedFilledImgObj.transform.SetParent(canvas.transform, false);       //old code in case need: Instantiate(filledSlot, filledSlotPositions[i], Quaternion.identity).transform.parent = canvas.transform;
+                            setFilledSlot(instantiatedFilledObj, i);
 							filledSlotList.Add(instantiatedFilledImgObj);
 						}
+						//if not an image or needs to be skipped, spawn as per normal
                         else
                         {
 							instantiatedFilledObj = Instantiate(filledSlot, filledSlotPositions[i], Quaternion.identity);
 							var font = instantiatedFilledObj.GetComponentInChildren<TMPro.TextMeshProUGUI>();
 							font.font = chineseFont;
-							instantiatedFilledObj.GetComponent<FilledSlot>().filledValue = answerCheck.question.filledValues[i];
-							instantiatedFilledObj.GetComponent<FilledSlot>().filledText.SetText(answerCheck.question.filledValues[i]);
-							instantiatedFilledObj.transform.SetParent(canvas.transform, false);       //old code in case need: Instantiate(filledSlot, filledSlotPositions[i], Quaternion.identity).transform.parent = canvas.transform;
+							setFilledSlot(instantiatedFilledObj, i);
 							filledSlotList.Add(instantiatedFilledObj);
 						}
                     }
-                    //skip slot if special character is found
-                    else if (answerCheck.question.filledValues[i] == "~")
-                    {
-						break;
-                    }
-                    //Spawn answer slot
-                    else if (answerCheck.question.filledValues[i] == "")
+                    //If filled slot is empty, spawn a slot to drag in answer instead
+                    else if (answerCheck.question.filledValues[i].Equals(""))
 					{
 						instantiatedAnswerSlotObj = Instantiate(slot, filledSlotPositions[i], Quaternion.identity);
-						instantiatedAnswerSlotObj.GetComponent<Slot>().slotName = "Slot (" + i + ")";
-						instantiatedAnswerSlotObj.transform.SetParent(canvas.transform, false);       //old code in case need: Instantiate(item, itemPositions[i], Quaternion.identity).transform.parent = canvas.transform;
-                    }
+						setSlot(instantiatedAnswerSlotObj, i);
+					}
                 }
+				//spawn answers for Chinese question
 				for (int i = 0; i < answerCheck.question.answers.Count; i++)
 				{
-					if (answerCheck.question.answers[i] != "")
+					if (!answerCheck.question.answers[i].Equals(""))
 					{
 						instantiatedSlotObj = Instantiate(item, itemPositions[i], Quaternion.identity);
 						var font = instantiatedSlotObj.GetComponentInChildren<TMPro.TextMeshProUGUI>();
 						font.font = chineseFont;
-						instantiatedSlotObj.GetComponent<DragDrop>().itemValue = answerCheck.question.answers[i];
-						instantiatedSlotObj.GetComponent<DragDrop>().valueText.SetText(answerCheck.question.answers[i]);
-						instantiatedSlotObj.transform.SetParent(canvas.transform, false);       //old code in case need: Instantiate(item, itemPositions[i], Quaternion.identity).transform.parent = canvas.transform;
-						instantiatedSlotObj.GetComponent<DragDrop>().canvas = canvas;
+						setDragDrop(instantiatedSlotObj, i);
 						itemList.Add(instantiatedSlotObj);
 					}
 				}
 			}
+			//if not Chinese question, do the following
             else
             {
 				for (int i = 0; i < answerCheck.question.filledValues.Count; i++)
 				{
-					if (answerCheck.question.filledValues[i] != "" && answerCheck.question.filledValues[i] != "~")
-					{
-                        if (answerCheck.question.filledValues[i].Contains("http"))
+					//if filled values is not null/empty, do the following
+					if (!answerCheck.question.filledValues[i].Equals(""))
+                    {
+						//check if filled value is special. if it is, skip spawning
+						if (answerCheck.question.filledValues[i].Equals("~"))
                         {
-							List<string> splitString = new List<string>();
+							//skip
+                        }
+                        //if filled value contains "http", load an image
+                        else if (answerCheck.question.filledValues[i].Contains("http"))
+                        {
+                            List<string> splitString = new List<string>();
 							splitString.Add(answerCheck.question.filledValues[i].Split("|")[0]);
 							splitString.Add(answerCheck.question.filledValues[i].Split("|")[1]);
 							instantiatedFilledImgObj = Instantiate(filledSlot, filledSlotPositions[i], Quaternion.identity);
 
 							//set filledslot values
-							StartCoroutine(LoadFilledSlotCoroutine(splitString[1]));
-							instantiatedFilledImgObj.GetComponent<FilledSlot>().filledValue = splitString[0];
-							instantiatedFilledImgObj.GetComponent<FilledSlot>().filledText.SetText("");
-							instantiatedFilledImgObj.transform.SetParent(canvas.transform, false);       //old code in case need: Instantiate(filledSlot, filledSlotPositions[i], Quaternion.identity).transform.parent = canvas.transform;
-							filledSlotList.Add(instantiatedFilledImgObj);
+							StartCoroutine(LoadImageCoroutine(splitString[1],instantiatedFilledImgObj));
+							setFilledSlot(instantiatedFilledImgObj, i);
+
+                            filledSlotList.Add(instantiatedFilledImgObj);
 						}
-						else
+                        //if filled value is not an image or a skipped slot, load a regular filled slot
+                        else if(!answerCheck.question.filledValues[i].Equals(""))
                         {
-							instantiatedFilledObj = Instantiate(filledSlot, filledSlotPositions[i], Quaternion.identity);
-							instantiatedFilledObj.GetComponent<FilledSlot>().filledValue = answerCheck.question.filledValues[i];
-							instantiatedFilledObj.GetComponent<FilledSlot>().filledText.SetText(answerCheck.question.filledValues[i]);
-							instantiatedFilledObj.transform.SetParent(canvas.transform, false);       //old code in case need: Instantiate(filledSlot, filledSlotPositions[i], Quaternion.identity).transform.parent = canvas.transform;
+                            instantiatedFilledObj = Instantiate(filledSlot, filledSlotPositions[i], Quaternion.identity);
+							setFilledSlot(instantiatedFilledObj, i);
 							filledSlotList.Add(instantiatedFilledObj);
-						}
+                        }
                     }
-                    //skip slot if special character is found
-                    else if (answerCheck.question.filledValues[i] == "~")
+                    //If filled slot is empty, spawn a slot to drag in answer instead
+                    if (answerCheck.question.filledValues[i].Equals(""))
                     {
-                        //instantiatedFilledObj = Instantiate(filledSlot, filledSlotPositions[i], Quaternion.identity);
-                        //instantiatedFilledObj.GetComponent<FilledSlot>().filledValue = answerCheck.question.filledValues[i];
-                        //instantiatedFilledObj.GetComponent<FilledSlot>().filledText.SetText(answerCheck.question.filledValues[i]);
-                        //instantiatedFilledObj.transform.SetParent(canvas.transform, false);       //old code in case need: Instantiate(filledSlot, filledSlotPositions[i], Quaternion.identity).transform.parent = canvas.transform;
-                        //filledSlotList.Add(instantiatedFilledObj);
-                    }
-                    //spawn answer slot
-                    else if (answerCheck.excludedSubjects.Contains(answerCheck.question.subject))
-					{
-						instantiatedAnswerSlotObj = Instantiate(slot, filledSlotPositions[i], Quaternion.identity);
-						instantiatedAnswerSlotObj.GetComponent<Slot>().slotName = "Slot (" + i + ")";
-						instantiatedAnswerSlotObj.transform.SetParent(canvas.transform, false);       //old code in case need: Instantiate(item, itemPositions[i], Quaternion.identity).transform.parent = canvas.transform;
-						spawnedSlots = true;
+                        instantiatedAnswerSlotObj = Instantiate(slot, filledSlotPositions[i], Quaternion.identity);
+                        setSlot(instantiatedAnswerSlotObj, i);
                     }
                 }
-				//Spawn slot
-				if (answerCheck.question.answers.Count > answerCheck.question.finalAnswers.Count && spawnedSlots != true)
-				{
-					for (int j = 0; j < answerCheck.question.finalAnswers.Count; j++)
-					{
-						instantiatedAnswerSlotObj = Instantiate(slot, filledSlotPositions[j], Quaternion.identity);
-						instantiatedAnswerSlotObj.GetComponent<Slot>().slotName = "Slot (" + j + ")";
-						instantiatedAnswerSlotObj.transform.SetParent(canvas.transform, false);       //old code in case need: Instantiate(item, itemPositions[i], Quaternion.identity).transform.parent = canvas.transform;
-					}
-				}
+				//spawn answers for other questions
 				for (int i = 0; i < answerCheck.question.answers.Count; i++)
-				{
-					if (answerCheck.question.answers[i] != "")
+                {
+					//if answers is not null/empty, do the following
+                    if (!answerCheck.question.answers[i].Equals(""))
 					{
+						//if answers contain "http", load an image
 						if (answerCheck.question.answers[i].Contains("http"))
 						{
 							List<string> splitString = new List<string>();
@@ -183,52 +170,49 @@ public class QuestionLoader : MonoBehaviour
 							instantiatedImageObj = Instantiate(item, itemPositions[i], Quaternion.identity);
 
 							//setting values for the instantiatedObj
-							StartCoroutine(LoadSlotCoroutine(splitString[1]));
-							instantiatedImageObj.transform.SetParent(canvas.transform, false);//old code in case need: Instantiate(item, itemPositions[i], Quaternion.identity).transform.parent = canvas.transform;
-							instantiatedImageObj.GetComponent<DragDrop>().canvas = canvas;
-							instantiatedImageObj.GetComponent<DragDrop>().itemValue = splitString[0];
-							instantiatedImageObj.GetComponent<DragDrop>().valueText.SetText("");
-							itemList.Add(instantiatedImageObj);
+							StartCoroutine(LoadImageCoroutine(splitString[1],instantiatedImageObj));
+                            setDragDrop(instantiatedImageObj, i);
+                            instantiatedImageObj.GetComponent<DragDrop>().itemValue = splitString[0];
+                            instantiatedImageObj.GetComponent<DragDrop>().valueText.SetText("");
+                            itemList.Add(instantiatedImageObj);
 						}
+						//if not, load answers normally
                         else
                         {
 							instantiatedSlotObj = Instantiate(item, itemPositions[i], Quaternion.identity);
-							instantiatedSlotObj.transform.SetParent(canvas.transform, false);//old code in case need: Instantiate(item, itemPositions[i], Quaternion.identity).transform.parent = canvas.transform;
-							instantiatedSlotObj.GetComponent<DragDrop>().itemValue = answerCheck.question.answers[i];
-							instantiatedSlotObj.GetComponent<DragDrop>().canvas = canvas;
-							instantiatedSlotObj.GetComponent<DragDrop>().valueText.SetText(answerCheck.question.answers[i]);
+							setDragDrop(instantiatedSlotObj, i);
 							itemList.Add(instantiatedSlotObj);
 						}
 					}
 				}
 			}
-		}
+        }
 		canvasGameObject.SetActive(false);
 	}
 
-	public IEnumerator LoadFilledSlotCoroutine(string url)
+	void setFilledSlot(GameObject gameObject, int i)
 	{
-		UnityWebRequest www = UnityWebRequestTexture.GetTexture(url);
-		var asyncOp = www.SendWebRequest();
+        gameObject.GetComponent<FilledSlot>().filledValue = answerCheck.question.filledValues[i];
+        gameObject.GetComponent<FilledSlot>().filledText.SetText(answerCheck.question.filledValues[i]);
+        gameObject.transform.SetParent(canvas.transform, false);
+    }
 
-		while (!www.isDone)
-		{
-			yield return null;
-		}
+    void setSlot(GameObject gameObject, int i)
+	{
+        gameObject.GetComponent<Slot>().slotName = "Slot (" + i + ")";
+        gameObject.transform.SetParent(canvas.transform, false);
+    }
 
-		if (!string.IsNullOrEmpty(www.error))
-		{
-			Debug.Log(www.error);
-			Debug.Log(url);
-		}
-		Debug.Log(www.isDone);
-		var texture = DownloadHandlerTexture.GetContent(www);
+    void setDragDrop(GameObject gameObject, int i)
+	{
+        gameObject.transform.SetParent(canvas.transform, false);
+		gameObject.GetComponent<DragDrop>().itemValue = answerCheck.question.answers[i];
+        gameObject.GetComponent<DragDrop>().canvas = canvas;
+        gameObject.GetComponent<DragDrop>().valueText.SetText(answerCheck.question.answers[i]);
 
-		//sprite = Sprite.Create(texture, new Rect(0, 0, texture.width, texture.height), new Vector2(0, 0)); ;
-		instantiatedFilledImgObj.GetComponent<Image>().sprite = Sprite.Create(texture, new Rect(0, 0, texture.width, texture.height), new Vector2(0, 0));;
-	}
+    }
 
-	public IEnumerator LoadSlotCoroutine(string url)
+    public IEnumerator LoadImageCoroutine(string url, GameObject gameObject)
 	{
 		UnityWebRequest www = UnityWebRequestTexture.GetTexture(url);
 		var asyncOp = www.SendWebRequest();
@@ -247,6 +231,6 @@ public class QuestionLoader : MonoBehaviour
 		var texture = DownloadHandlerTexture.GetContent(www);
 
 		sprite = Sprite.Create(texture, new Rect(0, 0, texture.width, texture.height), new Vector2(0, 0));
-		instantiatedImageObj.GetComponent<Image>().sprite = sprite;
+		gameObject.GetComponent<Image>().sprite = sprite;
 	}
 }

@@ -36,14 +36,7 @@ public class CSV_Import
 
             for(int i = 14; i < 19; i++)
             {
-                if (splitData[i] != "")
-                {
-                    data.finalAnswers.Add(splitData[i]);
-                }
-            }
-            if(data.finalAnswers.Contains(""))
-            {
-                data.finalAnswers.Remove("");
+                data.finalAnswers.Add(splitData[i]);
             }
 
             data.subject = splitData[0];
