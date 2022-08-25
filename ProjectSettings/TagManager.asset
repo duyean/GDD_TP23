@@ -13,6 +13,7 @@ TagManager:
   - Moveable_Block
   - MovementButtons
   - AnswerButton
+  - block
   layers:
   - Default
   - TransparentFX

@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: -4715500898257380340}
   m_Layer: 0
   m_Name: Block
-  m_TagString: Untagged
+  m_TagString: block
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -104,7 +104,6 @@ MonoBehaviour:
   - {fileID: 21300000, guid: e32236c6b1426c8478e129453498442d, type: 3}
   - {fileID: 21300000, guid: 67c5c4f668d421b41baea2de0bd277b4, type: 3}
   - {fileID: 21300000, guid: d8092edf03cfdb743b8fd8f8e7e4ec48, type: 3}
-  spriteRenderer: {fileID: 0}
 --- !u!61 &5553486263344522478
 BoxCollider2D:
   m_ObjectHideFlags: 0

@@ -11,6 +11,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: City Upright Block
       objectReference: {fileID: 0}
+    - target: {fileID: 1144659637247056594, guid: dd7c2fa293d2f5e4e98737fc5aa8f76e, type: 3}
+      propertyPath: m_TagString
+      value: block
+      objectReference: {fileID: 0}
     - target: {fileID: 1147632822615347974, guid: dd7c2fa293d2f5e4e98737fc5aa8f76e, type: 3}
       propertyPath: m_Sprite
       value: 

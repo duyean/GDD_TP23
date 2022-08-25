@@ -55,6 +55,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Desert Block Variant
       objectReference: {fileID: 0}
+    - target: {fileID: 6050350438699612532, guid: 2a7841c2bb95a544589e8fdab15563de, type: 3}
+      propertyPath: m_TagString
+      value: block
+      objectReference: {fileID: 0}
     - target: {fileID: 6050790274183344288, guid: 2a7841c2bb95a544589e8fdab15563de, type: 3}
       propertyPath: m_Sprite
       value: 

@@ -85,20 +85,20 @@ public class QuestionLoader : MonoBehaviour
 							instantiatedFilledObj.transform.SetParent(canvas.transform, false);       //old code in case need: Instantiate(filledSlot, filledSlotPositions[i], Quaternion.identity).transform.parent = canvas.transform;
 							filledSlotList.Add(instantiatedFilledObj);
 						}
-					}
-					//skip slot if special character is found
-					else if (answerCheck.question.filledValues[i] == "~")
-					{
-						return;
-					}
-					//Spawn answer slot
-					else if (answerCheck.question.filledValues[i] == "")
+                    }
+                    //skip slot if special character is found
+                    else if (answerCheck.question.filledValues[i] == "~")
+                    {
+						break;
+                    }
+                    //Spawn answer slot
+                    else if (answerCheck.question.filledValues[i] == "")
 					{
 						instantiatedAnswerSlotObj = Instantiate(slot, filledSlotPositions[i], Quaternion.identity);
 						instantiatedAnswerSlotObj.GetComponent<Slot>().slotName = "Slot (" + i + ")";
 						instantiatedAnswerSlotObj.transform.SetParent(canvas.transform, false);       //old code in case need: Instantiate(item, itemPositions[i], Quaternion.identity).transform.parent = canvas.transform;
-					}
-				}
+                    }
+                }
 				for (int i = 0; i < answerCheck.question.answers.Count; i++)
 				{
 					if (answerCheck.question.answers[i] != "")
@@ -142,21 +142,25 @@ public class QuestionLoader : MonoBehaviour
 							instantiatedFilledObj.transform.SetParent(canvas.transform, false);       //old code in case need: Instantiate(filledSlot, filledSlotPositions[i], Quaternion.identity).transform.parent = canvas.transform;
 							filledSlotList.Add(instantiatedFilledObj);
 						}
-					}
-					//skip slot if special character is found
-					else if (answerCheck.question.answers[i] == "~")
+                    }
+                    //skip slot if special character is found
+                    else if (answerCheck.question.filledValues[i] == "~")
+                    {
+                        //instantiatedFilledObj = Instantiate(filledSlot, filledSlotPositions[i], Quaternion.identity);
+                        //instantiatedFilledObj.GetComponent<FilledSlot>().filledValue = answerCheck.question.filledValues[i];
+                        //instantiatedFilledObj.GetComponent<FilledSlot>().filledText.SetText(answerCheck.question.filledValues[i]);
+                        //instantiatedFilledObj.transform.SetParent(canvas.transform, false);       //old code in case need: Instantiate(filledSlot, filledSlotPositions[i], Quaternion.identity).transform.parent = canvas.transform;
+                        //filledSlotList.Add(instantiatedFilledObj);
+                    }
+                    //spawn answer slot
+                    else if (answerCheck.excludedSubjects.Contains(answerCheck.question.subject))
 					{
-						return;
-					}
-					//spawn answer slot
-					else if (answerCheck.excludedSubjects.Contains(answerCheck.question.subject))
-					{
-						instantiatedSlotObj = Instantiate(slot, filledSlotPositions[i], Quaternion.identity);
-						instantiatedSlotObj.GetComponent<Slot>().slotName = "Slot (" + i + ")";
-						instantiatedSlotObj.transform.SetParent(canvas.transform, false);       //old code in case need: Instantiate(item, itemPositions[i], Quaternion.identity).transform.parent = canvas.transform;
+						instantiatedAnswerSlotObj = Instantiate(slot, filledSlotPositions[i], Quaternion.identity);
+						instantiatedAnswerSlotObj.GetComponent<Slot>().slotName = "Slot (" + i + ")";
+						instantiatedAnswerSlotObj.transform.SetParent(canvas.transform, false);       //old code in case need: Instantiate(item, itemPositions[i], Quaternion.identity).transform.parent = canvas.transform;
 						spawnedSlots = true;
-					}
-				}
+                    }
+                }
 				//Spawn slot
 				if (answerCheck.question.answers.Count > answerCheck.question.finalAnswers.Count && spawnedSlots != true)
 				{
