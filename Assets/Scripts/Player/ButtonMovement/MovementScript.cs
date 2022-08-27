@@ -10,6 +10,9 @@ public class MovementScript : MonoBehaviour
     private float moveSpeed, jumpForce;
 
     private bool moveLeft, moveRight;
+
+    public Animator Anim;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -22,6 +25,7 @@ public class MovementScript : MonoBehaviour
 
     public void MoveLeft()
     {
+        Anim.SetBool("Walking", true);
         moveLeft = true;
         Vector3 scale = new Vector3(-1,1,1);
         GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>().localScale = scale;
@@ -29,6 +33,7 @@ public class MovementScript : MonoBehaviour
 
     public void MoveRight()
     {
+        Anim.SetBool("Walking", true);
         moveRight = true;
         Vector3 scale = new Vector3(1, 1, 1);
         GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>().localScale = scale;
@@ -48,6 +53,7 @@ public class MovementScript : MonoBehaviour
         moveLeft = false;
         moveRight = false;
         rb.velocity = new Vector2(0, rb.velocity.y);
+        Anim.SetBool("Walking", false) ;
     }
 
     // Update is called once per frame
@@ -65,5 +71,26 @@ public class MovementScript : MonoBehaviour
             rb.velocity = new Vector2(moveSpeed, rb.velocity.y) ;
         }
 
+        if (Input.GetKeyDown(KeyCode.UpArrow))
+        {
+            Jump();
+        }
+
+        if (Input.GetKeyDown(KeyCode.LeftArrow))
+        {
+            MoveLeft();
+        }
+
+        if (Input.GetKeyDown(KeyCode.RightArrow))
+        {
+            MoveRight();
+        }
+
+        if (Input.GetKeyUp(KeyCode.LeftArrow) || Input.GetKeyUp(KeyCode.RightArrow))
+        {
+            StopMoving();
+        }
+
+        
     }
 }
