@@ -55,6 +55,8 @@ public class AnswerCheck : MonoBehaviour
 	private Dictionary<string, string> slotValues = new Dictionary<string, string>();
 	private Dictionary<string, string> sortedValues = new Dictionary<string, string>();
 	private Dictionary<string, string> answers = new Dictionary<string, string>();
+	private Dictionary<string, string> sortedAnswers = new Dictionary<string, string>();
+	private int filledAnswers;
 
 	// Start is called before the first frame update
 	void Start()
@@ -76,100 +78,62 @@ public class AnswerCheck : MonoBehaviour
 		triesLeftText.text = "Tries left: " + tries;
 		//hintImage.GetComponent<Image>().sprite = question.hint;
 		solutionAnswerText.SetText(question.solution);
-		//Get values from answer list
-		for (int i = 0; i < question.finalAnswers.Count; i++)
-		{
-			if (!answers.ContainsValue(question.finalAnswers[i]) && question.finalAnswers[i] != null)
-			{
-				Debug.Log("added value");
-				answers.Add(new string("Slot (" + i + ")"), question.finalAnswers[i]);
-			}
-			else if (!answers.ContainsValue(question.finalAnswers[i]) && question.finalAnswers[i] == null)
-			{
-				Debug.Log("added '' value");
-				answers.Add(new string("Slot (" + i + ")"), "");
-			}
-		}
-		if (answers.ContainsKey("Slot (0)"))
-		{
-			Debug.Log(answers["Slot (0)"]);
-		}
-		else
-		{
-			Debug.Log("Slot (0) no value");
-		}
-		if (answers.ContainsKey("Slot (1)"))
-		{
-			Debug.Log(answers["Slot (1)"]);
-		}
-		else
-		{
-			Debug.Log("Slot (1) no value");
-		}
-		if (answers.ContainsKey("Slot (2)"))
-		{
-			Debug.Log(answers["Slot (2)"]);
-		}
-		else
-		{
-			Debug.Log("Slot (2) no value");
-		}
-		if (answers.ContainsKey("Slot (3)"))
-		{
-			Debug.Log(answers["Slot (3)"]);
-		}
-		else
-		{
-			Debug.Log("Slot (3) no value");
-		}
-		if (answers.ContainsKey("Slot (4)"))
-		{
-			Debug.Log(answers["Slot (4)"]);
-		}
-		else
-		{
-			Debug.Log("Slot (4) no value");
-		}
-	}
-
-    public void Update()
-    {
-		//Sort dictionary
-		SortValues();
 	}
 
     public void CheckAnswer()
 	{
-		//Ensure all 5 slots have a value
-		for (int i = 0; i < 5; i++)
-		{
-			if (sortedValues.ContainsKey("Slot (" + i + ")"))
-			{
-				Debug.Log("Didn't add any values");
-			}
-			else
-			{
-				sortedValues.Add("Slot (" + i + ")", "");
-			}
-		}
 		if (!correct)
 		{
+			//Get values from answer list
+			for (int i = 0; i < question.finalAnswers.Count; i++)
+			{
+				if (!answers.ContainsValue(question.finalAnswers[i]) && question.finalAnswers[i] != "")
+				{
+					answers.Add(new string("Slot (" + i + ")"), question.finalAnswers[i]);
+					filledAnswers++;
+				}
+				if (question.finalAnswers[i] == "")
+				{
+					answers.Add(new string("Slot (" + i + ")"), "");
+				}
+			}
+			//Ensure all 5 slots have a value
+			for (int i = 0; i < 5; i++)
+			{
+				if (sortedValues.ContainsKey("Slot (" + i + ")"))
+				{
+				}
+				else
+				{
+					sortedValues.Add("Slot (" + i + ")", "");
+				}
+			}
+			//Sort dictionary
+			SortValues();
+			SortAnswerValues();
 			if (!excludedSubjects.Contains(question.subject))
 			{
 				//Then check values against answer array
 				//if all values align, then set boolean to true
 				//If there is only one final answer, only check value no matter the key
-				if (question.finalAnswers.Count == 1)
-                {
-                    if (sortedValues.ContainsValue(question.finalAnswers[0]))
-					{
-                        correct = true;
-                        questionFinishedCanvas.SetActive(true);
-                        wrongAnswerText.enabled = false;
-                    }
-				}
-				if (sortedValues.SequenceEqual(answers))
+				if (sortedValues.ContainsValue(question.finalAnswers[0]) && filledAnswers <= 2)
 				{
+					correct = true;
+                    questionFinishedCanvas.SetActive(true);
+                    wrongAnswerText.enabled = false;
+                }
+
+                if (sortedValues["Slot (0)"].Equals(sortedAnswers["Slot (0)"]) && sortedValues["Slot (1)"].Equals(sortedAnswers["Slot (1)"]) && sortedValues["Slot (2)"].Equals(sortedAnswers["Slot (2)"]) && sortedValues["Slot (3)"].Equals(sortedAnswers["Slot (3)"]) && sortedValues["Slot (4)"].Equals(sortedAnswers["Slot (4)"]))
+                {
+					Debug.Log($"D {sortedValues.SequenceEqual(sortedAnswers)}");
+					correct = true;
+					questionFinishedCanvas.SetActive(true);
+					wrongAnswerText.enabled = false;
+				}
+
+				if (sortedValues.SequenceEqual(sortedAnswers))
+				{
+					Debug.Log($"D {sortedValues.SequenceEqual(sortedAnswers)}");
 					correct = true;
 					questionFinishedCanvas.SetActive(true);
 					wrongAnswerText.enabled = false;
@@ -248,49 +212,27 @@ public class AnswerCheck : MonoBehaviour
 						 orderby s.Key
 						 select s;
 		foreach (var item in orderByKey)
-        {
+		{
 			sortedValues.TryAdd(item.Key, item.Value);
 		}
-		//if (sortedValues.ContainsKey("Slot (0)"))
-		//{
-		//	Debug.Log(sortedValues["Slot (0)"]);
-		//}
-		//else
-		//{
-		//	Debug.Log("Slot (0) no value");
-		//}
-		//if (sortedValues.ContainsKey("Slot (1)"))
-		//{
-		//	Debug.Log(sortedValues["Slot (1)"]);
-		//}
-		//else
-		//{
-		//	Debug.Log("Slot (1) no value");
-		//}
-		//if (sortedValues.ContainsKey("Slot (2)"))
-		//{
-		//	Debug.Log(sortedValues["Slot (2)"]);
-		//}
-		//else
-		//{
-		//	Debug.Log("Slot (2) no value");
-		//}
-		//if (sortedValues.ContainsKey("Slot (3)"))
-		//{
-		//	Debug.Log(sortedValues["Slot (3)"]);
-		//}
-		//else
-		//{
-		//	Debug.Log("Slot (3) no value");
-		//}
-		//if (sortedValues.ContainsKey("Slot (4)"))
-		//{
-		//	Debug.Log(sortedValues["Slot (4)"]);
-		//}
-		//else
-		//{
-		//	Debug.Log("Slot (4) no value");
-		//}
+		var orderByKey2 = from s in sortedValues
+						  orderby s.Key
+						 select s;
+		foreach (var item in orderByKey2)
+		{
+			sortedValues.TryAdd(item.Key, item.Value);
+		}
+	}
+
+	public void SortAnswerValues()
+    {
+		var orderByKey = from s in answers
+						 orderby s.Key
+						 select s;
+		foreach (var item in orderByKey)
+		{
+			sortedAnswers.TryAdd(item.Key, item.Value);
+		}
 	}
 
 	public void AddValues(string key, string value)
