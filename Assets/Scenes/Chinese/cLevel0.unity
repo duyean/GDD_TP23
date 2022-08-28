@@ -738,8 +738,8 @@ TilemapRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 325776399
+  m_SortingLayer: -1
   m_SortingOrder: 0
   m_ChunkSize: {x: 32, y: 32, z: 32}
   m_ChunkCullingBounds: {x: 0, y: 0, z: 0}
@@ -4152,6 +4152,11 @@ MonoBehaviour:
   canvasGameObject: {fileID: 0}
   filledSlot: {fileID: 0}
   slot: {fileID: 0}
+  instantiatedAnswerSlotObj: {fileID: 0}
+  instantiatedSlotObj: {fileID: 0}
+  instantiatedImageObj: {fileID: 0}
+  instantiatedFilledObj: {fileID: 0}
+  instantiatedFilledImgObj: {fileID: 0}
   canvas: {fileID: 0}
   filledSlots: []
   itemList: []
@@ -4159,6 +4164,7 @@ MonoBehaviour:
   itemPositions: []
   filledSlotPositions: []
   chineseFont: {fileID: 0}
+  sprite: {fileID: 0}
 --- !u!4 &1829914707
 Transform:
   m_ObjectHideFlags: 0
