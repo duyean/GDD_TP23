@@ -76,23 +76,84 @@ public class AnswerCheck : MonoBehaviour
 		triesLeftText.text = "Tries left: " + tries;
 		//hintImage.GetComponent<Image>().sprite = question.hint;
 		solutionAnswerText.SetText(question.solution);
-    }
-
-	public void CheckAnswer()
-    {
-        if (!correct)
+		//Get values from answer list
+		for (int i = 0; i < question.finalAnswers.Count; i++)
 		{
-			//Sort dictionary
-			SortValues();
-			Debug.Log(sortedValues.Values.ToString());
-			//Get values from answer list
-			for (int i = 0; i < question.finalAnswers.Count; i++)
+			if (!answers.ContainsValue(question.finalAnswers[i]) && question.finalAnswers[i] != null)
 			{
-				if (!answers.ContainsValue(question.finalAnswers[i]))
-				{
-					answers.Add(new string("Slot (" + i + ")"), question.finalAnswers[i]);
-				}
+				Debug.Log("added value");
+				answers.Add(new string("Slot (" + i + ")"), question.finalAnswers[i]);
 			}
+			else if (!answers.ContainsValue(question.finalAnswers[i]) && question.finalAnswers[i] == null)
+			{
+				Debug.Log("added '' value");
+				answers.Add(new string("Slot (" + i + ")"), "");
+			}
+		}
+		if (answers.ContainsKey("Slot (0)"))
+		{
+			Debug.Log(answers["Slot (0)"]);
+		}
+		else
+		{
+			Debug.Log("Slot (0) no value");
+		}
+		if (answers.ContainsKey("Slot (1)"))
+		{
+			Debug.Log(answers["Slot (1)"]);
+		}
+		else
+		{
+			Debug.Log("Slot (1) no value");
+		}
+		if (answers.ContainsKey("Slot (2)"))
+		{
+			Debug.Log(answers["Slot (2)"]);
+		}
+		else
+		{
+			Debug.Log("Slot (2) no value");
+		}
+		if (answers.ContainsKey("Slot (3)"))
+		{
+			Debug.Log(answers["Slot (3)"]);
+		}
+		else
+		{
+			Debug.Log("Slot (3) no value");
+		}
+		if (answers.ContainsKey("Slot (4)"))
+		{
+			Debug.Log(answers["Slot (4)"]);
+		}
+		else
+		{
+			Debug.Log("Slot (4) no value");
+		}
+	}
+
+    public void Update()
+    {
+		//Sort dictionary
+		SortValues();
+	}
+
+    public void CheckAnswer()
+	{
+		//Ensure all 5 slots have a value
+		for (int i = 0; i < 5; i++)
+		{
+			if (sortedValues.ContainsKey("Slot (" + i + ")"))
+			{
+				Debug.Log("Didn't add any values");
+			}
+			else
+			{
+				sortedValues.Add("Slot (" + i + ")", "");
+			}
+		}
+		if (!correct)
+		{
 			if (!excludedSubjects.Contains(question.subject))
 			{
 				//Then check values against answer array
@@ -182,13 +243,6 @@ public class AnswerCheck : MonoBehaviour
 	}
 	public void SortValues()
     {
-		if (answers.ContainsValue(""))
-		{
-			for (int i = 0; i < question.finalAnswers.Count; i++)
-			{
-                sortedValues.TryAdd(new string("Slot (" + i + ")"), "");
-            }
-		}
 		//From https://www.tutorialsteacher.com/linq/linq-sorting-operators-orderby-orderbydescending#orderby
 		var orderByKey = from s in slotValues
 						 orderby s.Key
@@ -196,7 +250,47 @@ public class AnswerCheck : MonoBehaviour
 		foreach (var item in orderByKey)
         {
 			sortedValues.TryAdd(item.Key, item.Value);
-        }
+		}
+		//if (sortedValues.ContainsKey("Slot (0)"))
+		//{
+		//	Debug.Log(sortedValues["Slot (0)"]);
+		//}
+		//else
+		//{
+		//	Debug.Log("Slot (0) no value");
+		//}
+		//if (sortedValues.ContainsKey("Slot (1)"))
+		//{
+		//	Debug.Log(sortedValues["Slot (1)"]);
+		//}
+		//else
+		//{
+		//	Debug.Log("Slot (1) no value");
+		//}
+		//if (sortedValues.ContainsKey("Slot (2)"))
+		//{
+		//	Debug.Log(sortedValues["Slot (2)"]);
+		//}
+		//else
+		//{
+		//	Debug.Log("Slot (2) no value");
+		//}
+		//if (sortedValues.ContainsKey("Slot (3)"))
+		//{
+		//	Debug.Log(sortedValues["Slot (3)"]);
+		//}
+		//else
+		//{
+		//	Debug.Log("Slot (3) no value");
+		//}
+		//if (sortedValues.ContainsKey("Slot (4)"))
+		//{
+		//	Debug.Log(sortedValues["Slot (4)"]);
+		//}
+		//else
+		//{
+		//	Debug.Log("Slot (4) no value");
+		//}
 	}
 
 	public void AddValues(string key, string value)
