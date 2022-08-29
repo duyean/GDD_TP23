@@ -26,7 +26,7 @@ public class DragDrop : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDrag
         canvasGroup = GetComponent<CanvasGroup>();
         checkButton = GameObject.FindGameObjectWithTag("AnswerButton").GetComponent<Button>(); 
         checkButton.onClick.AddListener(ExecuteCheck); //When button is clicked, calls the ExecuteCheck function
-        originalPos = rectTransform.anchoredPosition;
+        originalPos = rectTransform.anchoredPosition;  //Gets the original vector positions of every item at the start
         }
 
     //Set the items back to original position if the answer is wrong
@@ -38,6 +38,7 @@ public class DragDrop : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDrag
         }
     }
 
+    //Detect when the mouse holds down on the item
     public void OnBeginDrag(PointerEventData eventData)
     {
         
@@ -47,11 +48,13 @@ public class DragDrop : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDrag
         canvasGroup.blocksRaycasts = false;
     }
 
+    //Detect when the mouse is moving the item
     public void OnDrag(PointerEventData eventData)
     {
         rectTransform.anchoredPosition += eventData.delta / canvas.scaleFactor; //Sets the item's position to the eventData which is the mouse cursor when the item is being dragged
     }
 
+    //Detect when the mouse lets go of the item
     public void OnEndDrag(PointerEventData eventData)
     {
         //Set item to translucent when no longer dragging
@@ -60,6 +63,7 @@ public class DragDrop : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDrag
         Cursor.lockState = CursorLockMode.None; //Unlocks the cursor
     }
 
+    //Detect when the mouse clicks on the item
     public void OnPointerDown(PointerEventData eventData)
     {
         Cursor.lockState = CursorLockMode.Confined; //Locks the cursor so that it cannot go out of the screen while dragging

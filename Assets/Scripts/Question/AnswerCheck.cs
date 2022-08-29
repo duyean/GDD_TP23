@@ -71,13 +71,13 @@ public class AnswerCheck : MonoBehaviour
         canvasCloseFinishedButton.onClick.AddListener(CloseFinishedCanvas);
 		canvasCloseHintButton.onClick.AddListener(CloseHintCanvas);
 		canvasCloseSolutionButton.onClick.AddListener(CloseSolutionCanvas);
-		//correctText.color = Color.green;
-		//wrongAnswerText.color = Color.red;
+
 		wrongAnswerText.enabled = false;
 		movementButtons = GameObject.FindGameObjectWithTag("MovementButtons").GetComponentInChildren<Canvas>();
 		triesLeftText.text = "Tries left: " + tries;
 		//hintImage.GetComponent<Image>().sprite = question.hint;
-		solutionAnswerText.SetText(question.solution);//Get values from answer list
+		solutionAnswerText.SetText(question.solution); //Changes the solution text to the solution value from the CSV file
+		//Get values from answer list
         for (int i = 0; i < question.finalAnswers.Count; i++)
         {
             if (!answers.ContainsValue(question.finalAnswers[i]) && question.finalAnswers[i] != "")
@@ -144,6 +144,8 @@ public class AnswerCheck : MonoBehaviour
 				questionFinishedCanvas.SetActive(true);
 				wrongAnswerText.enabled = false;
 			}
+			//If correct is false when button is clicked, subtract 1 from tries left and enables "Try Again" text and disables it after 2 seconds
+			// while playing a losing sound
 			if (!correct)
 			{
 				tries -= 1;
@@ -152,6 +154,7 @@ public class AnswerCheck : MonoBehaviour
 				SFX.Instance.LoseSound();
 				Invoke(nameof(TryAgain), 2f);
 			}
+			//Opens up another panel that shows a hint where the hint is an image url link retrieved from the CSV file
 			if (tries == 2 && !correct)
 			{
 				link = question.hint;
@@ -159,6 +162,7 @@ public class AnswerCheck : MonoBehaviour
 				StartCoroutine(GetComponent<HintScript>().LoadImageCoroutine(link));
 				//questionCanvas.SetActive(false);
             }
+			//Opens the solution canvas which auto completes the question and shows what the answer was
 			if (tries == 0 && !correct)
 			{
 				solutionCanvas.SetActive(true);
@@ -167,33 +171,36 @@ public class AnswerCheck : MonoBehaviour
 		}
 		if(correct)
         {
-			hintCanvas.SetActive(false);
-			SFX.Instance.WinSound();
-			questionCanvas.SetActive(false);
-			coin.SetActive(false);
-			questionCounter.answerToFinish--;
-			spawnPlatform(questionLoader.question);
-			spawnArrow();
-			checkWin(questionCounter.answerToFinish);
+			hintCanvas.SetActive(false);				//Close hint panel
+			SFX.Instance.WinSound();					//Play win sound
+			questionCanvas.SetActive(false);			//Close question panel
+			coin.SetActive(false);						//Disables coin
+			questionCounter.answerToFinish--;			//Decrease the number of questions to finish left in the level by 1
+			spawnPlatform(questionLoader.question);		//Spawns platform to unlock more areas of the map
+			spawnArrow();								//Spawn arrow pointing to next coin
+			checkWin(questionCounter.answerToFinish);	//Check if all questions has been completed in the level
 		}
 		triesLeftText.text = "Tries left: " + tries;
 	}
 
+	//Disables the text
 	void TryAgain()
     {
 		wrongAnswerText.enabled = false;
     }
 
+	//Function to disable question canvas upon completion of the question and to re-enable movement
 	void CloseFinishedCanvas()
     {
 		questionFinishedCanvas.SetActive(false);
 		movementButtons.enabled = true;
 	}
+	//Close the hint panel
 	void CloseHintCanvas()
     {
 		hintCanvas.SetActive(false);
-		//questionCanvas.SetActive(true);
 	}
+	//Close the solution panel, code inside does the same as the if(correct) statement above
 	void CloseSolutionCanvas()
     {
         coin.SetActive(false);

@@ -4,8 +4,6 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 public class WinUI : Singleton<WinUI>
 {
-
-    
     int finalLevelIndex = 4;
 
     [SerializeField]
