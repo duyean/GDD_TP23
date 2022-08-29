@@ -122,15 +122,15 @@ public class AnswerCheck : MonoBehaviour
                     wrongAnswerText.enabled = false;
                 }
 
-                if (sortedValues["Slot (0)"].Equals(sortedAnswers["Slot (0)"]) && sortedValues["Slot (1)"].Equals(sortedAnswers["Slot (1)"]) && sortedValues["Slot (2)"].Equals(sortedAnswers["Slot (2)"]) && sortedValues["Slot (3)"].Equals(sortedAnswers["Slot (3)"]) && sortedValues["Slot (4)"].Equals(sortedAnswers["Slot (4)"]))
-                {
+				if (sortedValues["Slot (0)"].Equals(sortedAnswers["Slot (0)"]) && sortedValues["Slot (1)"].Equals(sortedAnswers["Slot (1)"]) && sortedValues["Slot (2)"].Equals(sortedAnswers["Slot (2)"]) && sortedValues["Slot (3)"].Equals(sortedAnswers["Slot (3)"]) && sortedValues["Slot (4)"].Equals(sortedAnswers["Slot (4)"]))
+				{
 					Debug.Log($"D {sortedValues.SequenceEqual(sortedAnswers)}");
 					correct = true;
 					questionFinishedCanvas.SetActive(true);
 					wrongAnswerText.enabled = false;
 				}
 
-				if (sortedValues.SequenceEqual(sortedAnswers))
+				if (sortedValues.Equals(sortedAnswers))
 				{
 					Debug.Log($"D {sortedValues.SequenceEqual(sortedAnswers)}");
 					correct = true;
