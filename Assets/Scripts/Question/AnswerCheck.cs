@@ -77,26 +77,25 @@ public class AnswerCheck : MonoBehaviour
 		movementButtons = GameObject.FindGameObjectWithTag("MovementButtons").GetComponentInChildren<Canvas>();
 		triesLeftText.text = "Tries left: " + tries;
 		//hintImage.GetComponent<Image>().sprite = question.hint;
-		solutionAnswerText.SetText(question.solution);
-	}
+		solutionAnswerText.SetText(question.solution);//Get values from answer list
+        for (int i = 0; i < question.finalAnswers.Count; i++)
+        {
+            if (!answers.ContainsValue(question.finalAnswers[i]) && question.finalAnswers[i] != "")
+            {
+                answers.Add(new string("Slot (" + i + ")"), question.finalAnswers[i]);
+                filledAnswers++;
+            }
+            if (question.finalAnswers[i] == "")
+            {
+                answers.Add(new string("Slot (" + i + ")"), "");
+            }
+        }
+    }
 
     public void CheckAnswer()
-	{
-		if (!correct)
+    {
+        if (!correct)
 		{
-			//Get values from answer list
-			for (int i = 0; i < question.finalAnswers.Count; i++)
-			{
-				if (!answers.ContainsValue(question.finalAnswers[i]) && question.finalAnswers[i] != "")
-				{
-					answers.Add(new string("Slot (" + i + ")"), question.finalAnswers[i]);
-					filledAnswers++;
-				}
-				if (question.finalAnswers[i] == "")
-				{
-					answers.Add(new string("Slot (" + i + ")"), "");
-				}
-			}
 			//Ensure all 5 slots have a value
 			for (int i = 0; i < 5; i++)
 			{
