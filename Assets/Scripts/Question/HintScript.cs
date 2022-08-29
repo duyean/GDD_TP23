@@ -8,44 +8,33 @@ public class HintScript : MonoBehaviour
     [SerializeField]
     private Image image;
 
-    // automatically called when game started
-    void Start()
-    {
-        //StartCoroutine(LoadImageCoroutine(url)); // execute the section independently
-    }
-
-    // this section will be run independently
-    //private IEnumerator LoadImageCoroutine()
-    //{
-    //    Debug.Log("Loading ....");
-    //    WWW wwwLoader = new WWW(url);   // create WWW object pointing to the url
-    //    yield return wwwLoader;         // start loading whatever in that url ( delay happens here )
-
-    //    Debug.Log("Loaded");
-    //    thisRenderer.material.color = Color.white;              // set white
-    //    thisRenderer.material.mainTexture = wwwLoader.texture;  // set loaded image
-    //}
-
+    // function to load image
     public IEnumerator LoadImageCoroutine(string url)
     {
+        // uses unity web request to get texture from link
         UnityWebRequest www = UnityWebRequestTexture.GetTexture(url);
         var asyncOp = www.SendWebRequest();
-
+        
+        // wait till www.isdone which means picture is retrieved
+        // you can also check the progress here using a float
         while (!www.isDone)
         {
             yield return null;
         }
 
-
+        // return message if error occurs
         if (!string.IsNullOrEmpty(www.error))
         {
             Debug.Log(www.error);
             Debug.Log(url);
         }
-        Debug.Log(www.isDone);
+
+        // returns the content as texture variable.
         var texture = DownloadHandlerTexture.GetContent(www);
 
+        // set the sprite to the content
         image.sprite = Sprite.Create(texture, new Rect(0, 0, texture.width, texture.height), new Vector2(0, 0));
+        // set the size to the original size
         image.SetNativeSize();
 
     }
