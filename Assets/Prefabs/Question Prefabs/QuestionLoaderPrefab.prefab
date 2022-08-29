@@ -1517,7 +1517,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: -27.547852, w: 0}
+  m_margin: {x: 0, y: 0, z: -389.87, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -1581,7 +1581,6 @@ MonoBehaviour:
   canvasGameObject: {fileID: 3687099114782643167}
   filledSlot: {fileID: 2170202485578305287, guid: 678c474833bfe214d970dc7eeeb2ef9a, type: 3}
   slot: {fileID: 8878105185590181304, guid: 8168d3167dc2f60469e585f4f2593385, type: 3}
-  emptyGameObject: {fileID: 2170202485578305287, guid: 49b902ab8d0cf3b448e8f46a5f6b9c2e, type: 3}
   instantiatedAnswerSlotObj: {fileID: 0}
   instantiatedSlotObj: {fileID: 0}
   instantiatedImageObj: {fileID: 0}
