@@ -2,6 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
+// script allows component with this interface
+// to have only 1 instance and makes the object
+// not destroy itself when loading a new scene.
 public abstract class Singleton<T> : MonoBehaviour where T : Component
 {
     private static T s_instance;

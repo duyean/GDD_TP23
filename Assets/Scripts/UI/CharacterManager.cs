@@ -16,7 +16,6 @@ public class CharacterManager : Singleton<CharacterManager>
     {
         pet = petName;
         indicationText.text = ReturnGender(isMale) + " And " + petName;
-        // add dingdong / correct sound effect here
     }
 
     // change gender for character

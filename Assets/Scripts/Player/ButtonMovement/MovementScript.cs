@@ -23,24 +23,32 @@ public class MovementScript : MonoBehaviour
         moveRight = false;
     }
 
+    // move character left
     public void MoveLeft()
     {
+        // set animation to walk
         Anim.SetBool("Walking", true);
+        // enable movement in update
         moveLeft = true;
+        // rotate player to face left
         Vector3 scale = new Vector3(-1,1,1);
         GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>().localScale = scale;
     }
 
     public void MoveRight()
     {
+        // set animation to walk
         Anim.SetBool("Walking", true);
+        // enable movement in update
         moveRight = true;
+        // rotate player to face right
         Vector3 scale = new Vector3(1, 1, 1);
         GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>().localScale = scale;
     }
 
     public void Jump()
     {
+        // if player is grounded, apply upwards force + play jump sound
         if (gameObject.GetComponent<GroundedOrNot>().grounded)
         {
             rb.AddForce(Vector2.up * jumpForce);
@@ -48,17 +56,22 @@ public class MovementScript : MonoBehaviour
         }
     }
 
+    // code for stopping movement
+    // called when key up or button exit
     public void StopMoving()
     {
         moveLeft = false;
         moveRight = false;
+        // stop movement in x axis
         rb.velocity = new Vector2(0, rb.velocity.y);
+        // set anim to idle
         Anim.SetBool("Walking", false) ;
     }
 
     // Update is called once per frame
     private void Update()
     {
+        // add velocity to the rigidbody
         if (moveLeft)
         {
 
@@ -71,7 +84,8 @@ public class MovementScript : MonoBehaviour
             rb.velocity = new Vector2(moveSpeed, rb.velocity.y) ;
         }
 
-        if (Input.GetKeyDown(KeyCode.UpArrow))
+        // arrow input for movement
+        if (Input.GetKey(KeyCode.UpArrow))
         {
             Jump();
         }
@@ -86,6 +100,7 @@ public class MovementScript : MonoBehaviour
             MoveRight();
         }
 
+        // stop movement when keyUp
         if (Input.GetKeyUp(KeyCode.LeftArrow) || Input.GetKeyUp(KeyCode.RightArrow))
         {
             StopMoving();
