@@ -58,7 +58,7 @@ public class AnswerCheck : MonoBehaviour
     private Dictionary<string, string> sortedAnswers = new Dictionary<string, string>();
     private int filledAnswers;
 
-    public TextMeshProUGUI TriesLeftText { get => triesLeftText; set => triesLeftText = value; }
+    public TextMeshProUGUI TriesLeftText;
 
     // Start is called before the first frame update
     void Start()

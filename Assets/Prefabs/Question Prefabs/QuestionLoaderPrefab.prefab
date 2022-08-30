@@ -1622,7 +1622,6 @@ MonoBehaviour:
   wrongAnswerText: {fileID: 957261607830762911}
   correctText: {fileID: 8028542804541405041}
   solutionAnswerText: {fileID: 2198712338358002338}
-  triesLeftText: {fileID: 3435530793834817684}
   hintImage: {fileID: 4773809248929579531}
   questionCounter: {fileID: 0}
   questionLoader: {fileID: 3687099115687641614}
@@ -1646,6 +1645,7 @@ MonoBehaviour:
   treasure: {fileID: 0}
   arrow: {fileID: 0}
   arrows: []
+  TriesLeftText: {fileID: 3435530793834817684}
 --- !u!1 &4348270082959353830
 GameObject:
   m_ObjectHideFlags: 0
