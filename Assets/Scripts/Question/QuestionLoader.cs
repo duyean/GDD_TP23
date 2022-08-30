@@ -56,12 +56,13 @@ public class QuestionLoader : MonoBehaviour
 		//double check that question loaded is correct
 		if (answerCheck.question.questionID == level)
 		{
-			//set question display text
-			answerCheck.questionText.text = answerCheck.question.question;
-
 			//check for Chinese, then change font
 			if (answerCheck.question.subject == "Chinese")
 			{
+				answerCheck.questionText.GetComponent<TMPro.TextMeshProUGUI>().font = chineseFont;
+				//set question display text
+				answerCheck.questionText.text = answerCheck.question.question;
+
 				//for every filled value, conduct the following checks
 				for (int i = 0; i < answerCheck.question.filledValues.Count; i++)
 				{
@@ -75,12 +76,15 @@ public class QuestionLoader : MonoBehaviour
                         }
                         //then check if filled value contains "http", if it does, load image
                         else if (answerCheck.question.filledValues[i].Contains("http"))
-                        {
+						{
+							List<string> splitString = new List<string>();
+							splitString.Add(answerCheck.question.filledValues[i].Split("|")[0]);
+							splitString.Add(answerCheck.question.filledValues[i].Split("|")[1]);
 							instantiatedFilledImgObj = Instantiate(filledSlot, filledSlotPositions[i], Quaternion.identity);
 							var font = instantiatedFilledImgObj.GetComponentInChildren<TMPro.TextMeshProUGUI>();
 							font.font = chineseFont;
-							StartCoroutine("LoadFilledSlotCoroutine");
-                            setFilledSlot(instantiatedFilledObj, i);
+							StartCoroutine(LoadImageCoroutine(splitString[1], instantiatedFilledImgObj));
+							setFilledImgSlot(instantiatedFilledImgObj, i);
 							filledSlotList.Add(instantiatedFilledImgObj);
 						}
 						//if not an image or needs to be skipped, spawn as per normal
@@ -99,23 +103,46 @@ public class QuestionLoader : MonoBehaviour
 						instantiatedAnswerSlotObj = Instantiate(slot, filledSlotPositions[i], Quaternion.identity);
 						setSlot(instantiatedAnswerSlotObj, i);
 					}
-                }
+				}
 				//spawn answers for Chinese question
 				for (int i = 0; i < answerCheck.question.answers.Count; i++)
 				{
+					//if answers is not null/empty, do the following
 					if (!answerCheck.question.answers[i].Equals(""))
 					{
-						instantiatedSlotObj = Instantiate(item, itemPositions[i], Quaternion.identity);
-						var font = instantiatedSlotObj.GetComponentInChildren<TMPro.TextMeshProUGUI>();
-						font.font = chineseFont;
-						setDragDrop(instantiatedSlotObj, i);
-						itemList.Add(instantiatedSlotObj);
+						//if answers contain "http", load an image
+						if (answerCheck.question.answers[i].Contains("http"))
+						{
+							List<string> splitString = new List<string>();
+							splitString.Add(answerCheck.question.answers[i].Split("|")[0]);
+							splitString.Add(answerCheck.question.answers[i].Split("|")[1]);
+							instantiatedImageObj = Instantiate(item, itemPositions[i], Quaternion.identity);
+
+							//setting values for the instantiatedObj
+							StartCoroutine(LoadImageCoroutine(splitString[1], instantiatedImageObj));
+							setDragDrop(instantiatedImageObj, i);
+							instantiatedImageObj.GetComponent<DragDrop>().itemValue = splitString[0];
+							instantiatedImageObj.GetComponent<DragDrop>().valueText.SetText("");
+							instantiatedImageObj.GetComponentInChildren<TMPro.TextMeshProUGUI>().font = chineseFont;
+							itemList.Add(instantiatedImageObj);
+						}
+						//if not, load answers normally
+						else
+						{
+							instantiatedSlotObj = Instantiate(item, itemPositions[i], Quaternion.identity);
+							setDragDrop(instantiatedSlotObj, i);
+							instantiatedSlotObj.GetComponentInChildren<TMPro.TextMeshProUGUI>().font = chineseFont;
+							itemList.Add(instantiatedSlotObj);
+						}
 					}
 				}
 			}
 			//if not Chinese question, do the following
             else
-            {
+			{
+				//set question display text
+				answerCheck.questionText.text = answerCheck.question.question;
+
 				for (int i = 0; i < answerCheck.question.filledValues.Count; i++)
 				{
 					//if filled values is not null/empty, do the following
@@ -136,7 +163,7 @@ public class QuestionLoader : MonoBehaviour
 
 							//set filledslot values
 							StartCoroutine(LoadImageCoroutine(splitString[1],instantiatedFilledImgObj));
-							setFilledSlot(instantiatedFilledImgObj, i);
+							setFilledImgSlot(instantiatedFilledImgObj, i);
 
                             filledSlotList.Add(instantiatedFilledImgObj);
 						}
@@ -189,6 +216,12 @@ public class QuestionLoader : MonoBehaviour
         }
 		canvasGameObject.SetActive(false);
 	}
+	void setFilledImgSlot(GameObject gameObject, int i)
+	{
+		gameObject.GetComponent<FilledSlot>().filledValue = answerCheck.question.filledValues[i];
+		gameObject.GetComponent<FilledSlot>().filledText.SetText("");
+		gameObject.transform.SetParent(canvas.transform, false);
+	}
 
 	void setFilledSlot(GameObject gameObject, int i)
 	{
@@ -209,7 +242,6 @@ public class QuestionLoader : MonoBehaviour
 		gameObject.GetComponent<DragDrop>().itemValue = answerCheck.question.answers[i];
         gameObject.GetComponent<DragDrop>().canvas = canvas;
         gameObject.GetComponent<DragDrop>().valueText.SetText(answerCheck.question.answers[i]);
-
     }
 
     public IEnumerator LoadImageCoroutine(string url, GameObject gameObject)

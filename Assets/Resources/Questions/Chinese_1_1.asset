@@ -15,24 +15,24 @@ MonoBehaviour:
   subject: Chinese
   levelNumber: 1
   questionID: 1
-  question: Chinese L1Q1
+  question: "\u8BF7\u628A\u6B63\u786E\u7684\u7B54\u6848\u79FB\u5230\u4E0A\u9762\u7684\u7B54\u6848\u683C\u5B50\u91CC\u3002\u7528\u4EE5\u4E0B\u7684\u8BCD\u8BED\u7EC4\u6210\u4E00\u4E2A\u53E5\u5B50\u200B"
   answers:
-  - "\u4EBB"
-  - "\u5F73"
-  - "\u6708"
-  - "\u53E3"
+  - "\u5341\u5206"
+  - "\u6837\u5B50"
+  - "\u5C0F\u7F8A\u7684"
+  - "\u53EF\u7231\u200B"
   - 
   filledValues:
   - 
-  - +
-  - "\u95E8"
-  - =
-  - "\u4EEC"
+  - 
+  - 
+  - 
+  - ~
   finalAnswers:
-  - "\u4EBB"
+  - "\u5C0F\u7F8A\u7684"
+  - "\u6837\u5B50"
+  - "\u5341\u5206"
+  - "\u53EF\u7231\u200B"
   - 
-  - 
-  - 
-  - 
-  hint: https://upload.wikimedia.org/wikipedia/commons/thumb/9/99/Hanzi.svg/800px-Hanzi.svg.png
+  hint: https://lh3.googleusercontent.com/drive-viewer/AJc5JmTkX4noWZztrzkZXmEsJeJlfJhRUBT2qjSNJmfhMmkp-x9ct9JnUyJ6GELyPEDwHSSMeaBzlwc=w198-h927
   solution: Solution

@@ -15,24 +15,24 @@ MonoBehaviour:
   subject: Chinese
   levelNumber: 3
   questionID: 1
-  question: Chinese L3Q1
+  question: "\u8BF7\u628A\u6B63\u786E\u7684\u7B54\u6848\u79FB\u5230\u4E0A\u9762\u7684\u7B54\u6848\u683C\u5B50\u91CC\u3002\u4EE5\u4E0B\u7684\u54EA\u4E24\u4E2A\u5B57\u53EF\u4EE5\u62FC\u6210\u4E00\u4E2A\u5B57\uFF1F"
   answers:
-  - "\u4EBB"
-  - "\u5F73"
-  - "\u6708"
-  - "\u53E3"
-  - 
+  - "\u5973"
+  - "\u6728"
+  - "\u4E48"
+  - "\u5417"
+  - "\u9A6C"
   filledValues:
+  - ~
   - 
-  - +
-  - "\u95E8"
-  - =
-  - "\u4EEC"
+  - ~
+  - 
+  - ~
   finalAnswers:
-  - "\u4EBB"
   - 
+  - "\u5973"
   - 
+  - "\u9A6C"
   - 
-  - 
-  hint: https://upload.wikimedia.org/wikipedia/commons/thumb/9/99/Hanzi.svg/800px-Hanzi.svg.png
+  hint: https://lh3.googleusercontent.com/drive-viewer/AJc5JmTPOsEUnPnjdtIv9hrYR2MIFZXcamJcnIOnsoyPmWUqIpN-vH6WQ_3qty6z3QorXrXfNLG0xJQ=w1160-h937
   solution: Solution

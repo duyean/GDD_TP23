@@ -15,8 +15,8 @@ MonoBehaviour:
   subject: English
   levelNumber: 1
   questionID: 1
-  question: "Move the correct answer into the answer box and complete the sentence.
-    Let\u2019s ___ for our friends in the race!\u200B\u200B"
+  question: Move the correct answer into the answer box and complete the sentence.
+    Let's ___ for our friends in the race!
   answers:
   - cheer
   - sneer

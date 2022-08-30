@@ -96,22 +96,22 @@ public class AnswerCheck : MonoBehaviour
     {
         if (!correct)
 		{
-			//Ensure all 5 slots have a value
-			for (int i = 0; i < 5; i++)
-			{
-				if (sortedValues.ContainsKey("Slot (" + i + ")"))
-				{
-				}
-				else
-				{
-					sortedValues.Add("Slot (" + i + ")", "");
-				}
-			}
-			//Sort dictionary
-			SortValues();
-			SortAnswerValues();
 			if (!excludedSubjects.Contains(question.subject))
 			{
+				//Ensure all 5 slots have a value
+				for (int i = 0; i < 5; i++)
+				{
+					if (sortedValues.ContainsKey("Slot (" + i + ")"))
+					{
+					}
+					else
+					{
+						sortedValues.Add("Slot (" + i + ")", "");
+					}
+				}
+				//Sort dictionary
+				SortValues();
+				SortAnswerValues();
 				//Then check values against answer array
 				//if all values align, then set boolean to true
 				//If there is only one final answer, only check value no matter the key

@@ -18,7 +18,7 @@ MonoBehaviour:
   question: Complete The Sentence! Move the answers into the answer boxes in the
     correct way that forms a sentence.?
   answers:
-  - 21st July
+  - 21st of July
   - Day
   - Racial Harmony
   - is on
@@ -34,6 +34,6 @@ MonoBehaviour:
   - Day
   - is on
   - 
-  - 21st July
-  hint: https://media.istockphoto.com/vectors/english-vector-id1047570732?k=20&m=1047570732&s=612x612&w=0&h=fcgzlrNrq_hws1ykrLSpyBVZoIGr54EUueD6WAEVW0c=
-  solution: Solution
+  - 21st of July
+  hint: https://www.acspripsg.net/wp-content/uploads/2021/07/RHD-2021-1.png?
+  solution: Racial Harmony Day is on the 21st of July

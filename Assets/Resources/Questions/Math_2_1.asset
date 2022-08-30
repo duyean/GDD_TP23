@@ -1,0 +1,39 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e8e3ca251e675634cba503098bc008e6, type: 3}
+  m_Name: Math_2_1
+  m_EditorClassIdentifier: 
+  subject: Math
+  levelNumber: 2
+  questionID: 1
+  question: "Count the cubes and move the correct answer into the answer box.\u200B
+    The reindeer is about ___ cubes tall.\u200B"
+  answers:
+  - 5
+  - 7
+  - 10
+  - 11
+  - 12
+  filledValues:
+  - ~
+  - 
+  - ~
+  - '|https://lh3.googleusercontent.com/drive-viewer/AJc5JmQxuQ_5t6NaRRyBPO51DFEyDkbghSK_coARr9NzAcQEQB0Ew76NDGBAAePr48nycRX7XV7A1tk=w198-h927'
+  - ~
+  finalAnswers:
+  - 
+  - 10
+  - 
+  - 
+  - 
+  hint: https://lh3.googleusercontent.com/drive-viewer/AJc5JmR4zSHCYtQHfHzCY1uwTCaPGy9LzDNb0KsH1rYPS9sAxi99v0eixijm3yDZbbqXWPMBzenGWYo=w198-h927
+  solution: The Reindeer is about 10 blocks tall!

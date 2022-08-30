@@ -15,24 +15,25 @@ MonoBehaviour:
   subject: Chinese
   levelNumber: 2
   questionID: 2
-  question: Chinese L2Q2
+  question: "\u8BF7\u628A\u6B63\u786E\u7684\u7B54\u6848\u79FB\u5230\u4E0A\u9762\u7684\u7B54\u6848\u683C\u5B50\u91CC\u3002\u4EE5\u4E0B\u7684\u54EA\u4E2A\u62FC\u97F3\u5BF9\u5E94\u7684\u662F\u8FD9\u4E2A\u8BCD\u8BED:
+    \u4F60\u597D\u5417\uFF1F\u200B"
   answers:
-  - "\u4EBB"
-  - "\u5F73"
-  - "\u6708"
-  - "\u53E3"
-  - 
+  - "n\u01D0 h\u01CEo m\xE1"
+  - "n\u01D0 h\u01CEo m\u0101"
+  - "n\u01D0 h\u011Bn m\xE1"
+  - "n\xEDn h\u01CEo m\xE1"
+  - "n\u01D0 h\u01CEo m\xE0"
   filledValues:
+  - ~
+  - ~
   - 
-  - +
-  - "\u95E8"
-  - =
-  - "\u4EEC"
+  - ~
+  - ~
   finalAnswers:
-  - "\u4EBB"
   - 
   - 
+  - "n\u01D0 h\u01CEo m\xE1"
   - 
   - 
-  hint: https://upload.wikimedia.org/wikipedia/commons/thumb/9/99/Hanzi.svg/800px-Hanzi.svg.png
+  hint: https://lh3.googleusercontent.com/drive-viewer/AJc5JmQgOMcvZbTnHFOehbxJtNb2OlHNZgVhDIsCX5I8bX-mCU3PAuWVtZYKJgNkheh5B3qpe0H4BLg=w1160-h937
   solution: Solution
