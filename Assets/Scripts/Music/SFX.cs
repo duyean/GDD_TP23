@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -73,7 +71,7 @@ public class SFX : Singleton<SFX>
 
     public void LoseSound()
     {
-        sfxSource.PlayOneShot(wrong,sfxSource.volume*0.25f);
+        sfxSource.PlayOneShot(wrong, sfxSource.volume * 0.25f);
     }
 
 

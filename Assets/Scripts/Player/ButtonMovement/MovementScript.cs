@@ -1,7 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.EventSystems;
 
 public class MovementScript : MonoBehaviour
 {
@@ -31,7 +28,7 @@ public class MovementScript : MonoBehaviour
         // enable movement in update
         moveLeft = true;
         // rotate player to face left
-        Vector3 scale = new Vector3(-1,1,1);
+        Vector3 scale = new Vector3(-1, 1, 1);
         GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>().localScale = scale;
     }
 
@@ -65,7 +62,7 @@ public class MovementScript : MonoBehaviour
         // stop movement in x axis
         rb.velocity = new Vector2(0, rb.velocity.y);
         // set anim to idle
-        Anim.SetBool("Walking", false) ;
+        Anim.SetBool("Walking", false);
     }
 
     // Update is called once per frame
@@ -75,13 +72,13 @@ public class MovementScript : MonoBehaviour
         if (moveLeft)
         {
 
-            rb.velocity = new Vector2(-moveSpeed, rb.velocity.y) ;
+            rb.velocity = new Vector2(-moveSpeed, rb.velocity.y);
         }
 
         if (moveRight)
         {
 
-            rb.velocity = new Vector2(moveSpeed, rb.velocity.y) ;
+            rb.velocity = new Vector2(moveSpeed, rb.velocity.y);
         }
 
         // arrow input for movement
@@ -106,6 +103,6 @@ public class MovementScript : MonoBehaviour
             StopMoving();
         }
 
-        
+
     }
 }

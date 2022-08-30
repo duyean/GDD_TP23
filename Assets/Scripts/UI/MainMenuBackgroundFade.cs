@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -15,7 +13,7 @@ public class MainMenuBackgroundFade : MonoBehaviour
     public void Update()
     {
         elapsedTime -= Time.deltaTime;
-        if (elapsedTime<=0)
+        if (elapsedTime <= 0)
         {
             fade(BGNum);
         }
@@ -24,13 +22,13 @@ public class MainMenuBackgroundFade : MonoBehaviour
     public void fade(int bg)
     {
         bgCol = BGImages[bg].GetComponent<Image>().color;
-        if (bgCol.a >= 0 )
+        if (bgCol.a >= 0)
         {
             tempColor = bgCol;
             tempColor.a -= Time.deltaTime * 0.3f;
             BGImages[bg].GetComponent<Image>().color = tempColor;
         }
-        else if (BGImages[bg].GetComponent<Image>().color.a<=0)
+        else if (BGImages[bg].GetComponent<Image>().color.a <= 0)
         {
             if (BGNum <= 2)
             {

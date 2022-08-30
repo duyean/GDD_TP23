@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -8,7 +6,7 @@ public class Slot : MonoBehaviour, IDropHandler
     public string slotName;
     public string value;
     public AnswerCheck answerCheck;
-    public string itemIn; 
+    public string itemIn;
 
     public void Start()
     {
@@ -16,7 +14,7 @@ public class Slot : MonoBehaviour, IDropHandler
     }
 
     //Detects when an item has been let go of
-    public void OnDrop(PointerEventData eventData) 
+    public void OnDrop(PointerEventData eventData)
     {
         //See if there is an item being dragged
         if (eventData.pointerDrag != null)
@@ -36,7 +34,7 @@ public class Slot : MonoBehaviour, IDropHandler
     private void OnTriggerExit2D(Collider2D collision)
     {
         answerCheck.RemoveValues(gameObject.GetComponent<Slot>().slotName);
-        value = null;       
+        value = null;
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {

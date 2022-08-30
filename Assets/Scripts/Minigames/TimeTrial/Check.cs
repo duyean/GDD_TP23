@@ -1,7 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
 using TMPro;
+using UnityEngine;
 
 public class Check : MonoBehaviour
 {
@@ -35,14 +33,14 @@ public class Check : MonoBehaviour
         }
 
         // sets time to tick and enables movement if camera is on player
-        if (!isChecking && !win && Vector3.Distance(transform.position, player.transform.position)<=1f)
+        if (!isChecking && !win && Vector3.Distance(transform.position, player.transform.position) <= 1f)
         {
             moveButton.SetActive(true);
             isChecking = true;
         }
 
         // checks for lose
-        if(timeLeft <= 0 && isChecking)
+        if (timeLeft <= 0 && isChecking)
         {
             moveButton.SetActive(false);
             WinUI.Instance.loseUI.SetActive(true);
@@ -54,12 +52,12 @@ public class Check : MonoBehaviour
         if (timeLeft >= 0 && win && isChecking)
         {
             moveButton.SetActive(false);
-            WinUI.Instance.winUI.SetActive(true) ;
+            WinUI.Instance.winUI.SetActive(true);
             isChecking = false;
-            
+
         }
 
-        
+
 
         timeLeftText.text = "Time Left: " + timeLeft.ToString("F2");
 

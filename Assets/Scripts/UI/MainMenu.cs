@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -31,6 +29,6 @@ public class MainMenu : MonoBehaviour
     public void CloseLevelSelection()
     {
         // closes level selection used for back button in level select
-        LevelSelection.SetActive(false) ;
+        LevelSelection.SetActive(false);
     }
 }

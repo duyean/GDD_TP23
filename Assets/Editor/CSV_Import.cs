@@ -1,8 +1,6 @@
-using UnityEngine;
-using UnityEditor;
-using System.Collections;
-using System.Collections.Generic;
 using System.IO;
+using UnityEditor;
+using UnityEngine;
 
 //tutorial from Comp-3 Interactive (https://www.youtube.com/watch?v=1EdLTF43d70)
 public class CSV_Import
@@ -17,7 +15,7 @@ public class CSV_Import
         string[] allLines = File.ReadAllLines(Application.dataPath + questionCSVPath);
 
         //split lines by ",", then answers by "|"
-        foreach(string s in allLines)
+        foreach (string s in allLines)
         {
             string[] splitData = s.Split(',');
             Data data = ScriptableObject.CreateInstance<Data>();
@@ -34,7 +32,7 @@ public class CSV_Import
             data.filledValues.Add(splitData[12]);
             data.filledValues.Add(splitData[13]);
 
-            for(int i = 14; i < 19; i++)
+            for (int i = 14; i < 19; i++)
             {
                 data.finalAnswers.Add(splitData[i]);
             }
@@ -47,7 +45,7 @@ public class CSV_Import
             data.solution = splitData[20];
 
             //create the Scriptable Object
-            AssetDatabase.CreateAsset(data,$"Assets/Resources/Questions/{data.subject + "_" + data.levelNumber + "_" + data.questionID}.asset");
+            AssetDatabase.CreateAsset(data, $"Assets/Resources/Questions/{data.subject + "_" + data.levelNumber + "_" + data.questionID}.asset");
         }
 
         AssetDatabase.SaveAssets();

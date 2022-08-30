@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Networking;
 using UnityEngine.UI;
@@ -14,7 +13,7 @@ public class HintScript : MonoBehaviour
         // uses unity web request to get texture from link
         UnityWebRequest www = UnityWebRequestTexture.GetTexture(url);
         var asyncOp = www.SendWebRequest();
-        
+
         // wait till www.isdone which means picture is retrieved
         // you can also check the progress here using a float
         while (!www.isDone)

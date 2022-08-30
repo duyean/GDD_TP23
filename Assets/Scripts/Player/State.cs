@@ -1,7 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
 namespace States
 {
     public abstract class State
@@ -17,7 +13,7 @@ namespace States
 
         public virtual void Enter()
         {
-            
+
         }
 
         public virtual void HandleInput()

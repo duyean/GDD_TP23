@@ -1,7 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
 using States;
+using UnityEngine;
 
 public class Grounded_State : State
 {

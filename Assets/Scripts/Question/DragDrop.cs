@@ -1,13 +1,11 @@
-using System.Collections;
-using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
-using TMPro;
 
 public class DragDrop : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDragHandler, IPointerDownHandler
 {
-    public Canvas canvas; 
+    public Canvas canvas;
     public RectTransform rectTransform;
     private CanvasGroup canvasGroup;
     public string itemValue;
@@ -24,10 +22,10 @@ public class DragDrop : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDrag
         canvas = GetComponentInParent<Canvas>();
         rectTransform = GetComponent<RectTransform>();
         canvasGroup = GetComponent<CanvasGroup>();
-        checkButton = GameObject.FindGameObjectWithTag("AnswerButton").GetComponent<Button>(); 
+        checkButton = GameObject.FindGameObjectWithTag("AnswerButton").GetComponent<Button>();
         checkButton.onClick.AddListener(ExecuteCheck); //When button is clicked, calls the ExecuteCheck function
         originalPos = rectTransform.anchoredPosition;  //Gets the original vector positions of every item at the start
-        }
+    }
 
     //Set the items back to original position if the answer is wrong
     void ExecuteCheck()
@@ -41,7 +39,7 @@ public class DragDrop : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDrag
     //Detect when the mouse holds down on the item
     public void OnBeginDrag(PointerEventData eventData)
     {
-        
+
         //Set item transparent when dragging
         canvasGroup.alpha = .4f;
         //Allows raycasts to go through the item to detect the slot
