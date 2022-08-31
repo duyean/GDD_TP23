@@ -18,7 +18,7 @@ MonoBehaviour:
   question: "Move the correct answer into the answer box. Find the number bond that
     gives the same answer!\u200B"
   answers:
-  - 10-Apr
+  - 10-4
   - 2+5
   - 1+3
   - 2+4
@@ -31,7 +31,7 @@ MonoBehaviour:
   - ~
   finalAnswers:
   - 
-  - 10-Apr
+  - 10-4
   - 
   - 2+4
   - 

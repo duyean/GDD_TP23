@@ -113,24 +113,12 @@ public class AnswerCheck : MonoBehaviour
                 SortAnswerValues();
                 //Then check values against answer array
                 //if all values align, then set boolean to true
-                //If there is only one final answer, only check value no matter the key
-                if (sortedValues.ContainsValue(question.finalAnswers[0]) && filledAnswers <= 2)
-                {
-                    correct = true;
-                    questionFinishedCanvas.SetActive(true);
-                    wrongAnswerText.enabled = false;
-                }
 
-                if (sortedValues["Slot (0)"].Equals(sortedAnswers["Slot (0)"]) && sortedValues["Slot (1)"].Equals(sortedAnswers["Slot (1)"]) && sortedValues["Slot (2)"].Equals(sortedAnswers["Slot (2)"]) &&
-                    sortedValues["Slot (3)"].Equals(sortedAnswers["Slot (3)"]) && sortedValues["Slot (4)"].Equals(sortedAnswers["Slot (4)"]))
-                {
-                    Debug.Log($"D {sortedValues.SequenceEqual(sortedAnswers)}");
-                    correct = true;
-                    questionFinishedCanvas.SetActive(true);
-                    wrongAnswerText.enabled = false;
-                }
-
-                if (sortedValues.Equals(sortedAnswers))
+                if (sortedValues["Slot (0)"].Equals(sortedAnswers["Slot (0)"])
+                    && sortedValues["Slot (1)"].Equals(sortedAnswers["Slot (1)"])
+                    && sortedValues["Slot (2)"].Equals(sortedAnswers["Slot (2)"])
+                    && sortedValues["Slot (3)"].Equals(sortedAnswers["Slot (3)"])
+                    && sortedValues["Slot (4)"].Equals(sortedAnswers["Slot (4)"]))
                 {
                     Debug.Log($"D {sortedValues.SequenceEqual(sortedAnswers)}");
                     correct = true;
