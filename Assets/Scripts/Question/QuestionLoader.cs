@@ -69,12 +69,8 @@ public class QuestionLoader : MonoBehaviour
                     if (!answerCheck.question.filledValues[i].Equals(""))
                     {
                         //check if filled slot contains "~", if it does, skip slot
-                        if (answerCheck.question.filledValues[i].Equals("~"))
-                        {
-                            //skip slot
-                        }
                         //then check if filled value contains "http", if it does, load image
-                        else if (answerCheck.question.filledValues[i].Contains("http"))
+                        if (!answerCheck.question.filledValues[i].Equals("~") && answerCheck.question.filledValues[i].Contains("http"))
                         {
                             //split string by | to get the url value
                             List<string> splitString = new List<string>();
@@ -89,7 +85,7 @@ public class QuestionLoader : MonoBehaviour
                             filledSlotList.Add(instantiatedFilledImgObj);
                         }
                         //if not an image or needs to be skipped, spawn as per normal
-                        else
+                        else if (!answerCheck.question.filledValues[i].Equals("~") && answerCheck.question.filledValues[i].Contains("http"))
                         {
                             //spawn object in each slot
                             instantiatedFilledObj = Instantiate(filledSlot, filledSlotPositions[i], Quaternion.identity);
@@ -111,33 +107,30 @@ public class QuestionLoader : MonoBehaviour
                 for (int i = 0; i < answerCheck.question.answers.Count; i++)
                 {
                     //if answers is not null/empty, do the following
-                    if (!answerCheck.question.answers[i].Equals(""))
+                    //if answers contain "http", load an image
+                    if (!answerCheck.question.answers[i].Equals("") && answerCheck.question.answers[i].Contains("http"))
                     {
-                        //if answers contain "http", load an image
-                        if (answerCheck.question.answers[i].Contains("http"))
-                        {
-                            //split values by | to get url
-                            List<string> splitString = new List<string>();
-                            splitString.Add(answerCheck.question.answers[i].Split("|")[0]);
-                            splitString.Add(answerCheck.question.answers[i].Split("|")[1]);
-                            instantiatedImageObj = Instantiate(item, itemPositions[i], Quaternion.identity);
+                        //split values by | to get url
+                        List<string> splitString = new List<string>();
+                        splitString.Add(answerCheck.question.answers[i].Split("|")[0]);
+                        splitString.Add(answerCheck.question.answers[i].Split("|")[1]);
+                        instantiatedImageObj = Instantiate(item, itemPositions[i], Quaternion.identity);
 
-                            //setting values for the instantiatedObj
-                            StartCoroutine(LoadImageCoroutine(splitString[1], instantiatedImageObj));
-                            setDragDrop(instantiatedImageObj, i);
-                            instantiatedImageObj.GetComponent<DragDrop>().itemValue = splitString[0];
-                            instantiatedImageObj.GetComponent<DragDrop>().valueText.SetText("");
-                            instantiatedImageObj.GetComponentInChildren<TMPro.TextMeshProUGUI>().font = chineseFont;
-                            itemList.Add(instantiatedImageObj);
-                        }
-                        //if not, load answers normally
-                        else
-                        {
-                            instantiatedSlotObj = Instantiate(item, itemPositions[i], Quaternion.identity);
-                            setDragDrop(instantiatedSlotObj, i);
-                            instantiatedSlotObj.GetComponentInChildren<TMPro.TextMeshProUGUI>().font = chineseFont;
-                            itemList.Add(instantiatedSlotObj);
-                        }
+                        //setting values for the instantiatedObj
+                        StartCoroutine(LoadImageCoroutine(splitString[1], instantiatedImageObj));
+                        setDragDrop(instantiatedImageObj, i);
+                        instantiatedImageObj.GetComponent<DragDrop>().itemValue = splitString[0];
+                        instantiatedImageObj.GetComponent<DragDrop>().valueText.SetText("");
+                        instantiatedImageObj.GetComponentInChildren<TMPro.TextMeshProUGUI>().font = chineseFont;
+                        itemList.Add(instantiatedImageObj);                   
+                    }
+                    //if not, load answers normally
+                    else if (!answerCheck.question.answers[i].Equals("") && !answerCheck.question.answers[i].Contains("http"))
+                    {
+                        instantiatedSlotObj = Instantiate(item, itemPositions[i], Quaternion.identity);
+                        setDragDrop(instantiatedSlotObj, i);
+                        instantiatedSlotObj.GetComponentInChildren<TMPro.TextMeshProUGUI>().font = chineseFont;
+                        itemList.Add(instantiatedSlotObj);
                     }
                 }
             }
@@ -153,12 +146,8 @@ public class QuestionLoader : MonoBehaviour
                     if (!answerCheck.question.filledValues[i].Equals(""))
                     {
                         //check if filled value is special. if it is, skip spawning
-                        if (answerCheck.question.filledValues[i].Equals("~"))
-                        {
-                            //skip
-                        }
                         //if filled value contains "http", load an image
-                        else if (answerCheck.question.filledValues[i].Contains("http"))
+                        if (!answerCheck.question.filledValues[i].Equals("~") && answerCheck.question.filledValues[i].Contains("http"))
                         {
                             List<string> splitString = new List<string>();
                             splitString.Add(answerCheck.question.filledValues[i].Split("|")[0]);
@@ -172,7 +161,7 @@ public class QuestionLoader : MonoBehaviour
                             filledSlotList.Add(instantiatedFilledImgObj);
                         }
                         //if filled value is not an image or a skipped slot, load a regular filled slot
-                        else if (!answerCheck.question.filledValues[i].Equals(""))
+                        else if (!answerCheck.question.filledValues[i].Equals("") && !answerCheck.question.filledValues[i].Contains("http"))
                         {
                             instantiatedFilledObj = Instantiate(filledSlot, filledSlotPositions[i], Quaternion.identity);
                             setFilledSlot(instantiatedFilledObj, i);
@@ -190,32 +179,29 @@ public class QuestionLoader : MonoBehaviour
                 for (int i = 0; i < answerCheck.question.answers.Count; i++)
                 {
                     //if answers is not null/empty, do the following
-                    if (!answerCheck.question.answers[i].Equals(""))
+                    //if answers contain "http", load an image
+                    if (!answerCheck.question.answers[i].Equals("") && answerCheck.question.answers[i].Contains("http"))
                     {
-                        //if answers contain "http", load an image
-                        if (answerCheck.question.answers[i].Contains("http"))
-                        {
-                            //split values by | to get url
-                            List<string> splitString = new List<string>();
-                            splitString.Add(answerCheck.question.answers[i].Split("|")[0]);
-                            splitString.Add(answerCheck.question.answers[i].Split("|")[1]);
-                            instantiatedImageObj = Instantiate(item, itemPositions[i], Quaternion.identity);
+                        //split values by | to get url
+                        List<string> splitString = new List<string>();
+                        splitString.Add(answerCheck.question.answers[i].Split("|")[0]);
+                        splitString.Add(answerCheck.question.answers[i].Split("|")[1]);
+                        instantiatedImageObj = Instantiate(item, itemPositions[i], Quaternion.identity);
 
-                            //setting values for the instantiatedObj
-                            StartCoroutine(LoadImageCoroutine(splitString[1], instantiatedImageObj));
-                            setDragDrop(instantiatedImageObj, i);
-                            instantiatedImageObj.GetComponent<DragDrop>().itemValue = splitString[0];
-                            instantiatedImageObj.GetComponent<DragDrop>().valueText.SetText("");
-                            itemList.Add(instantiatedImageObj);
-                        }
-                        //if not, load answers normally
-                        else
+                        //setting values for the instantiatedObj
+                        StartCoroutine(LoadImageCoroutine(splitString[1], instantiatedImageObj));
+                        setDragDrop(instantiatedImageObj, i);
+                        instantiatedImageObj.GetComponent<DragDrop>().itemValue = splitString[0];
+                        instantiatedImageObj.GetComponent<DragDrop>().valueText.SetText("");
+                        itemList.Add(instantiatedImageObj);                                
+                    }
+                    //if not, load answers normally
+                    else if (!answerCheck.question.answers[i].Equals("") && !answerCheck.question.answers[i].Contains("http"))
                         {
                             instantiatedSlotObj = Instantiate(item, itemPositions[i], Quaternion.identity);
                             setDragDrop(instantiatedSlotObj, i);
                             itemList.Add(instantiatedSlotObj);
                         }
-                    }
                 }
             }
         }
