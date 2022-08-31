@@ -31,7 +31,6 @@ public class QuestionLoader : MonoBehaviour
 
     [SerializeField] private Sprite sprite;
     private Coin coin;
-    //private int integer;
 
     void Awake()
     {
@@ -77,12 +76,14 @@ public class QuestionLoader : MonoBehaviour
                         //then check if filled value contains "http", if it does, load image
                         else if (answerCheck.question.filledValues[i].Contains("http"))
                         {
+                            //split string by | to get the url value
                             List<string> splitString = new List<string>();
                             splitString.Add(answerCheck.question.filledValues[i].Split("|")[0]);
                             splitString.Add(answerCheck.question.filledValues[i].Split("|")[1]);
+                            //spawn object in each slot
                             instantiatedFilledImgObj = Instantiate(filledSlot, filledSlotPositions[i], Quaternion.identity);
-                            var font = instantiatedFilledImgObj.GetComponentInChildren<TMPro.TextMeshProUGUI>();
-                            font.font = chineseFont;
+                            //set font to one that can take Chinese unicode characters
+                            instantiatedFilledImgObj.GetComponentInChildren<TMPro.TextMeshProUGUI>().font = chineseFont;
                             StartCoroutine(LoadImageCoroutine(splitString[1], instantiatedFilledImgObj));
                             setFilledImgSlot(instantiatedFilledImgObj, i);
                             filledSlotList.Add(instantiatedFilledImgObj);
@@ -90,9 +91,10 @@ public class QuestionLoader : MonoBehaviour
                         //if not an image or needs to be skipped, spawn as per normal
                         else
                         {
+                            //spawn object in each slot
                             instantiatedFilledObj = Instantiate(filledSlot, filledSlotPositions[i], Quaternion.identity);
-                            var font = instantiatedFilledObj.GetComponentInChildren<TMPro.TextMeshProUGUI>();
-                            font.font = chineseFont;
+                            //set font to one that can take Chinese unicode characters
+                            instantiatedFilledObj.GetComponentInChildren<TMPro.TextMeshProUGUI>().font = chineseFont;
                             setFilledSlot(instantiatedFilledObj, i);
                             filledSlotList.Add(instantiatedFilledObj);
                         }
@@ -100,6 +102,7 @@ public class QuestionLoader : MonoBehaviour
                     //If filled slot is empty, spawn a slot to drag in answer instead
                     else if (answerCheck.question.filledValues[i].Equals(""))
                     {
+                        //instantiate prefab and set values
                         instantiatedAnswerSlotObj = Instantiate(slot, filledSlotPositions[i], Quaternion.identity);
                         setSlot(instantiatedAnswerSlotObj, i);
                     }
@@ -113,6 +116,7 @@ public class QuestionLoader : MonoBehaviour
                         //if answers contain "http", load an image
                         if (answerCheck.question.answers[i].Contains("http"))
                         {
+                            //split values by | to get url
                             List<string> splitString = new List<string>();
                             splitString.Add(answerCheck.question.answers[i].Split("|")[0]);
                             splitString.Add(answerCheck.question.answers[i].Split("|")[1]);
@@ -191,6 +195,7 @@ public class QuestionLoader : MonoBehaviour
                         //if answers contain "http", load an image
                         if (answerCheck.question.answers[i].Contains("http"))
                         {
+                            //split values by | to get url
                             List<string> splitString = new List<string>();
                             splitString.Add(answerCheck.question.answers[i].Split("|")[0]);
                             splitString.Add(answerCheck.question.answers[i].Split("|")[1]);
@@ -218,13 +223,16 @@ public class QuestionLoader : MonoBehaviour
     }
     void setFilledImgSlot(GameObject gameObject, int i)
     {
+        //set value and display text
         gameObject.GetComponent<FilledSlot>().filledValue = answerCheck.question.filledValues[i];
+        //set to nothing since this is an image
         gameObject.GetComponent<FilledSlot>().filledText.SetText("");
         gameObject.transform.SetParent(canvas.transform, false);
     }
 
     void setFilledSlot(GameObject gameObject, int i)
     {
+        //set value and display text
         gameObject.GetComponent<FilledSlot>().filledValue = answerCheck.question.filledValues[i];
         gameObject.GetComponent<FilledSlot>().filledText.SetText(answerCheck.question.filledValues[i]);
         gameObject.transform.SetParent(canvas.transform, false);
@@ -232,12 +240,14 @@ public class QuestionLoader : MonoBehaviour
 
     void setSlot(GameObject gameObject, int i)
     {
+        //set slot name for AnswerCheck.cs
         gameObject.GetComponent<Slot>().slotName = "Slot (" + i + ")";
         gameObject.transform.SetParent(canvas.transform, false);
     }
 
     void setDragDrop(GameObject gameObject, int i)
     {
+        //set value and display text. Also set canvas for dragging to work
         gameObject.transform.SetParent(canvas.transform, false);
         gameObject.GetComponent<DragDrop>().itemValue = answerCheck.question.answers[i];
         gameObject.GetComponent<DragDrop>().canvas = canvas;
