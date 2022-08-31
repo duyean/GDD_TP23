@@ -33,15 +33,15 @@ public class CharacterCheck : MonoBehaviour
     {
         if (CharacterManager.Instance.pet == "Cat")
         {
-            instantiatedCharacter.GetComponent<PlayerMovement>().pets[0].SetActive(true);
+            instantiatedCharacter.GetComponent<Pets>().pets[0].SetActive(true);
         }
         if (CharacterManager.Instance.pet == "Rabbit")
         {
-            instantiatedCharacter.GetComponent<PlayerMovement>().pets[1].SetActive(true);
+            instantiatedCharacter.GetComponent<Pets>().pets[1].SetActive(true);
         }
         if (CharacterManager.Instance.pet == "Frog")
         {
-            instantiatedCharacter.GetComponent<PlayerMovement>().pets[2].SetActive(true);
+            instantiatedCharacter.GetComponent<Pets>().pets[2].SetActive(true);
         }
     }
 }

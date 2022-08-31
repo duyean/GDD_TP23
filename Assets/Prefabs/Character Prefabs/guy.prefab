@@ -25,7 +25,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 544424069}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.53899956, y: -0.9179999, z: 0.01}
+  m_LocalPosition: {x: -0.53899956, y: -0.9179999, z: -0.01}
   m_LocalScale: {x: 0.36369592, y: 0.36369592, z: 0.36369592}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -318,7 +318,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1838527534}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.5499996, y: -0.8899999, z: 0.01}
+  m_LocalPosition: {x: -0.5499996, y: -0.8899999, z: -0.01}
   m_LocalScale: {x: 0.34593, y: 0.34593, z: 0.34593}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -454,7 +454,6 @@ GameObject:
   - component: {fileID: -8450526866748076963}
   - component: {fileID: 1166293755080417780}
   - component: {fileID: 212248053197754818}
-  - component: {fileID: 1977664546}
   - component: {fileID: 78861387}
   m_Layer: 3
   m_Name: guy
@@ -573,8 +572,6 @@ MonoBehaviour:
   - {fileID: 647154437}
   - {fileID: 1838527534}
   - {fileID: 544424069}
-  controller: {fileID: 1977664546}
-  runspeed: 40
 --- !u!114 &-8450526866748076963
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -627,34 +624,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   grounded: 0
---- !u!114 &1977664546
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7570700530015188866}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7f47957c07ab6fc48bcd461eb2af2c3d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_JumpForce: 500
-  m_CrouchSpeed: 0.36
-  m_MovementSmoothing: 0.05
-  m_AirControl: 1
-  m_WhatIsGround:
-    serializedVersion: 2
-    m_Bits: 192
-  m_GroundCheck: {fileID: 7570700529605934076}
-  m_CeilingCheck: {fileID: 7570700529523561967}
-  m_CrouchDisableCollider: {fileID: 0}
-  OnLandEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  OnCrouchEvent:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!95 &78861387
 Animator:
   serializedVersion: 4

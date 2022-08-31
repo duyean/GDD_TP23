@@ -82,7 +82,7 @@ public class MovementScript : MonoBehaviour
         }
 
         // arrow input for movement
-        if (Input.GetKey(KeyCode.UpArrow))
+        if (Input.GetKeyDown(KeyCode.UpArrow))
         {
             Jump();
         }
