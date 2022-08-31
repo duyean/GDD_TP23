@@ -1602,7 +1602,7 @@ MonoBehaviour:
   - {x: 4, y: 100}
   - {x: 404, y: 100}
   - {x: 804, y: 100}
-  chineseFont: {fileID: 11400000, guid: ea65733a73dd2324d8897bc55d00af3f, type: 2}
+  chineseFont: {fileID: 11400000, guid: 02619006b7836fd4681fb5e302754786, type: 2}
   sprite: {fileID: 0}
 --- !u!114 &3687099115687641615
 MonoBehaviour:

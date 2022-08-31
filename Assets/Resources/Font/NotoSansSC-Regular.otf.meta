@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 960277512232219438ea1309683ac382
+guid: d19464b411a9e7a4da65c17f5b9d527d
 TrueTypeFontImporter:
   externalObjects: {}
   serializedVersion: 4
@@ -9,7 +9,7 @@ TrueTypeFontImporter:
   characterPadding: 1
   includeFontData: 1
   fontNames:
-  - LanaPixel
+  - Noto Sans SC
   fallbackFontReferences: []
   customCharacters: 
   fontRenderingMode: 0
