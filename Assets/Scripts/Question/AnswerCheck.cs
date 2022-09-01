@@ -63,7 +63,7 @@ public class AnswerCheck : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        tries = 5;
+        tries = 3;
         correct = false;
         Button checkButton = answerButton.GetComponent<Button>();
         Button canvasCloseFinishedButton = closeFinishedButton.GetComponent<Button>();
@@ -143,7 +143,7 @@ public class AnswerCheck : MonoBehaviour
                 Invoke(nameof(TryAgain), 2f);
             }
             //Opens up another panel that shows a hint where the hint is an image url link retrieved from the CSV file
-            if (tries == 2 && !correct)
+            if (tries == 1 && !correct)
             {
                 link = question.hint;
                 hintCanvas.SetActive(true);
