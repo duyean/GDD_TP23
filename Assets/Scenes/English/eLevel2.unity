@@ -15920,7 +15920,7 @@ GameObject:
   - component: {fileID: 1668542009}
   - component: {fileID: 1668542010}
   m_Layer: 0
-  m_Name: QuestionCounter (1)
+  m_Name: QuestionCounter
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -16401,7 +16401,7 @@ GameObject:
   - component: {fileID: 1180812031904565668}
   - component: {fileID: 1180812031904565671}
   m_Layer: 0
-  m_Name: CM vcam1
+  m_Name: CM vcam
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
