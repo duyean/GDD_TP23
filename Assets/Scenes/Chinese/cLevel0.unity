@@ -4078,7 +4078,6 @@ MonoBehaviour:
   wrongAnswerText: {fileID: 0}
   correctText: {fileID: 0}
   solutionAnswerText: {fileID: 0}
-  triesLeftText: {fileID: 0}
   hintImage: {fileID: 0}
   questionCounter: {fileID: 0}
   questionLoader: {fileID: 0}
@@ -4100,6 +4099,7 @@ MonoBehaviour:
   treasure: {fileID: 0}
   arrow: {fileID: 0}
   arrows: []
+  TriesLeftText: {fileID: 0}
 --- !u!4 &1786941829
 Transform:
   m_ObjectHideFlags: 0
@@ -4308,10 +4308,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 8878105185590181287, guid: 8168d3167dc2f60469e585f4f2593385, type: 3}
-      propertyPath: m_RootOrder
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 6482578816526742209, guid: 10c8ce1763c26964cbcbb5e915b6a5bc, type: 3}
       propertyPath: m_Name
       value: CharacterCheck
@@ -4359,6 +4355,10 @@ PrefabInstance:
     - target: {fileID: 6482578816526742215, guid: 10c8ce1763c26964cbcbb5e915b6a5bc, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8878105185590181287, guid: 8168d3167dc2f60469e585f4f2593385, type: 3}
+      propertyPath: m_RootOrder
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8168d3167dc2f60469e585f4f2593385, type: 3}
@@ -4476,7 +4476,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1180812031177636640, guid: a85ba6a9d994e1549aabe3c56b44a150, type: 3}
       propertyPath: m_Name
-      value: CM vcam1
+      value: CM vcam
       objectReference: {fileID: 0}
     - target: {fileID: 1180812031177636641, guid: a85ba6a9d994e1549aabe3c56b44a150, type: 3}
       propertyPath: m_Follow
