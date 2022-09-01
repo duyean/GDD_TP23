@@ -33,12 +33,21 @@ public class Slot : MonoBehaviour, IDropHandler
     //Reset slot value when item is dragged out
     private void OnTriggerExit2D(Collider2D collision)
     {
-        answerCheck.RemoveValues(gameObject.GetComponent<Slot>().slotName);
-        value = null;
+        if (collision.tag == "Slot")
+        {
+            answerCheck.RemoveValues(gameObject.GetComponent<Slot>().slotName);
+            value = null;
+        }
     }
+ 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        //To debug the slot no longer getting values
-        value = itemIn;
+        if (collision.tag == "Slot")
+        {
+            //To debug the slot no longer getting values
+            value = itemIn;
+        }
+        
+        
     }
 }
