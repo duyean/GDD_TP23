@@ -15,8 +15,8 @@ MonoBehaviour:
   subject: Math
   levelNumber: 1
   questionID: 1
-  question: Here are some candy canes for my brother? Move the candy canes into the
-    answer boxes from the shortest to the longest?
+  question: Here are some candy canes for my brother. Move the candy canes into the
+    answer boxes from the shortest to the longest.
   answers:
   - 
   - 1|https://lh3.googleusercontent.com/drive-viewer/AJc5JmSaQHvfrIr3WyYo2zjJExXUvSz3Ohtlep7N11gETUrCRlpcfGT9GP_OE8Itlj-dajxIKzcFhnY=w1160-h937
