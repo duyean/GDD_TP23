@@ -40,7 +40,7 @@ public class BGM : Singleton<BGM>
     }
 
 
-    private void loadBGM()
+    public void loadBGM()
     {
         BGMSlider.value = PlayerPrefs.GetFloat("BGMVolume");
         bgmSource.clip = Theme;
@@ -57,4 +57,17 @@ public class BGM : Singleton<BGM>
         bgmSource.clip = Mountain;
         bgmSource.Play();
     }
+
+    public void MathLevelBGM()
+    {
+        bgmSource.clip = Desert;
+        bgmSource.Play();
+    }
+
+    public void EnglishLevelBGM()
+    {
+        bgmSource.clip = City;
+        bgmSource.Play();
+    }
+
 }

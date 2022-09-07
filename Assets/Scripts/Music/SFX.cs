@@ -69,6 +69,7 @@ public class SFX : Singleton<SFX>
         sfxSource.PlayOneShot(win);
     }
 
+    // the video volume too high so set it to 1/4 vol
     public void LoseSound()
     {
         sfxSource.PlayOneShot(wrong, sfxSource.volume * 0.25f);
