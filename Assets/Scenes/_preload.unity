@@ -2609,7 +2609,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 859be7bea292d6d48b84b7a3e7551367, type: 3}
+  m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
@@ -7432,7 +7432,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nextLevelButton: {fileID: 491481409}
   winUI: {fileID: 1160812260}
-  loseUI: {fileID: 760673735}
+  winMinigameUI: {fileID: 1643143109}
+  loseMinigameUI: {fileID: 760673735}
 --- !u!1 &1707530524
 GameObject:
   m_ObjectHideFlags: 0

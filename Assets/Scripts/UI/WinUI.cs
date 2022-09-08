@@ -7,7 +7,8 @@ public class WinUI : Singleton<WinUI>
     [SerializeField]
     GameObject nextLevelButton;
     public GameObject winUI;
-    public GameObject loseUI;
+    public GameObject winMinigameUI;
+    public GameObject loseMinigameUI;
 
     // checks whether this is last level and disables the next level button if true;
     private void Update()
@@ -34,7 +35,8 @@ public class WinUI : Singleton<WinUI>
 
 
         winUI.SetActive(false);
-        loseUI.SetActive(false);
+        winMinigameUI.SetActive(false);
+        loseMinigameUI.SetActive(false);
     }
 
 
@@ -50,7 +52,8 @@ public class WinUI : Singleton<WinUI>
 
 
         winUI.SetActive(false);
-        loseUI.SetActive(false);
+        winMinigameUI.SetActive(false);
+        loseMinigameUI.SetActive(false);
     }
 
 
@@ -59,11 +62,14 @@ public class WinUI : Singleton<WinUI>
     {
         SceneManager.LoadScene("MainMenu");
         winUI.SetActive(false);
+        winMinigameUI.SetActive(false);
+        loseMinigameUI.SetActive(false);
     }
 
 
     public void tryAgain()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        loseMinigameUI.SetActive(false);
     }
 }
