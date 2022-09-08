@@ -275,6 +275,5 @@ public class QuestionLoader : MonoBehaviour
         sprite = Sprite.Create(texture, new Rect(0, 0, texture.width, texture.height), new Vector2(0, 0));
 
         gameObject.GetComponent<Image>().sprite = sprite;
-        gameObject.GetComponent<Image>().SetNativeSize();
     }
 }

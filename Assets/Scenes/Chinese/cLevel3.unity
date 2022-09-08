@@ -230,7 +230,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1180812031177636640, guid: a85ba6a9d994e1549aabe3c56b44a150, type: 3}
       propertyPath: m_Name
-      value: CM vcam1
+      value: CM vcam
       objectReference: {fileID: 0}
     - target: {fileID: 1180812031177636641, guid: a85ba6a9d994e1549aabe3c56b44a150, type: 3}
       propertyPath: m_Follow
@@ -347,7 +347,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3687099115687641600, guid: 6f5b011a0f9d36e448bcbf67d28df4d5, type: 3}
       propertyPath: m_Name
-      value: QuestionLoaderPrefab (4)
+      value: QuestionLoaderPrefab (3)
       objectReference: {fileID: 0}
     - target: {fileID: 3687099115687641613, guid: 6f5b011a0f9d36e448bcbf67d28df4d5, type: 3}
       propertyPath: m_RootOrder
@@ -665,7 +665,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3687099115687641600, guid: 6f5b011a0f9d36e448bcbf67d28df4d5, type: 3}
       propertyPath: m_Name
-      value: QuestionLoaderPrefab (1)
+      value: QuestionLoaderPrefab
       objectReference: {fileID: 0}
     - target: {fileID: 3687099115687641613, guid: 6f5b011a0f9d36e448bcbf67d28df4d5, type: 3}
       propertyPath: m_RootOrder
@@ -9234,7 +9234,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3687099115687641600, guid: 6f5b011a0f9d36e448bcbf67d28df4d5, type: 3}
       propertyPath: m_Name
-      value: QuestionLoaderPrefab (3)
+      value: QuestionLoaderPrefab (2)
       objectReference: {fileID: 0}
     - target: {fileID: 3687099115687641613, guid: 6f5b011a0f9d36e448bcbf67d28df4d5, type: 3}
       propertyPath: m_RootOrder
@@ -9693,7 +9693,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3687099115687641600, guid: 6f5b011a0f9d36e448bcbf67d28df4d5, type: 3}
       propertyPath: m_Name
-      value: QuestionLoaderPrefab (2)
+      value: QuestionLoaderPrefab (1)
       objectReference: {fileID: 0}
     - target: {fileID: 3687099115687641613, guid: 6f5b011a0f9d36e448bcbf67d28df4d5, type: 3}
       propertyPath: m_RootOrder
@@ -10259,7 +10259,7 @@ GameObject:
   - component: {fileID: 1668542009}
   - component: {fileID: 1668542010}
   m_Layer: 0
-  m_Name: QuestionCounter (1)
+  m_Name: QuestionCounter
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

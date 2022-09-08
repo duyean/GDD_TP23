@@ -45,7 +45,7 @@ public class SFX : Singleton<SFX>
 
     private void loadSFX()
     {
-        //SFXSlider.value = PlayerPrefs.GetFloat("BGMVolume");
+        SFXSlider.value = PlayerPrefs.GetFloat("BGMVolume");
     }
 
     private void saveSFXPref()
@@ -60,7 +60,7 @@ public class SFX : Singleton<SFX>
 
     public void JumpSound()
     {
-        //sfxSource.PlayOneShot(jump);
+        sfxSource.PlayOneShot(jump);
     }
 
     public void WinSound()
@@ -69,6 +69,7 @@ public class SFX : Singleton<SFX>
         sfxSource.PlayOneShot(win);
     }
 
+    // the video volume too high so set it to 1/4 vol
     public void LoseSound()
     {
         sfxSource.PlayOneShot(wrong, sfxSource.volume * 0.25f);

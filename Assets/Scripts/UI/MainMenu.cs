@@ -20,6 +20,11 @@ public class MainMenu : MonoBehaviour
     {
         CharacterManager.Instance.OpenCustomizeMenu();
     }
+    
+    public void OpenTutorial()
+    {
+        SceneManager.LoadScene("Tutorial");
+    }
 
     public void quitGame()
     {

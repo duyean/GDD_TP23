@@ -92,4 +92,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Minigames/TimeTrial/mMinigame3.unity
     guid: 1337731030b8a6f4fb53890c56e36faf
+  - enabled: 1
+    path: Assets/Scenes/Tutorial.unity
+    guid: f33ed69df7eb37649a1f8a8af752ad76
   m_configObjects: {}

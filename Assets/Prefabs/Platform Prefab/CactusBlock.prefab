@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8967172386539689376}
   - component: {fileID: 8967172386539689379}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: collider (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -68,7 +68,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8967172386984262841}
   - component: {fileID: 8967172386984262846}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: CactusBlock
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -156,7 +156,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8967172387201306576}
   - component: {fileID: 8967172387201306579}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: collider (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -214,7 +214,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8967172387655441433}
   - component: {fileID: 8967172387655441432}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: collider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -272,7 +272,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8967172388485175373}
   - component: {fileID: 8967172388485175372}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: collider (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}

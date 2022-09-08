@@ -43,7 +43,7 @@ public class Check : MonoBehaviour
         if (timeLeft <= 0 && isChecking)
         {
             moveButton.SetActive(false);
-            WinUI.Instance.loseUI.SetActive(true);
+            WinUI.Instance.loseMinigameUI.SetActive(true);
             isChecking = false;
         }
 
@@ -52,7 +52,7 @@ public class Check : MonoBehaviour
         if (timeLeft >= 0 && win && isChecking)
         {
             moveButton.SetActive(false);
-            WinUI.Instance.winUI.SetActive(true);
+            WinUI.Instance.winMinigameUI.SetActive(true);
             isChecking = false;
 
         }

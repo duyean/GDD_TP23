@@ -4,6 +4,8 @@ public class MusicInScenes : MonoBehaviour
 {
     private void Start()
     {
+
+        // checcking if the scene starts with each letter that plays the individual correct level.
         string currentSceneName = SceneManager.GetActiveScene().name;
         if (currentSceneName[0].ToString() == "c")
         {
@@ -11,11 +13,15 @@ public class MusicInScenes : MonoBehaviour
         }
         else if (currentSceneName[0].ToString() == "m")
         {
-            //play math clip
+            BGM.Instance.MathLevelBGM();
         }
         else if (currentSceneName[0].ToString() == "e")
         {
-            //play english clip
+            BGM.Instance.EnglishLevelBGM();
+        }
+        else
+        {
+            BGM.Instance.loadBGM();
         }
 
     }

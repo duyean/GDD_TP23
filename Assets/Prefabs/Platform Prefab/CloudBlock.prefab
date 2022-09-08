@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 41574918404482772}
   - component: {fileID: 41574918404482771}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Collider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -68,7 +68,7 @@ GameObject:
   m_Component:
   - component: {fileID: 41574918709133011}
   - component: {fileID: 41574918709133012}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: CloudBlock
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -154,7 +154,7 @@ GameObject:
   m_Component:
   - component: {fileID: 41574919826345825}
   - component: {fileID: 41574919826345824}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Collider (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
