@@ -24,7 +24,7 @@ public class MinigameLevelComplete : MonoBehaviour
         {
             //text.gameObject.SetActive(true);
             //text.SetText("Nice");
-            WinUI.Instance.winUI.SetActive(true);
+            WinUI.Instance.winMinigameUI.SetActive(true);
         }
     }
 }
