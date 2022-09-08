@@ -57,7 +57,7 @@ public class WinUI : Singleton<WinUI>
     }
 
 
-
+    // go back to title
     public void backToTitle()
     {
         SceneManager.LoadScene("MainMenu");
@@ -66,7 +66,7 @@ public class WinUI : Singleton<WinUI>
         loseMinigameUI.SetActive(false);
     }
 
-
+    // restarts the minigame level
     public void tryAgain()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
