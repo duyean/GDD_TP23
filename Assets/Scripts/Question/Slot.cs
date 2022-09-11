@@ -39,7 +39,6 @@ public class Slot : MonoBehaviour, IDropHandler
         {
             answerCheck.RemoveValues(gameObject.GetComponent<Slot>().slotName);
             value = null;
-            Debug.Log("out");
         }
     }
 
@@ -49,7 +48,6 @@ public class Slot : MonoBehaviour, IDropHandler
         {
             //To fix the slot no longer getting values. For reasons unknown, without this function, the slot can no longer receive values
             value = itemIn;
-            Debug.Log("in");
         }
     }
 }
