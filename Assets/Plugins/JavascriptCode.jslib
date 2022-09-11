@@ -6,7 +6,7 @@ closeTab: function () {
 	},
   
 loadTab: function () {
-	window.open("https://youtu.be/Jj0HbeHZBxY");
+	newWindow = window.open("https://youtu.be/Jj0HbeHZBxY", "_blank");
 	},
 
 });
