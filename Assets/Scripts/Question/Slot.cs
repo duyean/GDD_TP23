@@ -21,8 +21,8 @@ public class Slot : MonoBehaviour, IDropHandler
         {
             //Anchors the item to the slot when it is dropped on the slot
             eventData.pointerDrag.GetComponent<RectTransform>().anchoredPosition = GetComponent<RectTransform>().anchoredPosition;
+            //Re-enabling the collider of the dragged item after it has been dropped to a slot. Disabling and re-enabling of the collider is to help debug the slot retaining their values even after the item is no longer inside
             eventData.pointerDrag.GetComponent<BoxCollider2D>().enabled = true;
-
             //Gets the itemValue from the object anchored to the slot and parses into the value variable
             value = eventData.pointerDrag.GetComponent<DragDrop>().itemValue;
             //Gets the itemIn from the object and parses into the value variable, this is to debug the slot not getting values anymore
@@ -47,7 +47,7 @@ public class Slot : MonoBehaviour, IDropHandler
     {
         if (collision.tag == "Item" )
         {
-            //To fix the slot no longer getting values
+            //To fix the slot no longer getting values. For reasons unknown, without this function, the slot can no longer receive values
             value = itemIn;
             Debug.Log("in");
         }

@@ -51,7 +51,7 @@ public class DragDrop : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDrag
     public void OnDrag(PointerEventData eventData)
     {
         rectTransform.anchoredPosition += eventData.delta / canvas.scaleFactor; //Sets the item's position to the eventData which is the mouse cursor when the item is being dragged
-        eventData.pointerDrag.GetComponent<BoxCollider2D>().enabled = false;
+        eventData.pointerDrag.GetComponent<BoxCollider2D>().enabled = false; //Disabling collider of the item to prevent the item being dragged from colliding with another slot that is already being taken up
 
     }
 
