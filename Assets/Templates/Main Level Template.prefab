@@ -162,7 +162,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6551276316676289373}
   m_Layer: 0
-  m_Name: Level Template
+  m_Name: Main Level Template
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
