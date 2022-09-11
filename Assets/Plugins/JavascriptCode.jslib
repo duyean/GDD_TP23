@@ -5,7 +5,7 @@ closeTab: function () {
 	},
   
 loadTab: function () {
-    window.open("https://www.youtube.com/watch?v=o1phLkb5HGU", "_blank");
+	window.open("https://www.youtube.com/watch?v=o1phLkb5HGU", "_blank");
 	},
 
 });
