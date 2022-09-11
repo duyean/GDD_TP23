@@ -44,12 +44,15 @@ public class DragDrop : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDrag
         canvasGroup.alpha = .4f;
         //Allows raycasts to go through the item to detect the slot
         canvasGroup.blocksRaycasts = false;
+
     }
 
     //Detect when the mouse is moving the item
     public void OnDrag(PointerEventData eventData)
     {
         rectTransform.anchoredPosition += eventData.delta / canvas.scaleFactor; //Sets the item's position to the eventData which is the mouse cursor when the item is being dragged
+        eventData.pointerDrag.GetComponent<BoxCollider2D>().enabled = false;
+
     }
 
     //Detect when the mouse lets go of the item

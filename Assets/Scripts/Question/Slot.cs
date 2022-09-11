@@ -21,6 +21,8 @@ public class Slot : MonoBehaviour, IDropHandler
         {
             //Anchors the item to the slot when it is dropped on the slot
             eventData.pointerDrag.GetComponent<RectTransform>().anchoredPosition = GetComponent<RectTransform>().anchoredPosition;
+            eventData.pointerDrag.GetComponent<BoxCollider2D>().enabled = true;
+
             //Gets the itemValue from the object anchored to the slot and parses into the value variable
             value = eventData.pointerDrag.GetComponent<DragDrop>().itemValue;
             //Gets the itemIn from the object and parses into the value variable, this is to debug the slot not getting values anymore
@@ -33,21 +35,21 @@ public class Slot : MonoBehaviour, IDropHandler
     //Reset slot value when item is dragged out
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.tag == "Slot")
+        if (collision.tag == "Item")
         {
             answerCheck.RemoveValues(gameObject.GetComponent<Slot>().slotName);
             value = null;
+            Debug.Log("out");
         }
     }
- 
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.tag == "Slot")
+        if (collision.tag == "Item" )
         {
             //To fix the slot no longer getting values
             value = itemIn;
+            Debug.Log("in");
         }
-        
-        
     }
 }
