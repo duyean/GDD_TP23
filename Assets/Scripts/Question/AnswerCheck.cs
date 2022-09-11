@@ -138,6 +138,7 @@ public class AnswerCheck : MonoBehaviour
             {
                 tries -= 1;
                 sortedValues.Clear();
+                slotValues.Clear();
                 wrongAnswerText.enabled = true;
                 SFX.Instance.LoseSound();
                 Invoke(nameof(TryAgain), 2f);
