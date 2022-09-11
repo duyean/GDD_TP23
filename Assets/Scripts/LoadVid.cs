@@ -6,5 +6,5 @@ using System.Runtime.InteropServices;
 public class LoadVid : MonoBehaviour
 {
     [DllImport("__Internal")]
-    public static extern void openYT();
+    public static extern void loadTab();
 }
