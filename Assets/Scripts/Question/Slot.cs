@@ -23,7 +23,7 @@ public class Slot : MonoBehaviour, IDropHandler
             eventData.pointerDrag.GetComponent<RectTransform>().anchoredPosition = GetComponent<RectTransform>().anchoredPosition;
             //Gets the itemValue from the object anchored to the slot and parses into the value variable
             value = eventData.pointerDrag.GetComponent<DragDrop>().itemValue;
-            ////Gets the itemIn from the object and parses into the value variable, this is to debug the slot not getting values anymore
+            //Gets the itemIn from the object and parses into the value variable, this is to debug the slot not getting values anymore
             itemIn = eventData.pointerDrag.GetComponent<DragDrop>().itemValue;
             //Adds the value into the AnswerCheck script to check if it is correct
             answerCheck.AddValues(gameObject.GetComponent<Slot>().slotName, value);
@@ -44,7 +44,7 @@ public class Slot : MonoBehaviour, IDropHandler
     {
         if (collision.tag == "Slot")
         {
-            //To debug the slot no longer getting values
+            //To fix the slot no longer getting values
             value = itemIn;
         }
         

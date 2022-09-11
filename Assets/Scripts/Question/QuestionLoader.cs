@@ -82,11 +82,13 @@ public class QuestionLoader : MonoBehaviour
                             splitString.Add(answerCheck.question.filledValues[i].Split("|")[1]);
                             //spawn object in each slot
                             instantiatedFilledImgObj = Instantiate(filledSlot, filledSlotPositions[i], Quaternion.identity);
+                            
                             //set font to one that can take Chinese unicode characters
                             instantiatedFilledImgObj.GetComponentInChildren<TMPro.TextMeshProUGUI>().font = chineseFont;
                             StartCoroutine(LoadImageCoroutine(splitString[1], instantiatedFilledImgObj));
                             setFilledImgSlot(instantiatedFilledImgObj, i);
                             filledSlotList.Add(instantiatedFilledImgObj);
+                            instantiatedFilledImgObj.GetComponent<Image>().color = Color.white;
                         }
                         //if not an image or needs to be skipped, spawn as per normal
                         else
@@ -168,8 +170,8 @@ public class QuestionLoader : MonoBehaviour
                             //set filledslot values
                             StartCoroutine(LoadImageCoroutine(splitString[1], instantiatedFilledImgObj));
                             setFilledImgSlot(instantiatedFilledImgObj, i);
-
                             filledSlotList.Add(instantiatedFilledImgObj);
+                            instantiatedFilledImgObj.GetComponent<Image>().color = Color.white;
                         }
                         //if filled value is not an image or a skipped slot, load a regular filled slot
                         else if (!answerCheck.question.filledValues[i].Equals(""))
