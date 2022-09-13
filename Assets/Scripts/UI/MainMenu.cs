@@ -26,11 +26,6 @@ public class MainMenu : MonoBehaviour
         SceneManager.LoadScene("Tutorial");
     }
 
-    public void quitGame()
-    {
-        Application.Quit();
-    }
-
     public void CloseLevelSelection()
     {
         // closes level selection used for back button in level select
