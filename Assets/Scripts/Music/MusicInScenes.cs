@@ -5,7 +5,7 @@ public class MusicInScenes : MonoBehaviour
     private void Start()
     {
 
-        // checcking if the scene starts with each letter that plays the individual correct level.
+        // checking if the scene starts with each letter that plays the individual correct level.
         string currentSceneName = SceneManager.GetActiveScene().name;
         if (currentSceneName[0].ToString() == "c")
         {
