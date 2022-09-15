@@ -7,8 +7,6 @@ public class CharacterCheck : MonoBehaviour
 
     GameObject instantiatedCharacter;
 
-    Vector3 camOffset = new Vector3(0, 3, -10);
-
     void Awake()
     {
         CheckGender();

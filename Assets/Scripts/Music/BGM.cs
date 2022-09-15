@@ -22,6 +22,7 @@ public class BGM : Singleton<BGM>
 
     private void Start()
     {
+        // if volume is not set previously, meaning first session of play, then set bgm to max
         if (!PlayerPrefs.HasKey("BGMVolume"))
         {
             PlayerPrefs.SetFloat("BGMVolume", 1);
