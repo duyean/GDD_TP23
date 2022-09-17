@@ -1157,7 +1157,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveButton: {fileID: 6654279647851554540}
-  timeLeft: 60
+  timeLeft: 100
   win: 0
   timeLeftText: {fileID: 6654279647529992447}
 --- !u!114 &6654279646139802211
