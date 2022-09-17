@@ -1,7 +1,7 @@
 using TMPro;
 using UnityEngine;
 
-public class Check : MonoBehaviour
+public class MinigameCheck : MonoBehaviour
 {
 
     public GameObject moveButton;

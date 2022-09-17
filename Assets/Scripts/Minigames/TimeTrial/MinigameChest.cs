@@ -9,7 +9,7 @@ public class MinigameChest : MonoBehaviour
         if (collision.gameObject.tag == "Player")
         {
 
-            check.GetComponent<Check>().win = true;
+            check.GetComponent<MinigameCheck>().win = true;
         }
     }
 }
