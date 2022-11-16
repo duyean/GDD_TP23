@@ -1,18 +1,13 @@
 using UnityEngine;
 
-public class MovementScript : MonoBehaviour
-{
+public class MovementScript : MonoBehaviour {
     private Rigidbody2D rb;
-
     private float moveSpeed, jumpForce;
-
     private bool moveLeft, moveRight;
-
     public Animator Anim;
 
     // Start is called before the first frame update
-    void Start()
-    {
+    void Start() {
         rb = GetComponent<Rigidbody2D>();
         moveSpeed = 5f;
         jumpForce = 500f;
@@ -20,34 +15,44 @@ public class MovementScript : MonoBehaviour
         moveRight = false;
     }
 
+
+    public void movePlayer(float dir) {
+        if (dir != 0) {
+            Anim.SetBool("Walking", true);
+            rb.velocity = new Vector2(dir * moveSpeed, rb.velocity.y);
+            if (dir > 0) {
+                GetComponent<SpriteRenderer>().flipX = false;
+            } else {
+                GetComponent<SpriteRenderer>().flipX = true;
+            }
+        } else {
+            Anim.SetBool("Walking", false);
+        }
+    }
     // move character left
-    public void MoveLeft()
-    {
+    public void MoveLeft() {
         // set animation to walk
         Anim.SetBool("Walking", true);
         // enable movement in update
         moveLeft = true;
         // rotate player to face left
         Vector3 scale = new Vector3(-1, 1, 1);
-        GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>().localScale = scale;
+        GetComponent<Transform>().localScale = scale;
     }
 
-    public void MoveRight()
-    {
+    public void MoveRight() {
         // set animation to walk
         Anim.SetBool("Walking", true);
         // enable movement in update
         moveRight = true;
         // rotate player to face right
         Vector3 scale = new Vector3(1, 1, 1);
-        GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>().localScale = scale;
+        GetComponent<Transform>().localScale = scale;
     }
 
-    public void Jump()
-    {
+    public void Jump() {
         // if player is grounded, apply upwards force + play jump sound
-        if (gameObject.GetComponent<GroundedOrNot>().grounded)
-        {
+        if (gameObject.GetComponent<GroundedOrNot>().grounded) {
             rb.AddForce(Vector2.up * jumpForce);
             SFX.Instance.JumpSound();
         }
@@ -55,8 +60,7 @@ public class MovementScript : MonoBehaviour
 
     // code for stopping movement
     // called when key up or button exit
-    public void StopMoving()
-    {
+    public void StopMoving() {
         moveLeft = false;
         moveRight = false;
         // stop movement in x axis
@@ -66,43 +70,13 @@ public class MovementScript : MonoBehaviour
     }
 
     // Update is called once per frame
-    private void Update()
-    {
+    private void Update() {
         // add velocity to the rigidbody
-        if (moveLeft)
-        {
-
-            rb.velocity = new Vector2(-moveSpeed, rb.velocity.y);
-        }
-
-        if (moveRight)
-        {
-
-            rb.velocity = new Vector2(moveSpeed, rb.velocity.y);
-        }
+        movePlayer(Input.GetAxis("Horizontal"));
 
         // arrow input for movement
-        if (Input.GetKeyDown(KeyCode.UpArrow))
-        {
+        if (Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.Space)) {
             Jump();
         }
-
-        if (Input.GetKeyDown(KeyCode.LeftArrow))
-        {
-            MoveLeft();
-        }
-
-        if (Input.GetKeyDown(KeyCode.RightArrow))
-        {
-            MoveRight();
-        }
-
-        // stop movement when keyUp
-        if (Input.GetKeyUp(KeyCode.LeftArrow) || Input.GetKeyUp(KeyCode.RightArrow))
-        {
-            StopMoving();
-        }
-
-
     }
 }
