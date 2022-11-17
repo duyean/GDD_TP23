@@ -22,7 +22,7 @@ public class Coin : MonoBehaviour
         if (collision.transform.tag == "Player")
         {
             canvas.SetActive(true);
-            movementScript.StopMoving();
+            collision.GetComponent<Rigidbody>().velocity = new Vector3(0,0,0);
             if (movementButtons != null)
             {
                 movementButtons.GetComponentInChildren<Canvas>().enabled = false;
