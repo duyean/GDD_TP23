@@ -284,6 +284,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5248187991913565078}
   - component: {fileID: 5248187991913565075}
+  - component: {fileID: 7408556606677254474}
   - component: {fileID: 5248187991913565076}
   - component: {fileID: 5248187991913565077}
   m_Layer: 5
@@ -340,6 +341,22 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
+--- !u!114 &7408556606677254474
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5248187991913565079}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 18b01f52a5de1c54bac9d7e819fb73d7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  answeringSlot: {fileID: 8878105185590181304, guid: 8168d3167dc2f60469e585f4f2593385, type: 3}
+  answers: {fileID: 2170202485578305287, guid: efc468eaad6c98c45b39714c73ffed75, type: 3}
+  answerView: {fileID: 6476721957486885437}
+  possibleAnswerView: {fileID: 1206442696750206247}
 --- !u!114 &5248187991913565076
 MonoBehaviour:
   m_ObjectHideFlags: 0
