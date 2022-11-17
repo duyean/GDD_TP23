@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 239478894075509762}
   - component: {fileID: 239478894075509765}
-  - component: {fileID: 239478894075509764}
+  - component: {fileID: 1177419165443583084}
   m_Layer: 0
   m_Name: Jump Button
   m_TagString: Untagged
@@ -83,7 +83,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &239478894075509764
+--- !u!114 &1177419165443583084
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -92,7 +92,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 239478894075509763}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c2f9db8fcfd8ef94391110aa93c9afe0, type: 3}
+  m_Script: {fileID: 11500000, guid: 79d7bba7fbb63aa4e9711ae75fa1f251, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &239478894595175778
@@ -284,7 +284,7 @@ GameObject:
   m_Component:
   - component: {fileID: 239478894659877738}
   - component: {fileID: 239478894659877741}
-  - component: {fileID: 239478894659877740}
+  - component: {fileID: 4715048153331224605}
   m_Layer: 0
   m_Name: Right Button
   m_TagString: Untagged
@@ -357,7 +357,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &239478894659877740
+--- !u!114 &4715048153331224605
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -366,7 +366,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 239478894659877739}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3a5c169df914fcb44b9ba79f6b30abe8, type: 3}
+  m_Script: {fileID: 11500000, guid: 79d7bba7fbb63aa4e9711ae75fa1f251, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &239478894799783848
@@ -455,7 +455,7 @@ GameObject:
   m_Component:
   - component: {fileID: 239478895321284000}
   - component: {fileID: 239478895321284003}
-  - component: {fileID: 239478895321284002}
+  - component: {fileID: 5880018997622327020}
   m_Layer: 0
   m_Name: Left Button
   m_TagString: Untagged
@@ -528,7 +528,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &239478895321284002
+--- !u!114 &5880018997622327020
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -537,7 +537,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 239478895321284001}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bc9ba65686256964dae5d43b7bf92ed8, type: 3}
+  m_Script: {fileID: 11500000, guid: 79d7bba7fbb63aa4e9711ae75fa1f251, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &239478895534557234

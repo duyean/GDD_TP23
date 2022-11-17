@@ -3,7 +3,7 @@ using UnityEngine;
 public class MovementScript : MonoBehaviour {
     private Rigidbody2D rb;
     private float moveSpeed, jumpForce;
-    private bool moveLeft, moveRight;
+    public int moveBtn;
     public Animator Anim;
 
     // Start is called before the first frame update
@@ -11,15 +11,14 @@ public class MovementScript : MonoBehaviour {
         rb = GetComponent<Rigidbody2D>();
         moveSpeed = 5f;
         jumpForce = 500f;
-        moveLeft = false;
-        moveRight = false;
     }
 
 
     public void movePlayer(float dir) {
         if (dir != 0) {
-            Anim.SetBool("Walking", true);
-            rb.velocity = new Vector2(dir * moveSpeed, rb.velocity.y);
+            Anim.SetBool("Walking", true); //Set Walking Animation
+            rb.velocity = new Vector2(dir * moveSpeed, rb.velocity.y); //Move Player
+            //Flip Player
             if (dir > 0) {
                 GetComponent<SpriteRenderer>().flipX = false;
             } else {
@@ -29,27 +28,6 @@ public class MovementScript : MonoBehaviour {
             Anim.SetBool("Walking", false);
         }
     }
-    // move character left
-    public void MoveLeft() {
-        // set animation to walk
-        Anim.SetBool("Walking", true);
-        // enable movement in update
-        moveLeft = true;
-        // rotate player to face left
-        Vector3 scale = new Vector3(-1, 1, 1);
-        GetComponent<Transform>().localScale = scale;
-    }
-
-    public void MoveRight() {
-        // set animation to walk
-        Anim.SetBool("Walking", true);
-        // enable movement in update
-        moveRight = true;
-        // rotate player to face right
-        Vector3 scale = new Vector3(1, 1, 1);
-        GetComponent<Transform>().localScale = scale;
-    }
-
     public void Jump() {
         // if player is grounded, apply upwards force + play jump sound
         if (gameObject.GetComponent<GroundedOrNot>().grounded) {
@@ -58,23 +36,12 @@ public class MovementScript : MonoBehaviour {
         }
     }
 
-    // code for stopping movement
-    // called when key up or button exit
-    public void StopMoving() {
-        moveLeft = false;
-        moveRight = false;
-        // stop movement in x axis
-        rb.velocity = new Vector2(0, rb.velocity.y);
-        // set anim to idle
-        Anim.SetBool("Walking", false);
-    }
-
     // Update is called once per frame
     private void Update() {
-        // add velocity to the rigidbody
-        movePlayer(Input.GetAxis("Horizontal"));
+        //Move Player
+        movePlayer(Mathf.Clamp(Input.GetAxis("Horizontal") + moveBtn, -1, 1));
 
-        // arrow input for movement
+        //Jump Control
         if (Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.Space)) {
             Jump();
         }
