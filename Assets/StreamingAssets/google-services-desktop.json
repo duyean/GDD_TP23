@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "605552622055",
+    "firebase_url": "https://eduventure-4215b-default-rtdb.asia-southeast1.firebasedatabase.app",
+    "project_id": "eduventure-4215b",
+    "storage_bucket": "eduventure-4215b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:605552622055:android:cd972373dd033879a5a542",
+        "android_client_info": {
+          "package_name": "com.DefaultCompany.GDDMPUnity"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "605552622055-08m8gklmc2e7a4s1osr0mqvjl3uabkbp.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDTBh_5MogjV7PN80NbRFlvDVwQQbL4w-4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "605552622055-08m8gklmc2e7a4s1osr0mqvjl3uabkbp.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
