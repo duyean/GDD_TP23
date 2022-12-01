@@ -1,4 +1,5 @@
 using System.Collections;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using Firebase;
@@ -7,6 +8,7 @@ using Firebase.Extensions;
 
 public class connectFirebase : MonoBehaviour {
     // Start is called before the first frame update
+    public List<QuestionsObject> questions = new List<QuestionsObject>();
     FirebaseApp app;
     FirebaseFirestore db;
     public bool load;
@@ -27,6 +29,7 @@ public class connectFirebase : MonoBehaviour {
                 // Firebase Unity SDK is not safe to use here.
             }
         });
+
     }
     private void Update() {
         if (load) {
@@ -35,16 +38,50 @@ public class connectFirebase : MonoBehaviour {
         }
     }
     void loadQuestion() {
-        CollectionReference usersRef = db.Collection("users");
-        usersRef.GetSnapshotAsync().ContinueWithOnMainThread(task => {
+        CollectionReference questionsRef = db.Collection("questions");
+        questionsRef.GetSnapshotAsync().ContinueWithOnMainThread(task => {
             QuerySnapshot snapshot = task.Result;
+
             foreach (DocumentSnapshot document in snapshot.Documents) {
-                Debug.Log(document.Id);
+                Dictionary<string, object> questionList = document.ToDictionary();
+
+                QuestionsObject.QuestionSubject sub = QuestionsObject.QuestionSubject.none;
+                switch (questionList["Subject"].ToString().ToLower()) {
+                    case "english":
+                        sub = QuestionsObject.QuestionSubject.English;
+                        break;
+                    case "math":
+                        sub = QuestionsObject.QuestionSubject.Math;
+                        break;
+                    case "science":
+                        sub = QuestionsObject.QuestionSubject.Science;
+                        break;
+                    case "chinese":
+                        sub = QuestionsObject.QuestionSubject.Chinese;
+                        break;
+                    case "malay":
+                        sub = QuestionsObject.QuestionSubject.Malay;
+                        break;
+                }
+                List<string> answerSlots = new List<string>();
+                List<string> answers = new List<string>();
+                List<string> finalAnswer = new List<string>();
+                foreach (System.Object a in questionList["answerSlots"] as List<System.Object>) {
+                    answerSlots.Add((string)a);
+                }
+                foreach (System.Object a in questionList["answers"] as List<System.Object>) {
+                    answers.Add((string)a);
+                }
+                foreach (System.Object a in questionList["finalAnswer"] as List<System.Object>) {
+                    finalAnswer.Add((string)a);
+                }
+                string hint = questionList["hint"].ToString();
+                string question = questionList["question"].ToString();
+                int questionid = Convert.ToInt32(questionList["questionId"].ToString());
+                questions.Add(new QuestionsObject(sub, answerSlots, answers, finalAnswer, hint, question, questionid));
+                print("added");
             }
-
-            Debug.Log("Read all data from the users collection.");
+            print(questions.Count);
         });
-
     }
-
 }
