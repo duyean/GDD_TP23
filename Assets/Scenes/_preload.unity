@@ -2255,6 +2255,7 @@ GameObject:
   m_Component:
   - component: {fileID: 479418883}
   - component: {fileID: 479418882}
+  - component: {fileID: 479418884}
   m_Layer: 0
   m_Name: Firebase
   m_TagString: Untagged
@@ -2274,6 +2275,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 99d54076c73bd38448ad3c264e0d5036, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  load: 0
 --- !u!4 &479418883
 Transform:
   m_ObjectHideFlags: 0
@@ -2289,6 +2291,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &479418884
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 479418881}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 440c8d962a6bd3d41bf83ded05c606c5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  loginStatus: 0
+  isTeacher: 0
 --- !u!1 &491481409
 GameObject:
   m_ObjectHideFlags: 0
