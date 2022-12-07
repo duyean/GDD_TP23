@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
+using UnityEngine.Networking;
 
 public class LoginMenu : MonoBehaviour {
     public Image[] tabs;
@@ -42,11 +43,11 @@ public class LoginMenu : MonoBehaviour {
             switchMenu();
         }
         switch (loginType) {
-            case 0:
-                //Student Login
+            case 0: //Student
+                StartCoroutine(loginToDatabase(false, loginDetails[0].text, loginDetails[1].text));
                 break;
-            case 1:
-                //Teacher Login
+            case 1://Teacher
+                StartCoroutine(loginToDatabase(true, loginDetails[0].text, loginDetails[1].text));
                 break;
         }
     }
@@ -58,4 +59,50 @@ public class LoginMenu : MonoBehaviour {
         switchMenuItem[1].SetActive(false);
     }
 
+    IEnumerator loginToDatabase(bool isTeacherLogin, string username, string password) {
+        WWWForm form = new WWWForm();
+        form.AddField("action", "login");
+        form.AddField("username", username);
+        form.AddField("password", password);
+        if (isTeacherLogin) {
+            using (UnityWebRequest www = UnityWebRequest.Post("https://eproject-dev.ednoland.com/matp/teacherApp/teacherAppRequest.php", form)) {
+                yield return www.SendWebRequest();
+
+                if (www.result != UnityWebRequest.Result.Success) {
+                    Debug.Log(www.error);
+                } else {
+                    string[] returndata = (www.downloadHandler.text).Split(",");
+                    if (returndata.Length > 0) {
+                        foreach (string i in returndata) {
+                            if (i.Contains("result") && i.Substring(i.Length - 3).Equals("\"1\"")) {
+                                GlobalVariables.instance.isTeacher = true;
+                                GlobalVariables.instance.loginStatus = true;
+                                switchMenu();
+                                break;
+                            }
+                        }
+                    }
+                }
+            }
+        } else {
+            using (UnityWebRequest www = UnityWebRequest.Post("https://eproject-dev.ednoland.com/matp/parentAppV2/parentAppRequest.php", form)) {
+                yield return www.SendWebRequest();
+
+                if (www.result != UnityWebRequest.Result.Success) {
+                    Debug.Log(www.error);
+                } else {
+                    string[] returndata = (www.downloadHandler.text).Split(",");
+                    if (returndata.Length > 0) {
+                        foreach (string i in returndata) {
+                            if (i.Contains("reason") && i.Contains("success")) {
+                                GlobalVariables.instance.loginStatus = true;
+                                switchMenu();
+                                break;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
 }
