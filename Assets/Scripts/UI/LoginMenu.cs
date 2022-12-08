@@ -7,7 +7,7 @@ using UnityEngine.Networking;
 
 public class LoginMenu : MonoBehaviour {
     public Image[] tabs;
-    public GameObject[] switchMenuItem;
+    public GameObject[] switchMenuItem, teacherView;
     public TMP_InputField[] loginDetails;
     public TextMeshProUGUI errorMsg;
     private int loginType = 0;
@@ -55,7 +55,9 @@ public class LoginMenu : MonoBehaviour {
     }
     private void switchMenu() {
         if (GlobalVariables.instance.isTeacher) {
-            //Enable teacherStuff
+            foreach (GameObject i in teacherView) {
+                i.SetActive(true);
+            }
         }
         switchMenuItem[0].SetActive(true);
         switchMenuItem[1].SetActive(false);
