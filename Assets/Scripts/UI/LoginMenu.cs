@@ -9,6 +9,7 @@ public class LoginMenu : MonoBehaviour {
     public Image[] tabs;
     public GameObject[] switchMenuItem;
     public TMP_InputField[] loginDetails;
+    public TextMeshProUGUI errorMsg;
     private int loginType = 0;
     public static LoginMenu instance;
     private void Start() {
@@ -37,6 +38,7 @@ public class LoginMenu : MonoBehaviour {
     }
 
     public void login() {
+        errorMsg.text = "";
         //Override
         if (loginDetails[0].text == "admin" && loginDetails[1].text == "admin") {
             GlobalVariables.instance.loginStatus = true;
@@ -103,6 +105,9 @@ public class LoginMenu : MonoBehaviour {
                     }
                 }
             }
+        }
+        if (GlobalVariables.instance.loginStatus) {
+            errorMsg.text = "Incorrect user ID or password";
         }
     }
 }
