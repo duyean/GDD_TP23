@@ -5,6 +5,7 @@ public class MovementScript : MonoBehaviour {
     private float moveSpeed, jumpForce;
     public int moveBtn;
     public Animator Anim;
+    private bool stopMov;
 
     // Start is called before the first frame update
     void Start() {
@@ -16,6 +17,7 @@ public class MovementScript : MonoBehaviour {
 
     public void movePlayer(float dir) {
         if (dir != 0) {
+            stopMov = true;
             Anim.SetBool("Walking", true); //Set Walking Animation
             rb.velocity = new Vector2(dir * moveSpeed, rb.velocity.y); //Move Player
             //Flip Player
@@ -26,11 +28,15 @@ public class MovementScript : MonoBehaviour {
             }
         } else {
             Anim.SetBool("Walking", false);
+            if (stopMov) {
+                stopMov = false;
+                 rb.velocity = new Vector2(dir * moveSpeed, rb.velocity.y);
+            }
         }
     }
     public void Jump() {
         // if player is grounded, apply upwards force + play jump sound
-        if (gameObject.GetComponent<GroundedOrNot>().grounded) {
+        if (GetComponent<GroundedOrNot>().grounded) {
             rb.AddForce(Vector2.up * jumpForce);
             SFX.Instance.JumpSound();
         }
