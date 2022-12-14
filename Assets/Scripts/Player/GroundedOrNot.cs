@@ -12,7 +12,6 @@ public class GroundedOrNot : MonoBehaviour {
     void FixedUpdate() {
         RaycastHit2D hit = Physics2D.CircleCast(transform.position, thickness, Vector3.down, 1.5f);
         if (hit) {
-            print(hit.transform.name);
             if (hit.transform.gameObject.layer == LayerMask.NameToLayer("Ground")) {
                 grounded = true;
             }
