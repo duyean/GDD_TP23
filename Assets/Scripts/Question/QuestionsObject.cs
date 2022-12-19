@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 
 public class QuestionsObject {
-    public enum QuestionSubject { none, English, Math, Science, Chinese, Malay }
+    public enum QuestionSubject { English, Math, Chinese /*, Science, Malay, none*/ }
     public QuestionSubject subject;
     public List<string> answerSlots = new List<string>();
     public List<string> answers = new List<string>();

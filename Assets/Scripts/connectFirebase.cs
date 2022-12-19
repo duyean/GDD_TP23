@@ -8,13 +8,21 @@ using Firebase.Extensions;
 
 public class connectFirebase : MonoBehaviour {
     // Start is called before the first frame update
+    public List<QuestionsObject.QuestionSubject> subjectList = new List<QuestionsObject.QuestionSubject>();
     public List<QuestionsObject> mathQuestions = new List<QuestionsObject>();
     public List<QuestionsObject> englishQuestions = new List<QuestionsObject>();
     public List<QuestionsObject> chineseQuestions = new List<QuestionsObject>();
     FirebaseApp app;
     FirebaseFirestore db;
     public bool load;
+    public static connectFirebase instance;
     void Start() {
+
+        if (connectFirebase.instance != null) {
+            Destroy(connectFirebase.instance);
+        }
+        instance = this;
+
         DontDestroyOnLoad(gameObject);
         FirebaseApp.CheckAndFixDependenciesAsync().ContinueWith(task => {
             var dependencyStatus = task.Result;
@@ -23,7 +31,7 @@ public class connectFirebase : MonoBehaviour {
                 // where app is a Firebase.FirebaseApp property of your application class.
                 app = FirebaseApp.DefaultInstance;
                 db = FirebaseFirestore.DefaultInstance;
-
+                loadQuestion();
                 // Set a flag here to indicate whether Firebase is ready to use by your app.
             } else {
                 UnityEngine.Debug.LogError(System.String.Format(
@@ -40,9 +48,9 @@ public class connectFirebase : MonoBehaviour {
         }
     }
     void loadQuestion() {
-        for (int i = 0; i < 5; i++) {
+        for (int i = 0; i < 3; i++) {
             QuestionsObject.QuestionSubject sub = (QuestionsObject.QuestionSubject)i;
-
+            subjectList.Add(sub);
             CollectionReference questionsRef = db.Collection(sub.ToString().ToLower());
             questionsRef.GetSnapshotAsync().ContinueWithOnMainThread(task => {
                 QuerySnapshot snapshot = task.Result;

@@ -939,6 +939,7 @@ MonoBehaviour:
   - {fileID: 1227588942}
   - {fileID: 1279777829}
   - {fileID: 2064668370}
+  subjectIcon: []
 --- !u!1 &65902606
 GameObject:
   m_ObjectHideFlags: 0
