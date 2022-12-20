@@ -24,6 +24,8 @@ public class MoveBtnControl : MonoBehaviour, IPointerDownHandler, IPointerExitHa
             player.GetComponent<MovementScript>().moveBtn = -1;
         } else if (currentBtn == buttonType.Right) {
             player.GetComponent<MovementScript>().moveBtn = 1;
+        } else if (currentBtn == buttonType.Jump) {
+            player.GetComponent<MovementScript>().Jump();
         }
     }
 

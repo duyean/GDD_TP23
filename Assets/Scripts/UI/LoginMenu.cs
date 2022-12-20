@@ -43,14 +43,15 @@ public class LoginMenu : MonoBehaviour {
         if (loginDetails[0].text == "admin" && loginDetails[1].text == "admin") {
             GlobalVariables.instance.loginStatus = true;
             switchMenu();
-        }
-        switch (loginType) {
-            case 0: //Student
-                StartCoroutine(loginToDatabase(false, loginDetails[0].text, loginDetails[1].text));
-                break;
-            case 1://Teacher
-                StartCoroutine(loginToDatabase(true, loginDetails[0].text, loginDetails[1].text));
-                break;
+        } else {
+            switch (loginType) {
+                case 0: //Student
+                    StartCoroutine(loginToDatabase(false, loginDetails[0].text, loginDetails[1].text));
+                    break;
+                case 1://Teacher
+                    StartCoroutine(loginToDatabase(true, loginDetails[0].text, loginDetails[1].text));
+                    break;
+            }
         }
     }
     private void switchMenu() {
@@ -108,7 +109,7 @@ public class LoginMenu : MonoBehaviour {
                 }
             }
         }
-        if (GlobalVariables.instance.loginStatus) {
+        if (!GlobalVariables.instance.loginStatus) {
             errorMsg.text = "Incorrect user ID or password";
         }
     }
