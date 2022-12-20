@@ -7,6 +7,7 @@ using UnityEngine.Networking;
 
 public class LoginMenu : MonoBehaviour {
     public Image[] tabs;
+    public Sprite[] swapTabs;
     public GameObject[] switchMenuItem, teacherView;
     public TMP_InputField[] loginDetails;
     public TextMeshProUGUI errorMsg;
@@ -25,13 +26,13 @@ public class LoginMenu : MonoBehaviour {
         loginType = type;
         switch (type) {
             case 0:
-                tabs[0].color = new Color(242f / 255f, 243f / 255f, 195f / 255f);
-                tabs[1].color = new Color(242f / 255f, 243f / 255f, 170f / 255f);
+                tabs[0].sprite = swapTabs[0];
+                tabs[1].sprite = swapTabs[2];
                 //loginDetails[0].transform.GetChild(0).GetChild(0).GetComponent<TextMeshProUGUI>().text = "User ID";
                 break;
             case 1:
-                tabs[1].color = new Color(242f / 255f, 243f / 255f, 195f / 255f);
-                tabs[0].color = new Color(242f / 255f, 243f / 255f, 170f / 255f);
+                tabs[0].sprite = swapTabs[1];
+                tabs[1].sprite = swapTabs[3];
                 //loginDetails[0].transform.GetChild(0).GetChild(0).GetComponent<TextMeshProUGUI>().text = "Email";
                 break;
         }
@@ -41,6 +42,9 @@ public class LoginMenu : MonoBehaviour {
         errorMsg.text = "";
         //Override
         if (loginDetails[0].text == "admin" && loginDetails[1].text == "admin") {
+            if (loginType == 1) {
+                GlobalVariables.instance.isTeacher = true;
+            }
             GlobalVariables.instance.loginStatus = true;
             switchMenu();
         } else {
