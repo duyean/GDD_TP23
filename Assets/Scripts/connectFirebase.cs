@@ -14,7 +14,6 @@ public class connectFirebase : MonoBehaviour {
     public List<QuestionsObject> chineseQuestions = new List<QuestionsObject>();
     FirebaseApp app;
     FirebaseFirestore db;
-    public bool load;
     public static connectFirebase instance;
     void Start() {
 
@@ -39,14 +38,8 @@ public class connectFirebase : MonoBehaviour {
                 // Firebase Unity SDK is not safe to use here.
             }
         });
-
     }
-    private void Update() {
-        if (load) {
-            load = false;
-            loadQuestion();
-        }
-    }
+    
     void loadQuestion() {
         for (int i = 0; i < 3; i++) {
             QuestionsObject.QuestionSubject sub = (QuestionsObject.QuestionSubject)i;
@@ -72,16 +65,18 @@ public class connectFirebase : MonoBehaviour {
                     }
                     string hint = questionList["hint"].ToString();
                     string question = questionList["question"].ToString();
-
+                    string prefix = questionList["prefix"].ToString();
+                    string postfix = questionList["postfix"].ToString();
+                    int questionType = Convert.ToInt32(questionList["questionType"]);
                     switch (sub) {
                         case QuestionsObject.QuestionSubject.Math:
-                            mathQuestions.Add(new QuestionsObject(sub, answerSlots, answers, finalAnswer, hint, question, questionid));
+                            mathQuestions.Add(new QuestionsObject(sub, answerSlots, answers, finalAnswer, hint, question, questionid, prefix, postfix, questionType));
                             break;
                         case QuestionsObject.QuestionSubject.English:
-                            englishQuestions.Add(new QuestionsObject(sub, answerSlots, answers, finalAnswer, hint, question, questionid));
+                            englishQuestions.Add(new QuestionsObject(sub, answerSlots, answers, finalAnswer, hint, question, questionid, prefix, postfix, questionType));
                             break;
                         case QuestionsObject.QuestionSubject.Chinese:
-                            chineseQuestions.Add(new QuestionsObject(sub, answerSlots, answers, finalAnswer, hint, question, questionid));
+                            chineseQuestions.Add(new QuestionsObject(sub, answerSlots, answers, finalAnswer, hint, question, questionid, prefix, postfix, questionType));
                             break;
                     }
                 }
