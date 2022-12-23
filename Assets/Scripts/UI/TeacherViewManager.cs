@@ -5,10 +5,12 @@ using UnityEngine.UI;
 using TMPro;
 
 public class TeacherViewManager : MonoBehaviour {
-    public GameObject scrollviewObj, subjectScrollView, questionScrollView, mainTeacherUI;
+    public GameObject questionScrollView, mainTeacherUI, questionSelect;
     public GameObject[] teacherViewMenu;
     private connectFirebase firebaseObj;
     public Sprite[] subjectIcon;
+    public QuestionsObject.QuestionSubject currentSubject;
+    public int questionId;
     private void Start() {
         firebaseObj = connectFirebase.instance;
     }
@@ -16,51 +18,33 @@ public class TeacherViewManager : MonoBehaviour {
         if (!mainTeacherUI.activeSelf) {
             mainTeacherUI.SetActive(true);
         }
-        switch (id) {
-            case 0:
-                for (int i = 0; i < subjectScrollView.transform.childCount; i++) {
-                    Destroy(subjectScrollView.transform.GetChild(0));
-                }
-                for (int i = 0; i < firebaseObj.subjectList.Count; i++) {
-
-                    GameObject spawnObj = Instantiate(scrollviewObj, subjectScrollView.transform);
-                    //spawnObj.transform.GetChild(0).GetComponent<Image>().sprite = subjectIcon[i];
-                    spawnObj.transform.GetChild(1).GetComponent<TextMeshProUGUI>().text = firebaseObj.subjectList[i].ToString();
-                    spawnObj.GetComponent<Button>().onClick.AddListener(delegate { spawnQuestionObj(i); });
-                }
-                foreach (GameObject i in teacherViewMenu) {
-                    i.SetActive(false);
-                }
-                teacherViewMenu[0].SetActive(true);
-                break;
-
-            case 1:
-                for (int i = 0; i < questionScrollView.transform.childCount; i++) {
-                    Destroy(questionScrollView.transform.GetChild(0));
-                }
-                foreach (GameObject i in teacherViewMenu) {
-                    i.SetActive(false);
-                }
-                teacherViewMenu[1].SetActive(true);
-                break;
-
-            case 2:
-                break;
+        foreach (GameObject i in teacherViewMenu) {
+            i.SetActive(false);
         }
+        teacherViewMenu[id].SetActive(true);
     }
-    public void spawnQuestionObj(int sub) {
-        switchUI(1);
-        int level = 1;
-        int questionNo = 1;
-        for (int i = 0; i < 15; i++) {
-            GameObject spawnObj = Instantiate(scrollviewObj, questionScrollView.transform);
-            //spawnObj.transform.GetChild(0).GetComponent<Image>().sprite = subjectIcon[sub];
-            spawnObj.transform.GetChild(1).GetComponent<TextMeshProUGUI>().text = "Level " + level + " Question " + questionNo;
-            questionNo++;
-            if (questionNo > level) {
-                questionNo = 1;
-                level++;
-            }
+
+    public void selectSub(int sub) {
+        currentSubject = (QuestionsObject.QuestionSubject)sub;
+    }
+    public void selectQuestionId(int qId) {
+        questionId = qId;
+        switchUI(3);
+    }
+
+    public void selectLevel(int level) {
+        foreach (Transform child in questionScrollView.transform) {
+            GameObject.Destroy(child.gameObject);
+        }
+        level += 1;
+        float maxQid = 0.5f * level * (level+1);
+        int qId = (Mathf.RoundToInt(maxQid) - level) + 1;
+        for (int i = 0; i < level; i++) {
+            int _qid = qId;
+            GameObject questionIdSelect = Instantiate(questionSelect, questionScrollView.transform);
+            questionIdSelect.transform.GetChild(1).GetComponent<TextMeshProUGUI>().text = "Question " + (i + 1);
+            questionIdSelect.GetComponent<Button>().onClick.AddListener(delegate {selectQuestionId(_qid); });
+            qId += 1;
         }
     }
 }

@@ -9,9 +9,9 @@ using Firebase.Extensions;
 public class connectFirebase : MonoBehaviour {
     // Start is called before the first frame update
     public List<QuestionsObject.QuestionSubject> subjectList = new List<QuestionsObject.QuestionSubject>();
-    public List<QuestionsObject> mathQuestions = new List<QuestionsObject>();
-    public List<QuestionsObject> englishQuestions = new List<QuestionsObject>();
-    public List<QuestionsObject> chineseQuestions = new List<QuestionsObject>();
+    public QuestionsObject[] mathQuestions = new QuestionsObject[15];
+    public QuestionsObject[] englishQuestions = new QuestionsObject[15];
+    public QuestionsObject[] chineseQuestions = new QuestionsObject[15];
     FirebaseApp app;
     FirebaseFirestore db;
     public static connectFirebase instance;
@@ -39,7 +39,7 @@ public class connectFirebase : MonoBehaviour {
             }
         });
     }
-    
+
     void loadQuestion() {
         for (int i = 0; i < 3; i++) {
             QuestionsObject.QuestionSubject sub = (QuestionsObject.QuestionSubject)i;
@@ -47,7 +47,7 @@ public class connectFirebase : MonoBehaviour {
             CollectionReference questionsRef = db.Collection(sub.ToString().ToLower());
             questionsRef.GetSnapshotAsync().ContinueWithOnMainThread(task => {
                 QuerySnapshot snapshot = task.Result;
-
+                int questionNo = 0;
                 foreach (DocumentSnapshot document in snapshot.Documents) {
                     int questionid = Convert.ToInt32(document.Id);
                     Dictionary<string, object> questionList = document.ToDictionary();
@@ -70,15 +70,16 @@ public class connectFirebase : MonoBehaviour {
                     int questionType = Convert.ToInt32(questionList["questionType"]);
                     switch (sub) {
                         case QuestionsObject.QuestionSubject.Math:
-                            mathQuestions.Add(new QuestionsObject(sub, answerSlots, answers, finalAnswer, hint, question, questionid, prefix, postfix, questionType));
+                            mathQuestions[questionNo] = (new QuestionsObject(sub, answerSlots, answers, finalAnswer, hint, question, questionid, prefix, postfix, questionType));
                             break;
                         case QuestionsObject.QuestionSubject.English:
-                            englishQuestions.Add(new QuestionsObject(sub, answerSlots, answers, finalAnswer, hint, question, questionid, prefix, postfix, questionType));
+                            englishQuestions[questionNo] = (new QuestionsObject(sub, answerSlots, answers, finalAnswer, hint, question, questionid, prefix, postfix, questionType));
                             break;
                         case QuestionsObject.QuestionSubject.Chinese:
-                            chineseQuestions.Add(new QuestionsObject(sub, answerSlots, answers, finalAnswer, hint, question, questionid, prefix, postfix, questionType));
+                            chineseQuestions[questionNo] = (new QuestionsObject(sub, answerSlots, answers, finalAnswer, hint, question, questionid, prefix, postfix, questionType));
                             break;
                     }
+                    questionNo += 1;
                 }
             });
         }
