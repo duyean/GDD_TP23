@@ -22,6 +22,10 @@ public class TeacherViewManager : MonoBehaviour {
             i.SetActive(false);
         }
         teacherViewMenu[id].SetActive(true);
+
+        if (id == 3) {
+            teacherViewMenu[3].GetComponent<FormObj>().updateData(currentSubject, questionId);
+        }
     }
 
     public void selectSub(int sub) {
@@ -37,13 +41,13 @@ public class TeacherViewManager : MonoBehaviour {
             GameObject.Destroy(child.gameObject);
         }
         level += 1;
-        float maxQid = 0.5f * level * (level+1);
+        float maxQid = 0.5f * level * (level + 1);
         int qId = (Mathf.RoundToInt(maxQid) - level) + 1;
         for (int i = 0; i < level; i++) {
             int _qid = qId;
             GameObject questionIdSelect = Instantiate(questionSelect, questionScrollView.transform);
             questionIdSelect.transform.GetChild(1).GetComponent<TextMeshProUGUI>().text = "Question " + (i + 1);
-            questionIdSelect.GetComponent<Button>().onClick.AddListener(delegate {selectQuestionId(_qid); });
+            questionIdSelect.GetComponent<Button>().onClick.AddListener(delegate { selectQuestionId(_qid); });
             qId += 1;
         }
     }
