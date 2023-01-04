@@ -13,6 +13,7 @@ public class LoadQuestion : MonoBehaviour {
     public GameObject winObj, UIDisplay;
     public int level, tries;
     private List<string> rndList = new List<string>();
+    private IDictionary<string, int> ansKey = new Dictionary<string, int>();
 
     private QuestionsObject qObj;
     private void Start() {
@@ -21,9 +22,11 @@ public class LoadQuestion : MonoBehaviour {
     }
 
     public void loadQuestion() {
-        //int maxQid = Mathf.RoundToInt(0.5f * level * (level + 1));
-        //maxQid = (maxQid - GlobalVariables.instance.questionsInMap) + 1;
-        int maxQid = 0;
+        if (ansKey.Count > 0) {
+            ansKey.Clear();
+        }
+        int maxQid = Mathf.RoundToInt(0.5f * level * (level + 1));
+        maxQid = (maxQid - GlobalVariables.instance.questionsInMap);
         switch (subject) {
             case QuestionsObject.QuestionSubject.Math:
                 qObj = connectFirebase.instance.mathQuestions[maxQid];
@@ -39,7 +42,14 @@ public class LoadQuestion : MonoBehaviour {
         int i = 0;
         rndList = qObj.answers;
         if (qObj.questionType == 0) {
+            foreach (string s in qObj.answers) {
+                if (s.Length > 0) {
+                    ansKey.Add(new KeyValuePair<string, int>(s, i));
+                    i++;
+                }
+            }
             rndList = Shuffle(rndList);
+
         }
         foreach (string s in rndList) {
 
@@ -52,7 +62,10 @@ public class LoadQuestion : MonoBehaviour {
                 }
                 newAns.transform.SetParent(answerView.transform);
                 newAns.transform.localScale = new Vector3(2f, 2f, 2f);
-                newAns.GetComponent<DragDrop>().itemValue = i.ToString();
+                int value;
+                if (ansKey.TryGetValue(s, out value)) {
+                    newAns.GetComponent<DragDrop>().itemValue = value.ToString();
+                }
 
                 if (qObj.questionType == 0) {
                     GameObject newAnsSlot = Instantiate(answeringSlot);
@@ -60,9 +73,8 @@ public class LoadQuestion : MonoBehaviour {
                     newAnsSlot.transform.localScale = new Vector3(2f, 2f, 2f);
                 }
             }
-            i++;
         }
-
+        //StartCoroutine(disableScrollView());
 
     }
     private void solved() {
@@ -71,9 +83,32 @@ public class LoadQuestion : MonoBehaviour {
         Destroy(gameObject.transform.parent.gameObject);
     }
     public void attemptSolution() {
-
+        bool isCorrect = true;
+        switch (qObj.questionType) {
+            case 0:
+                for (int i = 0; i < possibleAnswerView.transform.childCount; i++) {
+                    GameObject child = possibleAnswerView.transform.GetChild(i).gameObject;
+                    if (System.Int32.Parse(child.GetComponent<Slot>().value) != i) {
+                        isCorrect = false;
+                    }
+                }
+                break;
+            case 1:
+                break;
+            case 2:
+                break;
+        }
+        print(isCorrect);
+        if (isCorrect) {
+            solved();
+        } else {
+            //Incorrect
+        }
     }
-
+    public IEnumerator disableScrollView() {
+        yield return new WaitForSeconds(1);
+        answerView.GetComponent<HorizontalLayoutGroup>().enabled = false;
+    }
     public IEnumerator LoadImageCoroutine(string url, GameObject gameObject) {
         UnityWebRequest www = UnityWebRequestTexture.GetTexture(url);
         var asyncOp = www.SendWebRequest();

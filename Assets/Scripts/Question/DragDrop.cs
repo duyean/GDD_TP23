@@ -23,19 +23,10 @@ public class DragDrop : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDrag
         rectTransform = GetComponent<RectTransform>();
         canvasGroup = GetComponent<CanvasGroup>();
         checkButton = GameObject.FindGameObjectWithTag("AnswerButton").GetComponent<Button>();
-        checkButton.onClick.AddListener(ExecuteCheck); //When button is clicked, calls the ExecuteCheck function
         originalPos = rectTransform.anchoredPosition;  //Gets the original vector positions of every item at the start
     }
 
     //Set the items back to original position if the answer is wrong
-    void ExecuteCheck()
-    {
-        if (answerCheck.correct == false)
-        {
-            rectTransform.anchoredPosition = originalPos;
-        }
-    }
-
     //Detect when the mouse holds down on the item
     public void OnBeginDrag(PointerEventData eventData)
     {
