@@ -16,10 +16,6 @@ public class LoadQuestion : MonoBehaviour {
     private IDictionary<string, int> ansKey = new Dictionary<string, int>();
 
     private QuestionsObject qObj;
-    private void Start() {
-        GlobalVariables.instance.questionsInMap++;
-        loadQuestion();
-    }
 
     public void loadQuestion() {
         if (ansKey.Count > 0) {
