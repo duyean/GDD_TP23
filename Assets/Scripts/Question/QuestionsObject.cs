@@ -12,7 +12,8 @@ public class QuestionsObject {
     public string preFix;
     public int questionType;
     public int questionId;
-    public QuestionsObject(QuestionSubject _subject, List<string> _answerSlots, List<string> _answers, List<string> _finalAnswer, string _hint, string _question, int _questionId, string _preFix, string _postFix, int _questionType) {
+    public string qImage;
+    public QuestionsObject(QuestionSubject _subject, List<string> _answerSlots, List<string> _answers, List<string> _finalAnswer, string _hint, string _question, int _questionId, string _preFix, string _postFix, int _questionType, string _qImage) {
         this.subject = _subject;
         this.answerSlots = _answerSlots;
         this.answers = _answers;
@@ -23,5 +24,6 @@ public class QuestionsObject {
         this.preFix = _preFix;
         this.postFix = _postFix;
         this.questionType = _questionType;
+        this.qImage = _qImage;
     }
 }

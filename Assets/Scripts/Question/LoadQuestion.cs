@@ -34,6 +34,13 @@ public class LoadQuestion : MonoBehaviour {
                 qObj = connectFirebase.instance.chineseQuestions[maxQid];
                 break;
         }
+        if (qObj == null) {
+            solved();
+            return;
+        } else if (qObj.question == null || qObj.question.Length == 0) {
+            solved();
+            return;
+        }
         qns.text = qObj.question;
         int i = 0;
         rndList = qObj.answers;
@@ -45,8 +52,15 @@ public class LoadQuestion : MonoBehaviour {
                 }
             }
             rndList = Shuffle(rndList);
-
+        } else {
+            foreach (string s in qObj.finalAnswer) {
+                if (s.Length > 0) {
+                    i = qObj.answers.IndexOf(s);
+                    ansKey.Add(new KeyValuePair<string, int>(s, i));
+                }
+            }
         }
+        int loopIndex = 0;
         foreach (string s in rndList) {
 
             if (s.Length > 0) {
@@ -59,42 +73,71 @@ public class LoadQuestion : MonoBehaviour {
                 newAns.transform.SetParent(answerView.transform);
                 newAns.transform.localScale = new Vector3(2f, 2f, 2f);
                 int value;
-                if (ansKey.TryGetValue(s, out value)) {
-                    newAns.GetComponent<DragDrop>().itemValue = value.ToString();
-                }
-
+                newAns.GetComponent<DragDrop>().itemValue = loopIndex.ToString();
+                loopIndex++;
                 if (qObj.questionType == 0) {
+                    if (ansKey.TryGetValue(s, out value)) {
+                        newAns.GetComponent<DragDrop>().itemValue = value.ToString();
+                    }
                     GameObject newAnsSlot = Instantiate(answeringSlot);
                     newAnsSlot.transform.SetParent(possibleAnswerView.transform);
                     newAnsSlot.transform.localScale = new Vector3(2f, 2f, 2f);
                 }
             }
         }
-        //StartCoroutine(disableScrollView());
-
+        if (qObj.questionType != 0) {
+            foreach (KeyValuePair<string, int> entry in ansKey) {
+                GameObject newAnsSlot = Instantiate(answeringSlot);
+                newAnsSlot.transform.SetParent(possibleAnswerView.transform);
+                newAnsSlot.transform.localScale = new Vector3(2f, 2f, 2f);
+            }
+        }
+        if (qObj.qImage.Length > 0) {
+            if (qObj.qImage.Contains("http")) {
+                GameObject newAnsSlot = Instantiate(answeringSlot);
+                StartCoroutine(LoadImageCoroutine(qObj.qImage, newAnsSlot));
+                newAnsSlot.transform.SetParent(possibleAnswerView.transform);
+                newAnsSlot.transform.localScale = new Vector3(2f, 2f, 2f);
+                newAnsSlot.GetComponent<Slot>().isImg = true;
+            }
+        }
     }
+
     private void solved() {
         GlobalVariables.instance.questionsInMap--;
-        winObj.SetActive(!winObj.activeSelf);
+        if (winObj != null) {
+            winObj.SetActive(!winObj.activeSelf);
+        }
         Destroy(gameObject.transform.parent.gameObject);
     }
+
     public void attemptSolution() {
         bool isCorrect = true;
-        switch (qObj.questionType) {
-            case 0:
-                for (int i = 0; i < possibleAnswerView.transform.childCount; i++) {
+        if (qObj.questionType == 0) {
+            for (int i = 0; i < possibleAnswerView.transform.childCount; i++) {
+                GameObject child = possibleAnswerView.transform.GetChild(i).gameObject;
+                if (System.Int32.Parse(child.GetComponent<Slot>().value) != i) {
+                    isCorrect = false;
+                }
+            }
+        } else {
+            for (int i = 0; i < possibleAnswerView.transform.childCount; i++) {
+                if (isCorrect) {
                     GameObject child = possibleAnswerView.transform.GetChild(i).gameObject;
-                    if (System.Int32.Parse(child.GetComponent<Slot>().value) != i) {
-                        isCorrect = false;
+                    bool checker = false;
+                    if (!child.GetComponent<Slot>().isImg) {
+                        foreach (KeyValuePair<string, int> entry in ansKey) {
+                            if (System.Int32.Parse(child.GetComponent<Slot>().value) == entry.Value) {
+                                checker = true;
+                            }
+                        }
+                        if (!checker) {
+                            isCorrect = false;
+                        }
                     }
                 }
-                break;
-            case 1:
-                break;
-            case 2:
-                break;
+            }
         }
-        print(isCorrect);
         if (isCorrect) {
             solved();
         } else {
@@ -122,7 +165,9 @@ public class LoadQuestion : MonoBehaviour {
         Sprite sprite = Sprite.Create(texture, new Rect(0, 0, texture.width, texture.height), new Vector2(0, 0));
 
         gameObject.GetComponent<Image>().sprite = sprite;
-        gameObject.GetComponentInChildren<TextMeshProUGUI>().text = "";
+        if (gameObject.GetComponentInChildren<TextMeshProUGUI>() != null) {
+            gameObject.GetComponentInChildren<TextMeshProUGUI>().text = "";
+        }
     }
 
     public static List<T> Shuffle<T>(List<T> array) {

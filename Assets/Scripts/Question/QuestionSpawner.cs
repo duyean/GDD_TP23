@@ -21,6 +21,7 @@ public class QuestionSpawner : MonoBehaviour {
     }
     private void OnTriggerEnter2D(Collider2D collision) {
         if (collision.transform.tag == "Player") {
+            GetComponent<CircleCollider2D>().enabled = false;
             questionScript.gameObject.SetActive(true);
             questionScript.loadQuestion();
             collision.GetComponent<Rigidbody2D>().velocity = new Vector2(0, 0);

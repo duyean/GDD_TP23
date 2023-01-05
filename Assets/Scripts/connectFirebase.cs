@@ -68,15 +68,16 @@ public class connectFirebase : MonoBehaviour {
                     string prefix = questionList["prefix"].ToString();
                     string postfix = questionList["postfix"].ToString();
                     int questionType = Convert.ToInt32(questionList["questionType"]);
+                    string qImage = questionList["qImage"].ToString();
                     switch (sub) {
                         case QuestionsObject.QuestionSubject.Math:
-                            mathQuestions[questionNo] = (new QuestionsObject(sub, answerSlots, answers, finalAnswer, hint, question, questionid, prefix, postfix, questionType));
+                            mathQuestions[questionNo] = (new QuestionsObject(sub, answerSlots, answers, finalAnswer, hint, question, questionid, prefix, postfix, questionType, qImage));
                             break;
                         case QuestionsObject.QuestionSubject.English:
-                            englishQuestions[questionNo] = (new QuestionsObject(sub, answerSlots, answers, finalAnswer, hint, question, questionid, prefix, postfix, questionType));
+                            englishQuestions[questionNo] = (new QuestionsObject(sub, answerSlots, answers, finalAnswer, hint, question, questionid, prefix, postfix, questionType, qImage));
                             break;
                         case QuestionsObject.QuestionSubject.Chinese:
-                            chineseQuestions[questionNo] = (new QuestionsObject(sub, answerSlots, answers, finalAnswer, hint, question, questionid, prefix, postfix, questionType));
+                            chineseQuestions[questionNo] = (new QuestionsObject(sub, answerSlots, answers, finalAnswer, hint, question, questionid, prefix, postfix, questionType, qImage));
                             break;
                     }
                     questionNo += 1;
