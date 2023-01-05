@@ -21,6 +21,7 @@ public class SettingMenu : Singleton<SettingMenu>
 
     public void Menu()
     {
+        GlobalVariables.instance.questionsInMap = 0;
         SceneManager.LoadScene("MainMenu");
         settingMenu.SetActive(false);
     }

@@ -37,9 +37,6 @@ public class LoadQuestion : MonoBehaviour {
         if (qObj == null) {
             solved();
             return;
-        } else if (qObj.question == null || qObj.question.Length == 0) {
-            solved();
-            return;
         }
         qns.text = qObj.question;
         int i = 0;
