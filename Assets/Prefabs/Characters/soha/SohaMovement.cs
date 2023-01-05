@@ -22,7 +22,6 @@ public class SohaMovement : MonoBehaviour {
 
     
     public void movePlayer(float dir) {
-        Debug.Log("movement observed");
         if (dir != 0) {
             stopMov = true;
             Anim.SetTrigger("Run"); //Set Walking Animation
@@ -43,7 +42,6 @@ public class SohaMovement : MonoBehaviour {
     }
     public void Jump() {
         // if player is grounded, apply upwards force + play jump sound
-        Debug.Log("jump observed");
         if (grounded) {
             rb.AddForce(Vector2.up * jumpForce);
             SFX.Instance.JumpSound();
