@@ -10,6 +10,7 @@ public class SohaMovement : MonoBehaviour {
     public bool grounded;
     private Vector3 direction;
     private float thickness = 0.3f;
+    public static SohaMovement instance;
 
     // Start is called before the first frame update
     void Start() {
@@ -18,6 +19,10 @@ public class SohaMovement : MonoBehaviour {
         jumpForce = 500f;
 
         direction = new Vector3(0, -1.5f, 0);
+        if (instance != null) {
+            Destroy(this.gameObject);
+        }
+        SohaMovement.instance = this;
     }
 
     

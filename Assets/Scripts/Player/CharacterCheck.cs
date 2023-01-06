@@ -1,45 +1,35 @@
 using UnityEngine;
 
-public class CharacterCheck : MonoBehaviour
-{
+public class CharacterCheck : MonoBehaviour {
     public GameObject GuyCharacter;
     public GameObject GirlCharacter;
 
     GameObject instantiatedCharacter;
 
-    void Awake()
-    {
+    void Awake() {
         CheckGender();
-        CheckPet();
+        //CheckPet();
     }
 
 
-    public void CheckGender()
-    {
-        if (CharacterManager.Instance.isMale == true)
-        {
+    public void CheckGender() {
+        if (CharacterManager.Instance.isMale == true) {
             instantiatedCharacter = Instantiate(GuyCharacter);
-        }
-        else
-        {
+        } else {
             instantiatedCharacter = Instantiate(GirlCharacter);
         }
 
     }
 
-    public void CheckPet()
-    {
-        if (CharacterManager.Instance.pet == "Cat")
-        {
+    /*public void CheckPet() {
+        if (CharacterManager.Instance.pet == "Cat") {
             instantiatedCharacter.GetComponent<Pets>().pets[0].SetActive(true);
         }
-        if (CharacterManager.Instance.pet == "Rabbit")
-        {
+        if (CharacterManager.Instance.pet == "Rabbit") {
             instantiatedCharacter.GetComponent<Pets>().pets[1].SetActive(true);
         }
-        if (CharacterManager.Instance.pet == "Frog")
-        {
+        if (CharacterManager.Instance.pet == "Frog") {
             instantiatedCharacter.GetComponent<Pets>().pets[2].SetActive(true);
         }
-    }
+    }*/
 }
