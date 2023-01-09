@@ -7,11 +7,20 @@ using UnityEngine.UI;
 public class FormObj : MonoBehaviour {
     public TextMeshProUGUI levelQns, Subject;
     public TMP_InputField questions;
-    public TMP_Dropdown qnsType;
-    public TMP_InputField preFix, postFix;
-    public GameObject[] ansbox;
-    public Toggle[] toggleBoxes;
+    public GameObject qnsType;
+    public GameObject[] answersBoxes;
+    public GameObject[] typeToggle;
+    public GameObject[] ansSelector;
     public QuestionsObject currentQns;
+
+    public void Start()
+    {
+        //currentQns.answers
+        //currentQns.finalAnswer
+        //currentQns.question
+        //currentQns.questionType = 0; 0 == Sort, 1 = Single, 2 = multi
+    }
+
     public void updateData(QuestionsObject.QuestionSubject sub, int qId) {
         qId -= 1;
         levelQns.text = "Level " + "0 " + "Question " + "0";
@@ -28,27 +37,53 @@ public class FormObj : MonoBehaviour {
                 break;
         }
         questions.text = currentQns.question;
-        qnsType.value = currentQns.questionType;
-        changeQnsType();
-        preFix.text = currentQns.preFix;
-        postFix.text = currentQns.postFix;
+        //not using TMP dropdown anymore. 
+        qnsType.name = currentQns.questionType.ToString();
+        changeQnsType(typeToggle[0]);
     }
     public void saveData() {
-
+        currentQns.questionType = int.Parse(qnsType.name);
     }
-    public void changeQnsType() {
-        switch (qnsType.value) {
-            case 0: //Arrange
-                toggleBoxes[0].transform.parent.gameObject.SetActive(false);
-                break;
-            case 1: //MCQ
-                toggleBoxes[0].transform.parent.gameObject.SetActive(true);
-                GetComponent<ToggleGroup>().enabled = true;
-                break;
-            case 2: //MultiSelect
-                toggleBoxes[0].transform.parent.gameObject.SetActive(true);
-                GetComponent<ToggleGroup>().enabled = false;
-                break;
+
+    public void changeQnsType(GameObject currentQn) {
+        qnsType = currentQn;
+        foreach (GameObject qnType in typeToggle){
+            qnType.transform.GetChild(0).gameObject.SetActive(false);
         }
+        currentQn.transform.GetChild(0).gameObject.SetActive(true);
+
+        if (currentQn.name != "0"){
+            foreach (GameObject selector in ansSelector){
+                selector.SetActive(true);
+                selector.transform.GetChild(0).gameObject.SetActive(false);
+            }
+        }
+        else{
+            foreach (GameObject selector in ansSelector){
+                selector.SetActive(false);
+            }
+        }
+    }
+
+    public void selectAns(GameObject currentAns){
+        if (qnsType.name == "2"){
+            foreach (GameObject selector in ansSelector){
+                selector.transform.GetChild(0).gameObject.SetActive(false);
+            }
+        }
+        bool ans_state = currentAns.transform.GetChild(0).gameObject.activeSelf;
+        currentAns.transform.GetChild(0).gameObject.SetActive(!ans_state);
+    }
+
+    public void save() { 
+    
+    }
+
+    public void preview() { 
+    
+    }
+
+    public void insImg() { 
+    
     }
 }
