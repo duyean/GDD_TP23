@@ -10,7 +10,7 @@ public class LoadQuestion : MonoBehaviour {
     public GameObject answeringSlot, answers, answerView, possibleAnswerView, hint, incorrect;
     public TextMeshProUGUI qns, triesLeft;
     public QuestionsObject.QuestionSubject subject;
-    public GameObject winObj, UIDisplay;
+    public GameObject winObj, UIDisplay, fail;
     public int level, tries;
     private List<string> rndList = new List<string>();
     private IDictionary<string, int> ansKey = new Dictionary<string, int>();
@@ -18,6 +18,7 @@ public class LoadQuestion : MonoBehaviour {
     private QuestionsObject qObj;
 
     public void loadQuestion() {
+        triesLeft.text = "Tries Left: " + tries;
         if (ansKey.Count > 0) {
             ansKey.Clear();
         }
@@ -100,7 +101,7 @@ public class LoadQuestion : MonoBehaviour {
         }
     }
 
-    private void solved() {
+    public void solved() {
         GlobalVariables.instance.questionsInMap--;
         if (winObj != null) {
             winObj.SetActive(!winObj.activeSelf);
@@ -113,7 +114,11 @@ public class LoadQuestion : MonoBehaviour {
         if (qObj.questionType == 0) {
             for (int i = 0; i < possibleAnswerView.transform.childCount; i++) {
                 GameObject child = possibleAnswerView.transform.GetChild(i).gameObject;
-                if (System.Int32.Parse(child.GetComponent<Slot>().value) != i) {
+                if (child.GetComponent<Slot>().value != "") {
+                    if (System.Int32.Parse(child.GetComponent<Slot>().value) != i) {
+                        isCorrect = false;
+                    }
+                } else {
                     isCorrect = false;
                 }
             }
@@ -124,8 +129,12 @@ public class LoadQuestion : MonoBehaviour {
                     bool checker = false;
                     if (!child.GetComponent<Slot>().isImg) {
                         foreach (KeyValuePair<string, int> entry in ansKey) {
-                            if (System.Int32.Parse(child.GetComponent<Slot>().value) == entry.Value) {
-                                checker = true;
+                            if (child.GetComponent<Slot>().value != "") {
+                                if (System.Int32.Parse(child.GetComponent<Slot>().value) == entry.Value) {
+                                    checker = true;
+                                }
+                            } else {
+                                isCorrect = false;
                             }
                         }
                         if (!checker) {
@@ -138,9 +147,49 @@ public class LoadQuestion : MonoBehaviour {
         if (isCorrect) {
             solved();
         } else {
-            //Incorrect
+            tries -= 1;
+            triesLeft.text = "Tries Left: " + tries;
+            if (tries == 0) {
+                loadFail();
+
+            } else {
+                StartCoroutine(wrongAns());
+            }
         }
     }
+    private void loadFail() {
+        for (int i = 0; i < transform.childCount; i++) {
+            transform.GetChild(i).gameObject.SetActive(false);
+        }
+        fail.SetActive(true);
+        foreach (KeyValuePair<string, int> ans in ansKey) {
+            GameObject newAnsSlot = Instantiate(answers);
+            newAnsSlot.GetComponent<DragDrop>().enabled = false;
+            newAnsSlot.transform.SetParent(fail.transform.GetChild(0));
+            newAnsSlot.transform.localScale = new Vector3(2f, 2f, 2f);
+            string s = ans.Key;
+            if (s.Contains("http")) {
+                StartCoroutine(LoadImageCoroutine(s, newAnsSlot));
+            } else {
+                newAnsSlot.GetComponentInChildren<TextMeshProUGUI>().text = s;
+            }
+            if (qObj.qImage.Length > 0) {
+                if (qObj.qImage.Contains("http")) {
+                    newAnsSlot = Instantiate(answeringSlot);
+                    StartCoroutine(LoadImageCoroutine(qObj.qImage, newAnsSlot));
+                    newAnsSlot.transform.SetParent(fail.transform.GetChild(0));
+                    newAnsSlot.transform.localScale = new Vector3(2f, 2f, 2f);
+                    newAnsSlot.GetComponent<Slot>().isImg = true;
+                }
+            }
+        }
+    }
+    public IEnumerator wrongAns() {
+        incorrect.SetActive(true);
+        yield return new WaitForSeconds(3);
+        incorrect.SetActive(false);
+    }
+
     public IEnumerator disableScrollView() {
         yield return new WaitForSeconds(1);
         answerView.GetComponent<HorizontalLayoutGroup>().enabled = false;
