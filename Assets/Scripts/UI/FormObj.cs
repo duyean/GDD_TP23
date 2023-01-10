@@ -35,9 +35,9 @@ public class FormObj : MonoBehaviour {
                 currentQns = connectFirebase.instance.chineseQuestions[qId];
                 break;
         }
+
         questions.text = currentQns.question;
         //not using TMP dropdown anymore. 
-        qnsType.name = currentQns.questionType.ToString();
         changeQnsType(typeToggle[currentQns.questionType]);
 
         for (int i = 0; i < answersBoxes.Length; i++) {
