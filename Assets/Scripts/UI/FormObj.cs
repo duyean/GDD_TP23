@@ -13,8 +13,7 @@ public class FormObj : MonoBehaviour {
     public GameObject[] ansSelector;
     public QuestionsObject currentQns;
 
-    public void Start()
-    {
+    public void Start() {
         //currentQns.answers
         //currentQns.finalAnswer
         //currentQns.question
@@ -22,9 +21,9 @@ public class FormObj : MonoBehaviour {
     }
 
     public void updateData(QuestionsObject.QuestionSubject sub, int qId) {
+        levelQns.text = qId.ToString();
         qId -= 1;
-        levelQns.text = "Level " + "0 " + "Question " + "0";
-        Subject.text = "Subject: " + sub.ToString();
+        Subject.text = sub.ToString();
         switch (sub) {
             case QuestionsObject.QuestionSubject.Math:
                 currentQns = connectFirebase.instance.mathQuestions[qId];
@@ -39,7 +38,11 @@ public class FormObj : MonoBehaviour {
         questions.text = currentQns.question;
         //not using TMP dropdown anymore. 
         qnsType.name = currentQns.questionType.ToString();
-        changeQnsType(typeToggle[0]);
+        changeQnsType(typeToggle[currentQns.questionType]);
+
+        for (int i = 0; i < answersBoxes.Length; i++) {
+            answersBoxes[i].GetComponent<TMP_InputField>().text = currentQns.answers[i];
+        }
     }
     public void saveData() {
         currentQns.questionType = int.Parse(qnsType.name);
@@ -47,27 +50,26 @@ public class FormObj : MonoBehaviour {
 
     public void changeQnsType(GameObject currentQn) {
         qnsType = currentQn;
-        foreach (GameObject qnType in typeToggle){
+        foreach (GameObject qnType in typeToggle) {
             qnType.transform.GetChild(0).gameObject.SetActive(false);
         }
         currentQn.transform.GetChild(0).gameObject.SetActive(true);
 
-        if (currentQn.name != "0"){
-            foreach (GameObject selector in ansSelector){
+        if (currentQn.name != "0") {
+            foreach (GameObject selector in ansSelector) {
                 selector.SetActive(true);
                 selector.transform.GetChild(0).gameObject.SetActive(false);
             }
-        }
-        else{
-            foreach (GameObject selector in ansSelector){
+        } else {
+            foreach (GameObject selector in ansSelector) {
                 selector.SetActive(false);
             }
         }
     }
 
-    public void selectAns(GameObject currentAns){
-        if (qnsType.name == "2"){
-            foreach (GameObject selector in ansSelector){
+    public void selectAns(GameObject currentAns) {
+        if (qnsType.name == "2") {
+            foreach (GameObject selector in ansSelector) {
                 selector.transform.GetChild(0).gameObject.SetActive(false);
             }
         }
@@ -75,15 +77,15 @@ public class FormObj : MonoBehaviour {
         currentAns.transform.GetChild(0).gameObject.SetActive(!ans_state);
     }
 
-    public void save() { 
-    
+    public void save() {
+        print("save");
     }
 
-    public void preview() { 
-    
+    public void preview() {
+        print("prev");
     }
 
-    public void insImg() { 
-    
+    public void insImg() {
+        print("ins");
     }
 }
