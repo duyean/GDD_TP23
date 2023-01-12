@@ -44,7 +44,7 @@ public class connectFirebase : MonoBehaviour {
         for (int i = 0; i < 3; i++) {
             QuestionsObject.QuestionSubject sub = (QuestionsObject.QuestionSubject)i;
             subjectList.Add(sub);
-            CollectionReference questionsRef = db.Collection(sub.ToString().ToLower());
+            CollectionReference questionsRef = db.Collection(sub.ToString());
             questionsRef.GetSnapshotAsync().ContinueWithOnMainThread(task => {
                 QuerySnapshot snapshot = task.Result;
                 int questionNo = 0;
@@ -88,7 +88,7 @@ public class connectFirebase : MonoBehaviour {
             QuestionsObject.QuestionSubject sub = (QuestionsObject.QuestionSubject)i;
             for (int dId = 0; dId < 15; dId++) {
                 DocumentReference docRef = db.Collection(subjectList[i].ToString()).Document((dId + 1).ToString().ToLower());
-                QuestionsObject _tobj = new QuestionsObject(sub, new List<string>(), new List<string>(), new List<string>(), "", "", 0, "");
+                QuestionsObject _tobj = null;
                 switch (sub) {
                     case QuestionsObject.QuestionSubject.Math:
                         _tobj = mathQuestions[dId];
@@ -99,6 +99,9 @@ public class connectFirebase : MonoBehaviour {
                     case QuestionsObject.QuestionSubject.Chinese:
                         _tobj = chineseQuestions[dId];
                         break;
+                }
+                if (_tobj == null) {
+                    _tobj = new QuestionsObject(sub, new List<string>(), new List<string>(), new List<string>(), "", "", 0, "");
                 }
                 Dictionary<string, object> docData = new Dictionary<string, object> {
                     { "answerSlots", _tobj.answerSlots },
@@ -111,6 +114,9 @@ public class connectFirebase : MonoBehaviour {
             };
                 docRef.SetAsync(docData);
             }
+        }
+        if (TeacherViewManager.instance != null) {
+            TeacherViewManager.instance.switchUI(-1);
         }
     }
 }
