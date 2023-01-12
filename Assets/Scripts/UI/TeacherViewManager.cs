@@ -8,13 +8,25 @@ public class TeacherViewManager : MonoBehaviour {
     public GameObject questionScrollView, mainTeacherUI, questionSelect;
     public GameObject[] teacherViewMenu;
     private connectFirebase firebaseObj;
-    public Sprite[] subjectIcon;
+    public Sprite[] questionImg;
     public QuestionsObject.QuestionSubject currentSubject;
     public int questionId;
+    public static TeacherViewManager instance;
     private void Start() {
+        if (instance != null) {
+            Destroy(instance.gameObject);
+        }
+        instance = this;
         firebaseObj = connectFirebase.instance;
     }
     public void switchUI(int id) {
+        if (id == -1) {
+            mainTeacherUI.SetActive(false);
+            foreach (GameObject i in teacherViewMenu) {
+                i.SetActive(false);
+            }
+            return;
+        }
         if (!mainTeacherUI.activeSelf) {
             mainTeacherUI.SetActive(true);
         }
@@ -46,7 +58,8 @@ public class TeacherViewManager : MonoBehaviour {
         for (int i = 0; i < level; i++) {
             int _qid = qId;
             GameObject questionIdSelect = Instantiate(questionSelect, questionScrollView.transform);
-            questionIdSelect.transform.GetChild(1).GetComponent<TextMeshProUGUI>().text = "Question " + (i + 1);
+
+            questionIdSelect.GetComponent<Image>().sprite = questionImg[i];
             questionIdSelect.GetComponent<Button>().onClick.AddListener(delegate { selectQuestionId(_qid); });
             qId += 1;
         }
