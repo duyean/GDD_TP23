@@ -9,16 +9,14 @@ public class QuestionsObject {
     public string hint;
     public string question;
     public int questionType;
-    public int questionId;
     public string qImage;
-    public QuestionsObject(QuestionSubject _subject, List<string> _answerSlots, List<string> _answers, List<string> _finalAnswer, string _hint, string _question, int _questionId, int _questionType, string _qImage) {
+    public QuestionsObject(QuestionSubject _subject, List<string> _answerSlots, List<string> _answers, List<string> _finalAnswer, string _hint, string _question, int _questionType, string _qImage) {
         this.subject = _subject;
         this.answerSlots = _answerSlots;
         this.answers = _answers;
         this.finalAnswer = _finalAnswer;
         this.hint = _hint;
         this.question = _question;
-        this.questionId = _questionId;
         this.questionType = _questionType;
         this.qImage = _qImage;
     }

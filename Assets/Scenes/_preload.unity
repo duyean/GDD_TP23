@@ -2313,6 +2313,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   loginStatus: 1
   isTeacher: 1
+  questionsInMap: 0
 --- !u!1 &491481409
 GameObject:
   m_ObjectHideFlags: 0

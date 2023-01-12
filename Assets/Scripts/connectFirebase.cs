@@ -69,18 +69,48 @@ public class connectFirebase : MonoBehaviour {
                     string qImage = questionList["qImage"].ToString();
                     switch (sub) {
                         case QuestionsObject.QuestionSubject.Math:
-                            mathQuestions[questionNo] = (new QuestionsObject(sub, answerSlots, answers, finalAnswer, hint, question, questionid, questionType, qImage));
+                            mathQuestions[questionid - 1] = (new QuestionsObject(sub, answerSlots, answers, finalAnswer, hint, question, questionType, qImage));
                             break;
                         case QuestionsObject.QuestionSubject.English:
-                            englishQuestions[questionNo] = (new QuestionsObject(sub, answerSlots, answers, finalAnswer, hint, question, questionid, questionType, qImage));
+                            englishQuestions[questionid - 1] = (new QuestionsObject(sub, answerSlots, answers, finalAnswer, hint, question, questionType, qImage));
                             break;
                         case QuestionsObject.QuestionSubject.Chinese:
-                            chineseQuestions[questionNo] = (new QuestionsObject(sub, answerSlots, answers, finalAnswer, hint, question, questionid, questionType, qImage));
+                            chineseQuestions[questionid - 1] = (new QuestionsObject(sub, answerSlots, answers, finalAnswer, hint, question, questionType, qImage));
                             break;
                     }
                     questionNo += 1;
                 }
             });
+        }
+    }
+    public void uploadToDatabase() {
+        for (int i = 0; i < 3; i++) {
+            QuestionsObject.QuestionSubject sub = (QuestionsObject.QuestionSubject)i;
+            for (int dId = 0; dId < 15; dId++) {
+                DocumentReference docRef = db.Collection(subjectList[i].ToString()).Document((dId + 1).ToString().ToLower());
+                QuestionsObject _tobj = new QuestionsObject(sub, new List<string>(), new List<string>(), new List<string>(), "", "", 0, "");
+                switch (sub) {
+                    case QuestionsObject.QuestionSubject.Math:
+                        _tobj = mathQuestions[dId];
+                        break;
+                    case QuestionsObject.QuestionSubject.English:
+                        _tobj = englishQuestions[dId];
+                        break;
+                    case QuestionsObject.QuestionSubject.Chinese:
+                        _tobj = chineseQuestions[dId];
+                        break;
+                }
+                Dictionary<string, object> docData = new Dictionary<string, object> {
+                    { "answerSlots", _tobj.answerSlots },
+                    { "answers", _tobj.answers },
+                    { "finalAnswer", _tobj.finalAnswer },
+                    { "hint", "" },
+                    { "qImage", _tobj.qImage },
+                    { "question", _tobj.question },
+                    { "questionType", _tobj.questionType },
+            };
+                docRef.SetAsync(docData);
+            }
         }
     }
 }

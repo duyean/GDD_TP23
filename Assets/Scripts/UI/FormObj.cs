@@ -12,6 +12,8 @@ public class FormObj : MonoBehaviour {
     public GameObject[] typeToggle;
     public GameObject[] ansSelector;
     public QuestionsObject currentQns;
+    private QuestionsObject.QuestionSubject subject;
+    private int arrayQId;
 
     public void Start() {
         //currentQns.answers
@@ -23,7 +25,9 @@ public class FormObj : MonoBehaviour {
     public void updateData(QuestionsObject.QuestionSubject sub, int qId) {
         levelQns.text = qId.ToString();
         qId -= 1;
+        arrayQId = qId;
         Subject.text = sub.ToString();
+        subject = sub;
         switch (sub) {
             case QuestionsObject.QuestionSubject.Math:
                 currentQns = connectFirebase.instance.mathQuestions[qId];
@@ -35,17 +39,18 @@ public class FormObj : MonoBehaviour {
                 currentQns = connectFirebase.instance.chineseQuestions[qId];
                 break;
         }
+        if (currentQns == null) {
+            currentQns = new QuestionsObject(sub, new List<string>(), new List<string>(), new List<string>(), "", "", 0, "");
+        }
 
         questions.text = currentQns.question;
         //not using TMP dropdown anymore. 
         changeQnsType(typeToggle[currentQns.questionType]);
-
-        for (int i = 0; i < answersBoxes.Length; i++) {
-            answersBoxes[i].GetComponent<TMP_InputField>().text = currentQns.answers[i];
+        if (currentQns.answers.Count != 0) {
+            for (int i = 0; i < currentQns.answers.Count; i++) {
+                answersBoxes[i].GetComponent<TMP_InputField>().text = currentQns.answers[i];
+            }
         }
-    }
-    public void saveData() {
-        currentQns.questionType = int.Parse(qnsType.name);
     }
 
     public void changeQnsType(GameObject currentQn) {
@@ -78,7 +83,36 @@ public class FormObj : MonoBehaviour {
     }
 
     public void save() {
-        print("save");
+        currentQns.question = questions.text;
+        currentQns.questionType = int.Parse(qnsType.name);
+        if (currentQns.finalAnswer.Count > 0) {
+            currentQns.finalAnswer.Clear();
+        }
+        if (currentQns.answers.Count > 0) {
+            currentQns.answers.Clear();
+        }
+        if (answersBoxes.Length != 0) {
+            for (int i = 0; i < answersBoxes.Length; i++) {
+                currentQns.answers.Add(answersBoxes[i].GetComponent<TMP_InputField>().text);
+                if (ansSelector[i].transform.GetChild(0).gameObject.activeSelf) {
+                    currentQns.finalAnswer.Add(answersBoxes[i].GetComponent<TMP_InputField>().text);
+                }
+            }
+        }
+
+
+        switch (subject) {
+            case QuestionsObject.QuestionSubject.Math:
+                connectFirebase.instance.mathQuestions[arrayQId] = currentQns;
+                break;
+            case QuestionsObject.QuestionSubject.English:
+                connectFirebase.instance.englishQuestions[arrayQId] = currentQns;
+                break;
+            case QuestionsObject.QuestionSubject.Chinese:
+                connectFirebase.instance.chineseQuestions[arrayQId] = currentQns;
+                break;
+        }
+        connectFirebase.instance.uploadToDatabase();
     }
 
     public void preview() {
