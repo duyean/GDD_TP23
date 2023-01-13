@@ -2160,7 +2160,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tabs:
   - {fileID: 1498281261}
-  - {fileID: 724588906}
+  - {fileID: 1645995294}
   swapTabs:
   - {fileID: 21300000, guid: 785948d2463cbe74d9afc99cda044a23, type: 3}
   - {fileID: 21300000, guid: 57d0c9b478cf2ff46a5ab893ac925363, type: 3}
@@ -5740,14 +5740,15 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 1645995293}
   m_Father: {fileID: 214731893}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 297}
-  m_SizeDelta: {x: 1118, y: 225}
+  m_SizeDelta: {x: 1014, y: 164}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &724588906
 MonoBehaviour:
@@ -5769,7 +5770,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: cb248fecaeaee7347aea51189755cb41, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 72d32e3650a581c448286c7b58361eb1, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -11959,7 +11960,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1619657501}
   m_CullTransparentMesh: 1
+<<<<<<< HEAD
 --- !u!1 &1661740995
+=======
+--- !u!1 &1645995292
+>>>>>>> 24bbc5b (Bugfix, movement of the login title)
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -11967,23 +11972,36 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
+<<<<<<< HEAD
   - component: {fileID: 1661740996}
   - component: {fileID: 1661740999}
   - component: {fileID: 1661740998}
   - component: {fileID: 1661740997}
   m_Layer: 8
   m_Name: AnswerBox (1)
+=======
+  - component: {fileID: 1645995293}
+  - component: {fileID: 1645995295}
+  - component: {fileID: 1645995294}
+  m_Layer: 8
+  m_Name: Ver
+>>>>>>> 24bbc5b (Bugfix, movement of the login title)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+<<<<<<< HEAD
 --- !u!224 &1661740996
+=======
+--- !u!224 &1645995293
+>>>>>>> 24bbc5b (Bugfix, movement of the login title)
 RectTransform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
+<<<<<<< HEAD
   m_GameObject: {fileID: 1661740995}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 1.9452885}
@@ -12161,10 +12179,15 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1674727153}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+=======
+  m_GameObject: {fileID: 1645995292}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+>>>>>>> 24bbc5b (Bugfix, movement of the login title)
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
+<<<<<<< HEAD
   m_Father: {fileID: 1891556608}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -12174,12 +12197,27 @@ RectTransform:
   m_SizeDelta: {x: 610, y: 170}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1674727155
+=======
+  m_Father: {fileID: 724588905}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 1, y: 0}
+  m_AnchorMax: {x: 1, y: 0}
+  m_AnchoredPosition: {x: -66.483734, y: 20}
+  m_SizeDelta: {x: 362, y: 116}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1645995294
+>>>>>>> 24bbc5b (Bugfix, movement of the login title)
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
+<<<<<<< HEAD
   m_GameObject: {fileID: 1674727153}
+=======
+  m_GameObject: {fileID: 1645995292}
+>>>>>>> 24bbc5b (Bugfix, movement of the login title)
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
@@ -12193,7 +12231,11 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
+<<<<<<< HEAD
   m_Sprite: {fileID: 21300000, guid: 584ebdb18cf04bd4b90d4b536ac32b88, type: 3}
+=======
+  m_Sprite: {fileID: 21300000, guid: cb248fecaeaee7347aea51189755cb41, type: 3}
+>>>>>>> 24bbc5b (Bugfix, movement of the login title)
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -12203,13 +12245,21 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+<<<<<<< HEAD
 --- !u!222 &1674727156
+=======
+--- !u!222 &1645995295
+>>>>>>> 24bbc5b (Bugfix, movement of the login title)
 CanvasRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
+<<<<<<< HEAD
   m_GameObject: {fileID: 1674727153}
+=======
+  m_GameObject: {fileID: 1645995292}
+>>>>>>> 24bbc5b (Bugfix, movement of the login title)
   m_CullTransparentMesh: 1
 --- !u!1 &1683012765
 GameObject:
