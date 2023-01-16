@@ -3,11 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
+using UnityEngine.Networking;
 
 public class FormObj : MonoBehaviour {
     public TextMeshProUGUI levelQns, Subject;
-    public TMP_InputField questions;
-    public GameObject qnsType;
+    public TMP_InputField questions, imgUrl;
+    public GameObject qnsType, insertImgObj;
+    public Image imgPreview;
     public GameObject[] answersBoxes;
     public GameObject[] typeToggle;
     public GameObject[] ansSelector;
@@ -53,6 +55,7 @@ public class FormObj : MonoBehaviour {
     }
 
     public void changeQnsType(GameObject currentQn) {
+        qnsType = currentQn;
         foreach (GameObject qnType in typeToggle) {
             qnType.transform.GetChild(0).gameObject.SetActive(false);
         }
@@ -88,6 +91,7 @@ public class FormObj : MonoBehaviour {
     public void save() {
         currentQns.question = questions.text;
         currentQns.questionType = int.Parse(qnsType.name);
+        currentQns.qImage = imgUrl.text;
         if (currentQns.finalAnswer.Count > 0) {
             currentQns.finalAnswer.Clear();
         }
@@ -122,7 +126,34 @@ public class FormObj : MonoBehaviour {
         print("prev");
     }
 
-    public void insImg() {
-        print("ins");
+    public void insImg(bool show) {
+        insertImgObj.SetActive(show);
+        if (show) {
+            imgUrl.text = currentQns.qImage;
+            StartCoroutine(LoadImageCoroutine(imgUrl.text, imgPreview));
+        }
+    }
+
+    public void updateImg() {
+        StartCoroutine(LoadImageCoroutine(imgUrl.text, imgPreview));
+    }
+
+    public IEnumerator LoadImageCoroutine(string url, Image gameObject) {
+        UnityWebRequest www = UnityWebRequestTexture.GetTexture(url);
+        var asyncOp = www.SendWebRequest();
+
+        while (!www.isDone) {
+            yield return null;
+        }
+
+        if (!string.IsNullOrEmpty(www.error)) {
+            Debug.Log(www.error);
+            Debug.Log(url);
+        }
+        var texture = DownloadHandlerTexture.GetContent(www);
+
+        Sprite sprite = Sprite.Create(texture, new Rect(0, 0, texture.width, texture.height), new Vector2(0, 0));
+
+        gameObject.sprite = sprite;
     }
 }
