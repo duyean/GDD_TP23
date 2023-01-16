@@ -2664,10 +2664,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   BGMSlider: {fileID: 961144679}
   bgmSource: {fileID: 598964733}
-  Theme: {fileID: 8300000, guid: b500bb9c82c78d146af959d475ea6af0, type: 3}
-  Mountain: {fileID: 8300000, guid: 1576e04074206614cb59ec55591f120e, type: 3}
-  Desert: {fileID: 8300000, guid: 859be7bea292d6d48b84b7a3e7551367, type: 3}
-  City: {fileID: 8300000, guid: b32744fa5abc5ff47a4e253e2fa16338, type: 3}
+  Theme: {fileID: 8300000, guid: ada5eee8433c79049a23acd9d500e454, type: 3}
+  Chinese_BGM: {fileID: 8300000, guid: 234317b612d52a44eb11d412b78765ed, type: 3}
+  Math_BGM: {fileID: 8300000, guid: 5cd7ad89058270243a3f987ed539a218, type: 3}
+  English_BGM: {fileID: 8300000, guid: 01d4c4aca7c24d24abda324f0181169f, type: 3}
 --- !u!82 &598964733
 AudioSource:
   m_ObjectHideFlags: 0

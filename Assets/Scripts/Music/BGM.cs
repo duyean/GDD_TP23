@@ -11,13 +11,13 @@ public class BGM : Singleton<BGM>
     AudioClip Theme;
 
     [SerializeField]
-    AudioClip Mountain;
+    AudioClip Chinese_BGM;
 
     [SerializeField]
-    AudioClip Desert;
+    AudioClip Math_BGM;
 
     [SerializeField]
-    AudioClip City;
+    AudioClip English_BGM;
 
 
     private void Start()
@@ -25,7 +25,7 @@ public class BGM : Singleton<BGM>
         // if volume is not set previously, meaning first session of play, then set bgm to max
         if (!PlayerPrefs.HasKey("BGMVolume"))
         {
-            PlayerPrefs.SetFloat("BGMVolume", 1);
+            PlayerPrefs.SetFloat("BGMVolume", 0.3083128f);
             loadBGM();
         }
         else
@@ -55,19 +55,19 @@ public class BGM : Singleton<BGM>
 
     public void ChineseLevelBGM()
     {
-        bgmSource.clip = Mountain;
+        bgmSource.clip = Chinese_BGM;
         bgmSource.Play();
     }
 
     public void MathLevelBGM()
     {
-        bgmSource.clip = Desert;
+        bgmSource.clip = Math_BGM;
         bgmSource.Play();
     }
 
     public void EnglishLevelBGM()
     {
-        bgmSource.clip = City;
+        bgmSource.clip = English_BGM;
         bgmSource.Play();
     }
 
