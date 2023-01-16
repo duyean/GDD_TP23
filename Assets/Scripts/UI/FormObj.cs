@@ -44,26 +44,29 @@ public class FormObj : MonoBehaviour {
         }
 
         questions.text = currentQns.question;
-        //not using TMP dropdown anymore. 
-        changeQnsType(typeToggle[currentQns.questionType]);
         if (currentQns.answers.Count != 0) {
             for (int i = 0; i < currentQns.answers.Count; i++) {
                 answersBoxes[i].GetComponent<TMP_InputField>().text = currentQns.answers[i];
             }
         }
+        changeQnsType(typeToggle[currentQns.questionType]);
     }
 
     public void changeQnsType(GameObject currentQn) {
-        qnsType = currentQn;
         foreach (GameObject qnType in typeToggle) {
             qnType.transform.GetChild(0).gameObject.SetActive(false);
         }
         currentQn.transform.GetChild(0).gameObject.SetActive(true);
 
         if (currentQn.name != "0") {
-            foreach (GameObject selector in ansSelector) {
-                selector.SetActive(true);
-                selector.transform.GetChild(0).gameObject.SetActive(false);
+            for (int i = 0; i < ansSelector.Length; i++) {
+                ansSelector[i].SetActive(true);
+                ansSelector[i].transform.GetChild(0).gameObject.SetActive(false);
+                if (answersBoxes[i].GetComponent<TMP_InputField>().text != "") {
+                    if (currentQns.finalAnswer.Contains(answersBoxes[i].GetComponent<TMP_InputField>().text)) {
+                        ansSelector[i].transform.GetChild(0).gameObject.SetActive(true);
+                    }
+                }
             }
         } else {
             foreach (GameObject selector in ansSelector) {
