@@ -2314,6 +2314,8 @@ MonoBehaviour:
   loginStatus: 1
   isTeacher: 1
   questionsInMap: 0
+  chineseFont: {fileID: 11400000, guid: 02619006b7836fd4681fb5e302754786, type: 2}
+  englishFont: {fileID: 11400000, guid: 345727eb1509f3c40ad5923f0e1fb331, type: 2}
 --- !u!1 &491481409
 GameObject:
   m_ObjectHideFlags: 0

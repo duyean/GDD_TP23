@@ -33,12 +33,15 @@ public class FormObj : MonoBehaviour {
         switch (sub) {
             case QuestionsObject.QuestionSubject.Math:
                 currentQns = connectFirebase.instance.mathQuestions[qId];
+                questions.fontAsset = GlobalVariables.instance.englishFont;
                 break;
             case QuestionsObject.QuestionSubject.English:
                 currentQns = connectFirebase.instance.englishQuestions[qId];
+                questions.fontAsset = GlobalVariables.instance.englishFont;
                 break;
             case QuestionsObject.QuestionSubject.Chinese:
                 currentQns = connectFirebase.instance.chineseQuestions[qId];
+                questions.fontAsset = GlobalVariables.instance.chineseFont;
                 break;
         }
         if (currentQns == null) {
@@ -48,6 +51,7 @@ public class FormObj : MonoBehaviour {
         questions.text = currentQns.question;
         if (currentQns.answers.Count != 0) {
             for (int i = 0; i < currentQns.answers.Count; i++) {
+                answersBoxes[i].GetComponent<TMP_InputField>().fontAsset = (sub == QuestionsObject.QuestionSubject.Chinese ? GlobalVariables.instance.chineseFont: GlobalVariables.instance.englishFont);
                 answersBoxes[i].GetComponent<TMP_InputField>().text = currentQns.answers[i];
             }
         }
