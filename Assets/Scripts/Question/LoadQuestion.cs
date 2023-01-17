@@ -33,6 +33,7 @@ public class LoadQuestion : MonoBehaviour {
                 break;
             case QuestionsObject.QuestionSubject.Chinese:
                 qObj = connectFirebase.instance.chineseQuestions[maxQid];
+                qns.font = GlobalVariables.instance.chineseFont;
                 break;
         }
         if (qObj == null) {
@@ -66,6 +67,9 @@ public class LoadQuestion : MonoBehaviour {
                 if (s.Contains("http")) {
                     StartCoroutine(LoadImageCoroutine(s, newAns));
                 } else {
+                    if (subject == QuestionsObject.QuestionSubject.Chinese) {
+                        newAns.GetComponentInChildren<TextMeshProUGUI>().font = GlobalVariables.instance.chineseFont;
+                    }
                     newAns.GetComponentInChildren<TextMeshProUGUI>().text = s;
                 }
                 newAns.transform.SetParent(answerView.transform);
@@ -171,6 +175,9 @@ public class LoadQuestion : MonoBehaviour {
             if (s.Contains("http")) {
                 StartCoroutine(LoadImageCoroutine(s, newAnsSlot));
             } else {
+                if (subject == QuestionsObject.QuestionSubject.Chinese) {
+                    newAnsSlot.GetComponentInChildren<TextMeshProUGUI>().font = GlobalVariables.instance.chineseFont;
+                }
                 newAnsSlot.GetComponentInChildren<TextMeshProUGUI>().text = s;
             }
             if (qObj.qImage.Length > 0) {
