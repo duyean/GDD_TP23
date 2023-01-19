@@ -8,7 +8,7 @@ using UnityEngine.Networking;
 public class FormObj : MonoBehaviour {
     public TextMeshProUGUI levelQns, Subject;
     public TMP_InputField questions, imgUrl;
-    public GameObject qnsType, insertImgObj;
+    public GameObject qnsType, insertImgObj, previewObj;
     public Image imgPreview;
     public GameObject[] answersBoxes;
     public GameObject[] typeToggle;
@@ -129,7 +129,10 @@ public class FormObj : MonoBehaviour {
     }
 
     public void preview() {
-        print("prev");
+        previewObj.SetActive(true);
+        previewObj.GetComponent<LoadQuestion>().tries = 3;
+        previewObj.GetComponent<LoadQuestion>().qObj = currentQns;
+        previewObj.GetComponent<LoadQuestion>().loadQuestion();
     }
 
     public void insImg(bool show) {
