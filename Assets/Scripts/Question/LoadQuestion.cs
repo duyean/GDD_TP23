@@ -7,35 +7,43 @@ using UnityEngine.UI;
 using TMPro;
 
 public class LoadQuestion : MonoBehaviour {
-    public GameObject answeringSlot, answers, answerView, possibleAnswerView, hint, incorrect;
+    public GameObject answeringSlot, answers, answerView, possibleAnswerView, incorrect;
     public TextMeshProUGUI qns, triesLeft;
     public QuestionsObject.QuestionSubject subject;
     public GameObject winObj, UIDisplay, fail;
     public int level, tries;
     private List<string> rndList = new List<string>();
     private IDictionary<string, int> ansKey = new Dictionary<string, int>();
+    public bool isPreview;
 
-    private QuestionsObject qObj;
+    [HideInInspector]
+    public QuestionsObject qObj;
 
     public void loadQuestion() {
+        incorrect.SetActive(false);
         triesLeft.text = "Tries Left: " + tries;
         if (ansKey.Count > 0) {
             ansKey.Clear();
         }
-        int maxQid = Mathf.RoundToInt(0.5f * level * (level + 1));
-        maxQid = (maxQid - GlobalVariables.instance.questionsInMap);
-        switch (subject) {
-            case QuestionsObject.QuestionSubject.Math:
-                qObj = connectFirebase.instance.mathQuestions[maxQid];
-                break;
-            case QuestionsObject.QuestionSubject.English:
-                qObj = connectFirebase.instance.englishQuestions[maxQid];
-                break;
-            case QuestionsObject.QuestionSubject.Chinese:
-                qObj = connectFirebase.instance.chineseQuestions[maxQid];
-                qns.font = GlobalVariables.instance.chineseFont;
-                break;
+        if (!isPreview) {
+            int maxQid = Mathf.RoundToInt(0.5f * level * (level + 1));
+            maxQid = (maxQid - GlobalVariables.instance.questionsInMap);
+            switch (subject) {
+                case QuestionsObject.QuestionSubject.Math:
+                    qObj = connectFirebase.instance.mathQuestions[maxQid];
+                    break;
+                case QuestionsObject.QuestionSubject.English:
+                    qObj = connectFirebase.instance.englishQuestions[maxQid];
+                    break;
+                case QuestionsObject.QuestionSubject.Chinese:
+                    qObj = connectFirebase.instance.chineseQuestions[maxQid];
+                    qns.font = GlobalVariables.instance.chineseFont;
+                    break;
+            }
+        } else if (qObj.subject == QuestionsObject.QuestionSubject.Chinese) {
+            qns.font = GlobalVariables.instance.chineseFont;
         }
+        subject = qObj.subject;
         if (qObj == null) {
             solved();
             return;
@@ -106,11 +114,23 @@ public class LoadQuestion : MonoBehaviour {
     }
 
     public void solved() {
-        GlobalVariables.instance.questionsInMap--;
+
         if (winObj != null) {
             winObj.SetActive(!winObj.activeSelf);
         }
-        Destroy(gameObject.transform.parent.gameObject);
+        if (!isPreview) {
+            GlobalVariables.instance.questionsInMap--;
+            Destroy(gameObject.transform.parent.gameObject);
+        } else {
+            fail.SetActive(false);
+            while (possibleAnswerView.transform.childCount > 0) {
+                DestroyImmediate(possibleAnswerView.transform.GetChild(0).gameObject);
+            }
+            while (answerView.transform.childCount > 0) {
+                DestroyImmediate(answerView.transform.GetChild(0).gameObject);
+            }
+            gameObject.SetActive(false);
+        }
     }
 
     public void attemptSolution() {
@@ -162,9 +182,12 @@ public class LoadQuestion : MonoBehaviour {
         }
     }
     private void loadFail() {
-        for (int i = 0; i < transform.childCount; i++) {
-            transform.GetChild(i).gameObject.SetActive(false);
+        if (!isPreview) {
+            for (int i = 0; i < transform.childCount; i++) {
+                transform.GetChild(i).gameObject.SetActive(false);
+            }
         }
+
         fail.SetActive(true);
         foreach (KeyValuePair<string, int> ans in ansKey) {
             GameObject newAnsSlot = Instantiate(answers);
@@ -193,7 +216,7 @@ public class LoadQuestion : MonoBehaviour {
     }
     public IEnumerator wrongAns() {
         incorrect.SetActive(true);
-        yield return new WaitForSeconds(3);
+        yield return new WaitForSeconds(1.5f);
         incorrect.SetActive(false);
     }
 
