@@ -47,11 +47,13 @@ public class FormObj : MonoBehaviour {
         if (currentQns == null) {
             currentQns = new QuestionsObject(sub, new List<string>(), new List<string>(), new List<string>(), "", "", 0, "");
         }
+        for (int i = 0; i < answersBoxes.Length; i++) {
+            answersBoxes[i].GetComponent<TMP_InputField>().fontAsset = (sub == QuestionsObject.QuestionSubject.Chinese ? GlobalVariables.instance.chineseFont : GlobalVariables.instance.englishFont);
+        }
 
         questions.text = currentQns.question;
         if (currentQns.answers.Count != 0) {
             for (int i = 0; i < currentQns.answers.Count; i++) {
-                answersBoxes[i].GetComponent<TMP_InputField>().fontAsset = (sub == QuestionsObject.QuestionSubject.Chinese ? GlobalVariables.instance.chineseFont: GlobalVariables.instance.englishFont);
                 answersBoxes[i].GetComponent<TMP_InputField>().text = currentQns.answers[i];
             }
         }
@@ -134,12 +136,16 @@ public class FormObj : MonoBehaviour {
         insertImgObj.SetActive(show);
         if (show) {
             imgUrl.text = currentQns.qImage;
-            StartCoroutine(LoadImageCoroutine(imgUrl.text, imgPreview));
+            if (imgUrl.text.Contains("http")) {
+                StartCoroutine(LoadImageCoroutine(imgUrl.text, imgPreview));
+            }
         }
     }
 
     public void updateImg() {
-        StartCoroutine(LoadImageCoroutine(imgUrl.text, imgPreview));
+        if (imgUrl.text.Contains("http")) {
+            StartCoroutine(LoadImageCoroutine(imgUrl.text, imgPreview));
+        }
     }
 
     public IEnumerator LoadImageCoroutine(string url, Image gameObject) {
