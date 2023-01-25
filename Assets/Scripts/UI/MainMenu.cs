@@ -1,9 +1,12 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class MainMenu : MonoBehaviour {
     public GameObject LevelSelection, subjectSelect, playBtnObj;
     public QuestionsObject.QuestionSubject subject;
+    public Sprite[] subTitle;
+    public Image levelHeader;
 
     public void playBtn() {
         // activating level selection UI
@@ -26,6 +29,7 @@ public class MainMenu : MonoBehaviour {
     }
     public void selectSubject(int subjectID) {
         subject = (QuestionsObject.QuestionSubject)subjectID;
+        levelHeader.sprite = subTitle[subjectID];
         LevelSelection.SetActive(true);
         subjectSelect.SetActive(false);
 
