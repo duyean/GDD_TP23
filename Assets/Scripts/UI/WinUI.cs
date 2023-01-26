@@ -1,7 +1,6 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
-public class WinUI : Singleton<WinUI>
-{
+public class WinUI : Singleton<WinUI> {
     int finalLevelIndex = 4;
 
     [SerializeField]
@@ -11,21 +10,16 @@ public class WinUI : Singleton<WinUI>
     public GameObject loseMinigameUI;
 
     // checks whether this is last level and disables the next level button if true;
-    private void Update()
-    {
-        if (SceneManager.GetActiveScene().name.Substring(6) == finalLevelIndex.ToString())
-        {
+    private void Update() {
+        if (SceneManager.GetActiveScene().name.Substring(6) == finalLevelIndex.ToString()) {
             nextLevelButton.SetActive(false);
-        }
-        else
-        {
+        } else {
             nextLevelButton.SetActive(true);
         }
     }
 
     // function for loading next level using button
-    public void nextLevel()
-    {
+    public void nextLevel() {
         string sceneName = SceneManager.GetActiveScene().name;
         string subject = sceneName.Substring(0, 1);
         char level = sceneName[sceneName.Length - 1];
@@ -41,8 +35,7 @@ public class WinUI : Singleton<WinUI>
 
 
     // function for loading minigame of the level using button
-    public void loadMinigame()
-    {
+    public void loadMinigame() {
         string sceneName = SceneManager.GetActiveScene().name;
         string subject = sceneName.Substring(0, 1);
         char level = sceneName[sceneName.Length - 1];
@@ -58,8 +51,7 @@ public class WinUI : Singleton<WinUI>
 
 
     // go back to title
-    public void backToTitle()
-    {
+    public void backToTitle() {
         SceneManager.LoadScene("MainMenu");
         winUI.SetActive(false);
         winMinigameUI.SetActive(false);
@@ -67,8 +59,7 @@ public class WinUI : Singleton<WinUI>
     }
 
     // restarts the minigame level
-    public void tryAgain()
-    {
+    public void tryAgain() {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         loseMinigameUI.SetActive(false);
     }

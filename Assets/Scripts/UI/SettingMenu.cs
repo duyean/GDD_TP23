@@ -1,29 +1,27 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class SettingMenu : Singleton<SettingMenu>
-{
+public class SettingMenu : Singleton<SettingMenu> {
     public GameObject settingMenu;
 
-    private void Start()
-    {
+    private void Start() {
         SceneManager.LoadScene("MainMenu");
     }
-    public void openMenu()
-    {
+    public void openMenu() {
         settingMenu.SetActive(true);
     }
 
-    public void back()
-    {
+    public void back() {
         settingMenu.SetActive(false);
     }
 
-    public void Menu()
-    {
+    public void Menu() {
         GlobalVariables.instance.questionsInMap = 0;
         SceneManager.LoadScene("MainMenu");
         settingMenu.SetActive(false);
+    }
+    public void QuitGame() {
+        Application.Quit();
     }
 
 }
