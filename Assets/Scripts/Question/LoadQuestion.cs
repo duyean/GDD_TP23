@@ -44,7 +44,7 @@ public class LoadQuestion : MonoBehaviour {
             qns.font = GlobalVariables.instance.chineseFont;
         }
         subject = qObj.subject;
-        if (qObj == null) {
+        if (qObj == null || qObj.question.Equals("")) {
             solved();
             return;
         }

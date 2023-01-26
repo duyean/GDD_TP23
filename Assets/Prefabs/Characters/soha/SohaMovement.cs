@@ -6,9 +6,7 @@ public class SohaMovement : MonoBehaviour {
     public int moveBtn;
     public Animator Anim;
     private bool stopMov;
-
     public bool grounded;
-    private Vector3 direction;
     private float thickness = 0.3f;
     public static SohaMovement instance;
 
@@ -17,15 +15,13 @@ public class SohaMovement : MonoBehaviour {
         rb = GetComponent<Rigidbody2D>();
         moveSpeed = 5f;
         jumpForce = 500f;
-
-        direction = new Vector3(0, -1.5f, 0);
         if (instance != null) {
             Destroy(this.gameObject);
         }
         SohaMovement.instance = this;
     }
 
-    
+
     public void movePlayer(float dir) {
         if (dir != 0) {
             stopMov = true;
@@ -33,15 +29,15 @@ public class SohaMovement : MonoBehaviour {
             rb.velocity = new Vector2(dir * moveSpeed, rb.velocity.y); //Move Player
             //Flip Player
             if (dir > 0) {
-                this.transform.localScale = new Vector3(1, 1, 1); 
-            } else if (dir<0) {
+                this.transform.localScale = new Vector3(1, 1, 1);
+            } else if (dir < 0) {
                 this.transform.localScale = new Vector3(-1, 1, 1);
             }
         } else {
             Anim.SetTrigger("Stop Run");
             if (stopMov) {
                 stopMov = false;
-                 rb.velocity = new Vector2(dir * moveSpeed, rb.velocity.y);
+                rb.velocity = new Vector2(dir * moveSpeed, rb.velocity.y);
             }
         }
     }
@@ -64,19 +60,14 @@ public class SohaMovement : MonoBehaviour {
         }
     }
 
-    void FixedUpdate()
-    {
-        RaycastHit2D hit = Physics2D.CircleCast(transform.position, thickness, Vector3.down, 1.5f);
-        if (hit)
-        {
-            if (hit.transform.gameObject.layer == LayerMask.NameToLayer("Ground"))
-            {
+    void FixedUpdate() {
+        RaycastHit2D hit = Physics2D.CircleCast(transform.position, thickness, Vector3.down, 1.25f);
+        if (hit) {
+            if (hit.transform.gameObject.layer == LayerMask.NameToLayer("Ground")) {
                 grounded = true;
                 Anim.SetBool("Jump", false);
             }
-        }
-        else
-        {
+        } else {
             grounded = false;
             Anim.SetBool("Jump", true);
         }
