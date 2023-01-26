@@ -14,10 +14,7 @@ public class GlobalVariables : MonoBehaviour {
             Destroy(GlobalVariables.instance);
         }
         instance = this;
+        debugObj.SetActive(adminMode);
         DontDestroyOnLoad(this);
-
-        if (!adminMode) {
-            debugObj.SetActive(false);
-        }
     }
 }
