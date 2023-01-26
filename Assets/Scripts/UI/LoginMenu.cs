@@ -43,6 +43,7 @@ public class LoginMenu : MonoBehaviour {
         //Override
         if (loginDetails[0].text == "admin" && loginDetails[1].text == "admin") {
             if (loginType == 1) {
+                GlobalVariables.instance.adminMode = true;
                 GlobalVariables.instance.isTeacher = true;
             }
             GlobalVariables.instance.loginStatus = true;
@@ -61,7 +62,14 @@ public class LoginMenu : MonoBehaviour {
     private void switchMenu() {
         if (GlobalVariables.instance.isTeacher) {
             foreach (GameObject i in teacherView) {
-                i.SetActive(true);
+                if (i.name != "TeacherTool") {
+                    i.SetActive(true);
+                } else {
+                    if (GlobalVariables.instance.adminMode) {
+                        i.SetActive(true);
+                    }
+                }
+
             }
         }
         switchMenuItem[0].SetActive(true);
@@ -82,6 +90,11 @@ public class LoginMenu : MonoBehaviour {
                 } else {
                     string[] returndata = (www.downloadHandler.text).Split(",");
                     if (returndata.Length > 0) {
+                        foreach (string i in returndata) {
+                            if (i.Equals("\"role_id\":\"3\"")) {
+                                GlobalVariables.instance.adminMode = true;
+                            }
+                        }
                         foreach (string i in returndata) {
                             if (i.Contains("result") && i.Substring(i.Length - 3).Equals("\"1\"")) {
                                 GlobalVariables.instance.isTeacher = true;
