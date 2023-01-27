@@ -1,7 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
-public class BGM : Singleton<BGM>
-{
+public class BGM : Singleton<BGM> {
     [SerializeField] Slider BGMSlider;
 
     [SerializeField]
@@ -20,53 +19,42 @@ public class BGM : Singleton<BGM>
     AudioClip English_BGM;
 
 
-    private void Start()
-    {
+    private void Start() {
         // if volume is not set previously, meaning first session of play, then set bgm to max
-        if (!PlayerPrefs.HasKey("BGMVolume"))
-        {
-            PlayerPrefs.SetFloat("BGMVolume", 0.3083128f);
-            loadBGM();
+        if (!PlayerPrefs.HasKey("BGMVolume")) {
+            PlayerPrefs.SetFloat("BGMVolume", 0.5f);
         }
-        else
-        {
-            loadBGM();
-        }
-
+        loadBGM();
     }
-    public void changeBGMVolume()
-    {
+
+    public void changeBGMVolume() {
         bgmSource.volume = BGMSlider.value;
         saveBGMPref();
     }
 
 
-    public void loadBGM()
-    {
+    public void loadBGM() {
         BGMSlider.value = PlayerPrefs.GetFloat("BGMVolume");
+        bgmSource.volume = BGMSlider.value;
         bgmSource.clip = Theme;
         bgmSource.Play();
     }
 
-    private void saveBGMPref()
-    {
+    private void saveBGMPref() {
         PlayerPrefs.SetFloat("BGMVolume", BGMSlider.value);
     }
 
-    public void ChineseLevelBGM()
-    {
+    public void ChineseLevelBGM() {
         bgmSource.clip = Chinese_BGM;
         bgmSource.Play();
     }
 
-    public void MathLevelBGM()
-    {
+    public void MathLevelBGM() {
         bgmSource.clip = Math_BGM;
         bgmSource.Play();
     }
 
-    public void EnglishLevelBGM()
-    {
+    public void EnglishLevelBGM() {
         bgmSource.clip = English_BGM;
         bgmSource.Play();
     }
