@@ -1,8 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class SFX : Singleton<SFX>
-{
+public class SFX : Singleton<SFX> {
     [SerializeField] Slider SFXSlider;
 
     [SerializeField]
@@ -23,55 +22,43 @@ public class SFX : Singleton<SFX>
 
 
 
-    private void Start()
-    {
-        if (!PlayerPrefs.HasKey("SFXVolume"))
-        {
+    private void Start() {
+        if (!PlayerPrefs.HasKey("SFXVolume")) {
             PlayerPrefs.SetFloat("SFXVolume", 1);
-            loadSFX();
         }
-        else
-        {
-            loadSFX();
-        }
+        loadSFX();
     }
 
-    public void changeSFXVolume()
-    {
+    public void changeSFXVolume() {
         sfxSource.volume = SFXSlider.value;
         saveSFXPref();
     }
 
 
-    private void loadSFX()
-    {
-        SFXSlider.value = PlayerPrefs.GetFloat("BGMVolume");
+    private void loadSFX() {
+        SFXSlider.value = PlayerPrefs.GetFloat("SFXVolume");
+        sfxSource.volume = SFXSlider.value;
     }
 
-    private void saveSFXPref()
-    {
+    private void saveSFXPref() {
         PlayerPrefs.SetFloat("SFXVolume", SFXSlider.value);
     }
 
-    public void ClickSound()
-    {
+    public void ClickSound() {
         sfxSource.PlayOneShot(click);
     }
 
-    public void JumpSound()
-    {
+    public void JumpSound() {
         sfxSource.PlayOneShot(jump);
     }
 
-    public void WinSound()
-    {
+    public void WinSound() {
 
         sfxSource.PlayOneShot(win);
     }
 
     // the video volume too high so set it to 1/4 vol
-    public void LoseSound()
-    {
+    public void LoseSound() {
         sfxSource.PlayOneShot(wrong, sfxSource.volume * 0.25f);
     }
 
