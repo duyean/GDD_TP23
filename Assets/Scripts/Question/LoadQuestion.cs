@@ -75,7 +75,7 @@ public class LoadQuestion : MonoBehaviour {
                 if (s.Contains("http")) {
                     StartCoroutine(LoadImageCoroutine(s, newAns));
                 } else {
-                    if (subject == QuestionsObject.QuestionSubject.Chinese) {
+                    if (qObj.subject == QuestionsObject.QuestionSubject.Chinese) {
                         newAns.GetComponentInChildren<TextMeshProUGUI>().font = GlobalVariables.instance.chineseFont;
                     }
                     newAns.GetComponentInChildren<TextMeshProUGUI>().text = s;
@@ -198,7 +198,7 @@ public class LoadQuestion : MonoBehaviour {
             if (s.Contains("http")) {
                 StartCoroutine(LoadImageCoroutine(s, newAnsSlot));
             } else {
-                if (subject == QuestionsObject.QuestionSubject.Chinese) {
+                if (qObj.subject == QuestionsObject.QuestionSubject.Chinese) {
                     newAnsSlot.GetComponentInChildren<TextMeshProUGUI>().font = GlobalVariables.instance.chineseFont;
                 }
                 newAnsSlot.GetComponentInChildren<TextMeshProUGUI>().text = s;
