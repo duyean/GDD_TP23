@@ -1092,7 +1092,7 @@ Tilemap:
     second:
       serializedVersion: 2
       m_TileIndex: 6
-      m_TileSpriteIndex: 3
+      m_TileSpriteIndex: 9
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -9222,7 +9222,7 @@ Tilemap:
     second:
       serializedVersion: 2
       m_TileIndex: 8
-      m_TileSpriteIndex: 5
+      m_TileSpriteIndex: 8
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -9561,20 +9561,20 @@ Tilemap:
     m_Data: {fileID: -1611614385, guid: d0bec2bfcf2a1814a878669805cac82b, type: 3}
   - m_RefCount: 127
     m_Data: {fileID: 222361270, guid: d0bec2bfcf2a1814a878669805cac82b, type: 3}
-  - m_RefCount: 1
-    m_Data: {fileID: 446896441, guid: d0bec2bfcf2a1814a878669805cac82b, type: 3}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
   - m_RefCount: 2
     m_Data: {fileID: -30762681, guid: 09cf377b2d2fccc4890004b57767bd54, type: 3}
-  - m_RefCount: 1
-    m_Data: {fileID: -680273270, guid: 31073e7b6e003de468a8f3625425207f, type: 3}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
   - m_RefCount: 6
     m_Data: {fileID: -451068347, guid: 31073e7b6e003de468a8f3625425207f, type: 3}
   - m_RefCount: 3
     m_Data: {fileID: 41334455, guid: 09cf377b2d2fccc4890004b57767bd54, type: 3}
-  - m_RefCount: 0
-    m_Data: {fileID: 0}
-  - m_RefCount: 0
-    m_Data: {fileID: 0}
+  - m_RefCount: 1
+    m_Data: {fileID: -680273270, guid: 31073e7b6e003de468a8f3625425207f, type: 3}
+  - m_RefCount: 1
+    m_Data: {fileID: 446896441, guid: d0bec2bfcf2a1814a878669805cac82b, type: 3}
   - m_RefCount: 164
     m_Data: {fileID: -1250092257, guid: d0bec2bfcf2a1814a878669805cac82b, type: 3}
   - m_RefCount: 150
@@ -10622,7 +10622,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 7.92967
+  orthographic size: 5
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -10646,7 +10646,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1867589102}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 31.49, y: -8, z: -10}
+  m_LocalPosition: {x: 31.49, y: -6, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -10830,7 +10830,7 @@ RectTransform:
   m_GameObject: {fileID: 1180812030794041265}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.01, y: 0.01, z: 0.01}
+  m_LocalScale: {x: 0.0075, y: 0.0075, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1180812031785005909}
@@ -10909,7 +10909,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ad980451443d70438faac0bc6c235a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_TrackedObjectOffset: {x: 0, y: 0, z: 0}
+  m_TrackedObjectOffset: {x: 0, y: 2, z: 0}
   m_LookaheadTime: 0.5
   m_LookaheadSmoothing: 10
   m_LookaheadIgnoreY: 0
@@ -11007,14 +11007,14 @@ MonoBehaviour:
   m_Follow: {fileID: 863419185}
   m_Lens:
     FieldOfView: 60
-    OrthographicSize: 7.92967
+    OrthographicSize: 5
     NearClipPlane: 0.3
     FarClipPlane: 1000
     Dutch: 0
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 2.1310213, y: 1}
+    m_SensorSize: {x: 1.7775629, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -11048,7 +11048,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1180812031714011505}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 31.49, y: -8, z: -10}
+  m_LocalPosition: {x: 31.49, y: -6, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
