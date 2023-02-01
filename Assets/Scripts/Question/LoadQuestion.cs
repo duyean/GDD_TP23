@@ -75,7 +75,9 @@ public class LoadQuestion : MonoBehaviour {
                 if (s.Contains("http")) {
                     StartCoroutine(LoadImageCoroutine(s, newAns));
                 } else {
-                    if (qObj.subject == QuestionsObject.QuestionSubject.Chinese || subject == QuestionsObject.QuestionSubject.Chinese) {
+                    if (qObj.subject == QuestionsObject.QuestionSubject.Chinese ||
+                    subject == QuestionsObject.QuestionSubject.Chinese ||
+                    UnityEngine.SceneManagement.SceneManager.GetActiveScene().name.Substring(0, 1) == "c") {
                         newAns.transform.GetChild(0).GetComponent<TextMeshProUGUI>().font = GlobalVariables.instance.chineseFont;
                     } else {
                         newAns.transform.GetChild(0).GetComponent<TextMeshProUGUI>().font = GlobalVariables.instance.englishFont;
@@ -200,7 +202,9 @@ public class LoadQuestion : MonoBehaviour {
             if (s.Contains("http")) {
                 StartCoroutine(LoadImageCoroutine(s, newAnsSlot));
             } else {
-                if (qObj.subject == QuestionsObject.QuestionSubject.Chinese || subject == QuestionsObject.QuestionSubject.Chinese) {
+                if (qObj.subject == QuestionsObject.QuestionSubject.Chinese ||
+                    subject == QuestionsObject.QuestionSubject.Chinese ||
+                    UnityEngine.SceneManagement.SceneManager.GetActiveScene().name.Substring(0, 1) == "c") {
                     newAnsSlot.transform.GetChild(0).GetComponent<TextMeshProUGUI>().font = GlobalVariables.instance.chineseFont;
                 } else {
                     newAnsSlot.transform.GetChild(0).GetComponent<TextMeshProUGUI>().font = GlobalVariables.instance.englishFont;
