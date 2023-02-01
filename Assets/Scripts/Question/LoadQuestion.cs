@@ -75,10 +75,12 @@ public class LoadQuestion : MonoBehaviour {
                 if (s.Contains("http")) {
                     StartCoroutine(LoadImageCoroutine(s, newAns));
                 } else {
-                    if (qObj.subject == QuestionsObject.QuestionSubject.Chinese) {
-                        newAns.GetComponentInChildren<TextMeshProUGUI>().font = GlobalVariables.instance.chineseFont;
+                    if (qObj.subject == QuestionsObject.QuestionSubject.Chinese || subject == QuestionsObject.QuestionSubject.Chinese) {
+                        newAns.transform.GetChild(0).GetComponent<TextMeshProUGUI>().font = GlobalVariables.instance.chineseFont;
+                    } else {
+                        newAns.transform.GetChild(0).GetComponent<TextMeshProUGUI>().font = GlobalVariables.instance.englishFont;
                     }
-                    newAns.GetComponentInChildren<TextMeshProUGUI>().text = s;
+                    newAns.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = s;
                 }
                 newAns.transform.SetParent(answerView.transform);
                 newAns.transform.localScale = new Vector3(2f, 2f, 2f);
@@ -198,10 +200,12 @@ public class LoadQuestion : MonoBehaviour {
             if (s.Contains("http")) {
                 StartCoroutine(LoadImageCoroutine(s, newAnsSlot));
             } else {
-                if (qObj.subject == QuestionsObject.QuestionSubject.Chinese) {
-                    newAnsSlot.GetComponentInChildren<TextMeshProUGUI>().font = GlobalVariables.instance.chineseFont;
+                if (qObj.subject == QuestionsObject.QuestionSubject.Chinese || subject == QuestionsObject.QuestionSubject.Chinese) {
+                    newAnsSlot.transform.GetChild(0).GetComponent<TextMeshProUGUI>().font = GlobalVariables.instance.chineseFont;
+                } else {
+                    newAnsSlot.transform.GetChild(0).GetComponent<TextMeshProUGUI>().font = GlobalVariables.instance.englishFont;
                 }
-                newAnsSlot.GetComponentInChildren<TextMeshProUGUI>().text = s;
+                newAnsSlot.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = s;
             }
             if (qObj.qImage.Length > 0) {
                 if (qObj.qImage.Contains("http")) {
