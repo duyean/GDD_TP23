@@ -133,6 +133,9 @@ public class LoadQuestion : MonoBehaviour {
             while (answerView.transform.childCount > 0) {
                 DestroyImmediate(answerView.transform.GetChild(0).gameObject);
             }
+            while (fail.transform.GetChild(0).gameObject.transform.childCount > 0) {
+                DestroyImmediate(fail.transform.GetChild(0).gameObject.transform.GetChild(0).gameObject);
+            }
             gameObject.SetActive(false);
         }
     }
@@ -191,7 +194,6 @@ public class LoadQuestion : MonoBehaviour {
                 transform.GetChild(i).gameObject.SetActive(false);
             }
         }
-
         fail.SetActive(true);
         foreach (KeyValuePair<string, int> ans in ansKey) {
             GameObject newAnsSlot = Instantiate(answers);
