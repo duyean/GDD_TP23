@@ -20,6 +20,7 @@ public class LoadQuestion : MonoBehaviour {
     public QuestionsObject qObj;
 
     public void loadQuestion() {
+        ansKey.Clear();
         incorrect.SetActive(false);
         triesLeft.text = "Tries Left: " + tries;
         if (ansKey.Count > 0) {
@@ -40,7 +41,7 @@ public class LoadQuestion : MonoBehaviour {
                     qns.font = GlobalVariables.instance.chineseFont;
                     break;
             }
-        } else if (qObj.subject == QuestionsObject.QuestionSubject.Chinese) {
+        } else if (subject == QuestionsObject.QuestionSubject.Chinese) {
             qns.font = GlobalVariables.instance.chineseFont;
         }
         if (qObj == null || qObj.question.Equals("")) {
