@@ -132,6 +132,7 @@ public class FormObj : MonoBehaviour {
         previewObj.SetActive(true);
         previewObj.GetComponent<LoadQuestion>().tries = 3;
         previewObj.GetComponent<LoadQuestion>().qObj = currentQns;
+        previewObj.GetComponent<LoadQuestion>().subject = subject;
         previewObj.GetComponent<LoadQuestion>().loadQuestion();
     }
 

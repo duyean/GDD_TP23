@@ -43,7 +43,6 @@ public class LoadQuestion : MonoBehaviour {
         } else if (qObj.subject == QuestionsObject.QuestionSubject.Chinese) {
             qns.font = GlobalVariables.instance.chineseFont;
         }
-        subject = qObj.subject;
         if (qObj == null || qObj.question.Equals("")) {
             solved();
             return;
