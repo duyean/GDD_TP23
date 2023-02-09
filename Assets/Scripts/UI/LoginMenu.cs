@@ -83,6 +83,7 @@ public class LoginMenu : MonoBehaviour {
         form.AddField("password", password);
         if (isTeacherLogin) {
             using (UnityWebRequest www = UnityWebRequest.Post("https://eproject-dev.ednoland.com/matp/teacherApp/teacherAppRequest.php", form)) {
+                www.SetRequestHeader("Content-Type", "application/x-www-form-urlencoded;charset=UTF-8");
                 www.SetRequestHeader("Access-Control-Allow-Credentials", "true");
                 www.SetRequestHeader("Access-Control-Allow-Headers", "Accept, X-Access-Token, X-Application-Name, X-Request-Sent-Time");
                 www.SetRequestHeader("Access-Control-Allow-Methods", "POST");
@@ -112,6 +113,7 @@ public class LoginMenu : MonoBehaviour {
             }
         } else {
             using (UnityWebRequest www = UnityWebRequest.Post("https://eproject-dev.ednoland.com/matp/parentAppV2/parentAppRequest.php", form)) {
+                www.SetRequestHeader("Content-Type", "application/x-www-form-urlencoded;charset=UTF-8");
                 www.SetRequestHeader("Access-Control-Allow-Credentials", "true");
                 www.SetRequestHeader("Access-Control-Allow-Headers", "Accept, X-Access-Token, X-Application-Name, X-Request-Sent-Time");
                 www.SetRequestHeader("Access-Control-Allow-Methods", "POST");
